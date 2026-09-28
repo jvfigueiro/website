@@ -16,6 +16,7 @@
 </head>
 <body>
 
+    <!-- Main Navigation Bar -->
     <nav class="navbar pt-4 pb-3">
         <div class="container position-relative d-flex justify-content-between align-items-center">
             <a class="navbar-brand m-0" href="index.html">João Figueiró<span class="text-accent">.</span></a>
@@ -39,9 +40,11 @@
         </div>
     </nav>
 
+    <!-- Main Page Content -->
     <main class="container flex-grow-1 py-5 mt-4" style="max-width: 900px;">
         
-        <div class="d-flex justify-content-between align-items-end mb-4 border-bottom border-secondary-subtle pb-4">
+        <!-- Header & Resume Download Link -->
+        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-end mb-4 border-bottom border-secondary-subtle pb-4 gap-3">
             <div>
                 <h2 class="mb-1" style="font-weight: 800; letter-spacing: -1px;">Olá! Sou o João :)<span class="text-accent">.</span></h2>
                 <p class="text-secondary mb-0">Conheça aqui um pouco sobre mim e a minha trajetória.</p>
@@ -51,187 +54,204 @@
             </a>
         </div>
         
+        <!-- 1. Introduction & Avatar -->
         <div class="row mb-5 align-items-center">
             <div class="col-md-7 pe-md-4">
                 <p class="text-secondary lh-lg mb-3">
-                    Profissional de TI com um grande apreço pelo que faço. Sou um autodidata movido por uma curiosidade constante, o que me leva a desenvolver soluções criativas tanto para problemas simples quanto complexos. Meu trabalho transita constantemente entre o silício, a infraestrutura e o código.
+                    Trabalho com tecnologia porque gosto de entender como as coisas funcionam — e, principalmente, por que às vezes elas deixam de funcionar.
                 </p>
                 <p class="text-secondary lh-lg mb-3">
-                    Gosto de explorar sistemas em geral — computacionais, elétricos e automotivos. Meu objetivo é sempre entender como cada detalhe funciona, por que funciona, e como pode ser melhorado.
+                    Minha trajetória em TI passou por suporte técnico, hardware, redes, sistemas Windows e Linux, virtualização e infraestrutura. Fora do trabalho, essa curiosidade continua no meu laboratório pessoal, em projetos de automação, eletrônica e até na análise de sistemas automotivos.
+                </p>
+                <p class="text-secondary lh-lg mb-3">
+                    Tenho o hábito de olhar para um problema tentando entender o sistema como um todo, em vez de apenas corrigir o sintoma. Isso me leva a experimentar, testar hipóteses e procurar soluções que sejam simples, confiáveis e adequadas aos recursos disponíveis.
                 </p>
                 <p class="text-secondary lh-lg mb-0">
-                    Além da TI, tenho conhecimentos em eletrônica, que uso como hobby e ferramenta para visualizar problemas de forma mais ampla. Acredito que sistemas bem-sucedidos são resultantes de equilíbrio, tendo como pilares a confiabilidade, a simplicidade e a segurança.
+                    No fim, tecnologia para mim é menos sobre uma ferramenta específica e mais sobre entender sistemas, resolver problemas e descobrir maneiras melhores de fazer as coisas.
                 </p>
             </div>
-            <div class="profile-avatar-container">
+            <div class="col-md-5 text-center mt-4 mt-md-0">
+                <div class="profile-avatar-container">
                     <img src="images/sobre.webp" alt="João Figueiró" class="profile-avatar-image">
                 </div>
+            </div>
         </div>
 
+        <!-- 2. How I Think -->
+        <div class="mb-5">
+            <h4 class="fw-bold mb-3 text-body"><i class="fas fa-brain me-2 text-secondary"></i> Como eu penso</h4>
+            <p class="text-secondary lh-lg mb-3">
+                Para mim, usar uma ferramenta ou executar receitas prontas sem compreender o que acontece nos bastidores raramente resolve um problema de verdade. Antes de qualquer intervenção, procuro entender como o sistema foi concebido, como seus módulos se comunicam e quais são seus pontos reais de vulnerabilidade ou gargalo.
+            </p>
+            <p class="text-secondary lh-lg mb-3">
+                Diante de falhas e incidentes, meu foco é investigar a causa-raiz em vez de me limitar a atenuar sintomas. Isso envolve formular hipóteses com base em evidências, analisar logs, realizar testes metódicos e validar o comportamento antes e depois de cada mudança.
+            </p>
+            <p class="text-secondary lh-lg mb-0">
+                Acredito que soluções eficazes não precisam ser excessivamente complexas. O equilíbrio ideal está em aliar confiabilidade operacional, simplicidade de manutenção, segurança e uso inteligente dos recursos existentes — algo que aprendo e aprimoro continuamente na prática.
+            </p>
+        </div>
+
+        <!-- 3. Professional Experience -->
         <h4 class="fw-bold mt-5 mb-4 text-body"><i class="fas fa-terminal me-2 text-secondary"></i> Experiência</h4>
         
-        <div class="border-start border-2 border-secondary-subtle ps-4 ms-2 position-relative">
+        <div class="border-start border-2 border-secondary-subtle ps-4 ms-2 position-relative mb-5">
             
+            <!-- MB Informática -->
             <div class="mb-5 position-relative">
                 <div class="position-absolute top-0 start-0 translate-middle bg-body border border-accent border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
-                <h5 class="fw-bold mb-1">Analista de Suporte e Infraestrutura</h5>
-                <p class="text-accent fw-semibold mb-2" style="font-size: 0.85rem;">MB Informática • 2022 — Presente</p>
-                <p class="text-secondary fs-6">
-                    Suporte e manutenção de infraestrutura de sistemas, atuando em demandas técnicas do dia a dia. 
-                    Em paralelo, desenvolvo projetos pessoais de homelab e automação como forma de expandir conhecimento prático em virtualização, redes e DevOps.
+                <h5 class="fw-bold mb-1">Técnico de suporte</h5>
+                <p class="text-accent fw-semibold mb-2" style="font-size: 0.85rem;">MB Informática • jul. 2022 — presente</p>
+                <p class="text-secondary fs-6 mb-2">
+                    Atuação em suporte técnico e infraestrutura de TI, com diagnóstico e resolução de incidentes envolvendo sistemas operacionais, estações de trabalho, hardware, redes e conectividade.
+                </p>
+                <p class="text-secondary fs-6 mb-2">
+                    Trabalho com configuração, manutenção e troubleshooting de ambientes Windows e Linux, além de equipamentos e serviços de infraestrutura. Investigo problemas de forma sistemática, buscando identificar causas-raiz e reduzir recorrências.
+                </p>
+                <p class="text-secondary fs-6 mb-0">
+                    Também atuo diretamente com usuários e clientes, traduzindo problemas técnicos e orientações de solução de forma clara, além de contribuir para a padronização de procedimentos e documentação de soluções recorrentes.
                 </p>
             </div>
 
+            <!-- SigaPark Automação -->
             <div class="mb-5 position-relative">
-                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
-                <h5 class="fw-bold mb-1">Prestação de Serviços B2B</h5>
-                <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">SigaPark Automação • 2023 - Presente</p>
-                <p class="text-secondary fs-6">
-                    Manutenção técnica, gerenciamento de sistemas embarcados de controle de estacionamento e configuração de hardware em infraestrutura descentralizada, como prestador independente.
+                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-accent border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
+                <h5 class="fw-bold mb-1">Prestador de serviços B2B</h5>
+                <p class="text-accent fw-semibold mb-2" style="font-size: 0.85rem;">SigaPark Automação • set. 2023 — presente</p>
+                <p class="text-secondary fs-6 mb-2">
+                    Prestação de serviços técnicos B2B para manutenção e sustentação de sistemas de controle de acesso e automação.
+                </p>
+                <p class="text-secondary fs-6 mb-2">
+                    Atuação no diagnóstico e manutenção de cancelas e equipamentos de controle de acesso, incluindo investigação de falhas de comunicação e conectividade em dispositivos conectados à rede.
+                </p>
+                <p class="text-secondary fs-6 mb-0">
+                    Também realizo configuração e troubleshooting de equipamentos de rede, dispositivos de automação e soluções IoT, com atuação independente desde a investigação do problema até a execução, validação e entrega da solução diretamente no ambiente do cliente.
                 </p>
             </div>
 
+            <!-- Opti Tecnologia -->
             <div class="mb-5 position-relative">
                 <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
-                <h5 class="fw-bold mb-1">Consultor de TI (MEI)</h5>
-                <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">Opti Tecnologia • 2020 — 2023</p>
-                <p class="text-secondary fs-6">
-                    Atuação autônoma em paralelo aos meus empregos formais, com foco em configuração e organização de redes para pequenos escritórios e empresas, além de atendimento a clientes finais. Encerrei as atividades em 2023 para priorizar a conclusão da graduação e direcionar o foco para atuação corporativa.
+                <h5 class="fw-bold mb-1">Consultor de TI</h5>
+                <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">Opti Tecnologia • set. 2020 — set. 2023</p>
+                <p class="text-secondary fs-6 mb-2">
+                    Prestação de serviços de TI para pequenas empresas, com foco em redes e infraestrutura local.
+                </p>
+                <p class="text-secondary fs-6 mb-2">
+                    Atuação na configuração e manutenção de redes, roteadores, switches e pontos de acesso, além do diagnóstico e resolução de problemas de conectividade e desempenho.
+                </p>
+                <p class="text-secondary fs-6 mb-0">
+                    O trabalho envolvia também o levantamento das necessidades de cada ambiente e a adequação da infraestrutura às demandas do cliente, acompanhando diretamente a execução das soluções.
                 </p>
             </div>
 
-            <div class="mb-5 position-relative">
+            <!-- Eletrônica Fleig -->
+            <div class="position-relative">
                 <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
-                <h5 class="fw-bold mb-1">Estagiário</h5>
-                <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">Eletrônica Fleig • 2019 — 2022</p>
-                <p class="text-secondary fs-6">
-                    Atuação em eletrônica, suporte técnico, manutenção do site da empresa e identidade visual — incluindo banners e materiais gráficos de divulgação.
+                <h5 class="fw-bold mb-1">Estágio</h5>
+                <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">Eletrônica Fleig • mai. 2019 — jun. 2022</p>
+                <p class="text-secondary fs-6 mb-2">
+                    Atuação em eletrônica e suporte técnico, paralelamente ao gerenciamento da presença digital da empresa.
+                </p>
+                <p class="text-secondary fs-6 mb-2">
+                    Além das atividades técnicas, trabalhei com manutenção do site, identidade visual, materiais gráficos de divulgação e administração de redes sociais.
+                </p>
+                <p class="text-secondary fs-6 mb-2">
+                    Durante esse período, desenvolvi e implementei uma diretriz para resposta a avaliações negativas de clientes, buscando equilibrar transparência, atendimento e preservação da imagem da empresa.
+                </p>
+                <p class="text-secondary fs-6 mb-0">
+                    A experiência integrou suporte técnico, atendimento ao cliente e comunicação digital, ampliando minha capacidade de entender necessidades, explicar problemas e transformar demandas em soluções adequadas.
                 </p>
             </div>
             
-            <h4 class="fw-bold mt-5 mb-4 text-body"><i class="fas fa-graduation-cap me-2 text-secondary"></i> Formação Acadêmica</h4>
+        </div>
 
-            <div class="mb-4 position-relative">
+        <!-- 4. What I Like to Explore -->
+        <div class="mb-5">
+            <h4 class="fw-bold mb-3 text-body"><i class="fas fa-layer-group me-2 text-secondary"></i> O que eu gosto de explorar</h4>
+            <p class="text-secondary lh-lg mb-3">
+                Minha curiosidade técnica não termina na TI tradicional. Gosto de explorar sistemas computacionais, elétricos, eletrônicos e automotivos, procurando entender como seus componentes se relacionam e onde estão os limites de cada solução.
+            </p>
+            <p class="text-secondary lh-lg mb-0">
+                Transito entre software, infraestrutura, redes, hardware, eletrônica, automação, IoT e sistemas automotivos sob um mesmo princípio: entender arquiteturas por completo. É dessa curiosidade que surgem projetos pessoais de laboratório, telemetria e prototipagem — onde o objetivo não é apenas construir algo que funcione, mas entender o que está acontecendo por trás.
+            </p>
+        </div>
+
+        <!-- 5. Academic Education -->
+        <h4 class="fw-bold mt-5 mb-4 text-body"><i class="fas fa-graduation-cap me-2 text-secondary"></i> Formação</h4>
+
+        <div class="border-start border-2 border-secondary-subtle ps-4 ms-2 position-relative mb-5">
+            <div class="position-relative">
                 <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
                 <h5 class="fw-bold mb-1">Tecnólogo em Análise e Desenvolvimento de Sistemas</h5>
-                <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">UNIASSELVI • 2025</p>
+                <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">UNIASSELVI • 2025</p>
             </div>
+        </div>
 
-            <h4 class="fw-bold mt-5 mb-4 text-body"><i class="fas fa-certificate me-2 text-secondary"></i> Certificações e Especializações</h4>
+        <!-- 6. Selected Learning -->
+        <h4 class="fw-bold mt-5 mb-4 text-body"><i class="fas fa-certificate me-2 text-secondary"></i> Aprendizado selecionado</h4>
 
-            <div class="mb-4 position-relative">
-                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-accent border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
-                <div class="d-flex justify-content-between align-items-start">
-                    <div>
-                        <h5 class="fw-bold mb-1">Google Cloud Computing Foundations</h5>
-                        <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">Google • <span class="text-accent">Em progresso</span></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-4 position-relative">
-                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
-                <div class="d-flex justify-content-between align-items-start">
-                    <div>
-                        <h5 class="fw-bold mb-1">Modern AI</h5>
-                        <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">Cisco • 2025</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-4 position-relative">
-                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
-                <div class="d-flex justify-content-between align-items-start">
-                    <div>
-                        <h5 class="fw-bold mb-1">Soluções de IA no GitHub & Fundamentos no Azure</h5>
-                        <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">Microsoft / EV • 2025</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-4 position-relative">
-                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
-                <div class="d-flex justify-content-between align-items-start">
-                    <div>
-                        <h5 class="fw-bold mb-1">Linguagem Python & Projetos de Sistemas de TI</h5>
-                        <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">EV • 2025</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-4 position-relative">
-                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
-                <div class="d-flex justify-content-between align-items-start">
-                    <div>
-                        <h5 class="fw-bold mb-1">Treinamento de Montagem de Notebooks</h5>
-                        <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">Avell • 2025</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-4 position-relative">
-                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
-                <div class="d-flex justify-content-between align-items-start">
-                    <div>
-                        <h5 class="fw-bold mb-1">LGPD: Privacidade e Proteção de Dados</h5>
-                        <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">SENAI • 2021</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-4 position-relative">
-                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
-                <div class="d-flex justify-content-between align-items-start">
-                    <div>
-                        <h5 class="fw-bold mb-1">Mecânica e Elétrica Automotiva</h5>
-                        <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">SENAI / FT Education • 2021</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-4 position-relative">
-                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
-                <div class="d-flex justify-content-between align-items-start">
-                    <div>
-                        <h5 class="fw-bold mb-1">Montagem e Manutenção de Computadores</h5>
-                        <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">SEG • 2021</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-4 position-relative">
-                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
-                <div class="d-flex justify-content-between align-items-start">
-                    <div>
-                        <h5 class="fw-bold mb-1">Redes e Aplicações CFTV IP</h5>
-                        <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">Intelbras • 2019</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-4 position-relative">
-                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
-                <div class="d-flex justify-content-between align-items-start">
-                    <div>
-                        <h5 class="fw-bold mb-1">Cybersecurity Essentials & Introduction to IoT</h5>
-                        <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">Cisco • 2019</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-4 position-relative">
-                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
-                <div class="d-flex justify-content-between align-items-start">
-                    <div>
-                        <h5 class="fw-bold mb-1">Windows Server Administration Fundamentals</h5>
-                        <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">Microsoft • 2018</p>
-                    </div>
-                </div>
-            </div>
+        <div class="border-start border-2 border-secondary-subtle ps-4 ms-2 position-relative">
             
+            <!-- Treinamento de Montagem Avell -->
+            <div class="mb-4 position-relative">
+                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
+                <h5 class="fw-bold mb-1">Treinamento de Montagem Avell</h5>
+                <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">Universidade Avell • 2025</p>
+            </div>
+
+            <!-- Linguagem de Programação Python - Básico -->
+            <div class="mb-4 position-relative">
+                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
+                <h5 class="fw-bold mb-1">Linguagem de Programação Python - Básico</h5>
+                <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">Bradesco - Escola Virtual • 2025</p>
+            </div>
+
+            <!-- AI-900 - Fundamentos de IA no Azure -->
+            <div class="mb-4 position-relative">
+                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
+                <h5 class="fw-bold mb-1">AI-900 - Fundamentos de IA no Azure</h5>
+                <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">Bradesco - Escola Virtual • 2025</p>
+            </div>
+
+            <!-- Privacidade e Proteção de Dados (LGPD) -->
+            <div class="mb-4 position-relative">
+                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
+                <h5 class="fw-bold mb-1">Privacidade e Proteção de Dados (LGPD)</h5>
+                <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">SENAI SP • 2021</p>
+            </div>
+
+            <!-- Técnico de Redes e Aplicações para CFTV IP -->
+            <div class="mb-4 position-relative">
+                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
+                <h5 class="fw-bold mb-1">Técnico de Redes e Aplicações para CFTV IP</h5>
+                <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">Intelbras • 2019</p>
+            </div>
+
+            <!-- Cybersecurity Essentials -->
+            <div class="mb-4 position-relative">
+                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
+                <h5 class="fw-bold mb-1">Cybersecurity Essentials</h5>
+                <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">Cisco Networking Academy • 2019</p>
+            </div>
+
+            <!-- Introduction to IoT -->
+            <div class="mb-4 position-relative">
+                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
+                <h5 class="fw-bold mb-1">Introduction to IoT</h5>
+                <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">Cisco Networking Academy • 2019</p>
+            </div>
+
+            <!-- Windows Server Administration Fundamentals -->
+            <div class="position-relative">
+                <div class="position-absolute top-0 start-0 translate-middle bg-body border border-secondary border-2 rounded-circle" style="width: 14px; height: 14px; margin-left: -1rem; margin-top: 0.4rem;"></div>
+                <h5 class="fw-bold mb-1">Windows Server Administration Fundamentals</h5>
+                <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">Microsoft • 2018</p>
+            </div>
+
         </div>
     </main>
 
+    <!-- Footer -->
     <footer class="w-100 border-top py-4 mt-auto">
         <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
             
