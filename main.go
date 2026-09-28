@@ -42,6 +42,9 @@ func main() {
 		case "/swap-ecu", "/swap-ecu.html":
 			http.Redirect(w, r, "/ecuswap", http.StatusMovedPermanently)
 			return
+		case "/sobre", "/sobre.html":
+			http.Redirect(w, r, "/aboutme", http.StatusMovedPermanently)
+			return
 		case "/index", "/index.html":
 			http.Redirect(w, r, "/", http.StatusMovedPermanently)
 			return
