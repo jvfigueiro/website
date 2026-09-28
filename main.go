@@ -25,12 +25,39 @@ func main() {
 			return
 		}
 
-		// Redirect legacy contact page requests to homepage
-		if cleanedPath == "/contato" || cleanedPath == "/contato.html" {
+		// Redirect legacy routes and aliases
+		switch cleanedPath {
+		case "/contato", "/contato.html":
+			http.Redirect(w, r, "/", http.StatusMovedPermanently)
+			return
+		case "/projetos", "/projetos.html":
+			http.Redirect(w, r, "/projects", http.StatusMovedPermanently)
+			return
+		case "/firmware-navpro", "/firmware-navpro.html":
+			http.Redirect(w, r, "/headunitmod", http.StatusMovedPermanently)
+			return
+		case "/lds-cisconetwork", "/lds-cisconetwork.html":
+			http.Redirect(w, r, "/caselds", http.StatusMovedPermanently)
+			return
+		case "/swap-ecu", "/swap-ecu.html":
+			http.Redirect(w, r, "/ecuswap", http.StatusMovedPermanently)
+			return
+		case "/index", "/index.html":
 			http.Redirect(w, r, "/", http.StatusMovedPermanently)
 			return
 		}
 
+		ext := strings.ToLower(filepath.Ext(targetPath))
+
+		// Redirect any .html URL to clean extensionless URL (e.g. /projects.html -> /projects)
+		if ext == ".html" {
+			trimmed := strings.TrimSuffix(cleanedPath, ".html")
+			if trimmed == "/index" {
+				trimmed = "/"
+			}
+			http.Redirect(w, r, trimmed, http.StatusMovedPermanently)
+			return
+		}
 
 		// Security headers
 		w.Header().Set("X-Content-Type-Options", "nosniff")
@@ -38,20 +65,20 @@ func main() {
 		w.Header().Set("Referrer-Policy", "strict-origin-when-cross-origin")
 
 		// Cache control headers based on file extension
-		ext := strings.ToLower(filepath.Ext(targetPath))
 		switch ext {
 		case ".css", ".js", ".jpg", ".jpeg", ".png", ".webp", ".gif", ".ico", ".svg", ".woff", ".woff2":
 			w.Header().Set("Cache-Control", "public, max-age=604800, stale-while-revalidate=86400")
-		case ".html":
+		case "":
 			w.Header().Set("Cache-Control", "public, max-age=0, must-revalidate")
 		}
 
 		info, err := os.Stat(targetPath)
 
-		// Clean URL support: allow visiting routes without .html extension (e.g. /projetos -> /projetos.html)
+		// Clean URL support: serve .html file for extensionless paths (e.g. /projects -> html/projects.html)
 		if os.IsNotExist(err) && ext == "" {
 			htmlPath := targetPath + ".html"
 			if htmlInfo, htmlErr := os.Stat(htmlPath); htmlErr == nil && !htmlInfo.IsDir() {
+				w.Header().Set("Content-Type", "text/html; charset=utf-8")
 				w.Header().Set("Cache-Control", "public, max-age=0, must-revalidate")
 				http.ServeFile(w, r, htmlPath)
 				return

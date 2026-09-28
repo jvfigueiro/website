@@ -105,13 +105,13 @@
 
     <nav class="navbar pt-4 pb-3">
         <div class="container position-relative d-flex justify-content-between align-items-center">
-            <a class="navbar-brand m-0" href="index.html">João Figueiró<span class="text-accent">.</span></a>
+            <a class="navbar-brand m-0" href="/">João Figueiró<span class="text-accent">.</span></a>
 
             <div id="navMenu" class="nav-menu">
-                <a class="nav-link" href="index.html">Início</a>
-                <a class="nav-link active" href="projetos.html">Projetos</a>
-                <a class="nav-link" href="ultimatelab.html">Laboratório</a>
-                <a class="nav-link" href="sobre.html">Sobre</a>
+                <a class="nav-link" href="/">Início</a>
+                <a class="nav-link active" href="/projects">Projetos</a>
+                <a class="nav-link" href="/ultimatelab">Laboratório</a>
+                <a class="nav-link" href="/sobre">Sobre</a>
             </div>
 
             <div class="d-flex align-items-center gap-3">
@@ -128,7 +128,7 @@
     <main class="container flex-grow-1 py-5 mt-4" style="max-width: 800px;">
 
         <div class="text-center mb-4">
-            <a href="projetos.html" class="text-secondary text-decoration-none fs-6 mb-3 d-inline-block">
+            <a href="/projects" class="text-secondary text-decoration-none fs-6 mb-3 d-inline-block">
                 <i class="fas fa-arrow-left me-1"></i> Voltar para Projetos
             </a>
             <h2 class="mb-3" style="font-weight: 800; letter-spacing: -1px; font-size: 2.3rem;">
@@ -147,7 +147,7 @@
         <div class="writeup-section">
             <h3><i class="fas fa-microchip"></i> O objetivo nunca foi performance</h3>
             <p>
-                Antes de qualquer coisa, vale deixar claro o que motivou esse projeto inteiro — porque não é o que normalmente se espera de um trabalho com a ECU (Engine Control Unit, ou Unidade de Controle do Motor em português) de um carro. O objetivo nunca foi extrair mais potência ou torque. Era entender e capturar a <strong>telemetria de funcionamento do motor</strong>, com um fim bem específico: alimentar rotinas de <strong>monitoramento ativo e automação preditiva</strong> no <a href="ultimatelab.html" class="text-accent text-decoration-none">Home Assistant do UltimateLab</a>, capazes de disparar alertas em caso de anomalias antes que elas se tornassem problemas mecânicos reais.
+                Antes de qualquer coisa, vale deixar claro o que motivou esse projeto inteiro — porque não é o que normalmente se espera de um trabalho com a ECU (Engine Control Unit, ou Unidade de Controle do Motor em português) de um carro. O objetivo nunca foi extrair mais potência ou torque. Era entender e capturar a <strong>telemetria de funcionamento do motor</strong>, com um fim bem específico: alimentar rotinas de <strong>monitoramento ativo e automação preditiva</strong> no <a href="/ultimatelab" class="text-accent text-decoration-none">Home Assistant do UltimateLab</a>, capazes de disparar alertas em caso de anomalias antes que elas se tornassem problemas mecânicos reais.
             </p>
             <p>
                 A primeira tentativa de chegar a esses dados foi usar um Arduino junto de um módulo transceptor RS-485 para decodificar o protocolo proprietário DCL (Data Communication Link), usado pelos módulos de injeção EEC-IV da Ford até meados dos anos 90, e ler diretamente da ECU original do Escort.
