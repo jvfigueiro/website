@@ -10,6 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    background-color: var(--bs-body-bg);
 }
 
 /* Accent Colors - Adaptive Purple */
@@ -18,6 +19,8 @@ body {
 }
 [data-bs-theme="dark"] {
     --accent-color: #a855f7; /* Electric purple for dark/terminal mode */
+    --bs-body-bg: #1D0E29; /* Deep purple background for dark mode */
+    --bs-body-bg-rgb: 29, 14, 41;
 }
 
 .text-accent { 
