@@ -8,45 +8,45 @@ if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
 }
 
-// Dark/Light theme switcher
+// Theme management: automatic OS preference with manual override
 const themeToggleBtn = document.getElementById('themeToggleBtn');
 const htmlElement = document.documentElement;
 
+// Get current OS/browser preferred theme
+const getSystemTheme = () => {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+// Apply theme to DOM and toggle button icon without saving to localStorage
+const applyTheme = (theme) => {
+    htmlElement.setAttribute('data-bs-theme', theme);
+    if (themeToggleBtn) {
+        const icon = themeToggleBtn.querySelector('i');
+        if (icon) {
+            icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+    }
+};
+
+// Initialize theme: follow saved preference if manually set, otherwise follow system
+const savedTheme = localStorage.getItem('theme');
+applyTheme(savedTheme || getSystemTheme());
+
 if (themeToggleBtn) {
-    const icon = themeToggleBtn.querySelector('i');
-
-    const setTheme = (theme) => {
-        htmlElement.setAttribute('data-bs-theme', theme);
-        localStorage.setItem('theme', theme);
-        
-        if (theme === 'dark') {
-            icon.className = 'fas fa-moon';
-        } else {
-            icon.className = 'fas fa-sun';
-        }
-    };
-
-    const getPreferredTheme = () => {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            return savedTheme;
-        }
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    };
-
-    setTheme(getPreferredTheme());
-
     themeToggleBtn.addEventListener('click', () => {
         const currentTheme = htmlElement.getAttribute('data-bs-theme');
-        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-    });
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-        if (!localStorage.getItem('theme')) {
-            setTheme(getPreferredTheme());
-        }
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', newTheme);
+        applyTheme(newTheme);
     });
 }
+
+// Automatically react to OS/browser theme changes if user hasn't set a manual override
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+        applyTheme(e.matches ? 'dark' : 'light');
+    }
+});
 
 // Mobile navigation drawer toggle
 const navToggleBtn = document.getElementById('navToggleBtn');

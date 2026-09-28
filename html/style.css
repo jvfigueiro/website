@@ -23,6 +23,14 @@ body {
     --bs-body-bg-rgb: 29, 14, 41;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root:not([data-bs-theme="light"]) {
+        --accent-color: #a855f7;
+        --bs-body-bg: #1D0E29;
+        --bs-body-bg-rgb: 29, 14, 41;
+    }
+}
+
 .text-accent { 
     color: var(--accent-color) !important; 
 }
