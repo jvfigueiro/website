@@ -283,6 +283,10 @@ h1 {
     box-shadow: 0 4px 15px rgba(168, 85, 247, 0.35);
 }
 
+.footer-copyright {
+    font-size: 0.85rem;
+}
+
 .hover-accent:hover { 
     color: var(--accent-color) !important; 
 }
