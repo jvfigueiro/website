@@ -2,11 +2,13 @@
    jvfigueiro.com - Global JavaScript
    ========================================================================== */
 
+// Update dynamic footer year
 const yearElement = document.getElementById('currentYear');
 if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
 }
 
+// Dark/Light theme switcher
 const themeToggleBtn = document.getElementById('themeToggleBtn');
 const htmlElement = document.documentElement;
 
@@ -46,7 +48,44 @@ if (themeToggleBtn) {
     });
 }
 
+// Mobile navigation drawer toggle
+const navToggleBtn = document.getElementById('navToggleBtn');
+const navMenu = document.getElementById('navMenu');
+
+if (navToggleBtn && navMenu) {
+    navToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = navMenu.classList.toggle('is-active');
+        navToggleBtn.setAttribute('aria-expanded', isOpen);
+        const icon = navToggleBtn.querySelector('i');
+        if (icon) {
+            icon.className = isOpen ? 'fas fa-xmark' : 'fas fa-bars';
+        }
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (event) => {
+        if (navMenu.classList.contains('is-active') && !navMenu.contains(event.target) && !navToggleBtn.contains(event.target)) {
+            navMenu.classList.remove('is-active');
+            navToggleBtn.setAttribute('aria-expanded', 'false');
+            const icon = navToggleBtn.querySelector('i');
+            if (icon) icon.className = 'fas fa-bars';
+        }
+    });
+
+    // Close mobile menu on Escape key press
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && navMenu.classList.contains('is-active')) {
+            navMenu.classList.remove('is-active');
+            navToggleBtn.setAttribute('aria-expanded', 'false');
+            const icon = navToggleBtn.querySelector('i');
+            if (icon) icon.className = 'fas fa-bars';
+        }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function() {
+    // Typewriter effect on homepage
     const typewriterElement = document.getElementById('typewriter');
     
     if (typewriterElement) {
@@ -59,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (index < textToType.length) {
                 typewriterElement.textContent += textToType.charAt(index);
                 index++;
-                setTimeout(typeWriter, 40); // Velocidade (40ms)
+                setTimeout(typeWriter, 40); // Typing speed (40ms)
             }
         }
         
@@ -70,6 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    // Scroll reveal animations
     if (!prefersReducedMotion && 'IntersectionObserver' in window) {
         const revealTargets = document.querySelectorAll(
             '.content-section, .project-card, .project-list-item, .retrofit-category, .service-category, .card, .timeline-item'
@@ -95,6 +135,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .forEach(el => el.classList.add('is-visible'));
     }
 
+    // Avatar parallax effect on desktop
     const avatarContainer = document.querySelector('.profile-avatar-container');
     if (avatarContainer && !prefersReducedMotion && window.innerWidth >= 992) {
         window.addEventListener('scroll', () => {

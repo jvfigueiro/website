@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Estilos específicos para a pilha de projetos */
+        /* Specific styles for the project list */
         .project-list-item {
             display: flex;
             align-items: flex-start;
@@ -25,7 +25,7 @@
         }
         
         .project-list-item:hover {
-            background-color: rgba(128, 128, 128, 0.05); /* Destaque sutil no hover */
+            background-color: rgba(128, 128, 128, 0.05); /* Subtle hover highlight */
             border-radius: 8px;
             padding-left: 1rem;
             padding-right: 1rem;
@@ -42,7 +42,7 @@
             width: 60px;
             height: 60px;
             min-width: 60px;
-            background-color: rgba(90, 50, 163, 0.1); /* Fundo roxo bem translúcido */
+            background-color: rgba(90, 50, 163, 0.1); /* Translucent purple background */
             border-radius: 12px;
             color: var(--accent-color);
             font-size: 1.5rem;
@@ -74,7 +74,7 @@
             align-items: center;
         }
 
-        /* Ajuste responsivo para telas menores */
+        /* Responsive adjustments for mobile */
         @media (max-width: 768px) {
             .project-list-item {
                 flex-direction: column;
@@ -91,11 +91,11 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg pt-4 pb-3">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">João Figueiró<span class="text-accent">.</span></a>
+    <nav class="navbar pt-4 pb-3">
+        <div class="container position-relative d-flex justify-content-between align-items-center">
+            <a class="navbar-brand m-0" href="index.html">João Figueiró<span class="text-accent">.</span></a>
             
-             <div class="mx-auto d-none d-lg-flex align-items-center gap-2">
+            <div id="navMenu" class="nav-menu">
                 <a class="nav-link" href="index.html">Início</a>
                 <a class="nav-link active" href="projetos.html">Projetos</a>
                 <a class="nav-link" href="ultimatelab.html">Laboratório</a>
@@ -103,9 +103,14 @@
                 <a class="nav-link" href="contato.html">Contato</a>
             </div>
             
-            <button id="themeToggleBtn" class="theme-toggle" aria-label="Alternar Tema">
-                <i class="fas fa-circle-half-stroke"></i>
-            </button>
+            <div class="d-flex align-items-center gap-3">
+                <button id="themeToggleBtn" class="theme-toggle m-0 border-0 bg-transparent" aria-label="Alternar Tema">
+                    <i class="fas fa-circle-half-stroke"></i>
+                </button>
+                <button id="navToggleBtn" class="mobile-nav-toggle m-0 border-0 bg-transparent" aria-label="Abrir Menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </nav>
 

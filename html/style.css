@@ -44,6 +44,89 @@ body {
     border-bottom: 2px solid var(--accent-color); 
 }
 
+/* Navigation Links Container */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@media (min-width: 992px) {
+    .nav-menu {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Mobile Navigation Toggle Button */
+.mobile-nav-toggle {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--bs-body-color);
+    font-size: 1.25rem;
+    padding: 0.25rem 0.5rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+.mobile-nav-toggle:hover {
+    color: var(--accent-color);
+}
+
+/* Mobile Navigation Drawer */
+@media (max-width: 991.98px) {
+    .mobile-nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background-color: var(--bs-body-bg);
+        border-bottom: 1px solid var(--bs-border-color);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        padding: 1.25rem 1.5rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.25rem;
+        transform: translateY(-130%);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.25s ease;
+        z-index: 1000;
+        backdrop-filter: blur(12px);
+    }
+
+    /* Active drawer state */
+    .nav-menu.is-active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-menu .nav-link {
+        font-size: 1.05rem;
+        padding: 0.75rem 0.5rem;
+        margin: 0;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+        display: block;
+    }
+
+    .nav-menu .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    .nav-menu .nav-link.active {
+        border-bottom: 1px solid var(--accent-color);
+    }
+}
+
 /* Theme Toggle Button */
 .theme-toggle {
     cursor: pointer;
@@ -80,7 +163,7 @@ body {
 h1 { 
     font-size: 5rem; 
     font-weight: 800; 
-    letter-spacing: -2px;
+    letter-spacing: -2px; 
     line-height: 1.1;
     margin-bottom: 1.5rem;
 }
@@ -99,9 +182,12 @@ h1 {
     font-weight: 600;
     padding: 0.75rem 1.5rem;
     border-radius: 0.4rem;
-    transition: all 0.2s ease;
+    transition: all 0.2s ease, transform 0.2s ease;
     text-decoration: none;
     font-size: 0.95rem;
+}
+.btn-custom:hover {
+    transform: translateY(-2px);
 }
 .btn-primary-custom {
     background-color: var(--accent-color);
@@ -253,10 +339,10 @@ h1 {
 }
 
 /* ==========================================================================
-   Efeitos Visuais Sutis
+   Subtle Visual Effects
    ========================================================================== */
 
-/* Fade-in de entrada da página (suaviza a navegação entre páginas) */
+/* Page entrance fade-in (smooth transition across page navigations) */
 body {
     opacity: 0;
 }
@@ -265,7 +351,7 @@ body.page-loaded {
     transition: opacity 0.35s ease;
 }
 
-/* Fade-in on scroll (genérico, aplicado via JS) */
+/* Fade-in on scroll (applied via JS observer) */
 .reveal-on-scroll {
     opacity: 0;
     transform: translateY(20px);
@@ -276,18 +362,18 @@ body.page-loaded {
     transform: translateY(0);
 }
 
-/* Respeita usuários que preferem menos movimento */
+/* Respect user preferences for reduced motion */
 @media (prefers-reduced-motion: reduce) {
     body { opacity: 1; transition: none; }
     .reveal-on-scroll { opacity: 1; transform: none; transition: none; }
 }
 
-/* Parallax leve no avatar da home */
+/* Desktop parallax on profile avatar */
 .profile-avatar-container {
     will-change: transform;
 }
 
-/* Hover refinado nos cards de projeto (página Projetos) */
+/* Refined hover on project cards (Projects page) */
 .project-list-item {
     transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
 }
@@ -307,7 +393,7 @@ body.page-loaded {
     background-color: rgba(90, 50, 163, 0.18);
 }
 
-/* Hover refinado nos cards de especificações (UltimateLab, GarageX5) */
+/* Refined hover on spec cards (UltimateLab, GarageX5) */
 .card.bg-transparent {
     transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
@@ -319,15 +405,7 @@ body.page-loaded {
     box-shadow: 0 8px 24px rgba(168, 85, 247, 0.1);
 }
 
-/* Botões com leve elevação no hover, além da troca de cor já existente */
-.btn-custom {
-    transition: all 0.2s ease, transform 0.2s ease;
-}
-.btn-custom:hover {
-    transform: translateY(-2px);
-}
-
-/* Timeline da página Sobre: leve destaque do marcador no hover do bloco pai */
+/* Timeline dot highlight on hover (About page) */
 .border-start.border-2 > div:hover > div[class*="rounded-circle"] {
     transform: scale(1.3);
 }
@@ -339,7 +417,7 @@ body.page-loaded {
 }
 
 /* ==========================================================================
-   Estilos de Conteúdo (usados em GarageX5 e páginas similares)
+   Content Styles (used in GarageX5 and write-up pages)
    ========================================================================== */
 
 .content-section {
@@ -380,7 +458,7 @@ body.page-loaded {
     transform: scale(1.03);
 }
 
-/* Legenda sobreposta na parte inferior de uma imagem dentro de .featured-image-container */
+/* Overlaid image caption inside .featured-image-container */
 .image-caption {
     position: absolute;
     bottom: 0;
@@ -516,7 +594,7 @@ body.page-loaded {
 }
 
 /* ==========================================================================
-   Grade de Serviços (página UltimateLab)
+   Service Grid (UltimateLab page)
    ========================================================================== */
 
 .service-grid {

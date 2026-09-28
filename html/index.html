@@ -39,26 +39,11 @@
 
         .hero-main {
             min-height: calc(100vh - 100px);
-            padding-bottom: 140px;
             position: relative;
             z-index: 2;
         }
 
-        .areas-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.25rem 0 1.5rem;
-            background: linear-gradient(to top, rgba(20, 20, 20, 0.85) 60%, transparent);
-            z-index: 10;
-        }
-
-        .areas-bar .areas-title {
-            margin-bottom: 1rem;
-        }
-
-        /* Carrossel de fotos de fundo da home */
+        /* Background photo carousel */
         .photo-background {
             position: fixed;
             top: 0;
@@ -67,7 +52,7 @@
             height: 100%;
             overflow: hidden;
             z-index: -2;
-            background-color: #111; /* cor sólida enquanto a primeira foto carrega */
+            background-color: #111; /* Solid fallback color while first photo loads */
         }
 
         .photo-background .slide {
@@ -96,15 +81,12 @@
             z-index: -1;
         }
 
-        /* A home tem vídeo de fundo sempre escuro — o texto precisa ficar sempre claro,
-           independente do tema claro/escuro selecionado (que continua valendo nas outras páginas) */
+        /* The homepage has a dark background overlay: text remains bright regardless of active theme */
         h1,
         .navbar-brand,
         .nav-link,
-        .area-item,
-        .area-item i,
-        .areas-title,
-        .theme-toggle {
+        .theme-toggle,
+        .mobile-nav-toggle {
             color: #f1f1f1 !important;
         }
         .nav-link:hover, .nav-link.active {
@@ -134,35 +116,33 @@
             background-color: rgba(0, 0, 0, 0.2);
         }
 
-        /* Navbar precisa ficar acima do vídeo também */
+        /* Navbar layering */
         .navbar {
             position: relative;
             z-index: 2;
         }
 
-        /* No mobile, reduzimos um pouco a opacidade do overlay para o vídeo respirar mais,
-           já que a tela é menor e o texto ocupa mais espaço vertical */
+        /* Mobile specific adjustments */
+        @media (max-width: 991.98px) {
+            .nav-menu {
+                background-color: rgba(18, 18, 18, 0.96) !important;
+                border-bottom-color: rgba(255, 255, 255, 0.15) !important;
+            }
+            .mobile-nav-toggle {
+                color: #f1f1f1 !important;
+            }
+        }
+
         @media (max-width: 768px) {
             .video-overlay {
                 background-color: rgba(20, 20, 20, 0.78);
             }
         }
 
-        /* Quem pede menos movimento ainda vê as fotos, mas sem a transição de fade */
+        /* Respect reduced motion preferences */
         @media (prefers-reduced-motion: reduce) {
             .photo-background .slide {
                 transition: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .areas-bar {
-                position: static;
-                background: none;
-                padding: 0 0 2rem;
-            }
-            .hero-main {
-                padding-bottom: 0;
             }
         }
     </style>
@@ -172,12 +152,12 @@
     <div class="photo-background" id="photoBackground"></div>
     <div class="video-overlay"></div>
 
-    <nav class="navbar navbar-expand-lg pt-4 pb-3">
+    <nav class="navbar pt-4 pb-3">
         <div class="container position-relative d-flex justify-content-between align-items-center">
             
             <a class="navbar-brand m-0" href="index.html">João Figueiró<span class="text-accent">.</span></a>
             
-            <div class="d-none d-lg-flex align-items-center gap-2 position-absolute top-50 start-50 translate-middle">
+            <div id="navMenu" class="nav-menu">
                 <a class="nav-link active" href="index.html">Início</a>
                 <a class="nav-link" href="projetos.html">Projetos</a>
                 <a class="nav-link" href="ultimatelab.html">Laboratório</a>
@@ -185,9 +165,14 @@
                 <a class="nav-link" href="contato.html">Contato</a>
             </div>
             
-            <button id="themeToggleBtn" class="theme-toggle m-0 border-0 bg-transparent" aria-label="Alternar Tema">
-                <i class="fas fa-circle-half-stroke"></i>
-            </button>
+            <div class="d-flex align-items-center gap-3">
+                <button id="themeToggleBtn" class="theme-toggle m-0 border-0 bg-transparent" aria-label="Alternar Tema">
+                    <i class="fas fa-circle-half-stroke"></i>
+                </button>
+                <button id="navToggleBtn" class="mobile-nav-toggle m-0 border-0 bg-transparent" aria-label="Abrir Menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
             
         </div>
     </nav>
@@ -244,7 +229,7 @@
 
     <script src="script.js"></script>
     <script>
-        // Carrossel de fotos de fundo da home — cross-fade automático, sem controles manuais
+        // Homepage background carousel - automatic cross-fade without manual controls
         (function () {
             const photos = [
                 'images/hero-1.jpg',
@@ -254,7 +239,7 @@
             const container = document.getElementById('photoBackground');
             if (!container) return;
 
-            // Cria um <div class="slide"> para cada foto, todos sobrepostos via CSS
+            // Create a <div class="slide"> for each photo, stacked via CSS
             photos.forEach((src, index) => {
                 const slide = document.createElement('div');
                 slide.className = 'slide' + (index === 0 ? ' is-active' : '');
@@ -263,7 +248,7 @@
             });
 
             const slides = container.querySelectorAll('.slide');
-            if (slides.length <= 1) return; // nada para alternar
+            if (slides.length <= 1) return; // Nothing to cycle
 
             let current = 0;
             setInterval(() => {
