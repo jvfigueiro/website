@@ -25,6 +25,13 @@ func main() {
 			return
 		}
 
+		// Redirect legacy contact page requests to homepage
+		if cleanedPath == "/contato" || cleanedPath == "/contato.html" {
+			http.Redirect(w, r, "/", http.StatusMovedPermanently)
+			return
+		}
+
+
 		// Security headers
 		w.Header().Set("X-Content-Type-Options", "nosniff")
 		w.Header().Set("X-Frame-Options", "SAMEORIGIN")
