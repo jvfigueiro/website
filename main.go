@@ -57,6 +57,9 @@ func main() {
 		case "/sobre", "/sobre.html":
 			http.Redirect(w, r, "/aboutme", http.StatusMovedPermanently)
 			return
+		case "/servicos", "/servicos.html":
+			http.Redirect(w, r, "/services", http.StatusMovedPermanently)
+			return
 		case "/index", "/index.html":
 			http.Redirect(w, r, "/", http.StatusMovedPermanently)
 			return

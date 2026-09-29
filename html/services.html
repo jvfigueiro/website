@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços & Consultoria | João Figueiró</title>
+    <link rel="icon" href="/images/favicon.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <!-- Main Navigation Bar -->
+    <nav class="navbar pt-4 pb-3">
+        <div class="container position-relative d-flex justify-content-between align-items-center">
+            <a class="navbar-brand m-0" href="/">João Figueiró<span class="text-accent">.</span></a>
+            
+            <div id="navMenu" class="nav-menu">
+                <a class="nav-link" href="/">Início</a>
+                <a class="nav-link active" href="/services">Serviços</a>
+                <a class="nav-link" href="/projects">Projetos</a>
+                <a class="nav-link" href="/ultimatelab">Laboratório</a>
+                <a class="nav-link" href="/aboutme">Sobre</a>
+            </div>
+            
+            <div class="d-flex align-items-center gap-3">
+                <button id="themeToggleBtn" class="theme-toggle m-0 border-0 bg-transparent" aria-label="Alternar Tema">
+                    <i class="fas fa-circle-half-stroke"></i>
+                </button>
+                <button id="navToggleBtn" class="mobile-nav-toggle m-0 border-0 bg-transparent" aria-label="Abrir Menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Page Content -->
+    <main class="container flex-grow-1 py-5 mt-4" style="max-width: 900px;">
+        
+        <!-- Header -->
+        <div class="mb-5 border-bottom border-secondary-subtle pb-4">
+            <h2 class="mb-2" style="font-weight: 800; letter-spacing: -1px;">Serviços & Consultoria<span class="text-accent">.</span></h2>
+            <p class="text-secondary fs-5 mb-0">Atendimento especializado em informática, infraestrutura e tecnologia com foco em diagnóstico de causa-raiz, confiabilidade e soluções sob medida.</p>
+        </div>
+
+        <!-- Introduction / Philosophy Card -->
+        <div class="card bg-transparent border-secondary-subtle mb-5">
+            <div class="card-body p-4">
+                <h5 class="fw-bold mb-3 d-flex align-items-center gap-2">
+                    <i class="fas fa-compass text-accent"></i> Como eu trabalho
+                </h5>
+                <p class="text-secondary lh-lg mb-0">
+                    Acredito que soluções eficazes não precisam ser excessivamente complexas. Meu compromisso é entender a fundo a sua necessidade, identificar o que realmente está causando um problema ou gargalo e implementar soluções limpas, confiáveis e bem documentadas — sem receitas prontas, sem "gambiarras" e com total independência técnica na escolha das melhores ferramentas.
+                </p>
+            </div>
+        </div>
+
+        <!-- Services Grid Section -->
+        <div class="mb-5 pb-4 border-bottom border-secondary-subtle">
+            <div class="text-center mb-4">
+                <h3 class="fw-bold text-body">Áreas de Atuação</h3>
+                <p class="text-secondary mx-auto" style="max-width: 700px;">
+                    Confira as principais frentes onde presto consultoria, suporte avançado e implementação técnica.
+                </p>
+            </div>
+
+            <div class="service-grid">
+
+                <!-- 1. Redes & Conectividade -->
+                <div class="service-category">
+                    <h3><i class="fas fa-network-wired"></i>Redes & Conectividade</h3>
+                    <ul class="service-list">
+                        <li>
+                            <div class="service-name">Estruturação de Cabeamento e Racks</div>
+                            <p>Planejamento, substituição e organização de cabeamento CAT6, montagem de racks e identificação de pontos de rede.</p>
+                        </li>
+                        <li>
+                            <div class="service-name">Wi-Fi Corporativo e Residencial de Alto Desempenho</div>
+                            <p>Projetos de cobertura uniforme e roaming contínuo sem perda de pacotes para residências amplas e escritórios.</p>
+                        </li>
+                        <li>
+                            <div class="service-name">Roteamento Avançado, VLANs & VPNs</div>
+                            <p>Segmentação de tráfego, isolamento de redes convidadas e interligação segura via WireGuard e Tailscale.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 2. Servidores & Virtualização -->
+                <div class="service-category">
+                    <h3><i class="fas fa-server"></i>Servidores & Virtualização</h3>
+                    <ul class="service-list">
+                        <li>
+                            <div class="service-name">Implantação de Proxmox VE</div>
+                            <p>Consolidação de máquinas virtuais e containers, otimização de recursos físicos e alta disponibilidade.</p>
+                        </li>
+                        <li>
+                            <div class="service-name">Containerização com Docker</div>
+                            <p>Deploy de aplicações autocontidas, microsserviços, isolamento seguro e controle de consumo de energia.</p>
+                        </li>
+                        <li>
+                            <div class="service-name">Armazenamento em Rede (NAS) & Backups 3-2-1</div>
+                            <p>Centralização de dados, rotinas de backup automatizadas e planos de contingência contra perda de arquivos.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 3. Segurança & Privacidade -->
+                <div class="service-category">
+                    <h3><i class="fas fa-shield-halved"></i>Segurança & Privacidade</h3>
+                    <ul class="service-list">
+                        <li>
+                            <div class="service-name">Proteção DNS & Bloqueio de Ameaças</div>
+                            <p>Implementação de AdGuard Home com DNS criptografado (DoH/DoT) para proteção ativa contra malwares e rastreadores.</p>
+                        </li>
+                        <li>
+                            <div class="service-name">Isolamento e Segurança de Dispositivos IoT</div>
+                            <p>Blindagem de câmeras e dispositivos inteligentes em zonas de rede restritas sem acesso ao restante do ambiente.</p>
+                        </li>
+                        <li>
+                            <div class="service-name">Auditoria e Hardening de Sistemas</div>
+                            <p>Revisão de superfícies de ataque, fechamento de portas vulneráveis e fortalecimento de acessos remotos.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 4. Diagnóstico Avançado & Troubleshooting -->
+                <div class="service-category">
+                    <h3><i class="fas fa-microchip"></i>Diagnóstico Avançado & Hardware</h3>
+                    <ul class="service-list">
+                        <li>
+                            <div class="service-name">Investigação de Causa-Raiz</div>
+                            <p>Diagnóstico metódico de falhas intermitentes, telas azuis, kernel panics e instabilidades de software ou hardware.</p>
+                        </li>
+                        <li>
+                            <div class="service-name">Manutenção e Otimização Windows & Linux</div>
+                            <p>Tuning de performance, recuperação de sistemas corrompidos e resolução de conflitos de drivers ou serviços.</p>
+                        </li>
+                        <li>
+                            <div class="service-name">Assessoria de Upgrades & Retrofit</div>
+                            <p>Avaliação técnica precisa de componentes para modernizar estações e equipamentos com máxima eficiência de custo.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 5. Automação & Monitoramento -->
+                <div class="service-category">
+                    <h3><i class="fas fa-gauge-high"></i>Automação & Monitoramento</h3>
+                    <ul class="service-list">
+                        <li>
+                            <div class="service-name">Monitoramento de Infraestrutura</div>
+                            <p>Alertas em tempo real sobre status de conexão, uptime, temperaturas anômalas e disponibilidade de serviços.</p>
+                        </li>
+                        <li>
+                            <div class="service-name">Projetos com Home Assistant</div>
+                            <p>Integração de sensores, automações preditivas e dashboards centralizados para monitoramento e controle.</p>
+                        </li>
+                        <li>
+                            <div class="service-name">Telemetria & Microcontroladores</div>
+                            <p>Leitura e integração de sensores físicos (Arduino/ESP) para automação de ambientes e coleta contínua de métricas.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 6. Consultoria Técnica Sob Medida -->
+                <div class="service-category">
+                    <h3><i class="fas fa-lightbulb"></i>Consultoria & Projetos Especiais</h3>
+                    <ul class="service-list">
+                        <li>
+                            <div class="service-name">Planejamento e Auditoria de TI</div>
+                            <p>Mapeamento completo do parque tecnológico existente com recomendações claras de modernização e segurança.</p>
+                        </li>
+                        <li>
+                            <div class="service-name">Assessoria Independente de Aquisição</div>
+                            <p>Orientação técnica para compra de equipamentos sem viés comercial, priorizando longevidade e compatibilidade.</p>
+                        </li>
+                        <li>
+                            <div class="service-name">Documentação e Mapeamento Técnico</div>
+                            <p>Elaboração de diagramas de rede, inventário e documentação de processos para manter o ambiente sempre organizado.</p>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- How It Works Section -->
+        <div class="mb-5 pb-4 border-bottom border-secondary-subtle">
+            <h4 class="fw-bold mb-4 text-body text-center"><i class="fas fa-list-check me-2 text-accent"></i> Etapas do Atendimento</h4>
+            
+            <div class="row g-3">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card h-100 bg-transparent border-secondary-subtle p-3">
+                        <div class="fw-bold text-accent mb-2 fs-5">01</div>
+                        <h6 class="fw-bold mb-2">Diagnóstico</h6>
+                        <p class="text-secondary small mb-0">Conversamos para entender detalhadamente seu cenário atual, necessidades e objetivos.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card h-100 bg-transparent border-secondary-subtle p-3">
+                        <div class="fw-bold text-accent mb-2 fs-5">02</div>
+                        <h6 class="fw-bold mb-2">Proposta</h6>
+                        <p class="text-secondary small mb-0">Apresentação transparente do escopo técnico, estimativa de tempo e investimento necessário.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card h-100 bg-transparent border-secondary-subtle p-3">
+                        <div class="fw-bold text-accent mb-2 fs-5">03</div>
+                        <h6 class="fw-bold mb-2">Execução</h6>
+                        <p class="text-secondary small mb-0">Implementação metódica e rigorosa, com testes de carga e mínima interrupção nas suas atividades.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card h-100 bg-transparent border-secondary-subtle p-3">
+                        <div class="fw-bold text-accent mb-2 fs-5">04</div>
+                        <h6 class="fw-bold mb-2">Entrega</h6>
+                        <p class="text-secondary small mb-0">Validação conjunta, documentação das alterações e suporte pós-implementação.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section / CTA -->
+        <div class="card bg-transparent border-secondary-subtle border-accent p-4 p-md-5 text-center my-5">
+            <div class="mb-3">
+                <span class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 56px; height: 56px; background-color: rgba(90, 50, 163, 0.12); color: var(--accent-color); font-size: 1.5rem;">
+                    <i class="fas fa-envelope"></i>
+                </span>
+            </div>
+            <h3 class="fw-bold mb-2">Vamos conversar sobre a sua necessidade?</h3>
+            <p class="text-secondary mx-auto mb-4" style="max-width: 600px;">
+                Precisa de uma consultoria, diagnóstico ou projeto de infraestrutura sob medida? Envie uma mensagem explicando seu cenário ou problema e entrarei em contato para conversarmos.
+            </p>
+            <div>
+                <a href="mailto:contato@jvfigueiro.com" class="btn-custom btn-primary-custom d-inline-flex align-items-center gap-2 px-4 py-3 fs-6">
+                    <i class="fas fa-envelope"></i> Entrar em Contato por E-mail
+                </a>
+            </div>
+            <div class="mt-3">
+                <a href="mailto:contato@jvfigueiro.com" class="text-secondary text-decoration-none small">
+                    <i class="fas fa-at text-accent me-1"></i> contato@jvfigueiro.com
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-100 border-top py-4 mt-auto">
+        <div class="container d-flex flex-column align-items-center text-center">
+            
+            <div class="d-flex mb-4">
+                <a href="https://instagram.com/jvfigueiro" target="_blank" class="social-btn" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://linkedin.com/in/figueiro" target="_blank" class="social-btn" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/jvfigueiro" target="_blank" class="social-btn" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:contato@jvfigueiro.com" class="social-btn" aria-label="E-mail">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
+            <p class="text-muted mb-0 footer-copyright" style="font-size: 0.85rem;">
+                &copy; <span id="currentYear"></span> João Figueiró. Todos os direitos reservados.
+            </p>
+            
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+
+</body>
+</html>
