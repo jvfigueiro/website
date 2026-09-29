@@ -25,6 +25,12 @@ func main() {
 			return
 		}
 
+		// Redirect trailing slashes (except root "/")
+		if r.URL.Path != "/" && strings.HasSuffix(r.URL.Path, "/") {
+			http.Redirect(w, r, strings.TrimRight(r.URL.Path, "/"), http.StatusMovedPermanently)
+			return
+		}
+
 		// Redirect legacy routes and aliases
 		switch cleanedPath {
 		case "/contato", "/contato.html":
@@ -33,14 +39,20 @@ func main() {
 		case "/projetos", "/projetos.html":
 			http.Redirect(w, r, "/projects", http.StatusMovedPermanently)
 			return
-		case "/firmware-navpro", "/firmware-navpro.html":
-			http.Redirect(w, r, "/headunitmod", http.StatusMovedPermanently)
+		case "/firmware-navpro", "/firmware-navpro.html", "/headunitmod":
+			http.Redirect(w, r, "/projects/headunitmod", http.StatusMovedPermanently)
 			return
-		case "/lds-cisconetwork", "/lds-cisconetwork.html":
-			http.Redirect(w, r, "/caselds", http.StatusMovedPermanently)
+		case "/lds-cisconetwork", "/lds-cisconetwork.html", "/caselds":
+			http.Redirect(w, r, "/projects/caselds", http.StatusMovedPermanently)
 			return
-		case "/swap-ecu", "/swap-ecu.html":
-			http.Redirect(w, r, "/ecuswap", http.StatusMovedPermanently)
+		case "/swap-ecu", "/swap-ecu.html", "/ecuswap":
+			http.Redirect(w, r, "/projects/ecuswap", http.StatusMovedPermanently)
+			return
+		case "/garagex5":
+			http.Redirect(w, r, "/projects/garagex5", http.StatusMovedPermanently)
+			return
+		case "/sat":
+			http.Redirect(w, r, "/projects/sat", http.StatusMovedPermanently)
 			return
 		case "/sobre", "/sobre.html":
 			http.Redirect(w, r, "/aboutme", http.StatusMovedPermanently)
@@ -75,10 +87,8 @@ func main() {
 			w.Header().Set("Cache-Control", "public, max-age=0, must-revalidate")
 		}
 
-		info, err := os.Stat(targetPath)
-
-		// Clean URL support: serve .html file for extensionless paths (e.g. /projects -> html/projects.html)
-		if os.IsNotExist(err) && ext == "" {
+		// Clean URL support: serve .html file for extensionless paths (e.g. /projects -> html/projects.html, /projects/ecuswap -> html/projects/ecuswap.html)
+		if ext == "" {
 			htmlPath := targetPath + ".html"
 			if htmlInfo, htmlErr := os.Stat(htmlPath); htmlErr == nil && !htmlInfo.IsDir() {
 				w.Header().Set("Content-Type", "text/html; charset=utf-8")
@@ -87,6 +97,8 @@ func main() {
 				return
 			}
 		}
+
+		info, err := os.Stat(targetPath)
 
 		// Handle 404 or directory without index.html
 		if os.IsNotExist(err) || (info != nil && info.IsDir() && hasNoIndex(targetPath)) {
