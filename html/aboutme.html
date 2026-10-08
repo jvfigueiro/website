@@ -13,6 +13,387 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ==========================================================================
+           About Page — High-Density Profile Layout
+           ========================================================================== */
+
+        .about-role-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            padding: 0.4rem 0.9rem;
+            border-radius: 2rem;
+            background-color: rgba(90, 50, 163, 0.1);
+            color: var(--accent-color);
+            border: 1px solid rgba(90, 50, 163, 0.25);
+        }
+        [data-bs-theme="dark"] .about-role-badge {
+            background-color: rgba(168, 85, 247, 0.12);
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.6);
+            animation: statusPulse 2.2s infinite;
+        }
+        @keyframes statusPulse {
+            0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.55); }
+            70% { box-shadow: 0 0 0 7px rgba(168, 85, 247, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); }
+        }
+
+        /* Hero Manifesto */
+        .about-headline {
+            font-weight: 800;
+            letter-spacing: -1.2px;
+            line-height: 1.15;
+            font-size: clamp(1.85rem, 3.5vw, 2.55rem);
+        }
+
+        .about-manifesto {
+            position: relative;
+            padding: 1.1rem 1.35rem;
+            border-left: 3px solid var(--accent-color);
+            background-color: rgba(128, 128, 128, 0.04);
+            border-radius: 0 0.65rem 0.65rem 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--bs-body-color);
+            line-height: 1.55;
+            transition: background-color 0.25s ease, transform 0.25s ease;
+        }
+        .about-manifesto:hover {
+            background-color: rgba(90, 50, 163, 0.07);
+            transform: translateX(3px);
+        }
+
+        .about-avatar-wrap .profile-avatar-container {
+            width: 240px;
+            border-width: 3px;
+        }
+
+        /* Section Label */
+        .about-sec-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: var(--bs-secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+        .about-sec-label::after {
+            content: "";
+            flex-grow: 1;
+            height: 1px;
+            background-color: var(--bs-border-color);
+        }
+
+        /* 4-Step Thinking Pipeline */
+        .thinking-pipeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.85rem;
+        }
+        .pipeline-step {
+            position: relative;
+            background-color: rgba(128, 128, 128, 0.04);
+            border: 1px solid var(--bs-border-color);
+            border-radius: 0.75rem;
+            padding: 1.15rem 1.1rem;
+            transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+            cursor: default;
+        }
+        .pipeline-step:hover,
+        .pipeline-step:focus-within {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+            background-color: rgba(90, 50, 163, 0.06);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+        }
+        [data-bs-theme="dark"] .pipeline-step:hover,
+        [data-bs-theme="dark"] .pipeline-step:focus-within {
+            background-color: rgba(168, 85, 247, 0.08);
+            box-shadow: 0 8px 20px rgba(168, 85, 247, 0.1);
+        }
+        .pipeline-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.45rem;
+        }
+        .pipeline-num {
+            font-family: 'Courier New', monospace;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            background-color: rgba(90, 50, 163, 0.1);
+            padding: 0.15rem 0.45rem;
+            border-radius: 0.35rem;
+        }
+        [data-bs-theme="dark"] .pipeline-num {
+            background-color: rgba(168, 85, 247, 0.15);
+        }
+        .pipeline-arrow {
+            font-size: 0.8rem;
+            color: var(--bs-secondary-color);
+            opacity: 0.5;
+            transition: transform 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+        }
+        .pipeline-step:hover .pipeline-arrow {
+            color: var(--accent-color);
+            opacity: 1;
+            transform: translateX(3px);
+        }
+        .pipeline-title {
+            font-weight: 800;
+            font-size: 1.02rem;
+            color: var(--bs-body-color);
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.3px;
+        }
+        .pipeline-desc {
+            font-size: 0.82rem;
+            color: var(--bs-secondary-color);
+            line-height: 1.45;
+            margin-bottom: 0;
+        }
+
+        /* 01–04 Numbered Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.15rem;
+        }
+        .bento-card {
+            background-color: rgba(128, 128, 128, 0.04);
+            border: 1px solid var(--bs-border-color);
+            border-radius: 0.8rem;
+            padding: 1.4rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+        [data-bs-theme="dark"] .bento-card:hover {
+            box-shadow: 0 8px 24px rgba(168, 85, 247, 0.1);
+        }
+        .bento-top {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 0.6rem;
+        }
+        .bento-index {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+        .bento-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.4px;
+            color: var(--bs-body-color);
+            margin: 0;
+        }
+        .bento-summary {
+            font-size: 0.88rem;
+            color: var(--bs-secondary-color);
+            line-height: 1.55;
+            margin-bottom: 1rem;
+        }
+
+        /* Interactive Tag Chips */
+        .chip-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+        .tech-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.76rem;
+            font-weight: 600;
+            padding: 0.28rem 0.68rem;
+            border-radius: 0.45rem;
+            background-color: rgba(128, 128, 128, 0.07);
+            color: var(--bs-body-color);
+            border: 1px solid var(--bs-border-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .tech-chip i {
+            color: var(--accent-color);
+            font-size: 0.72rem;
+        }
+        .tech-chip:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background-color: rgba(90, 50, 163, 0.08);
+            transform: translateY(-2px);
+        }
+        [data-bs-theme="dark"] .tech-chip:hover {
+            background-color: rgba(168, 85, 247, 0.14);
+        }
+
+        /* Values Strip */
+        .values-strip {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.75rem;
+        }
+        .value-pill {
+            background-color: rgba(128, 128, 128, 0.04);
+            border: 1px solid var(--bs-border-color);
+            border-radius: 0.65rem;
+            padding: 0.85rem 0.9rem;
+            text-align: center;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .value-pill:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
+        }
+        .value-pill i {
+            color: var(--accent-color);
+            font-size: 1.05rem;
+            margin-bottom: 0.35rem;
+            display: block;
+            transition: transform 0.25s ease;
+        }
+        .value-pill:hover i {
+            transform: scale(1.15);
+        }
+        .value-name {
+            font-weight: 700;
+            font-size: 0.84rem;
+            color: var(--bs-body-color);
+            display: block;
+        }
+        .value-hint {
+            font-size: 0.72rem;
+            color: var(--bs-secondary-color);
+            display: block;
+            margin-top: 0.15rem;
+        }
+
+        /* Compact Field Trajectory Rows */
+        .track-list {
+            border: 1px solid var(--bs-border-color);
+            border-radius: 0.8rem;
+            overflow: hidden;
+            background-color: rgba(128, 128, 128, 0.03);
+        }
+        .track-row {
+            display: grid;
+            grid-template-columns: 190px 1fr auto;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.9rem 1.25rem;
+            border-bottom: 1px solid var(--bs-border-color);
+            transition: background-color 0.2s ease, padding-left 0.2s ease;
+        }
+        .track-row:last-child {
+            border-bottom: none;
+        }
+        .track-row:hover {
+            background-color: rgba(90, 50, 163, 0.06);
+            padding-left: 1.5rem;
+        }
+        [data-bs-theme="dark"] .track-row:hover {
+            background-color: rgba(168, 85, 247, 0.08);
+        }
+        .track-org {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--bs-body-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .track-org i {
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            width: 16px;
+            text-align: center;
+        }
+        .track-focus {
+            font-size: 0.85rem;
+            color: var(--bs-secondary-color);
+        }
+        .track-focus strong {
+            color: var(--bs-body-color);
+            font-weight: 600;
+        }
+        .track-period {
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--bs-secondary-color);
+            white-space: nowrap;
+        }
+        .track-period.is-current {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991.98px) {
+            .thinking-pipeline {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .values-strip {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .track-row {
+                grid-template-columns: 1fr auto;
+                gap: 0.35rem 1rem;
+            }
+            .track-focus {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            .values-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .about-avatar-wrap .profile-avatar-container {
+                width: 180px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .thinking-pipeline {
+                grid-template-columns: 1fr;
+            }
+            .values-strip {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -41,193 +422,266 @@
     </nav>
 
     <!-- Main Page Content -->
-    <main class="container flex-grow-1 py-5 mt-4" style="max-width: 900px;">
-        
-        <!-- Header & Resume Download Link -->
-        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-end mb-4 border-bottom border-secondary-subtle pb-4 gap-3">
-            <div>
-                <h2 class="mb-1" style="font-weight: 800; letter-spacing: -1px;">Olá! Sou o João :)<span class="text-accent">.</span></h2>
-                <p class="text-secondary mb-0">Conheça aqui um pouco sobre mim e a minha trajetória.</p>
+    <main class="container flex-grow-1 py-4 mt-3" style="max-width: 920px;">
+
+        <!-- 1. Hero Snapshot: Who I Am + Manifesto -->
+        <section class="row align-items-center g-4 mb-5 pb-4 border-bottom border-secondary-subtle">
+            <div class="col-md-8">
+                <div class="mb-3">
+                    <span class="about-role-badge">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        Analista de TI · Infraestrutura &amp; Operações
+                    </span>
+                </div>
+
+                <h1 class="about-headline mb-3">
+                    João Figueiró<span class="text-accent">.</span>
+                </h1>
+
+                <p class="text-secondary mb-3" style="font-size: 0.98rem; line-height: 1.6;">
+                    Foco em <strong>infraestrutura, suporte técnico, redes, Linux, Windows e virtualização</strong>. Combino raciocínio técnico, experiência prática de campo e curiosidade para transformar problemas complexos em soluções organizadas e funcionais.
+                </p>
+
+                <blockquote class="about-manifesto mb-0">
+                    “Tecnologia, para mim, não é apenas sobre fazer funcionar — é sobre entender, simplificar e construir soluções que façam sentido.”
+                </blockquote>
             </div>
-            <a href="files/Curriculo-JoaoFigueiro.pdf" target="_blank" class="btn-custom btn-outline-custom mb-1" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
-                <i class="fas fa-download"></i> Currículo em PDF
-            </a>
-        </div>
-        
-        <!-- 1. Introduction & Avatar -->
-        <div class="row mb-5 align-items-center">
-            <div class="col-md-7 pe-md-4">
-                <p class="text-secondary lh-lg mb-3">
-                    Trabalho com tecnologia porque gosto de entender como as coisas funcionam — e, principalmente, por que às vezes elas deixam de funcionar.
-                </p>
-                <p class="text-secondary lh-lg mb-3">
-                    Minha trajetória em TI passou por suporte técnico, hardware, redes, sistemas Windows e Linux, virtualização e infraestrutura. Fora do trabalho, essa curiosidade continua no meu laboratório pessoal, em projetos de automação, eletrônica e até na análise de sistemas automotivos.
-                </p>
-                <p class="text-secondary lh-lg mb-3">
-                    Tenho o hábito de olhar para um problema tentando entender o sistema como um todo, em vez de apenas corrigir o sintoma. Isso me leva a experimentar, testar hipóteses e procurar soluções que sejam simples, confiáveis e adequadas aos recursos disponíveis.
-                </p>
-                <p class="text-secondary lh-lg mb-0">
-                    No fim, tecnologia para mim é menos sobre uma ferramenta específica e mais sobre entender sistemas, resolver problemas e descobrir maneiras melhores de fazer as coisas.
-                </p>
-            </div>
-            <div class="col-md-5 text-center mt-4 mt-md-0">
-                <div class="profile-avatar-container">
+
+            <div class="col-md-4 text-center about-avatar-wrap">
+                <div class="profile-avatar-container mb-3">
                     <img src="images/sobre.webp" alt="João Figueiró" class="profile-avatar-image">
                 </div>
+                <a href="files/Curriculo-JoaoFigueiro.pdf" target="_blank" class="btn-custom btn-outline-custom" style="padding: 0.45rem 0.95rem; font-size: 0.8rem;">
+                    <i class="fas fa-file-arrow-down"></i> Currículo em PDF
+                </a>
             </div>
-        </div>
+        </section>
 
-        <!-- 2. How I Think -->
-        <div class="mb-5">
-            <h4 class="fw-bold mb-3 text-body"><i class="fas fa-brain me-2 text-secondary"></i> Como eu penso</h4>
-            <p class="text-secondary lh-lg mb-3">
-                Para mim, usar uma ferramenta ou executar receitas prontas sem compreender o que acontece nos bastidores raramente resolve um problema de verdade. Antes de qualquer intervenção, procuro entender como o sistema foi concebido, como seus módulos se comunicam e quais são seus pontos reais de vulnerabilidade ou gargalo.
-            </p>
-            <p class="text-secondary lh-lg mb-3">
-                Diante de falhas e incidentes, meu foco é investigar a causa-raiz em vez de me limitar a atenuar sintomas. Isso envolve formular hipóteses com base em evidências, analisar logs, realizar testes metódicos e validar o comportamento antes e depois de cada mudança.
-            </p>
-            <p class="text-secondary lh-lg mb-0">
-                Acredito que soluções eficazes não precisam ser excessivamente complexas. O equilíbrio ideal está em aliar confiabilidade operacional, simplicidade de manutenção, segurança e uso inteligente dos recursos existentes — algo que aprendo e aprimoro continuamente na prática.
-            </p>
-        </div>
-
-        <!-- 3. Professional Experience -->
-        <h4 class="fw-bold mt-5 mb-4 text-body"><i class="fas fa-terminal me-2 text-secondary"></i> Experiência</h4>
-        
-        <div class="mb-5">
-            
-            <!-- MB Informática -->
-            <div class="mb-5">
-                <h5 class="fw-bold mb-1">Técnico de suporte</h5>
-                <p class="text-accent fw-semibold mb-2" style="font-size: 0.85rem;">MB Informática • jul. 2022 — presente</p>
-                <p class="text-secondary fs-6 mb-2">
-                    Atuação em suporte técnico e infraestrutura de TI, com diagnóstico e resolução de incidentes envolvendo sistemas operacionais, estações de trabalho, hardware, redes e conectividade.
-                </p>
-                <p class="text-secondary fs-6 mb-2">
-                    Trabalho com configuração, manutenção e troubleshooting de ambientes Windows e Linux, além de equipamentos e serviços de infraestrutura. Investigo problemas de forma sistemática, buscando identificar causas-raiz e reduzir recorrências.
-                </p>
-                <p class="text-secondary fs-6 mb-0">
-                    Também atuo diretamente com usuários e clientes, traduzindo problemas técnicos e orientações de solução de forma clara, além de contribuir para a padronização de procedimentos e documentação de soluções recorrentes.
-                </p>
+        <!-- 2. How I Think: 4-Step Pipeline -->
+        <section class="mb-5" aria-labelledby="sec-approach">
+            <div id="sec-approach" class="about-sec-label">
+                <i class="fas fa-diagram-project text-accent"></i> Como penso
             </div>
 
-            <!-- SigaPark Automação -->
-            <div class="mb-5">
-                <h5 class="fw-bold mb-1">Prestador de serviços B2B</h5>
-                <p class="text-accent fw-semibold mb-2" style="font-size: 0.85rem;">SigaPark Automação • set. 2023 — presente</p>
-                <p class="text-secondary fs-6 mb-2">
-                    Prestação de serviços técnicos B2B para manutenção e sustentação de sistemas de controle de acesso e automação.
-                </p>
-                <p class="text-secondary fs-6 mb-2">
-                    Atuação no diagnóstico e manutenção de cancelas e equipamentos de controle de acesso, incluindo investigação de falhas de comunicação e conectividade em dispositivos conectados à rede.
-                </p>
-                <p class="text-secondary fs-6 mb-0">
-                    Também realizo configuração e troubleshooting de equipamentos de rede, dispositivos de automação e soluções IoT, com atuação independente desde a investigação do problema até a execução, validação e entrega da solução diretamente no ambiente do cliente.
-                </p>
+            <div class="thinking-pipeline">
+                <div class="pipeline-step card">
+                    <div class="pipeline-head">
+                        <span class="pipeline-num">01</span>
+                        <i class="fas fa-arrow-right pipeline-arrow" aria-hidden="true"></i>
+                    </div>
+                    <div class="pipeline-title">Investigo</div>
+                    <p class="pipeline-desc">Busco a causa-raiz com base em evidências, logs e testes — não apenas o sintoma.</p>
+                </div>
+
+                <div class="pipeline-step card">
+                    <div class="pipeline-head">
+                        <span class="pipeline-num">02</span>
+                        <i class="fas fa-arrow-right pipeline-arrow" aria-hidden="true"></i>
+                    </div>
+                    <div class="pipeline-title">Entendo</div>
+                    <p class="pipeline-desc">Mapeio como o sistema opera como um todo, suas dependências e gargalos reais.</p>
+                </div>
+
+                <div class="pipeline-step card">
+                    <div class="pipeline-head">
+                        <span class="pipeline-num">03</span>
+                        <i class="fas fa-arrow-right pipeline-arrow" aria-hidden="true"></i>
+                    </div>
+                    <div class="pipeline-title">Simplifico</div>
+                    <p class="pipeline-desc">Elimino complexidade desnecessária para criar arquiteturas limpas e sustentáveis.</p>
+                </div>
+
+                <div class="pipeline-step card">
+                    <div class="pipeline-head">
+                        <span class="pipeline-num">04</span>
+                        <i class="fas fa-check pipeline-arrow" aria-hidden="true"></i>
+                    </div>
+                    <div class="pipeline-title">Implemento</div>
+                    <p class="pipeline-desc">Entrego soluções confiáveis, documentadas e ajustadas aos recursos disponíveis.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Core Profile Blocks (01 to 04) -->
+        <section class="mb-5" aria-labelledby="sec-blocks">
+            <div id="sec-blocks" class="about-sec-label">
+                <i class="fas fa-layer-group text-accent"></i> O que faço &amp; De onde venho
             </div>
 
-            <!-- Opti Tecnologia -->
-            <div class="mb-5">
-                <h5 class="fw-bold mb-1">Consultor de TI</h5>
-                <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">Opti Tecnologia • set. 2020 — set. 2023</p>
-                <p class="text-secondary fs-6 mb-2">
-                    Prestação de serviços de TI para pequenas empresas, com foco em redes e infraestrutura local.
-                </p>
-                <p class="text-secondary fs-6 mb-2">
-                    Atuação na configuração e manutenção de redes, roteadores, switches e pontos de acesso, além do diagnóstico e resolução de problemas de conectividade e desempenho.
-                </p>
-                <p class="text-secondary fs-6 mb-0">
-                    O trabalho envolvia também o levantamento das necessidades de cada ambiente e a adequação da infraestrutura às demandas do cliente, acompanhando diretamente a execução das soluções.
-                </p>
+            <div class="bento-grid">
+                <!-- 01 -->
+                <article class="bento-card service-category">
+                    <div>
+                        <div class="bento-top">
+                            <h2 class="bento-title">Infraestrutura &amp; Suporte</h2>
+                            <span class="bento-index">01</span>
+                        </div>
+                        <p class="bento-summary">
+                            Sustentação de ambientes críticos, administração de sistemas, conectividade e diagnóstico técnico preciso em estações, servidores e redes.
+                        </p>
+                    </div>
+                    <div class="chip-group">
+                        <span class="tech-chip"><i class="fab fa-linux"></i> Linux</span>
+                        <span class="tech-chip"><i class="fab fa-windows"></i> Windows</span>
+                        <span class="tech-chip"><i class="fas fa-network-wired"></i> Redes</span>
+                        <span class="tech-chip"><i class="fas fa-cubes"></i> Virtualização</span>
+                        <span class="tech-chip"><i class="fas fa-screwdriver-wrench"></i> Suporte Técnico</span>
+                    </div>
+                </article>
+
+                <!-- 02 -->
+                <article class="bento-card service-category">
+                    <div>
+                        <div class="bento-top">
+                            <h2 class="bento-title">Diferencial em Campo</h2>
+                            <span class="bento-index">02</span>
+                        </div>
+                        <p class="bento-summary">
+                            Mais do que conhecer ferramentas isoladas: visão sistêmica para conectar hardware, software e rede e resolver incidentes de ponta a ponta.
+                        </p>
+                    </div>
+                    <div class="chip-group">
+                        <span class="tech-chip"><i class="fas fa-magnifying-glass-chart"></i> Causa-raiz</span>
+                        <span class="tech-chip"><i class="fas fa-gears"></i> Operações</span>
+                        <span class="tech-chip"><i class="fas fa-file-lines"></i> Padronização</span>
+                        <span class="tech-chip"><i class="fas fa-comments"></i> Comunicação Clara</span>
+                    </div>
+                </article>
+
+                <!-- 03 -->
+                <article class="bento-card service-category">
+                    <div>
+                        <div class="bento-top">
+                            <h2 class="bento-title">Na Prática &amp; Laboratório</h2>
+                            <span class="bento-index">03</span>
+                        </div>
+                        <p class="bento-summary">
+                            Fora do expediente tradicional, mantenho projetos próprios e um homelab onde exploro servidores, containers, redes, automação e eletrônica.
+                        </p>
+                    </div>
+                    <div class="chip-group">
+                        <a href="/ultimatelab" class="tech-chip"><i class="fas fa-server"></i> UltimateLab ↗</a>
+                        <a href="/projects" class="tech-chip"><i class="fas fa-code-branch"></i> Projetos Próprios ↗</a>
+                        <span class="tech-chip"><i class="fas fa-bolt"></i> Automação</span>
+                        <span class="tech-chip"><i class="fas fa-microchip"></i> Hardware &amp; Mods</span>
+                    </div>
+                </article>
+
+                <!-- 04 -->
+                <article class="bento-card service-category">
+                    <div>
+                        <div class="bento-top">
+                            <h2 class="bento-title">Background &amp; Base</h2>
+                            <span class="bento-index">04</span>
+                        </div>
+                        <p class="bento-summary">
+                            Formação superior em Análise e Desenvolvimento de Sistemas somada à experiência prática em manutenção técnica, automação e suporte B2B.
+                        </p>
+                    </div>
+                    <div class="chip-group">
+                        <span class="tech-chip"><i class="fas fa-graduation-cap"></i> ADS · UNIASSELVI</span>
+                        <span class="tech-chip"><i class="fas fa-toolbox"></i> Manutenção Técnica</span>
+                        <span class="tech-chip"><i class="fas fa-building-shield"></i> Atendimento B2B</span>
+                        <span class="tech-chip"><i class="fas fa-ethernet"></i> Infraestrutura Local</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 4. What I Value -->
+        <section class="mb-5" aria-labelledby="sec-values">
+            <div id="sec-values" class="about-sec-label">
+                <i class="fas fa-compass text-accent"></i> O que valorizo
             </div>
 
-            <!-- Eletrônica Fleig -->
-            <div>
-                <h5 class="fw-bold mb-1">Estágio</h5>
-                <p class="text-secondary fw-semibold mb-2" style="font-size: 0.85rem;">Eletrônica Fleig • mai. 2019 — jun. 2022</p>
-                <p class="text-secondary fs-6 mb-2">
-                    Atuação em eletrônica e suporte técnico, paralelamente ao gerenciamento da presença digital da empresa.
-                </p>
-                <p class="text-secondary fs-6 mb-2">
-                    Além das atividades técnicas, trabalhei com manutenção do site, identidade visual, materiais gráficos de divulgação e administração de redes sociais.
-                </p>
-                <p class="text-secondary fs-6 mb-2">
-                    Durante esse período, desenvolvi e implementei uma diretriz para resposta a avaliações negativas de clientes, buscando equilibrar transparência, atendimento e preservação da imagem da empresa.
-                </p>
-                <p class="text-secondary fs-6 mb-0">
-                    A experiência integrou suporte técnico, atendimento ao cliente e comunicação digital, ampliando minha capacidade de entender necessidades, explicar problemas e transformar demandas em soluções adequadas.
-                </p>
+            <div class="values-strip">
+                <div class="value-pill card">
+                    <i class="fas fa-shield-halved" aria-hidden="true"></i>
+                    <span class="value-name">Confiabilidade</span>
+                    <span class="value-hint">Estabilidade contínua</span>
+                </div>
+                <div class="value-pill card">
+                    <i class="fas fa-gauge-high" aria-hidden="true"></i>
+                    <span class="value-name">Eficiência</span>
+                    <span class="value-hint">Uso inteligente de recursos</span>
+                </div>
+                <div class="value-pill card">
+                    <i class="fas fa-lock" aria-hidden="true"></i>
+                    <span class="value-name">Segurança</span>
+                    <span class="value-hint">Proteção e isolamento</span>
+                </div>
+                <div class="value-pill card">
+                    <i class="fas fa-cube" aria-hidden="true"></i>
+                    <span class="value-name">Simplicidade</span>
+                    <span class="value-hint">Fácil de operar e manter</span>
+                </div>
+                <div class="value-pill card">
+                    <i class="fas fa-seedling" aria-hidden="true"></i>
+                    <span class="value-name">Sustentabilidade</span>
+                    <span class="value-hint">Soluções que duram</span>
+                </div>
             </div>
-            
-        </div>
+        </section>
 
-        <!-- 4. What I Like to Explore -->
-        <div class="mb-5">
-            <h4 class="fw-bold mb-3 text-body"><i class="fas fa-layer-group me-2 text-secondary"></i> O que eu gosto de explorar</h4>
-            <p class="text-secondary lh-lg mb-3">
-                Minha curiosidade técnica não termina na TI tradicional. Gosto de explorar sistemas computacionais, elétricos, eletrônicos e automotivos, procurando entender como seus componentes se relacionam e onde estão os limites de cada solução.
-            </p>
-            <p class="text-secondary lh-lg mb-0">
-                Transito entre software, infraestrutura, redes, hardware, eletrônica, automação, IoT e sistemas automotivos sob um mesmo princípio: entender arquiteturas por completo. É dessa curiosidade que surgem projetos pessoais de laboratório, telemetria e prototipagem — onde o objetivo não é apenas construir algo que funcione, mas entender o que está acontecendo por trás.
-            </p>
-        </div>
-
-        <!-- 5. Academic Education -->
-        <h4 class="fw-bold mt-5 mb-4 text-body"><i class="fas fa-graduation-cap me-2 text-secondary"></i> Formação</h4>
-
-        <div class="mb-5">
-            <h5 class="fw-bold mb-1">Tecnólogo em Análise e Desenvolvimento de Sistemas</h5>
-            <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">UNIASSELVI • 2025</p>
-        </div>
-
-        <!-- 6. Certifications -->
-        <h4 class="fw-bold mt-5 mb-4 text-body"><i class="fas fa-certificate me-2 text-secondary"></i> Certificações</h4>
-
-        <div>
-            
-            <!-- Linguagem de Programação Python - Básico -->
-            <div class="mb-4">
-                <h5 class="fw-bold mb-1">Linguagem de Programação Python - Básico</h5>
-                <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">EV • 2025</p>
+        <!-- 5. Compact Trajectory Snapshot -->
+        <section class="mb-4" aria-labelledby="sec-track">
+            <div id="sec-track" class="about-sec-label">
+                <i class="fas fa-terminal text-accent"></i> Trajetória prática
             </div>
 
-            <!-- AI-900 - Fundamentos de IA no Azure -->
-            <div class="mb-4">
-                <h5 class="fw-bold mb-1">AI-900 - Fundamentos de IA no Azure</h5>
-                <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">EV • 2025</p>
-            </div>
+            <div class="track-list card">
+                <div class="track-row">
+                    <div class="track-org">
+                        <i class="fas fa-desktop" aria-hidden="true"></i> MB Informática
+                    </div>
+                    <div class="track-focus">
+                        <strong>Suporte Técnico &amp; Infraestrutura</strong> · Windows, Linux, redes, hardware e diagnóstico de incidentes
+                    </div>
+                    <div class="track-period is-current">2022 — atual</div>
+                </div>
 
-            <!-- Privacidade e Proteção de Dados (LGPD) -->
-            <div class="mb-4">
-                <h5 class="fw-bold mb-1">Privacidade e Proteção de Dados (LGPD)</h5>
-                <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">SENAI SP • 2021</p>
-            </div>
+                <div class="track-row">
+                    <div class="track-org">
+                        <i class="fas fa-gears" aria-hidden="true"></i> SigaPark Automação
+                    </div>
+                    <div class="track-focus">
+                        <strong>Serviços Técnicos B2B</strong> · Controle de acesso, automação, conectividade de rede e dispositivos IoT
+                    </div>
+                    <div class="track-period is-current">2023 — atual</div>
+                </div>
 
-            <!-- Técnico de Redes e Aplicações para CFTV IP -->
-            <div class="mb-4">
-                <h5 class="fw-bold mb-1">Técnico de Redes e Aplicações para CFTV IP</h5>
-                <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">Intelbras • 2019</p>
-            </div>
+                <div class="track-row">
+                    <div class="track-org">
+                        <i class="fas fa-network-wired" aria-hidden="true"></i> Opti Tecnologia
+                    </div>
+                    <div class="track-focus">
+                        <strong>Consultoria de TI</strong> · Infraestrutura local, roteadores, switches e redes para pequenas empresas
+                    </div>
+                    <div class="track-period">2020 — 2023</div>
+                </div>
 
-            <!-- Cybersecurity Essentials -->
-            <div class="mb-4">
-                <h5 class="fw-bold mb-1">Cybersecurity Essentials</h5>
-                <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">Cisco Networking Academy • 2019</p>
-            </div>
+                <div class="track-row">
+                    <div class="track-org">
+                        <i class="fas fa-microchip" aria-hidden="true"></i> Eletrônica Fleig
+                    </div>
+                    <div class="track-focus">
+                        <strong>Eletrônica &amp; Suporte</strong> · Manutenção técnica, atendimento ao cliente e presença digital
+                    </div>
+                    <div class="track-period">2019 — 2022</div>
+                </div>
 
-            <!-- Introduction to IoT -->
-            <div class="mb-4">
-                <h5 class="fw-bold mb-1">Introduction to IoT</h5>
-                <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">Cisco Networking Academy • 2019</p>
+                <div class="track-row">
+                    <div class="track-org">
+                        <i class="fas fa-graduation-cap" aria-hidden="true"></i> Formação
+                    </div>
+                    <div class="track-focus">
+                        <strong>Análise e Desenvolvimento de Sistemas</strong> · Tecnólogo (UNIASSELVI)
+                    </div>
+                    <div class="track-period">2025</div>
+                </div>
             </div>
+        </section>
 
-            <!-- Windows Server Administration Fundamentals -->
-            <div>
-                <h5 class="fw-bold mb-1">Windows Server Administration Fundamentals</h5>
-                <p class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem;">Microsoft • 2018</p>
-            </div>
-
-        </div>
     </main>
 
     <!-- Footer -->
