@@ -84,7 +84,7 @@ func main() {
 
 		// Cache control headers based on file extension
 		switch ext {
-		case ".css", ".js", ".jpg", ".jpeg", ".png", ".webp", ".gif", ".ico", ".svg", ".woff", ".woff2":
+		case ".css", ".js", ".jpg", ".jpeg", ".png", ".webp", ".gif", ".ico", ".svg", ".woff", ".woff2", ".pdf":
 			w.Header().Set("Cache-Control", "public, max-age=604800, stale-while-revalidate=86400")
 		case "":
 			w.Header().Set("Cache-Control", "public, max-age=0, must-revalidate")
