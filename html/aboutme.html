@@ -19,39 +19,6 @@
            About Page — High-Density Profile Layout
            ========================================================================== */
 
-        .about-role-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.55rem;
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            padding: 0.4rem 0.9rem;
-            border-radius: 2rem;
-            background-color: rgba(90, 50, 163, 0.1);
-            color: var(--accent-color);
-            border: 1px solid rgba(90, 50, 163, 0.25);
-        }
-        [data-bs-theme="dark"] .about-role-badge {
-            background-color: rgba(168, 85, 247, 0.12);
-            border-color: rgba(168, 85, 247, 0.3);
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: var(--accent-color);
-            box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.6);
-            animation: statusPulse 2.2s infinite;
-        }
-        @keyframes statusPulse {
-            0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.55); }
-            70% { box-shadow: 0 0 0 7px rgba(168, 85, 247, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); }
-        }
-
         /* Hero Manifesto */
         .about-headline {
             font-weight: 800;
@@ -99,76 +66,6 @@
             flex-grow: 1;
             height: 1px;
             background-color: var(--bs-border-color);
-        }
-
-        /* 4-Step Thinking Pipeline */
-        .thinking-pipeline {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.85rem;
-        }
-        .pipeline-step {
-            position: relative;
-            background-color: rgba(128, 128, 128, 0.04);
-            border: 1px solid var(--bs-border-color);
-            border-radius: 0.75rem;
-            padding: 1.15rem 1.1rem;
-            transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
-            cursor: default;
-        }
-        .pipeline-step:hover,
-        .pipeline-step:focus-within {
-            transform: translateY(-4px);
-            border-color: var(--accent-color);
-            background-color: rgba(90, 50, 163, 0.06);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
-        }
-        [data-bs-theme="dark"] .pipeline-step:hover,
-        [data-bs-theme="dark"] .pipeline-step:focus-within {
-            background-color: rgba(168, 85, 247, 0.08);
-            box-shadow: 0 8px 20px rgba(168, 85, 247, 0.1);
-        }
-        .pipeline-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.45rem;
-        }
-        .pipeline-num {
-            font-family: 'Courier New', monospace;
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            background-color: rgba(90, 50, 163, 0.1);
-            padding: 0.15rem 0.45rem;
-            border-radius: 0.35rem;
-        }
-        [data-bs-theme="dark"] .pipeline-num {
-            background-color: rgba(168, 85, 247, 0.15);
-        }
-        .pipeline-arrow {
-            font-size: 0.8rem;
-            color: var(--bs-secondary-color);
-            opacity: 0.5;
-            transition: transform 0.25s ease, color 0.25s ease, opacity 0.25s ease;
-        }
-        .pipeline-step:hover .pipeline-arrow {
-            color: var(--accent-color);
-            opacity: 1;
-            transform: translateX(3px);
-        }
-        .pipeline-title {
-            font-weight: 800;
-            font-size: 1.02rem;
-            color: var(--bs-body-color);
-            margin-bottom: 0.25rem;
-            letter-spacing: -0.3px;
-        }
-        .pipeline-desc {
-            font-size: 0.82rem;
-            color: var(--bs-secondary-color);
-            line-height: 1.45;
-            margin-bottom: 0;
         }
 
         /* 01–04 Numbered Bento Grid */
@@ -256,48 +153,7 @@
             background-color: rgba(168, 85, 247, 0.14);
         }
 
-        /* Values Strip */
-        .values-strip {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 0.75rem;
-        }
-        .value-pill {
-            background-color: rgba(128, 128, 128, 0.04);
-            border: 1px solid var(--bs-border-color);
-            border-radius: 0.65rem;
-            padding: 0.85rem 0.9rem;
-            text-align: center;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-        .value-pill:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent-color);
-        }
-        .value-pill i {
-            color: var(--accent-color);
-            font-size: 1.05rem;
-            margin-bottom: 0.35rem;
-            display: block;
-            transition: transform 0.25s ease;
-        }
-        .value-pill:hover i {
-            transform: scale(1.15);
-        }
-        .value-name {
-            font-weight: 700;
-            font-size: 0.84rem;
-            color: var(--bs-body-color);
-            display: block;
-        }
-        .value-hint {
-            font-size: 0.72rem;
-            color: var(--bs-secondary-color);
-            display: block;
-            margin-top: 0.15rem;
-        }
-
-        /* Compact Field Trajectory Rows */
+        /* Compact Track Rows (Trajetória & Certificados) */
         .track-list {
             border: 1px solid var(--bs-border-color);
             border-radius: 0.8rem;
@@ -358,12 +214,6 @@
 
         /* Responsive Adjustments */
         @media (max-width: 991.98px) {
-            .thinking-pipeline {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .values-strip {
-                grid-template-columns: repeat(3, 1fr);
-            }
             .track-row {
                 grid-template-columns: 1fr auto;
                 gap: 0.35rem 1rem;
@@ -377,20 +227,8 @@
             .bento-grid {
                 grid-template-columns: 1fr;
             }
-            .values-strip {
-                grid-template-columns: repeat(2, 1fr);
-            }
             .about-avatar-wrap .profile-avatar-container {
                 width: 180px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .thinking-pipeline {
-                grid-template-columns: 1fr;
-            }
-            .values-strip {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -427,13 +265,6 @@
         <!-- 1. Hero Snapshot: Who I Am + Manifesto -->
         <section class="row align-items-center g-4 mb-5 pb-4 border-bottom border-secondary-subtle">
             <div class="col-md-8">
-                <div class="mb-3">
-                    <span class="about-role-badge">
-                        <span class="status-dot" aria-hidden="true"></span>
-                        Analista de TI · Infraestrutura &amp; Operações
-                    </span>
-                </div>
-
                 <h1 class="about-headline mb-3">
                     João Figueiró<span class="text-accent">.</span>
                 </h1>
@@ -457,52 +288,7 @@
             </div>
         </section>
 
-        <!-- 2. How I Think: 4-Step Pipeline -->
-        <section class="mb-5" aria-labelledby="sec-approach">
-            <div id="sec-approach" class="about-sec-label">
-                <i class="fas fa-diagram-project text-accent"></i> Como penso
-            </div>
-
-            <div class="thinking-pipeline">
-                <div class="pipeline-step card">
-                    <div class="pipeline-head">
-                        <span class="pipeline-num">01</span>
-                        <i class="fas fa-arrow-right pipeline-arrow" aria-hidden="true"></i>
-                    </div>
-                    <div class="pipeline-title">Investigo</div>
-                    <p class="pipeline-desc">Busco a causa-raiz com base em evidências, logs e testes — não apenas o sintoma.</p>
-                </div>
-
-                <div class="pipeline-step card">
-                    <div class="pipeline-head">
-                        <span class="pipeline-num">02</span>
-                        <i class="fas fa-arrow-right pipeline-arrow" aria-hidden="true"></i>
-                    </div>
-                    <div class="pipeline-title">Entendo</div>
-                    <p class="pipeline-desc">Mapeio como o sistema opera como um todo, suas dependências e gargalos reais.</p>
-                </div>
-
-                <div class="pipeline-step card">
-                    <div class="pipeline-head">
-                        <span class="pipeline-num">03</span>
-                        <i class="fas fa-arrow-right pipeline-arrow" aria-hidden="true"></i>
-                    </div>
-                    <div class="pipeline-title">Simplifico</div>
-                    <p class="pipeline-desc">Elimino complexidade desnecessária para criar arquiteturas limpas e sustentáveis.</p>
-                </div>
-
-                <div class="pipeline-step card">
-                    <div class="pipeline-head">
-                        <span class="pipeline-num">04</span>
-                        <i class="fas fa-check pipeline-arrow" aria-hidden="true"></i>
-                    </div>
-                    <div class="pipeline-title">Implemento</div>
-                    <p class="pipeline-desc">Entrego soluções confiáveis, documentadas e ajustadas aos recursos disponíveis.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. Core Profile Blocks (01 to 04) -->
+        <!-- 2. Core Profile Blocks (01 to 04) -->
         <section class="mb-5" aria-labelledby="sec-blocks">
             <div id="sec-blocks" class="about-sec-label">
                 <i class="fas fa-layer-group text-accent"></i> O que faço &amp; De onde venho
@@ -588,43 +374,8 @@
             </div>
         </section>
 
-        <!-- 4. What I Value -->
-        <section class="mb-5" aria-labelledby="sec-values">
-            <div id="sec-values" class="about-sec-label">
-                <i class="fas fa-compass text-accent"></i> O que valorizo
-            </div>
-
-            <div class="values-strip">
-                <div class="value-pill card">
-                    <i class="fas fa-shield-halved" aria-hidden="true"></i>
-                    <span class="value-name">Confiabilidade</span>
-                    <span class="value-hint">Estabilidade contínua</span>
-                </div>
-                <div class="value-pill card">
-                    <i class="fas fa-gauge-high" aria-hidden="true"></i>
-                    <span class="value-name">Eficiência</span>
-                    <span class="value-hint">Uso inteligente de recursos</span>
-                </div>
-                <div class="value-pill card">
-                    <i class="fas fa-lock" aria-hidden="true"></i>
-                    <span class="value-name">Segurança</span>
-                    <span class="value-hint">Proteção e isolamento</span>
-                </div>
-                <div class="value-pill card">
-                    <i class="fas fa-cube" aria-hidden="true"></i>
-                    <span class="value-name">Simplicidade</span>
-                    <span class="value-hint">Fácil de operar e manter</span>
-                </div>
-                <div class="value-pill card">
-                    <i class="fas fa-seedling" aria-hidden="true"></i>
-                    <span class="value-name">Sustentabilidade</span>
-                    <span class="value-hint">Soluções que duram</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. Compact Trajectory Snapshot -->
-        <section class="mb-4" aria-labelledby="sec-track">
+        <!-- 3. Compact Trajectory Snapshot -->
+        <section class="mb-5" aria-labelledby="sec-track">
             <div id="sec-track" class="about-sec-label">
                 <i class="fas fa-terminal text-accent"></i> Trajetória prática
             </div>
@@ -669,15 +420,94 @@
                     </div>
                     <div class="track-period">2019 — 2022</div>
                 </div>
+            </div>
+        </section>
+
+        <!-- 4. Formação e Certificados -->
+        <section class="mb-4" aria-labelledby="sec-education">
+            <div id="sec-education" class="about-sec-label">
+                <i class="fas fa-graduation-cap text-accent"></i> Formação e certificados
+            </div>
+
+            <div class="track-list card">
+                <div class="track-row">
+                    <div class="track-org">
+                        <i class="fas fa-graduation-cap" aria-hidden="true"></i> UNIASSELVI
+                    </div>
+                    <div class="track-focus">
+                        <strong>Análise e Desenvolvimento de Sistemas</strong> · Tecnólogo
+                    </div>
+                    <div class="track-period">2025</div>
+                </div>
 
                 <div class="track-row">
                     <div class="track-org">
-                        <i class="fas fa-graduation-cap" aria-hidden="true"></i> Formação
+                        <i class="fab fa-python" aria-hidden="true"></i> EV
                     </div>
                     <div class="track-focus">
-                        <strong>Análise e Desenvolvimento de Sistemas</strong> · Tecnólogo (UNIASSELVI)
+                        <strong>Linguagem de Programação Python</strong> · Básico
                     </div>
                     <div class="track-period">2025</div>
+                </div>
+
+                <div class="track-row">
+                    <div class="track-org">
+                        <i class="fas fa-certificate" aria-hidden="true"></i> EV
+                    </div>
+                    <div class="track-focus">
+                        <strong>AI-900</strong> · Fundamentos de IA no Azure
+                    </div>
+                    <div class="track-period">2025</div>
+                </div>
+
+                <div class="track-row">
+                    <div class="track-org">
+                        <i class="fas fa-shield-halved" aria-hidden="true"></i> SENAI SP
+                    </div>
+                    <div class="track-focus">
+                        <strong>Privacidade e Proteção de Dados</strong> · LGPD
+                    </div>
+                    <div class="track-period">2021</div>
+                </div>
+
+                <div class="track-row">
+                    <div class="track-org">
+                        <i class="fas fa-video" aria-hidden="true"></i> Intelbras
+                    </div>
+                    <div class="track-focus">
+                        <strong>Técnico de Redes e Aplicações para CFTV IP</strong>
+                    </div>
+                    <div class="track-period">2019</div>
+                </div>
+
+                <div class="track-row">
+                    <div class="track-org">
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i> Cisco
+                    </div>
+                    <div class="track-focus">
+                        <strong>Cybersecurity Essentials</strong> · Networking Academy
+                    </div>
+                    <div class="track-period">2019</div>
+                </div>
+
+                <div class="track-row">
+                    <div class="track-org">
+                        <i class="fas fa-wifi" aria-hidden="true"></i> Cisco
+                    </div>
+                    <div class="track-focus">
+                        <strong>Introduction to IoT</strong> · Networking Academy
+                    </div>
+                    <div class="track-period">2019</div>
+                </div>
+
+                <div class="track-row">
+                    <div class="track-org">
+                        <i class="fab fa-windows" aria-hidden="true"></i> Microsoft
+                    </div>
+                    <div class="track-focus">
+                        <strong>Windows Server Administration Fundamentals</strong>
+                    </div>
+                    <div class="track-period">2018</div>
                 </div>
             </div>
         </section>
