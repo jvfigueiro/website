@@ -14,77 +14,104 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Specific styles for the project list */
-        .project-list-item {
-            display: flex;
-            align-items: flex-start;
+        /* Specific styles for the project grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--bs-border-color);
-            transition: transform 0.2s ease, background-color 0.2s ease;
-        }
-        
-        .project-list-item:hover {
-            background-color: rgba(128, 128, 128, 0.05); /* Subtle hover highlight */
-            border-radius: 8px;
-            padding-left: 1rem;
-            padding-right: 1rem;
         }
 
-        .project-list-item:last-child {
-            border-bottom: none;
+        .project-card {
+            background-color: rgba(128, 128, 128, 0.04);
+            border: 1px solid var(--bs-border-color);
+            border-radius: 0.85rem;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            background-color: rgba(128, 128, 128, 0.07);
+        }
+
+        [data-bs-theme="dark"] .project-card:hover {
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.1);
         }
 
         .project-icon-box {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
-            min-width: 60px;
-            background-color: rgba(90, 50, 163, 0.1); /* Translucent purple background */
+            width: 54px;
+            height: 54px;
+            min-width: 54px;
+            background-color: rgba(90, 50, 163, 0.1);
             border-radius: 12px;
             color: var(--accent-color);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 1.25rem;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .project-card:hover .project-icon-box {
+            transform: scale(1.08) rotate(-4deg);
+            background-color: rgba(90, 50, 163, 0.2);
         }
 
         .project-content {
+            display: flex;
+            flex-direction: column;
             flex-grow: 1;
         }
 
         .project-title {
             font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 1.15rem;
+            line-height: 1.35;
+            margin-bottom: 0.75rem;
+            color: var(--bs-body-color);
         }
 
         .project-desc {
             color: var(--bs-secondary-color);
             line-height: 1.6;
-            margin-bottom: 1rem;
+            font-size: 0.92rem;
+            margin-bottom: 1.5rem;
         }
 
         .project-actions {
+            margin-top: auto;
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
             align-items: center;
         }
 
-        /* Responsive adjustments for mobile */
-        @media (max-width: 768px) {
-            .project-list-item {
-                flex-direction: column;
-                gap: 1rem;
+        .project-actions .btn {
+            font-size: 0.85rem;
+            border-radius: 0.5rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 991.98px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
             }
-            .project-icon-box {
-                width: 48px;
-                height: 48px;
-                min-width: 48px;
-                font-size: 1.2rem;
+        }
+
+        @media (max-width: 640px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+            .project-card {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -114,123 +141,122 @@
         </div>
     </nav>
 
-    <main class="container flex-grow-1 py-5 mt-4" style="max-width: 900px;">
+    <main class="container flex-grow-1 py-5 mt-4" style="max-width: 1140px;">
         
         <div class="mb-5">
             <h2 class="mb-1" style="font-weight: 800; letter-spacing: -1px;">Projetos<span class="text-accent">.</span></h2>
             <p class="text-secondary">Um repositório contínuo de aventuras em infraestrutura, automação, eletrônica e mods de hardware.</p>
         </div>
 
-        <div class="project-list">
+        <div class="projects-grid">
 
-            <div class="project-list-item">
+            <div class="project-card">
                 <div class="project-icon-box"><i class="fas fa-server"></i></div>
                 <div class="project-content">
-                    <div class="project-title">UltimateLab</div>
+                    <h3 class="project-title">UltimateLab</h3>
                     <p class="project-desc">Um pouco sobre o meu home lab e as tecnologias utilizadas. Um pequeno cluster de virtualização baseado no Proxmox VE, distribuído entre mini PCs, para orquestração de serviços de DNS, VPN, automação residencial e inferência de IA local — incluindo este site.</p>
                     <div class="project-actions">
-                        <a href="/ultimatelab" class="btn btn-sm btn-outline-secondary ms-auto"><i class="fas fa-arrow-right"></i> Ler a História Completa</a>
+                        <a href="/ultimatelab" class="btn btn-sm btn-outline-secondary"><i class="fas fa-arrow-right"></i> Ler a História Completa</a>
                     </div>
                 </div>
             </div>
 
-            <div class="project-list-item">
+            <div class="project-card">
                 <div class="project-icon-box"><i class="fas fa-tv"></i></div>
                 <div class="project-content">
-                    <div class="project-title">UltimateTV</div>
+                    <h3 class="project-title">UltimateTV</h3>
                     <p class="project-desc">Aplicação de IPTV que funciona como um front-end para o Dispatcharr, destinada ao uso exclusivo em redes locais e projetada para proporcionar uma experiência de uso semelhante à da TV tradicional.</p>
                     <div class="project-actions">
-                        <a href="https://github.com/jvfigueiro/ultimatetv" target="_blank" class="btn btn-sm btn-outline-secondary ms-auto"><i class="fab fa-github"></i> Repositório</a>
+                        <a href="https://github.com/jvfigueiro/ultimatetv" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="fab fa-github"></i> Repositório</a>
                     </div>
                 </div>
             </div>
 
-            <div class="project-list-item">
+            <div class="project-card">
                 <div class="project-icon-box"><i class="fas fa-gamepad"></i></div>
                 <div class="project-content">
-                    <div class="project-title">RetroNask</div>
+                    <h3 class="project-title">RetroNask</h3>
                     <p class="project-desc">Aplicação de emulação de videogames retrô feita para rodar diretamente via navegador, baseada em EmulatorJS e Ruffle. Concebida para ser uma plataforma extremamente leve tanto para o servidor que hospeda quanto para o cliente que executa.</p>
                     <div class="project-actions">
-                        <a href="https://github.com/jvfigueiro/retronask" target="_blank" class="btn btn-sm btn-outline-secondary ms-auto"><i class="fab fa-github"></i> Repositório</a>
+                        <a href="https://github.com/jvfigueiro/retronask" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="fab fa-github"></i> Repositório</a>
                     </div>
                 </div>
             </div>
 
-            <div class="project-list-item">
+            <div class="project-card">
                 <div class="project-icon-box"><i class="fab fa-apple"></i></div>
                 <div class="project-content">
-                    <div class="project-title">Legacy Mac Boost</div>
+                    <h3 class="project-title">Legacy Mac Boost</h3>
                     <p class="project-desc">Script desenvolvido para otimizar a performance de Macs antigos rodando as últimas versões do macOS via OCLP (OpenCore Legacy Patcher), voltado para máquinas utilizadas em redes isoladas.</p>
                     <div class="project-actions">
-                        <a href="https://github.com/jvfigueiro/legacy-mac-boost" target="_blank" class="btn btn-sm btn-outline-secondary ms-auto"><i class="fab fa-github"></i> Repositório</a>
+                        <a href="https://github.com/jvfigueiro/legacy-mac-boost" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="fab fa-github"></i> Repositório</a>
                     </div>
                 </div>
             </div>
 
-            <div class="project-list-item">
+            <div class="project-card">
                 <div class="project-icon-box"><i class="fas fa-car"></i></div>
                 <div class="project-content">
-                    <div class="project-title">GarageX5 - O Meu Carro</div>
+                    <h3 class="project-title">GarageX5 - O Meu Carro</h3>
                     <p class="project-desc">Um projeto onde levo os conhecimentos de informática e eletrônica para dentro do meu carro, seguindo o conceito de retrofit, visando modernizá-lo sem perder suas características originais.</p>
                     <div class="project-actions">
-                        <a href="/projects/garagex5" class="btn btn-sm btn-outline-secondary ms-auto"><i class="fas fa-arrow-right"></i> Ler a História Completa</a>
+                        <a href="/projects/garagex5" class="btn btn-sm btn-outline-secondary"><i class="fas fa-arrow-right"></i> Ler a História Completa</a>
                     </div>
                 </div>
             </div>
 
-            <div class="project-list-item">
+            <div class="project-card">
                 <div class="project-icon-box"><i class="fas fa-microchip"></i></div>
                 <div class="project-content">
-                    <div class="project-title">Personalizando Central Multimídia com Engenharia Reversa</div>
+                    <h3 class="project-title">Personalizando Central Multimídia com Engenharia Reversa</h3>
                     <p class="project-desc">Estudo e modificação de firmware de uma central multimídia automotiva baseada em Linux, explorando vetores de acesso via interfaces de manutenção do fabricante, customização de branding e mapeamento de interfaces de telemetria.</p>
                     <div class="project-actions">
                         <a href="https://github.com/jvfigueiro/sphe8368-headunit-modding" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="fab fa-github"></i> Repositório</a>
-                        <a href="/projects/headunitmod" class="btn btn-sm btn-outline-secondary ms-auto"><i class="fas fa-arrow-right"></i> Ler a História Completa</a>
+                        <a href="/projects/headunitmod" class="btn btn-sm btn-outline-secondary"><i class="fas fa-arrow-right"></i> Ler a História Completa</a>
                     </div>
                 </div>
             </div>
 
-            <div class="project-list-item">
+            <div class="project-card">
                 <div class="project-icon-box"><i class="fas fa-network-wired"></i></div>
                 <div class="project-content">
-                    <div class="project-title">Projeto de Modernização de Infraestrutura de Rede Cisco</div>
+                    <h3 class="project-title">Projeto de Modernização de Infraestrutura de Rede Cisco</h3>
                     <p class="project-desc">Como uma parceria informal virou um projeto real de infraestrutura Cisco Meraki em escala, levando cabeamento estruturado e gestão de rede em nuvem para dezenas de edificações no Rio Grande do Sul.</p>
                     <div class="project-actions">
-                        <a href="/projects/caselds" class="btn btn-sm btn-outline-secondary ms-auto"><i class="fas fa-arrow-right"></i> Ler a História Completa</a>
+                        <a href="/projects/caselds" class="btn btn-sm btn-outline-secondary"><i class="fas fa-arrow-right"></i> Ler a História Completa</a>
                     </div>
                 </div>
             </div>
             
-            <div class="project-list-item">
+            <div class="project-card">
                 <div class="project-icon-box"><i class="fas fa-car-battery"></i></div>
                 <div class="project-content">
-                    <div class="project-title">Upgrade de ECU Ford</div>
+                    <h3 class="project-title">Upgrade de ECU Ford</h3>
                     <p class="project-desc">Uma aventura que começou como uma tentativa via Arduino de decodificar o protocolo proprietário DCL presentes em módulos de injeção eletrônica Ford EEC-IV. Mas a falta de documentação confiável levou a uma troca completa de módulo por uma EEC-V — e hoje alimenta telemetria de motor em tempo real para automação preditiva no Home Assistant.</p>
                     <div class="project-actions"> 
-                        <a href="/projects/ecuswap" class="btn btn-sm btn-outline-secondary ms-auto"><i class="fas fa-arrow-right"></i> Ler a História Completa</a>
+                        <a href="/projects/ecuswap" class="btn btn-sm btn-outline-secondary"><i class="fas fa-arrow-right"></i> Ler a História Completa</a>
                     </div>
                 </div>
             </div>
 
-            <div class="project-list-item">
+            <div class="project-card">
                 <div class="project-icon-box"><i class="fas fa-satellite-dish"></i></div>
                 <div class="project-content">
-                    <div class="project-title">Exploração de Satélites</div>
+                    <h3 class="project-title">Exploração de Satélites</h3>
                     <p class="project-desc">Esse é um hobby totalmente fora do comum. Através de uma mini antena parabólica portátil, adaptada para operar com LNB circular ou linear de banda Ku, exploramos os limites geográficos ao capturar canais digitais abertos transmitidos por satélites geoestacionários de diversos países.</p>
                     <div class="project-actions">
-                        <a href="/projects/sat" class="btn btn-sm btn-outline-secondary ms-auto"><i class="fas fa-arrow-right"></i> Ler a História Completa</a>
+                        <a href="/projects/sat" class="btn btn-sm btn-outline-secondary"><i class="fas fa-arrow-right"></i> Ler a História Completa</a>
                     </div>
                 </div>
             </div>
 
-
-            <div class="project-list-item">
+            <div class="project-card">
                 <div class="project-icon-box"><i class="fas fa-temperature-high"></i></div>
                 <div class="project-content">
-                    <div class="project-title">Arduino DHT para Home Assistant</div>
+                    <h3 class="project-title">Arduino DHT para Home Assistant</h3>
                     <p class="project-desc">Monitoramento de temperatura e umidade usando sensores DHT11 ligados à um Arduino Mega. Os dados são repassados via interface serial para o Home Assistant virtualizado no Proxmox, alimentando rotinas de automação climática.</p>
                     <div class="project-actions">
-                        <a href="https://github.com/jvfigueiro/ArduinoDHT-HA" target="_blank" class="btn btn-sm btn-outline-secondary ms-auto"><i class="fab fa-github"></i> Repositório</a>
+                        <a href="https://github.com/jvfigueiro/ArduinoDHT-HA" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="fab fa-github"></i> Repositório</a>
                     </div>
                 </div>
             </div>
