@@ -15,82 +15,159 @@
     <link rel="stylesheet" href="/style.css?v=2">
 
     <style>
-        .writeup-meta {
+        /* Product Showcase Styles */
+        .product-hero {
+            padding: 2rem 0 3rem;
+            text-align: center;
+        }
+        .product-headline {
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            font-size: clamp(2.5rem, 6vw, 3.8rem);
+            line-height: 1.1;
+            margin-bottom: 1.25rem;
+        }
+        .product-lead {
+            font-size: 1.15rem;
+            color: var(--bs-secondary-color);
+            line-height: 1.7;
+            max-width: 780px;
+            margin: 0 auto 2rem;
+        }
+        .product-cta {
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
             justify-content: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3.5rem;
         }
-        .writeup-section {
-            margin-bottom: 3rem;
-        }
-        .writeup-section h3 {
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .writeup-section h3 i {
-            color: var(--accent-color);
-            font-size: 1.1rem;
-        }
-        .writeup-section p {
-            color: var(--bs-secondary-color);
-            line-height: 1.85;
-            font-size: 1.02rem;
-            margin-bottom: 1.1rem;
-        }
-        .writeup-section p strong {
-            color: var(--bs-body-color);
-        }
-        .callout-box {
-            background-color: rgba(90, 50, 163, 0.06);
-            border-left: 3px solid var(--accent-color);
-            border-radius: 0.5rem;
-            padding: 1.25rem 1.5rem;
-            margin: 1.5rem 0;
-        }
-        .callout-box p {
-            margin-bottom: 0;
-            font-size: 0.95rem;
-        }
-        .gear-grid {
+
+        /* Value Props Grid */
+        .value-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
+            gap: 1.5rem;
+            margin-bottom: 4.5rem;
         }
-        .gear-card {
+        .value-card {
             background-color: rgba(128, 128, 128, 0.04);
             border: 1px solid var(--bs-border-color);
-            border-radius: 0.6rem;
-            padding: 1.25rem;
+            border-radius: 0.85rem;
+            padding: 1.75rem 1.5rem;
             transition: transform 0.25s ease, border-color 0.25s ease;
         }
-        .gear-card:hover {
-            transform: translateY(-3px);
+        .value-card:hover {
+            transform: translateY(-4px);
             border-color: var(--accent-color);
         }
-        .gear-card h5 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--bs-body-color);
+        .value-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background-color: rgba(90, 50, 163, 0.1);
+            color: var(--accent-color);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.25rem;
         }
-        .gear-card h5 i {
-            color: var(--accent-color);
+        .value-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            color: var(--bs-body-color);
         }
-        .gear-card p {
-            font-size: 0.88rem;
-            margin-bottom: 0;
+        .value-card p {
+            font-size: 0.92rem;
             color: var(--bs-secondary-color);
             line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* Feature Sections (Showcase Blocks) */
+        .feature-block {
+            margin-bottom: 4.5rem;
+            padding-bottom: 1rem;
+        }
+        .feature-row {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        .feature-row.reverse {
+            flex-direction: row-reverse;
+        }
+        .feature-content {
+            flex: 1;
+        }
+        .feature-card-panel {
+            flex: 1.1;
+            background-color: rgba(128, 128, 128, 0.04);
+            border: 1px solid var(--bs-border-color);
+            border-radius: 0.85rem;
+            padding: 2rem;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+        }
+        .feature-badge {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-color);
+            margin-bottom: 0.75rem;
+        }
+        .feature-title {
+            font-size: 1.7rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 1rem;
+            color: var(--bs-body-color);
+        }
+        .feature-desc {
+            color: var(--bs-secondary-color);
+            font-size: 1rem;
+            line-height: 1.75;
+            margin-bottom: 1.25rem;
+        }
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+        .feature-list li {
+            font-size: 0.92rem;
+            color: var(--bs-secondary-color);
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+        }
+        .feature-list li i {
+            color: var(--accent-color);
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        /* Banner CTA */
+        .bottom-banner {
+            background-color: rgba(128, 128, 128, 0.04);
+            border: 1px solid var(--bs-border-color);
+            border-radius: 1rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 991.98px) {
+            .feature-row, .feature-row.reverse {
+                flex-direction: column;
+                gap: 1.75rem;
+            }
+            .feature-card-panel {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -119,75 +196,196 @@
         </div>
     </nav>
 
-    <main class="container flex-grow-1 py-5 mt-4" style="max-width: 860px;">
+    <main class="container flex-grow-1 py-4 mt-2" style="max-width: 1040px;">
 
-        <div class="text-center mb-4">
+        <!-- 1. Hero Showcase -->
+        <section class="product-hero">
             <a href="/projects" class="text-secondary text-decoration-none fs-6 mb-3 d-inline-block">
                 <i class="fas fa-arrow-left me-1"></i> Voltar para Projetos
             </a>
-            <h2 class="mb-3" style="font-weight: 800; letter-spacing: -1px; font-size: 2.5rem;">
+            <h1 class="product-headline mt-2">
                 OptiManager<span class="text-accent">.</span>
-            </h2>
-            <p class="text-secondary fs-5 mx-auto" style="max-width: 720px;">
-                Plataforma de gestão centralizada de ativos, inventário e controle operacional de infraestrutura tecnológica.
-            </p>
-        </div>
-
-        <div class="writeup-meta">
-            <span class="badge bg-secondary-subtle text-body border"><i class="fas fa-network-wired me-1 text-accent"></i> Gestão de Ativos</span>
-            <span class="badge bg-secondary-subtle text-body border"><i class="fas fa-server me-1 text-accent"></i> Infraestrutura</span>
-            <span class="badge bg-secondary-subtle text-body border"><i class="fas fa-hammer me-1 text-accent"></i> Em Desenvolvimento</span>
-        </div>
-
-        <div class="writeup-section">
-            <h3><i class="fas fa-bullseye"></i> Visão Geral & Proposta</h3>
-            <p>
-                Manter visibilidade precisa sobre o parque de equipamentos, licenças, contratos de manutenção e topologia de rede é um dos desafios centrais de qualquer operação de TI.
-            </p>
-            <p>
-                O <strong>OptiManager</strong> é concebido como uma central de orquestração para acompanhamento em tempo real de ativos de infraestrutura, facilitando o mapeamento de ciclo de vida de hardware, controle de mudanças e integração fluida com as rotinas de diagnóstico.
+            </h1>
+            <p class="product-lead">
+                O sistema self-hosted definitivo para gestão de ordens de serviço, clientes e faturamento. Leve, rápido e seguro, projetado para pequenas empresas, oficinas de manutenção e profissionais técnicos com soberania total de dados.
             </p>
 
-            <div class="callout-box">
-                <p>
-                    <i class="fas fa-info-circle text-accent me-2"></i>
-                    <strong>Projeto em Estruturação:</strong> O escopo completo e arquitetura funcional da plataforma estão em desenvolvimento e serão documentados nas próximas atualizações.
-                </p>
+            <div class="product-cta">
+                <a href="https://github.com/jvfigueiro/optimanager" target="_blank" class="btn-custom btn-primary-custom" style="padding: 0.65rem 1.4rem; font-size: 0.95rem;">
+                    <i class="fab fa-github me-2"></i> Confira no GitHub
+                </a>
+                <a href="https://github.com/jvfigueiro/optimanager/blob/master/README.md" target="_blank" class="btn-custom btn-outline-custom" style="padding: 0.65rem 1.4rem; font-size: 0.95rem;">
+                    <i class="fas fa-book me-2"></i> Documentação Técnica (em Inglês)
+                </a>
             </div>
-        </div>
+        </section>
 
-        <div class="writeup-section">
-            <h3><i class="fas fa-cubes"></i> Recursos em Concepção</h3>
-            <p>
-                Principais módulos que orientam o roadmap do projeto:
-            </p>
+        <!-- 2. Value Props -->
+        <section class="value-grid">
+            <div class="value-card">
+                <div class="value-icon"><i class="fas fa-server"></i></div>
+                <h4>Soberania Total</h4>
+                <p>Seus dados pertencem a você. Implante em sua própria infraestrutura ou servidor local sem mensalidades recorrentes ou dependência de nuvens de terceiros.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon"><i class="fas fa-clipboard-list"></i></div>
+                <h4>Fluxo Completo de O.S.</h4>
+                <p>Do orçamento à entrega final: acompanhe prazos, técnicos responsáveis, itens trocados e valores financeiros com total rastreabilidade.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon"><i class="fas fa-bolt"></i></div>
+                <h4>Leve e Extremamente Rápido</h4>
+                <p>Arquitetura moderna em Go e SQLite com consumo inferior a 40 MB de memória RAM, inicialização instantânea e alta eficiência.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon"><i class="fas fa-mobile-screen-button"></i></div>
+                <h4>Aplicativo PWA Instalável</h4>
+                <p>Acesse do navegador ou instale no computador e smartphone como um aplicativo nativo, com carregamento rápido e suporte offline shell.</p>
+            </div>
+        </section>
 
-            <div class="gear-grid">
-                <div class="gear-card">
-                    <h5><i class="fas fa-boxes-stacked"></i> Inventário Centralizado</h5>
-                    <p>Catalogação unificada de servidores, estações de trabalho, dispositivos de rede e periféricos com histórico de manutenções.</p>
+        <!-- 3. Recursos em Detalhes -->
+
+        <!-- Feature 1: Gestão de Ordens de Serviço -->
+        <section class="feature-block">
+            <div class="feature-row">
+                <div class="feature-content">
+                    <span class="feature-badge">Gestão Operacional</span>
+                    <h3 class="feature-title">Controle Completo de Ordens de Serviço</h3>
+                    <p class="feature-desc">
+                        Organize com clareza o ciclo de vida dos seus atendimentos técnicos. Da entrada do equipamento ao fechamento financeiro, tenha visão precisa sobre o status de cada trabalho em andamento.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Acompanhamento visual por etapas: Orçamento, Aberta, Em Andamento, Concluída, Entregue e Cancelada.</li>
+                        <li><i class="fas fa-check-circle"></i> Atribuição de técnicos responsáveis, prazos de entrega e prioridades.</li>
+                        <li><i class="fas fa-check-circle"></i> Discriminação detalhada de mão de obra e peças aplicadas com cálculo financeiro automático.</li>
+                    </ul>
                 </div>
-                <div class="gear-card">
-                    <h5><i class="fas fa-chart-line"></i> Ciclo de Vida & Métricas</h5>
-                    <p>Monitoramento de garantia, previsão de renovação de hardware e acompanhamento de saúde operacional dos ativos.</p>
-                </div>
-                <div class="gear-card">
-                    <h5><i class="fas fa-diagram-project"></i> Mapeamento de Topologia</h5>
-                    <p>Visualização das interconexões físicas e lógicas entre equipamentos, serviços e nós do ambiente.</p>
-                </div>
-                <div class="gear-card">
-                    <h5><i class="fas fa-shield-halved"></i> Conformidade & Auditoria</h5>
-                    <p>Rastreabilidade de alterações de configuração e conformidade com políticas de segurança da organização.</p>
+                <div class="feature-card-panel">
+                    <h5 class="fw-bold mb-3"><i class="fas fa-list-check text-accent me-2"></i> Ciclo de Vida da O.S.</h5>
+                    <p class="text-secondary small mb-3">Fluxos estruturados para garantir que nenhum chamado ou equipamento fique esquecido na bancada:</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-secondary-subtle text-body border">Orçamento</span>
+                        <span class="badge bg-secondary-subtle text-body border">Aberta</span>
+                        <span class="badge bg-secondary-subtle text-body border">Em Andamento</span>
+                        <span class="badge bg-secondary-subtle text-body border">Concluída</span>
+                        <span class="badge bg-secondary-subtle text-body border">Entregue</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="writeup-section">
-            <h3><i class="fas fa-road"></i> Próximos Passos</h3>
-            <p>
-                A modelagem de dados e a arquitetura de backend estão sendo desenhadas para garantir compatibilidade nativa com fluxos automatizados e com o <a href="/projects/optiassist" class="text-accent text-decoration-none">OptiAssist</a>.
+        <!-- Feature 2: Diretório de Clientes -->
+        <section class="feature-block">
+            <div class="feature-row reverse">
+                <div class="feature-content">
+                    <span class="feature-badge">Cadastro & Agilidade</span>
+                    <h3 class="feature-title">Diretório de Clientes com Busca Instantânea</h3>
+                    <p class="feature-desc">
+                        Mantenha o cadastro de clientes sempre organizado e acessível. Crie novas ordens de serviço em segundos com autopreenchimento inteligente de dados de contato e histórico de atendimentos.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Localização imediata por nome, documento ou telefone através de busca inteligente.</li>
+                        <li><i class="fas fa-check-circle"></i> Histórico unificado de ordens de serviço anteriores associadas a cada cliente.</li>
+                        <li><i class="fas fa-check-circle"></i> Preenchimento automático em recibos e relatórios de entrega.</li>
+                    </ul>
+                </div>
+                <div class="feature-card-panel">
+                    <h5 class="fw-bold mb-3"><i class="fas fa-users text-accent me-2"></i> Base Centralizada</h5>
+                    <p class="text-secondary small mb-0">
+                        Centralize dados cadastrais, informações de contato e preferências de atendimento em um banco de dados local seguro, sem risco de vazamento ou acesso indevido por plataformas externas.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 3: Relatórios e Recibos -->
+        <section class="feature-block">
+            <div class="feature-row">
+                <div class="feature-content">
+                    <span class="feature-badge">Transparência & Apresentação</span>
+                    <h3 class="feature-title">Emissão de Laudos, Orçamentos e Recibos</h3>
+                    <p class="feature-desc">
+                        Apresente um serviço profissional e transparente aos seus clientes. Gere relatórios técnicos bem estruturados com as descrições dos serviços realizados, peças substituídas e termos de garantia.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Impressão de laudos técnicos completos para acompanhamento do cliente.</li>
+                        <li><i class="fas fa-check-circle"></i> Orçamentos claros com discriminação de custos e condições de pagamento.</li>
+                        <li><i class="fas fa-check-circle"></i> Recibos formais de entrega e retirada de equipamentos.</li>
+                    </ul>
+                </div>
+                <div class="feature-card-panel">
+                    <h5 class="fw-bold mb-3"><i class="fas fa-file-contract text-accent me-2"></i> Documentação Pronta</h5>
+                    <p class="text-secondary small mb-0">
+                        Modelos de relatórios limpos e objetivos, prontos para impressão direta no navegador ou salvamento em PDF para envio via mensagem ou e-mail.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 4: Painel Financeiro -->
+        <section class="feature-block">
+            <div class="feature-row reverse">
+                <div class="feature-content">
+                    <span class="feature-badge">Métricas & Faturamento</span>
+                    <h3 class="feature-title">Painel Financeiro em Tempo Real</h3>
+                    <p class="feature-desc">
+                        Acompanhe a saúde financeira da sua operação com indicadores atualizados em tempo real: faturamento mensal, receita diária, ticket médio e controle de saldos pendentes a receber.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Indicadores visuais de faturamento acumulado e movimentação diária.</li>
+                        <li><i class="fas fa-check-circle"></i> Controle dos valores pagos, métodos de pagamento e saldos em aberto.</li>
+                        <li><i class="fas fa-check-circle"></i> Exportação de relatórios financeiros em formato CSV para análise em planilhas.</li>
+                    </ul>
+                </div>
+                <div class="feature-card-panel">
+                    <h5 class="fw-bold mb-3"><i class="fas fa-chart-pie text-accent me-2"></i> Visibilidade de Negócio</h5>
+                    <p class="text-secondary small mb-0">
+                        Tenha total controle sobre as finanças do seu negócio sem a complexidade de softwares contábeis pesados ou planilhas desorganizadas.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 5: Instalação e Backups -->
+        <section class="feature-block">
+            <div class="feature-row">
+                <div class="feature-content">
+                    <span class="feature-badge">Tranquilidade Técnica</span>
+                    <h3 class="feature-title">Assistente de Configuração & Backups Atômicos</h3>
+                    <p class="feature-desc">
+                        Comece a usar em minutos com o assistente de boas-vindas guiado em 6 passos. O OptiManager conta com um motor de backup atômico nativo do SQLite, garantindo que suas informações estejam sempre protegidas contra falhas.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Wizard de boas-vindas: configuração rápida de dados da empresa e conta de administrador.</li>
+                        <li><i class="fas fa-check-circle"></i> Backups consistentes via <code>VACUUM INTO</code> com verificação automática de integridade.</li>
+                        <li><i class="fas fa-check-circle"></i> Restauração rápida em um clique para migrar de máquina sem complicações.</li>
+                    </ul>
+                </div>
+                <div class="feature-card-panel">
+                    <h5 class="fw-bold mb-3"><i class="fas fa-shield-halved text-accent me-2"></i> Segurança e Confiabilidade</h5>
+                    <p class="text-secondary small mb-0">
+                        Autenticação robusta baseada em JWT, controle de perfis de acesso (RBAC), logs detalhados de auditoria e compatibilidade pronta para Docker e Docker Compose.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Bottom CTA -->
+        <section class="bottom-banner">
+            <h3 class="fw-bold mb-3" style="font-size: 2rem;">Preparado para ter controle total sobre sua gestão técnica?</h3>
+            <p class="text-secondary mb-4 mx-auto" style="max-width: 650px; font-size: 1.05rem;">
+                O OptiManager é gratuito, moderno e de código aberto sob licença GNU GPLv3. Implante agora em seu ambiente via Docker e gerencie suas ordens de serviço com autonomia total.
             </p>
-        </div>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="https://github.com/jvfigueiro/optimanager" target="_blank" class="btn-custom btn-primary-custom" style="padding: 0.7rem 1.6rem;">
+                    <i class="fab fa-github me-2"></i> Confira no GitHub
+                </a>
+                <a href="/projects" class="btn-custom btn-outline-custom" style="padding: 0.7rem 1.6rem;">
+                    <i class="fas fa-arrow-left me-2"></i> Ver Todos os Projetos
+                </a>
+            </div>
+        </section>
 
     </main>
 
