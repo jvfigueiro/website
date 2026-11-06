@@ -57,6 +57,12 @@ func main() {
 		case "/sobre", "/sobre.html":
 			http.Redirect(w, r, "/aboutme", http.StatusMovedPermanently)
 			return
+		case "/optiassist", "/optiassist.html":
+			http.Redirect(w, r, "/projects/optiassist", http.StatusMovedPermanently)
+			return
+		case "/optimanager", "/optimanager.html":
+			http.Redirect(w, r, "/projects/optimanager", http.StatusMovedPermanently)
+			return
 		case "/servicos", "/servicos.html":
 			http.Redirect(w, r, "/services", http.StatusMovedPermanently)
 			return
@@ -105,6 +111,12 @@ func main() {
 
 		// Handle 404 or directory without index.html
 		if os.IsNotExist(err) || (info != nil && info.IsDir() && hasNoIndex(targetPath)) {
+			// For missing static assets (images, stylesheets, scripts, fonts), return clean 404 without HTML body
+			if ext != "" && ext != ".html" {
+				http.NotFound(w, r)
+				return
+			}
+
 			w.Header().Set("Content-Type", "text/html; charset=utf-8")
 			w.WriteHeader(http.StatusNotFound)
 			if notFoundContent, readErr := os.ReadFile(filepath.Join(staticDir, "404.html")); readErr == nil {
