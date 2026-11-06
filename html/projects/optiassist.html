@@ -18,12 +18,12 @@
         .writeup-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
+            gap: 0.6rem;
             justify-content: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
         .writeup-section {
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
         }
         .writeup-section h3 {
             font-weight: 800;
@@ -31,17 +31,18 @@
             margin-bottom: 1.25rem;
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.65rem;
+            font-size: 1.4rem;
         }
         .writeup-section h3 i {
             color: var(--accent-color);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
         .writeup-section p {
             color: var(--bs-secondary-color);
             line-height: 1.85;
             font-size: 1.02rem;
-            margin-bottom: 1.1rem;
+            margin-bottom: 1.15rem;
         }
         .writeup-section p strong {
             color: var(--bs-body-color);
@@ -51,46 +52,91 @@
             border-left: 3px solid var(--accent-color);
             border-radius: 0.5rem;
             padding: 1.25rem 1.5rem;
-            margin: 1.5rem 0;
+            margin: 1.75rem 0;
         }
         .callout-box p {
             margin-bottom: 0;
             font-size: 0.95rem;
         }
-        .gear-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.75rem 0;
+            font-size: 0.95rem;
         }
-        .gear-card {
+        .tech-table th, .tech-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--bs-border-color);
+            text-align: left;
+        }
+        .tech-table th {
+            color: var(--bs-body-color);
+            font-weight: 700;
+            background-color: rgba(128, 128, 128, 0.05);
+        }
+        .tech-table td {
+            color: var(--bs-secondary-color);
+        }
+        .tech-table td strong {
+            color: var(--bs-body-color);
+        }
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.75rem 0;
+        }
+        .module-card {
             background-color: rgba(128, 128, 128, 0.04);
             border: 1px solid var(--bs-border-color);
-            border-radius: 0.6rem;
-            padding: 1.25rem;
-            transition: transform 0.25s ease, border-color 0.25s ease;
+            border-radius: 0.75rem;
+            padding: 1.4rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
-        .gear-card:hover {
+        .module-card:hover {
             transform: translateY(-3px);
             border-color: var(--accent-color);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         }
-        .gear-card h5 {
-            font-size: 0.95rem;
+        .module-card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background-color: rgba(90, 50, 163, 0.1);
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .module-card h4 {
+            font-size: 1.05rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             color: var(--bs-body-color);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
-        .gear-card h5 i {
-            color: var(--accent-color);
-        }
-        .gear-card p {
-            font-size: 0.88rem;
+        .module-card p {
+            font-size: 0.9rem;
             margin-bottom: 0;
             color: var(--bs-secondary-color);
             line-height: 1.6;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .action-banner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-top: 1rem;
+            margin-bottom: 2.5rem;
         }
     </style>
 </head>
@@ -119,74 +165,210 @@
         </div>
     </nav>
 
-    <main class="container flex-grow-1 py-5 mt-4" style="max-width: 860px;">
+    <main class="container flex-grow-1 py-5 mt-4" style="max-width: 920px;">
 
         <div class="text-center mb-4">
             <a href="/projects" class="text-secondary text-decoration-none fs-6 mb-3 d-inline-block">
                 <i class="fas fa-arrow-left me-1"></i> Voltar para Projetos
             </a>
-            <h2 class="mb-3" style="font-weight: 800; letter-spacing: -1px; font-size: 2.5rem;">
+            <h2 class="mb-3" style="font-weight: 800; letter-spacing: -1px; font-size: 2.6rem;">
                 OptiAssist<span class="text-accent">.</span>
             </h2>
-            <p class="text-secondary fs-5 mx-auto" style="max-width: 720px;">
-                Assistente inteligente para suporte técnico, diagnósticos rápidos e automação de fluxos operacionais de TI.
+            <p class="text-secondary fs-5 mx-auto" style="max-width: 780px;">
+                Bancada de trabalho técnica e portátil em C#/WPF (.NET 4.8) para técnicos de TI e administradores de sistemas. Automatiza rotinas pós-instalação de software, diagnósticos de hardware, limpeza profunda e ordens de serviço direto de um pendrive USB.
             </p>
         </div>
 
         <div class="writeup-meta">
-            <span class="badge bg-secondary-subtle text-body border"><i class="fas fa-robot me-1 text-accent"></i> Assistente & IA</span>
-            <span class="badge bg-secondary-subtle text-body border"><i class="fas fa-terminal me-1 text-accent"></i> Operações de TI</span>
-            <span class="badge bg-secondary-subtle text-body border"><i class="fas fa-hammer me-1 text-accent"></i> Em Desenvolvimento</span>
+            <span class="badge bg-secondary-subtle text-body border"><i class="fas fa-code-branch me-1 text-accent"></i> v1.1.0</span>
+            <span class="badge bg-secondary-subtle text-body border"><i class="fab fa-windows me-1 text-accent"></i> Windows 10 & 11 (64-bit)</span>
+            <span class="badge bg-secondary-subtle text-body border"><i class="fas fa-microchip me-1 text-accent"></i> C# / WPF (.NET 4.8)</span>
+            <span class="badge bg-secondary-subtle text-body border"><i class="fas fa-puzzle-piece me-1 text-accent"></i> Microkernel Desacoplado</span>
+            <span class="badge bg-secondary-subtle text-body border"><i class="fas fa-usb me-1 text-accent"></i> 100% Portátil (Zero NuGet)</span>
+            <span class="badge bg-secondary-subtle text-body border"><i class="fas fa-scale-balanced me-1 text-accent"></i> Licença GPLv3</span>
+        </div>
+
+        <div class="action-banner">
+            <a href="https://github.com/jvfigueiro/optiassist" target="_blank" class="btn-custom btn-primary-custom" style="padding: 0.55rem 1.25rem; font-size: 0.9rem;">
+                <i class="fab fa-github me-2"></i> Ver Repositório no GitHub
+            </a>
+            <a href="https://github.com/jvfigueiro/optiassist/tree/main/Docs" target="_blank" class="btn-custom btn-outline-custom" style="padding: 0.55rem 1.25rem; font-size: 0.9rem;">
+                <i class="fas fa-book me-2"></i> Documentação Técnica
+            </a>
+        </div>
+
+        <figure class="featured-image-container mb-5">
+            <img src="/images/optiassist-dashboard.webp" alt="Dashboard Principal do OptiAssist com telemetria de hardware e tarefas comuns">
+            <figcaption class="image-caption">Dashboard principal: telemetria de hardware em tempo real, auditoria de segurança (BitLocker, TPM 2.0, Secure Boot) e atalhos rápidos.</figcaption>
+        </figure>
+
+        <div class="writeup-section">
+            <h3><i class="fas fa-bullseye"></i> O Desafio: A Rotina Repetitiva de Bancada</h3>
+            <p>
+                Qualquer profissional que atua em suporte de TI, manutenção de computadores ou administração de estações de trabalho conhece bem o roteiro após uma formatação ou atendimento técnico:
+            </p>
+            <p>
+                Gasta-se dezenas de minutos navegando na web para baixar e instalar navegadores, descompactadores, leitores de PDF e pacotes de escritório; abre-se múltiplos consoles do Windows (<code>sysdm.cpl</code>, <code>services.msc</code>, <code>cleanmgr</code>, Agendador de Tarefas) para verificar ativação e integridade; executam-se scripts manuais de limpeza espalhados em pastas soltas de pendrives; e, por fim, compila-se à mão um relatório de especificações e procedimentos para documentar a ordem de serviço.
+            </p>
+            <p>
+                O <strong>OptiAssist</strong> foi concebido para resolver exatamente essa fricção. Ele consolida em um único executável portátil todo o fluxo de trabalho de bancada: diagnósticos assíncronos de hardware, instalação silenciosa em lote, limpeza profunda inspirada no BleachBit, hub de automações com scripts PowerShell/CMD e geração imediata de laudos técnicos em texto estruturado.
+            </p>
         </div>
 
         <div class="writeup-section">
-            <h3><i class="fas fa-bullseye"></i> Visão Geral & Motivação</h3>
+            <h3><i class="fas fa-layer-group"></i> Engenharia & Arquitetura: Microkernel com Zero Dependências</h3>
             <p>
-                No cotidiano das operações de suporte e infraestrutura de TI, uma fatia significativa do tempo é consumida por procedimentos repetitivos de triagem, levantamento de logs, testes de conectividade e verificação de integridade de serviços.
+                Ao invés de uma aplicação monolítica ou dependente de frameworks pesados de terceiros, o OptiAssist foi desenhado sob uma arquitetura de <strong>Microkernel Extensível</strong>:
             </p>
             <p>
-                O <strong>OptiAssist</strong> foi concebido para resolver essa dor: uma ferramenta voltada a acelerar diagnósticos, centralizar comandos operacionais frequentes e atuar como um copiloto para equipes e analistas técnicos, transformando dados brutos de sistemas em ações claras de resolução.
+                O núcleo executável (<code>OptiAssist.exe</code>) gerencia os serviços transversais da aplicação — logging seguro para threads via <code>Dispatcher</code>, persistência de configurações, mecanismo de tradução dinâmica (i18n), telemetria WMI e orquestração do ciclo de vida dos módulos. Já cada funcionalidade principal existe como uma biblioteca de classes independente (<code>Config\Addons\&lt;Modulo&gt;\&lt;Modulo&gt;.dll</code>) implementando o contrato de interface <code>IOptiAssistAddon</code>.
             </p>
 
             <div class="callout-box">
                 <p>
-                    <i class="fas fa-info-circle text-accent me-2"></i>
-                    <strong>Projeto em Desenvolvimento:</strong> A arquitetura de módulos, integrações e documentação técnica detalhada estão sendo consolidadas e serão aprofundadas nas próximas etapas.
+                    <i class="fas fa-shield-halved text-accent me-2"></i>
+                    <strong>Filosofia Zero External Dependencies (Zero NuGets):</strong> O sistema não utiliza bibliotecas de terceiros (sem <em>Newtonsoft.Json</em>, sem <em>MahApps</em>, sem pacotes externos). Toda a serialização JSON, controle de interface, chamadas WMI/CIM e automação COM foram desenvolvidas estritamente com a BCL nativa do .NET Framework 4.8 e APIs nativas do Windows, garantindo que o programa execute instantaneamente em qualquer máquina Windows 10 ou 11 sem falhas de pré-requisitos.
                 </p>
             </div>
+
+            <p>
+                Um dos detalhes técnicos mais interessantes é o <strong>mecanismo de carregamento Anti-Lock</strong>: para carregar os módulos externos sem travar os arquivos em disco, o <code>AddonHelper</code> lê os bytes brutos do arquivo (<code>File.ReadAllBytes</code>) e injeta em memória via <code>Assembly.Load(byte[])</code>. Isso permite que um técnico atualize, substitua ou recompile módulos DLL no pendrive enquanto a aplicação principal continua em execução.
+            </p>
+
+            <table class="tech-table">
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>Implementação Técnica</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Linguagem & Framework</strong></td>
+                        <td>C# 7.3 / Windows Presentation Foundation (WPF) no .NET Framework 4.8 nativo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Padrão de Arquitetura</strong></td>
+                        <td>Microkernel extensível com injeção de contratos (<code>IOptiAssistAddon</code> e <code>IOptiAssistHost</code>)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Carregamento de Módulos</strong></td>
+                        <td>Injeção em memória via raw bytes (Anti-Lock) com resolução dinâmica de tipos (<code>AssemblyResolve</code>)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Telemetria & Diagnóstico</strong></td>
+                        <td>Consultas assíncronas via WMI/CIM (<code>root/cimv2</code>) e Registro do Windows</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Privilégios & UAC</strong></td>
+                        <td>Requer privilégios de Administrador (enforçado via <code>app.manifest</code> / PerMonitorV2 DPI)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Portabilidade</strong></td>
+                        <td>Execução direta de pendrive USB com assistente de instalação local e geração de AutoRun</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Conectividade</strong></td>
+                        <td>Operação 100% offline (conexão necessária somente para downloads via Winget)</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <div class="writeup-section">
-            <h3><i class="fas fa-cubes"></i> Pilares do Projeto</h3>
+            <h3><i class="fas fa-cubes"></i> Módulos & Recursos Integrados</h3>
             <p>
-                A concepção do OptiAssist está estruturada em quatro pilares fundamentais, pensados para unir robustez técnica e facilidade de uso prático:
+                O ecossistema do OptiAssist reúne ferramentas modulares organizadas para cobrir todas as etapas de atendimento:
             </p>
 
-            <div class="gear-grid">
-                <div class="gear-card">
-                    <h5><i class="fas fa-stethoscope"></i> Diagnóstico Ágil</h5>
-                    <p>Coleta padronizada de telemetria, análise de latência e checagem de integridade de serviços essenciais de rede e sistemas operacionais.</p>
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-card-icon"><i class="fas fa-gauge-high"></i></div>
+                    <h4>Dashboard & Telemetria</h4>
+                    <p>Inspeção assíncrona de CPU, memória RAM, GPU, placa-mãe, BIOS e Service Tag com cópia em 1 clique, além de auditoria de ativação do SO, BitLocker, TPM 2.0 e Secure Boot.</p>
                 </div>
-                <div class="gear-card">
-                    <h5><i class="fas fa-bolt"></i> Automação Operacional</h5>
-                    <p>Rotinas pré-configuradas para execução de tarefas recorrentes de remediação, liberação de espaço em disco e reinicialização ordenada.</p>
+
+                <div class="module-card">
+                    <div class="module-card-icon"><i class="fas fa-cloud-arrow-down"></i></div>
+                    <h4>App Manager</h4>
+                    <p>Instalação não assistida (silent install) em lote de softwares essenciais com suporte a instaladores locais offline em pendrive, fallback automático para o repositório Microsoft Winget e escaneamento de atualizações.</p>
                 </div>
-                <div class="gear-card">
-                    <h5><i class="fas fa-brain"></i> Assistência Contextual</h5>
-                    <p>Base de conhecimento integrada e recomendações estruturadas para guiar a resolução de incidentes conforme boas práticas.</p>
+
+                <div class="module-card">
+                    <div class="module-card-icon"><i class="fas fa-broom"></i></div>
+                    <h4>System Cleaner</h4>
+                    <p>Motor de limpeza profunda inspirado no BleachBit com análise prévia não destrutiva (Dry-Run), validação estrita de caminhos do sistema (PathSanitizer) e limpeza seletiva de caches de desenvolvedor (<code>node_modules</code>, <code>venv</code>, etc.).</p>
                 </div>
-                <div class="gear-card">
-                    <h5><i class="fas fa-network-wired"></i> Conectividade & APIs</h5>
-                    <p>Integração com ecossistemas de monitoramento local e ferramentas corporativas de gestão e atendimento.</p>
+
+                <div class="module-card">
+                    <div class="module-card-icon"><i class="fas fa-terminal"></i></div>
+                    <h4>Toolbox de Scripts</h4>
+                    <p>Central de execução para rotinas em PowerShell, Prompt de Comando (CMD) e executáveis portáteis, com categorização dinâmica, filtros de busca rápida e streaming de saída do console em tempo real.</p>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-card-icon"><i class="fas fa-clock-rotate-left"></i></div>
+                    <h4>Startup & Task Manager</h4>
+                    <p>Auditoria unificada dos itens de inicialização cobrindo chaves do Registro (HKCU/HKLM com suporte a <code>StartupApproved</code>), pastas de inicialização e Agendador de Tarefas via interface nativa COM (<code>Schedule.Service</code>).</p>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-card-icon"><i class="fas fa-file-invoice"></i></div>
+                    <h4>Relatório Técnico & O.S.</h4>
+                    <p>Gerador de ordens de serviço estruturadas combinando dados do cliente, checklist de 8 pontos dos procedimentos técnicos executados e ficha completa de hardware com exportação em 1 clique para arquivo de texto.</p>
                 </div>
             </div>
         </div>
 
         <div class="writeup-section">
-            <h3><i class="fas fa-road"></i> Próximos Passos</h3>
+            <h3><i class="fas fa-images"></i> Interfaces do Sistema em Ação</h3>
             <p>
-                O desenvolvimento está evoluindo de forma iterativa, com testes em ambiente dedicado no <a href="/ultimatelab" class="text-accent text-decoration-none">UltimateLab</a> para validação em múltiplos sistemas operacionais e cenários de rede.
+                Algumas telas do ambiente de trabalho do OptiAssist executando rotinas técnicas:
             </p>
+
+            <div class="gallery-grid">
+                <figure class="featured-image-container">
+                    <img src="/images/optiassist-cleaner.webp" alt="Interface do System Cleaner com análise Dry-Run e motores de limpeza">
+                    <figcaption class="image-caption">System Cleaner: análise Dry-Run prévia com cálculo de espaço liberável antes da execução.</figcaption>
+                </figure>
+
+                <figure class="featured-image-container">
+                    <img src="/images/optiassist-toolbox.webp" alt="Interface da Toolbox de scripts de automação e reparo">
+                    <figcaption class="image-caption">Toolbox: presets de reparo do Windows e scripts com saída de log em tempo real.</figcaption>
+                </figure>
+            </div>
+
+            <figure class="featured-image-container">
+                <img src="/images/optiassist-report.webp" alt="Interface do Maintenance Report para emissão de ordens de serviço">
+                <figcaption class="image-caption">Maintenance Report: preenchimento de checklist de procedimentos e emissão de laudo técnico em arquivo .txt.</figcaption>
+            </figure>
+        </div>
+
+        <div class="writeup-section">
+            <h3><i class="fas fa-shield-cat"></i> Segurança, Auditoria e Comunidade</h3>
+            <p>
+                Por atuar diretamente em configurações profundas do sistema operacional, Registro do Windows, volumes de armazenamento e serviços em segundo plano, o OptiAssist incorpora travas de segurança ativas:
+            </p>
+            <ul>
+                <li class="text-secondary mb-2"><strong>PathSanitizer:</strong> Bloqueia operações destrutivas em diretórios protegidos do sistema (como <code>%SystemRoot%</code>, <code>System32</code> e pastas de boot).</li>
+                <li class="text-secondary mb-2"><strong>Proteção de Entradas Nativas:</strong> Avisos explícitos e proteções contra desativação acidental de serviços e tarefas críticas do Windows.</li>
+                <li class="text-secondary mb-2"><strong>Código Aberto e Auditável:</strong> Todo o código-fonte está licenciado sob a <strong>GNU General Public License v3.0 (GPLv3)</strong>, permitindo que a comunidade de administradores de sistemas estude, audite e contribua livremente com a plataforma.</li>
+            </ul>
+        </div>
+
+        <div class="text-center pt-3 pb-4">
+            <h4 class="fw-bold mb-3">Conheça o Código-Fonte e a Documentação</h4>
+            <p class="text-secondary mb-4 mx-auto" style="max-width: 600px;">
+                O projeto é ativamente mantido no GitHub, com guias completos de arquitetura, criação de novos módulos Add-on e manuais de compilação.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="https://github.com/jvfigueiro/optiassist" target="_blank" class="btn-custom btn-primary-custom">
+                    <i class="fab fa-github me-2"></i> Repositório no GitHub
+                </a>
+                <a href="/projects" class="btn-custom btn-outline-custom">
+                    <i class="fas fa-arrow-left me-2"></i> Voltar para Projetos
+                </a>
+            </div>
         </div>
 
     </main>
