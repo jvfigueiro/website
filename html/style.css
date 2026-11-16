@@ -1470,6 +1470,25 @@ body.page-loaded {
     gap: 0.65rem;
 }
 
+/* Providers 3x3 Grid */
+.status-providers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+@media (max-width: 991.98px) {
+    .status-providers-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .status-providers-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .status-item-row {
     display: flex;
     align-items: center;
@@ -1570,11 +1589,23 @@ body.page-loaded {
     font-family: 'Courier New', monospace;
 }
 
-/* Quick Tools & Threat Maps Grid */
+/* Quick Tools Grid */
 .threat-tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+}
+
+@media (max-width: 991.98px) {
+    .threat-tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .threat-tools-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .threat-tool-card {

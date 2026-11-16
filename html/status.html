@@ -105,60 +105,37 @@
                 <div class="status-kpi-card">
                     <div class="status-kpi-icon"><i class="fas fa-server" aria-hidden="true"></i></div>
                     <div>
-                        <div class="status-kpi-label" data-i18n="status.kpiNodesTitle">Nós do Cluster</div>
+                        <div class="status-kpi-label" data-i18n="status.kpiNodesTitle">Status do UltimateLab</div>
                         <div id="kpiNodes" class="status-kpi-val">-- / --</div>
-                        <div class="status-kpi-sub" data-i18n="status.kpiNodesSub">Nós ativos no Proxmox</div>
                     </div>
                 </div>
                 <div class="status-kpi-card">
                     <div class="status-kpi-icon"><i class="fas fa-cubes" aria-hidden="true"></i></div>
                     <div>
-                        <div class="status-kpi-label" data-i18n="status.kpiServicesTitle">Serviços em Execução</div>
+                        <div class="status-kpi-label" data-i18n="status.kpiServicesTitle">Serviços do UltimateLab</div>
                         <div id="kpiServices" class="status-kpi-val">-- / --</div>
-                        <div class="status-kpi-sub" data-i18n="status.kpiServicesSub">Containers & VMs em produção</div>
                     </div>
                 </div>
                 <div class="status-kpi-card">
                     <div class="status-kpi-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
                     <div>
-                        <div class="status-kpi-label" data-i18n="status.kpiAvailabilityTitle">Disponibilidade Global</div>
+                        <div class="status-kpi-label" data-i18n="status.kpiAvailabilityTitle">Índice de Disponibilidade Global</div>
                         <div id="kpiAvailability" class="status-kpi-val">--%</div>
-                        <div class="status-kpi-sub" data-i18n="status.kpiAvailabilitySub">Índice médio de disponibilidade</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 2. Two Columns: Infrastructure & External Providers -->
+        <!-- 2. External Cloud Providers (3x3 Grid) -->
         <section class="mb-5">
-            <div class="row g-4">
-                <!-- Local Infrastructure -->
-                <div class="col-lg-6">
-                    <div class="service-category h-100 p-4">
-                        <h3 class="h5 fw-bold mb-3 d-flex align-items-center gap-2">
-                            <i class="fas fa-microchip text-accent" aria-hidden="true"></i>
-                            <span data-i18n="status.infraTitle">Infraestrutura Local & Cluster</span>
-                        </h3>
-                        <div id="infraList" class="status-items-list">
-                            <div class="p-3 text-center text-secondary small">
-                                <i class="fas fa-spinner fa-spin me-2"></i> Carregando componentes...
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- External Providers -->
-                <div class="col-lg-6">
-                    <div class="service-category h-100 p-4">
-                        <h3 class="h5 fw-bold mb-3 d-flex align-items-center gap-2">
-                            <i class="fas fa-cloud text-accent" aria-hidden="true"></i>
-                            <span data-i18n="status.thirdPartyTitle">Provedores Externos & Cloud</span>
-                        </h3>
-                        <div id="thirdPartyList" class="status-items-list">
-                            <div class="p-3 text-center text-secondary small">
-                                <i class="fas fa-spinner fa-spin me-2"></i> Carregando provedores...
-                            </div>
-                        </div>
+            <div class="service-category p-4">
+                <h3 class="h5 fw-bold mb-3 d-flex align-items-center gap-2">
+                    <i class="fas fa-cloud text-accent" aria-hidden="true"></i>
+                    <span data-i18n="status.thirdPartyTitle">Provedores Externos & Cloud</span>
+                </h3>
+                <div id="thirdPartyList" class="status-providers-grid">
+                    <div class="p-3 text-center text-secondary small" style="grid-column: 1 / -1;">
+                        <i class="fas fa-spinner fa-spin me-2"></i> Carregando provedores...
                     </div>
                 </div>
             </div>
@@ -173,7 +150,7 @@
                         <span data-i18n="status.connTitle">Sua Conexão Atual</span>
                     </h2>
                     <p class="text-secondary small mb-0" data-i18n="status.connSub">
-                        Diagnóstico rápido do seu endereço público e provedor de acesso (via IPLeak.net).
+                        Diagnóstico rápido do seu endereço público e provedor de acesso.
                     </p>
                 </div>
                 <a href="https://ipleak.net/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary">
@@ -211,111 +188,114 @@
             <div id="checkResultBox" class="checker-result-card" style="display: none;"></div>
         </section>
 
-        <!-- 5. Kaspersky Cyberthreat Live Map (On-Demand Widget) -->
-        <section class="service-category p-4 mb-5" aria-labelledby="sec-cybermap">
-            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
-                <div>
-                    <h2 id="sec-cybermap" class="h5 fw-bold mb-1 d-flex align-items-center gap-2 text-body">
-                        <i class="fas fa-globe text-accent" aria-hidden="true"></i>
-                        <span data-i18n="status.cybermapTitle">Kaspersky Cyberthreat Real-Time Map</span>
-                    </h2>
-                    <p class="text-secondary small mb-0" data-i18n="status.cybermapSub">
-                        Visualização interativa em tempo real de incidentes e fluxos globais de ciberameaças (carregado sob demanda para economizar dados e GPU).
-                    </p>
-                </div>
-                <button type="button" id="btnToggleCybermap" class="btn-custom btn-outline-custom text-nowrap py-2 px-3" style="border-radius: 0.65rem; font-size: 0.88rem;">
-                    <i class="fas fa-play me-1" aria-hidden="true"></i> <span id="btnToggleCybermapText" data-i18n="status.cybermapLoadBtn">Carregar mapa ao vivo</span>
-                </button>
-            </div>
-            <div id="cybermapWidgetContainer" class="mt-3" style="display: none;"></div>
-        </section>
-
-        <!-- 6. Quick Tools & Global Threat Maps -->
-        <section class="mb-5" aria-labelledby="sec-threat-tools">
+        <!-- 5. Quick Tools (3x3 Grid) -->
+        <section class="mb-5" aria-labelledby="sec-quick-tools">
             <div class="mb-3">
                 <div class="sec-label mb-1">
-                    <i class="fas fa-toolbox text-accent me-1" aria-hidden="true"></i> <span data-i18n="status.toolsTitle">Ferramentas Rápidas & Mapas Globais de Ameaças</span>
+                    <i class="fas fa-toolbox text-accent me-1" aria-hidden="true"></i> <span data-i18n="status.toolsTitle">Ferramentas Rápidas</span>
                 </div>
                 <p class="text-secondary small mb-0" data-i18n="status.toolsSub">
-                    Serviços recomendados para medição de banda, diagnóstico de vazamento de DNS e mapas globais de ciberataques em tempo real.
+                    Serviços recomendados para medição de banda, diagnóstico de DNS, certificados SSL e disponibilidade global.
                 </p>
             </div>
 
             <div class="threat-tools-grid">
-                <!-- Speedtest -->
+                <!-- 1. Speedtest.net -->
                 <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
                     <div>
                         <div class="threat-tool-header">
-                            <span class="threat-tool-title"><i class="fas fa-gauge-high"></i> Speedtest.net</span>
-                            <i class="fas fa-arrow-up-right-from-square text-secondary small"></i>
+                            <span class="threat-tool-title"><i class="fas fa-gauge-high" aria-hidden="true"></i> Speedtest.net</span>
+                            <i class="fas fa-arrow-up-right-from-square text-secondary small" aria-hidden="true"></i>
                         </div>
                         <p class="threat-tool-desc" data-i18n="status.toolSpeedtestDesc">Teste de velocidade de conexão, latência e jitter de banda larga.</p>
                     </div>
                 </a>
 
-                <!-- DownDetector -->
+                <!-- 2. Cloudflare Speed Test -->
+                <a href="https://speed.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
+                    <div>
+                        <div class="threat-tool-header">
+                            <span class="threat-tool-title"><i class="fas fa-bolt" aria-hidden="true"></i> Cloudflare Speed</span>
+                            <i class="fas fa-arrow-up-right-from-square text-secondary small" aria-hidden="true"></i>
+                        </div>
+                        <p class="threat-tool-desc" data-i18n="status.toolCloudflareSpeedDesc">Medição detalhada de desempenho de rede, tempo de resposta e consistência.</p>
+                    </div>
+                </a>
+
+                <!-- 3. DownDetector -->
                 <a href="https://downdetector.com.br/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
                     <div>
                         <div class="threat-tool-header">
-                            <span class="threat-tool-title"><i class="fas fa-users-viewfinder"></i> DownDetector</span>
-                            <i class="fas fa-arrow-up-right-from-square text-secondary small"></i>
+                            <span class="threat-tool-title"><i class="fas fa-users-viewfinder" aria-hidden="true"></i> DownDetector</span>
+                            <i class="fas fa-arrow-up-right-from-square text-secondary small" aria-hidden="true"></i>
                         </div>
                         <p class="threat-tool-desc" data-i18n="status.toolDowndetectorDesc">Relatos de instabilidade e quedas em serviços e operadoras em tempo real.</p>
                     </div>
                 </a>
 
-                <!-- IPLeak.net -->
+                <!-- 4. IPLeak.net -->
                 <a href="https://ipleak.net/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
                     <div>
                         <div class="threat-tool-header">
-                            <span class="threat-tool-title"><i class="fas fa-user-shield"></i> IPLeak.net</span>
-                            <i class="fas fa-arrow-up-right-from-square text-secondary small"></i>
+                            <span class="threat-tool-title"><i class="fas fa-user-shield" aria-hidden="true"></i> IPLeak.net</span>
+                            <i class="fas fa-arrow-up-right-from-square text-secondary small" aria-hidden="true"></i>
                         </div>
                         <p class="threat-tool-desc" data-i18n="status.toolIpleakDesc">Detecção de vazamentos de DNS, WebRTC, IPv6 e informações de IP.</p>
                     </div>
                 </a>
 
-                <!-- urlscan.io -->
+                <!-- 5. urlscan.io -->
                 <a href="https://urlscan.io/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
                     <div>
                         <div class="threat-tool-header">
-                            <span class="threat-tool-title"><i class="fas fa-shield-virus"></i> urlscan.io</span>
-                            <i class="fas fa-arrow-up-right-from-square text-secondary small"></i>
+                            <span class="threat-tool-title"><i class="fas fa-shield-virus" aria-hidden="true"></i> urlscan.io</span>
+                            <i class="fas fa-arrow-up-right-from-square text-secondary small" aria-hidden="true"></i>
                         </div>
                         <p class="threat-tool-desc" data-i18n="status.toolUrlscanDesc">Scanner e analisador de segurança para websites e domínios suspeitos.</p>
                     </div>
                 </a>
 
-                <!-- Check Point ThreatCloud -->
-                <a href="https://threatmap.checkpoint.com/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
-                    <div>
-                        <div class="threat-tool-header">
-                            <span class="threat-tool-title"><i class="fas fa-map-location-dot"></i> Check Point ThreatCloud</span>
-                            <i class="fas fa-arrow-up-right-from-square text-secondary small"></i>
-                        </div>
-                        <p class="threat-tool-desc" data-i18n="status.toolCheckpointDesc">Visualização ao vivo de ataques cibernéticos e vetores de ameaças no globo.</p>
-                    </div>
-                </a>
-
-                <!-- Kaspersky Cybermap -->
-                <a href="https://cybermap.kaspersky.com/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
-                    <div>
-                        <div class="threat-tool-header">
-                            <span class="threat-tool-title"><i class="fas fa-globe"></i> Kaspersky Cybermap</span>
-                            <i class="fas fa-arrow-up-right-from-square text-secondary small"></i>
-                        </div>
-                        <p class="threat-tool-desc" data-i18n="status.toolKasperskyDesc">Mapa 3D interativo de incidentes de malware e ciberataques em tempo real.</p>
-                    </div>
-                </a>
-
-                <!-- IsItDownRightNow -->
+                <!-- 6. IsItDownRightNow -->
                 <a href="https://www.isitdownrightnow.com/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
                     <div>
                         <div class="threat-tool-header">
-                            <span class="threat-tool-title"><i class="fas fa-server"></i> IsItDownRightNow</span>
-                            <i class="fas fa-arrow-up-right-from-square text-secondary small"></i>
+                            <span class="threat-tool-title"><i class="fas fa-server" aria-hidden="true"></i> IsItDownRightNow</span>
+                            <i class="fas fa-arrow-up-right-from-square text-secondary small" aria-hidden="true"></i>
                         </div>
                         <p class="threat-tool-desc" data-i18n="status.toolIsitdownDesc">Verificação independente para saber se um site caiu só para você ou para todos.</p>
+                    </div>
+                </a>
+
+                <!-- 7. DNSChecker -->
+                <a href="https://dnschecker.org/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
+                    <div>
+                        <div class="threat-tool-header">
+                            <span class="threat-tool-title"><i class="fas fa-network-wired" aria-hidden="true"></i> DNSChecker</span>
+                            <i class="fas fa-arrow-up-right-from-square text-secondary small" aria-hidden="true"></i>
+                        </div>
+                        <p class="threat-tool-desc" data-i18n="status.toolDnscheckerDesc">Verificação global de propagação de DNS em múltiplos servidores pelo mundo.</p>
+                    </div>
+                </a>
+
+                <!-- 8. SSL Labs -->
+                <a href="https://www.ssllabs.com/ssltest/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
+                    <div>
+                        <div class="threat-tool-header">
+                            <span class="threat-tool-title"><i class="fas fa-lock" aria-hidden="true"></i> SSL Labs</span>
+                            <i class="fas fa-arrow-up-right-from-square text-secondary small" aria-hidden="true"></i>
+                        </div>
+                        <p class="threat-tool-desc" data-i18n="status.toolSsllabsDesc">Análise profunda de configuração, cifras e validade de certificados SSL/TLS.</p>
+                    </div>
+                </a>
+
+                <!-- 9. MXToolbox -->
+                <a href="https://mxtoolbox.com/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
+                    <div>
+                        <div class="threat-tool-header">
+                            <span class="threat-tool-title"><i class="fas fa-envelope-circle-check" aria-hidden="true"></i> MXToolbox</span>
+                            <i class="fas fa-arrow-up-right-from-square text-secondary small" aria-hidden="true"></i>
+                        </div>
+                        <p class="threat-tool-desc" data-i18n="status.toolMxtoolboxDesc">Diagnóstico abrangente de registros MX, DNS, SPF, DKIM e blacklist de e-mails.</p>
                     </div>
                 </a>
             </div>

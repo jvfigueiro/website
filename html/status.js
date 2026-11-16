@@ -12,7 +12,6 @@
     let lastCheckResult = null;
     let clientConnData = null;
     let clientConnFailed = false;
-    let isCybermapOpen = false;
 
     // Helper: translate key using SITE_I18N
     const t = (key) => (window.SITE_I18N ? window.SITE_I18N.t(key) : key);
@@ -28,7 +27,6 @@
     const kpiServices = document.getElementById('kpiServices');
     const kpiAvailability = document.getElementById('kpiAvailability');
 
-    const infraList = document.getElementById('infraList');
     const thirdPartyList = document.getElementById('thirdPartyList');
 
     const clientConnContent = document.getElementById('clientConnContent');
@@ -39,10 +37,6 @@
     const checkBtnText = document.getElementById('checkBtnText');
     const checkErrorBox = document.getElementById('checkErrorBox');
     const checkResultBox = document.getElementById('checkResultBox');
-
-    const btnToggleCybermap = document.getElementById('btnToggleCybermap');
-    const btnToggleCybermapText = document.getElementById('btnToggleCybermapText');
-    const cybermapWidgetContainer = document.getElementById('cybermapWidgetContainer');
 
     // Clean domain helper
     function extractCleanDomain(rawUrl) {
@@ -128,28 +122,15 @@
             }
         }
 
-        // 3. Infrastructure List (only cluster nodes, filtering out legacy "Serviços públicos" if present)
-        if (infraList && Array.isArray(data.infrastructure)) {
-            const filteredInfra = data.infrastructure.filter(
-                item => item && item.name && item.name.toLowerCase() !== 'serviços públicos'
-            );
-            infraList.innerHTML = filteredInfra.map(item => `
-                <div class="status-item-row">
-                    <span class="status-item-name">
-                        <i class="fas fa-server text-accent"></i> ${escapeHtml(item.name)}
-                    </span>
-                    ${getStatusBadgeHtml(item.status)}
-                </div>
-            `).join('');
-        }
-
-        // 4. Third-Party List (rename AWS Health -> Amazon Web Services, exclude Slack if present)
+        // 3. Third-Party List (rename AWS Health -> Amazon Web Services, Microsoft 365 -> Microsoft, exclude Slack if present)
         if (thirdPartyList && Array.isArray(data.third_party)) {
             const filteredThirdParty = data.third_party.filter(
                 item => item && item.name && item.name.toLowerCase() !== 'slack'
             );
             thirdPartyList.innerHTML = filteredThirdParty.map(item => {
-                const displayName = item.name === 'AWS Health' ? 'Amazon Web Services' : item.name;
+                let displayName = item.name;
+                if (displayName === 'AWS Health') displayName = 'Amazon Web Services';
+                if (displayName === 'Microsoft 365') displayName = 'Microsoft';
                 return `
                     <div class="status-item-row">
                         <a href="${escapeHtml(item.url || '#')}" target="_blank" rel="noopener noreferrer" class="status-item-name" title="Ver status oficial de ${escapeHtml(displayName)}">
@@ -503,46 +484,6 @@
         checkErrorBox.style.display = 'block';
     }
 
-    // Kaspersky Cyberthreat Live Map On-Demand Toggle
-    function updateCybermapButton() {
-        if (!btnToggleCybermap || !btnToggleCybermapText) return;
-        const icon = btnToggleCybermap.querySelector('i');
-        if (isCybermapOpen) {
-            btnToggleCybermapText.textContent = t('status.cybermapCloseBtn');
-            btnToggleCybermapText.setAttribute('data-i18n', 'status.cybermapCloseBtn');
-            if (icon) icon.className = 'fas fa-eye-slash me-1';
-        } else {
-            btnToggleCybermapText.textContent = t('status.cybermapLoadBtn');
-            btnToggleCybermapText.setAttribute('data-i18n', 'status.cybermapLoadBtn');
-            if (icon) icon.className = 'fas fa-play me-1';
-        }
-    }
-
-    if (btnToggleCybermap && cybermapWidgetContainer) {
-        btnToggleCybermap.addEventListener('click', () => {
-            isCybermapOpen = !isCybermapOpen;
-            if (isCybermapOpen) {
-                cybermapWidgetContainer.style.display = 'block';
-                cybermapWidgetContainer.innerHTML = `
-                    <iframe
-                        src="https://cybermap.kaspersky.com/en/widget/dynamic/dark"
-                        title="Kaspersky Cyberthreat Real-Time Map"
-                        width="100%"
-                        height="420"
-                        style="border: 1px solid var(--bs-border-color); border-radius: 0.75rem; display: block; background-color: #0f0718;"
-                        loading="lazy"
-                        allowfullscreen
-                        referrerpolicy="no-referrer">
-                    </iframe>
-                `;
-            } else {
-                cybermapWidgetContainer.style.display = 'none';
-                cybermapWidgetContainer.innerHTML = '';
-            }
-            updateCybermapButton();
-        });
-    }
-
     // Event Listeners
     if (checkForm) {
         checkForm.addEventListener('submit', handleCheckSubmit);
@@ -581,7 +522,6 @@
         if (lastCheckResult) {
             renderCheckResult(lastCheckResult.data, lastCheckResult.cleanDomain);
         }
-        updateCybermapButton();
     });
 
     // Initial Load (parallel & non-blocking)
