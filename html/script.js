@@ -48,6 +48,36 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
     }
 });
 
+// Language switcher (PT-BR / EN)
+const initLanguageSwitcher = () => {
+    const langBtns = document.querySelectorAll('.lang-btn');
+    if (!langBtns.length) return;
+
+    const savedLang = localStorage.getItem('site_lang') || 'pt';
+
+    const setLanguage = (lang) => {
+        document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'pt-br');
+        localStorage.setItem('site_lang', lang);
+        langBtns.forEach(btn => {
+            const isActive = btn.getAttribute('data-lang') === lang;
+            btn.classList.toggle('active', isActive);
+            btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+    };
+
+    setLanguage(savedLang);
+
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const lang = btn.getAttribute('data-lang');
+            setLanguage(lang);
+        });
+    });
+};
+
+initLanguageSwitcher();
+
 // Mobile navigation drawer toggle
 const navToggleBtn = document.getElementById('navToggleBtn');
 const navMenu = document.getElementById('navMenu');
