@@ -137,11 +137,13 @@
 
     // Render Error (Never claim operational without API response)
     function renderStatusError(err) {
-        console.warn('Status fetch error:', err);
+        if (err) {
+            console.warn('Status fetch error:', err);
+        }
         currentStatusData = null;
 
         if (globalStatusDot && globalStatusText) {
-            globalStatusDot.className = 'status-pulse-dot status-dot-unknown';
+            globalStatusDot.className = 'status-pulse-dot status-dot-warn';
             globalStatusText.textContent = t('status.badgeUnavailable');
         }
 
@@ -175,6 +177,18 @@
         }
     }
 
+    // fetch with timeout (relative paths only; backend is reached through the reverse proxy)
+    const API_TIMEOUT_MS = 10000;
+    async function apiFetch(path, options) {
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), API_TIMEOUT_MS);
+        try {
+            return await fetch(path, Object.assign({}, options, { signal: ctrl.signal }));
+        } finally {
+            clearTimeout(timer);
+        }
+    }
+
     // Fetch Status from Backend API
     async function fetchStatus() {
         if (isStatusLoading) return;
@@ -186,7 +200,7 @@
         }
 
         try {
-            const res = await fetch('/api/v1/status', {
+            const res = await apiFetch('/api/v1/status', {
                 method: 'GET',
                 headers: { 'Accept': 'application/json' },
                 cache: 'no-store'
@@ -197,6 +211,9 @@
             }
 
             const data = await res.json();
+            if (!data || typeof data !== 'object' || !data.global_status || !data.summary) {
+                throw new Error('Invalid payload');
+            }
             renderStatus(data);
         } catch (err) {
             renderStatusError(err);
@@ -318,7 +335,7 @@
         if (checkResultBox) checkResultBox.style.display = 'none';
 
         try {
-            const res = await fetch('/api/v1/check', {
+            const res = await apiFetch('/api/v1/check', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -396,6 +413,8 @@
     window.addEventListener('languagechange', () => {
         if (currentStatusData) {
             renderStatus(currentStatusData);
+        } else if (!isStatusLoading) {
+            renderStatusError();
         }
         if (lastCheckResult) {
             renderCheckResult(lastCheckResult.data, lastCheckResult.cleanDomain);
