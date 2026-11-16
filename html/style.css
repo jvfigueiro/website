@@ -41,6 +41,16 @@ body {
     z-index: 100;
 }
 
+.home-page .navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+    background: transparent;
+}
+
 /* Floating Glassmorphic Pill Container */
 .nav-pill-container {
     width: 100%;
@@ -824,10 +834,10 @@ body.page-loaded {
 .home-hero {
     position: relative;
     overflow: hidden;
-    min-height: calc(100svh - 76px);
+    min-height: 100svh;
     display: flex;
     align-items: center;
-    padding: 2.25rem 0 2.75rem;
+    padding: calc(88px + 2rem) 0 3.5rem;
 }
 
 .topology-bg {
@@ -1233,8 +1243,8 @@ body.page-loaded {
 
 @media (max-width: 767.98px) {
     .home-hero {
-        min-height: calc(100svh - 70px);
-        padding: 1.5rem 0 2rem;
+        min-height: 100svh;
+        padding: calc(76px + 1.25rem) 0 2rem;
     }
     .pillars-grid,
     .featured-projects-grid {

@@ -208,25 +208,6 @@ const initRandomFeaturedProjects = () => {
             detailsText: 'Ler a História Completa'
         },
         {
-            id: 'optios',
-            title: 'OptiOS',
-            badge: '<i class="fas fa-flask me-1"></i> Em desenvolvimento',
-            desc: 'Sistema operacional experimental escrito do zero em Rust (x86-64, UEFI), desenvolvido com auxílio de agentes de IA para estudar os fundamentos de sistemas modernos: kernel com gerenciamento de memória, VFS, leitura de GPT/FAT32 e userland com shell próprio.',
-            visualType: 'typo',
-            typoHeaderLeft: '<i class="fas fa-microchip me-1"></i> ARQUITETURA DO SISTEMA',
-            typoHeaderRight: 'x86-64 · UEFI',
-            typoSteps: ['UEFI Boot', 'Kernel & Memória', 'VFS · GPT/FAT32', 'Userland Shell'],
-            typoFooter: 'Escrito do zero em Rust · Estudo de fundamentos de sistemas operacionais',
-            tags: [
-                { icon: 'fas fa-gears', text: 'Rust' },
-                { icon: 'fas fa-microchip', text: 'x86-64 & UEFI' },
-                { icon: 'fas fa-memory', text: 'Kernel & VFS' }
-            ],
-            githubUrl: null,
-            detailsUrl: null,
-            detailsText: null
-        },
-        {
             id: 'arduinodht',
             title: 'Arduino DHT para Home Assistant',
             badge: '<i class="fas fa-temperature-high me-1"></i> Telemetria de Rack',
@@ -592,39 +573,39 @@ function initTopologyConstellation(prefersReducedMotion) {
             // Structural constellation vertices framing margins and bridging across the upper/mid area
             const rawAnchors = [
                 // Left wing constellation (connecting left sphere to bottom-left chip hub and top-left)
-                [0.035, 0.43], // 0: Left sphere center
-                [0.080, 0.46], // 1: Right of left sphere
-                [0.020, 0.80], // 2: Chip hub
-                [0.032, 0.96], // 3: Bottom-left corner
-                [0.095, 0.14], // 4: Top-left bright node
-                [0.135, 0.03], // 5: Top-left ridge
-                [0.215, 0.05], // 6: Top-left inner ridge
-                [0.195, 0.24], // 7: Left upper inner node
-                // Top-center & central subtle constellation bridge
-                [0.320, 0.06], // 8: Top mid-left
-                [0.380, 0.18], // 9: Upper center-left
-                [0.500, 0.08], // 10: Center-top apex
-                [0.580, 0.22], // 11: Upper center-right
-                [0.630, 0.09], // 12: Top mid-right
+                [0.035, 0.43],  // 0: Left sphere center
+                [0.080, 0.46],  // 1: Right of left sphere
+                [0.020, 0.80],  // 2: Chip hub
+                [0.032, 0.96],  // 3: Bottom-left corner
+                [0.095, 0.14],  // 4: Top-left bright node
+                [0.135, 0.025], // 5: Top-left ridge (behind navbar)
+                [0.215, 0.045], // 6: Top-left inner ridge
+                [0.195, 0.22],  // 7: Left upper inner node
+                // Top-center & central subtle constellation bridge (passing directly behind floating navbar)
+                [0.310, 0.035], // 8: Top mid-left behind navbar
+                [0.380, 0.16],  // 9: Upper center-left
+                [0.500, 0.030], // 10: Center-top apex behind navbar
+                [0.590, 0.18],  // 11: Upper center-right
+                [0.660, 0.038], // 12: Top mid-right behind navbar
                 // Mid-screen & lower-central ambient nodes
-                [0.460, 0.42], // 13: Mid-center soft hub
-                [0.550, 0.58], // 14: Mid-lower center
-                [0.380, 0.72], // 15: Lower center-left
-                [0.620, 0.76], // 16: Lower center-right
+                [0.460, 0.42],  // 13: Mid-center soft hub
+                [0.550, 0.58],  // 14: Mid-lower center
+                [0.380, 0.72],  // 15: Lower center-left
+                [0.620, 0.76],  // 16: Lower center-right
                 // Top-right wing constellation (around monitor hub & top-right sphere)
-                [0.710, 0.15], // 17
-                [0.790, 0.16], // 18: Monitor hub
-                [0.905, 0.12], // 19: Top-right sphere center
-                [0.855, 0.27], // 20
-                [0.885, 0.24], // 21
-                [0.900, 0.22], // 22
+                [0.720, 0.12],  // 17
+                [0.790, 0.14],  // 18: Monitor hub
+                [0.905, 0.10],  // 19: Top-right sphere center
+                [0.855, 0.25],  // 20
+                [0.885, 0.22],  // 21
+                [0.900, 0.20],  // 22
                 // Right wing constellation (around storage hub and cloud hub)
-                [0.965, 0.43], // 23: Storage hub
-                [0.870, 0.59], // 24: Bright mid-right relay
-                [0.955, 0.65], // 25
-                [0.885, 0.89], // 26
-                [0.935, 0.80], // 27: Cloud hub
-                [0.962, 0.49]  // 28
+                [0.965, 0.43],  // 23: Storage hub
+                [0.870, 0.59],  // 24: Bright mid-right relay
+                [0.955, 0.65],  // 25
+                [0.885, 0.89],  // 26
+                [0.935, 0.80],  // 27: Cloud hub
+                [0.962, 0.49]   // 28
             ];
 
             structuralNodes = rawAnchors.map(([nx, ny], idx) => ({
@@ -634,17 +615,17 @@ function initTopologyConstellation(prefersReducedMotion) {
                 y: ny * height,
                 phase: idx * 0.9,
                 amp: [0, 2, 18, 19, 23, 27].includes(idx) ? 0 : 4.5,
-                highlight: [1, 4, 7, 9, 10, 11, 13, 14, 17, 20, 24, 25].includes(idx)
+                highlight: [1, 4, 7, 8, 9, 10, 11, 12, 13, 14, 17, 20, 24, 25].includes(idx)
             }));
 
             structuralEdges = [
                 // Left wing
                 [0, 1], [1, 2], [0, 2], [2, 3], [1, 3],
                 [4, 5], [5, 6], [6, 7], [4, 7], [0, 4],
-                // Central constellation network (connecting wings across top & center)
-                [6, 8], [8, 9], [8, 10], [9, 10], [10, 11], [10, 12], [11, 12],
+                // Central constellation network (connecting wings across top behind navbar & center)
+                [5, 8], [6, 8], [8, 9], [8, 10], [9, 10], [10, 11], [10, 12], [11, 12], [12, 17],
                 [7, 9], [9, 13], [13, 11], [13, 14], [14, 15], [14, 16],
-                [11, 17], [12, 17], [14, 24], [16, 24], [15, 1],
+                [11, 17], [12, 18], [14, 24], [16, 24], [15, 1],
                 // Top-right wing
                 [17, 18], [18, 19], [18, 20], [20, 21], [21, 22], [22, 19], [17, 20],
                 // Right wing
@@ -652,22 +633,23 @@ function initTopologyConstellation(prefersReducedMotion) {
             ];
         } else {
             // Mobile: streamlined peripheral constellation (top-right sphere + 2 hubs)
-            const sRight = createGeodesicSphere(width * 0.88, height * 0.11, 30, 16);
+            const sRight = createGeodesicSphere(width * 0.88, height * 0.09, 30, 16);
             spheres.push(sRight);
 
             hubs = [
-                { id: 'monitor', x: width * 0.72, y: height * 0.13, r: 16, type: 'monitor' },
+                { id: 'monitor', x: width * 0.72, y: height * 0.11, r: 16, type: 'monitor' },
                 { id: 'storage', x: width * 0.92, y: height * 0.84, r: 16, type: 'database' }
             ];
 
             const rawAnchors = [
-                [0.10, 0.06],
-                [0.28, 0.03],
-                [0.48, 0.18], // Central mobile bridge
-                [0.72, 0.13],
-                [0.88, 0.11],
-                [0.84, 0.24],
-                [0.55, 0.48], // Central mid mobile node
+                [0.08, 0.03],
+                [0.26, 0.025],
+                [0.48, 0.035], // Central mobile bridge behind navbar
+                [0.52, 0.16],  // Upper center
+                [0.72, 0.11],
+                [0.88, 0.09],
+                [0.84, 0.22],
+                [0.55, 0.48],  // Central mid mobile node
                 [0.94, 0.56],
                 [0.85, 0.72],
                 [0.92, 0.84],
