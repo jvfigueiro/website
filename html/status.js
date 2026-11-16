@@ -10,13 +10,15 @@
     let isStatusLoading = false;
     let isChecking = false;
     let lastCheckResult = null;
+    let clientConnData = null;
+    let clientConnFailed = false;
+    let isCybermapOpen = false;
 
     // Helper: translate key using SITE_I18N
     const t = (key) => (window.SITE_I18N ? window.SITE_I18N.t(key) : key);
     const getLang = () => (window.SITE_I18N ? window.SITE_I18N.currentLang : (localStorage.getItem('site_lang') || 'pt'));
 
     // DOM Elements
-    const globalBanner = document.getElementById('globalStatusBanner');
     const globalStatusText = document.getElementById('globalStatusText');
     const globalStatusDot = document.getElementById('globalStatusDot');
     const statusUpdatedAt = document.getElementById('statusUpdatedAt');
@@ -29,12 +31,18 @@
     const infraList = document.getElementById('infraList');
     const thirdPartyList = document.getElementById('thirdPartyList');
 
+    const clientConnContent = document.getElementById('clientConnContent');
+
     const checkForm = document.getElementById('checkerForm');
     const checkInput = document.getElementById('checkUrlInput');
     const checkBtn = document.getElementById('checkUrlBtn');
     const checkBtnText = document.getElementById('checkBtnText');
     const checkErrorBox = document.getElementById('checkErrorBox');
     const checkResultBox = document.getElementById('checkResultBox');
+
+    const btnToggleCybermap = document.getElementById('btnToggleCybermap');
+    const btnToggleCybermapText = document.getElementById('btnToggleCybermapText');
+    const cybermapWidgetContainer = document.getElementById('cybermapWidgetContainer');
 
     // Clean domain helper
     function extractCleanDomain(rawUrl) {
@@ -44,6 +52,17 @@
         clean = clean.split('/')[0];
         clean = clean.split(':')[0]; // remove port if present
         return clean;
+    }
+
+    // Escape HTML helper for safe rendering
+    function escapeHtml(str) {
+        if (str == null) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
     }
 
     // Helper: Badge generator
@@ -58,7 +77,7 @@
         if (s === 'offline' || s === 'down' || s === 'outage') {
             return `<span class="status-badge-pill status-badge-err"><i class="fas fa-circle-xmark"></i> ${t('status.offlineBadge')}</span>`;
         }
-        return `<span class="status-badge-pill status-badge-unknown"><i class="fas fa-circle-question"></i> ${statusStr || 'N/A'}</span>`;
+        return `<span class="status-badge-pill status-badge-unknown"><i class="fas fa-circle-question"></i> ${escapeHtml(statusStr || 'N/A')}</span>`;
     }
 
     // Render Status Data
@@ -109,29 +128,38 @@
             }
         }
 
-        // 3. Infrastructure List
+        // 3. Infrastructure List (only cluster nodes, filtering out legacy "Serviços públicos" if present)
         if (infraList && Array.isArray(data.infrastructure)) {
-            infraList.innerHTML = data.infrastructure.map(item => `
+            const filteredInfra = data.infrastructure.filter(
+                item => item && item.name && item.name.toLowerCase() !== 'serviços públicos'
+            );
+            infraList.innerHTML = filteredInfra.map(item => `
                 <div class="status-item-row">
                     <span class="status-item-name">
-                        <i class="fas fa-server text-accent"></i> ${item.name}
+                        <i class="fas fa-server text-accent"></i> ${escapeHtml(item.name)}
                     </span>
                     ${getStatusBadgeHtml(item.status)}
                 </div>
             `).join('');
         }
 
-        // 4. Third-Party List
+        // 4. Third-Party List (rename AWS Health -> Amazon Web Services, exclude Slack if present)
         if (thirdPartyList && Array.isArray(data.third_party)) {
-            thirdPartyList.innerHTML = data.third_party.map(item => `
-                <div class="status-item-row">
-                    <a href="${item.url || '#'}" target="_blank" rel="noopener noreferrer" class="status-item-name" title="Ver status oficial de ${item.name}">
-                        <i class="fas fa-cloud text-accent"></i> ${item.name}
-                        <i class="fas fa-arrow-up-right-from-square text-secondary" style="font-size: 0.72rem;"></i>
-                    </a>
-                    ${getStatusBadgeHtml(item.status)}
-                </div>
-            `).join('');
+            const filteredThirdParty = data.third_party.filter(
+                item => item && item.name && item.name.toLowerCase() !== 'slack'
+            );
+            thirdPartyList.innerHTML = filteredThirdParty.map(item => {
+                const displayName = item.name === 'AWS Health' ? 'Amazon Web Services' : item.name;
+                return `
+                    <div class="status-item-row">
+                        <a href="${escapeHtml(item.url || '#')}" target="_blank" rel="noopener noreferrer" class="status-item-name" title="Ver status oficial de ${escapeHtml(displayName)}">
+                            <i class="fas fa-cloud text-accent"></i> ${escapeHtml(displayName)}
+                            <i class="fas fa-arrow-up-right-from-square text-secondary" style="font-size: 0.72rem;"></i>
+                        </a>
+                        ${getStatusBadgeHtml(item.status)}
+                    </div>
+                `;
+            }).join('');
         }
     }
 
@@ -177,11 +205,11 @@
         }
     }
 
-    // fetch with timeout (relative paths only; backend is reached through the reverse proxy)
+    // fetch with timeout (relative paths for backend API; custom timeout supported)
     const API_TIMEOUT_MS = 10000;
-    async function apiFetch(path, options) {
+    async function apiFetch(path, options, timeoutMs) {
         const ctrl = new AbortController();
-        const timer = setTimeout(() => ctrl.abort(), API_TIMEOUT_MS);
+        const timer = setTimeout(() => ctrl.abort(), timeoutMs || API_TIMEOUT_MS);
         try {
             return await fetch(path, Object.assign({}, options, { signal: ctrl.signal }));
         } finally {
@@ -226,6 +254,81 @@
         }
     }
 
+    // Client-Side Connection Diagnostics (IPLeak.net JSON API)
+    function renderClientConnection() {
+        if (!clientConnContent) return;
+
+        if (clientConnFailed || !clientConnData) {
+            clientConnContent.innerHTML = `
+                <div class="text-secondary small d-flex align-items-center gap-2">
+                    <i class="fas fa-circle-info text-accent" aria-hidden="true"></i>
+                    <span>${t('status.connUnavailable')}</span>
+                </div>
+            `;
+            return;
+        }
+
+        const ip = escapeHtml(clientConnData.ip || 'N/A');
+        const isp = escapeHtml(clientConnData.isp_name || 'N/A');
+
+        const locParts = [];
+        if (clientConnData.city_name) locParts.push(clientConnData.city_name);
+        if (clientConnData.region_name) locParts.push(clientConnData.region_name);
+        let locStr = locParts.join(', ');
+        if (clientConnData.country_name) {
+            locStr = locStr ? `${locStr} - ${clientConnData.country_name}` : clientConnData.country_name;
+        }
+        const location = escapeHtml(locStr || 'N/A');
+
+        clientConnContent.innerHTML = `
+            <div class="checker-metrics-grid my-0">
+                <div class="checker-metric-box">
+                    <div class="checker-metric-label">${t('status.connIp')}</div>
+                    <div class="checker-metric-val text-accent">${ip}</div>
+                </div>
+                <div class="checker-metric-box">
+                    <div class="checker-metric-label">${t('status.connIsp')}</div>
+                    <div class="checker-metric-val" style="font-family: inherit; font-size: 0.9rem;">${isp}</div>
+                </div>
+                <div class="checker-metric-box">
+                    <div class="checker-metric-label">${t('status.connLocation')}</div>
+                    <div class="checker-metric-val" style="font-family: inherit; font-size: 0.9rem;">${location}</div>
+                </div>
+            </div>
+        `;
+    }
+
+    async function fetchClientConnection() {
+        if (!clientConnContent) return;
+        try {
+            const res = await apiFetch('https://ipleak.net/json/', {
+                method: 'GET',
+                headers: { 'Accept': 'application/json' }
+            }, 6000);
+
+            if (!res.ok) {
+                clientConnFailed = true;
+                renderClientConnection();
+                return;
+            }
+
+            const data = await res.json();
+            if (!data || !data.ip) {
+                clientConnFailed = true;
+                renderClientConnection();
+                return;
+            }
+
+            clientConnData = data;
+            clientConnFailed = false;
+            renderClientConnection();
+        } catch (_) {
+            // Silently handle adblocker or network blocks without console errors
+            clientConnFailed = true;
+            renderClientConnection();
+        }
+    }
+
     // Render Checker Result
     function renderCheckResult(data, cleanDomain) {
         lastCheckResult = { data, cleanDomain };
@@ -234,7 +337,7 @@
         checkResultBox.style.display = 'block';
 
         const isOnline = Boolean(data.reachable);
-        const classificationText = data.classification || (isOnline ? 'Online' : 'Offline');
+        const classificationText = escapeHtml(data.classification || (isOnline ? 'Online' : 'Offline'));
         const badgeClass = isOnline ? 'status-badge-ok' : 'status-badge-err';
         const badgeIcon = isOnline ? 'fa-circle-check' : 'fa-circle-xmark';
 
@@ -247,20 +350,34 @@
             : `<span class="text-danger"><i class="fas fa-circle-xmark me-1"></i> ${getLang() === 'en' ? 'Failed' : 'Falha'}</span>`;
 
         const httpHtml = data.http_status
-            ? `<span class="text-accent fw-bold">${data.http_status}</span>`
+            ? `<span class="text-accent fw-bold">${escapeHtml(data.http_status)}</span>`
             : `<span class="text-secondary">N/A</span>`;
 
         let tlsHtml = '';
         if (data.tls_valid) {
-            const expiryStr = data.tls_expiry ? ` (${t('status.expiresOn')} ${data.tls_expiry})` : '';
+            const expiryStr = data.tls_expiry ? ` (${t('status.expiresOn')} ${escapeHtml(data.tls_expiry)})` : '';
             tlsHtml = `<span class="text-success"><i class="fas fa-lock me-1"></i> ${t('status.validTls')}${expiryStr}</span>`;
         } else {
             tlsHtml = `<span class="text-warning"><i class="fas fa-lock-open me-1"></i> ${t('status.invalidTls')}</span>`;
         }
 
         const latencyHtml = data.latency_ms != null
-            ? `<span>${data.latency_ms} ms</span>`
+            ? `<span>${escapeHtml(data.latency_ms)} ms</span>`
             : `<span class="text-secondary">N/A</span>`;
+
+        const ispBoxHtml = data.isp ? `
+            <div class="checker-metric-box">
+                <div class="checker-metric-label">${t('status.lblIsp')}</div>
+                <div class="checker-metric-val" style="font-family: inherit; font-size: 0.88rem;">${escapeHtml(data.isp)}</div>
+            </div>
+        ` : '';
+
+        const countryBoxHtml = data.country ? `
+            <div class="checker-metric-box">
+                <div class="checker-metric-label">${t('status.lblCountry')}</div>
+                <div class="checker-metric-val" style="font-family: inherit; font-size: 0.88rem;">${escapeHtml(data.country)}</div>
+            </div>
+        ` : '';
 
         const externalUrl = `https://www.isitdownrightnow.com/${encodeURIComponent(cleanDomain)}.html`;
 
@@ -271,8 +388,8 @@
                         <i class="fas fa-globe"></i>
                     </span>
                     <div>
-                        <strong class="fs-6 text-body">${data.target || cleanDomain}</strong>
-                        <div class="text-secondary small font-monospace">${cleanDomain}</div>
+                        <strong class="fs-6 text-body">${escapeHtml(data.target || cleanDomain)}</strong>
+                        <div class="text-secondary small font-monospace">${escapeHtml(cleanDomain)}</div>
                     </div>
                 </div>
                 <span class="status-badge-pill ${badgeClass}">
@@ -301,6 +418,8 @@
                     <div class="checker-metric-label">${t('status.lblLatency')}</div>
                     <div class="checker-metric-val">${latencyHtml}</div>
                 </div>
+                ${ispBoxHtml}
+                ${countryBoxHtml}
             </div>
 
             <div class="pt-2 text-end">
@@ -352,7 +471,7 @@
             let resultData = null;
             try {
                 resultData = await res.json();
-            } catch (jsonErr) {
+            } catch (_) {
                 // non-JSON response
             }
 
@@ -369,7 +488,7 @@
             }
 
             renderCheckResult(resultData || {}, cleanDomain);
-        } catch (netErr) {
+        } catch (_) {
             showCheckError(t('status.errFetchFailed'));
         } finally {
             isChecking = false;
@@ -384,6 +503,46 @@
         checkErrorBox.style.display = 'block';
     }
 
+    // Kaspersky Cyberthreat Live Map On-Demand Toggle
+    function updateCybermapButton() {
+        if (!btnToggleCybermap || !btnToggleCybermapText) return;
+        const icon = btnToggleCybermap.querySelector('i');
+        if (isCybermapOpen) {
+            btnToggleCybermapText.textContent = t('status.cybermapCloseBtn');
+            btnToggleCybermapText.setAttribute('data-i18n', 'status.cybermapCloseBtn');
+            if (icon) icon.className = 'fas fa-eye-slash me-1';
+        } else {
+            btnToggleCybermapText.textContent = t('status.cybermapLoadBtn');
+            btnToggleCybermapText.setAttribute('data-i18n', 'status.cybermapLoadBtn');
+            if (icon) icon.className = 'fas fa-play me-1';
+        }
+    }
+
+    if (btnToggleCybermap && cybermapWidgetContainer) {
+        btnToggleCybermap.addEventListener('click', () => {
+            isCybermapOpen = !isCybermapOpen;
+            if (isCybermapOpen) {
+                cybermapWidgetContainer.style.display = 'block';
+                cybermapWidgetContainer.innerHTML = `
+                    <iframe
+                        src="https://cybermap.kaspersky.com/en/widget/dynamic/dark"
+                        title="Kaspersky Cyberthreat Real-Time Map"
+                        width="100%"
+                        height="420"
+                        style="border: 1px solid var(--bs-border-color); border-radius: 0.75rem; display: block; background-color: #0f0718;"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer">
+                    </iframe>
+                `;
+            } else {
+                cybermapWidgetContainer.style.display = 'none';
+                cybermapWidgetContainer.innerHTML = '';
+            }
+            updateCybermapButton();
+        });
+    }
+
     // Event Listeners
     if (checkForm) {
         checkForm.addEventListener('submit', handleCheckSubmit);
@@ -396,7 +555,7 @@
     }
 
     // Auto-refresh every 45s while tab is visible
-    let refreshInterval = setInterval(() => {
+    setInterval(() => {
         if (!document.hidden) {
             fetchStatus();
         }
@@ -416,12 +575,17 @@
         } else if (!isStatusLoading) {
             renderStatusError();
         }
+        if (clientConnData || clientConnFailed) {
+            renderClientConnection();
+        }
         if (lastCheckResult) {
             renderCheckResult(lastCheckResult.data, lastCheckResult.cleanDomain);
         }
+        updateCybermapButton();
     });
 
-    // Initial Load
+    // Initial Load (parallel & non-blocking)
     fetchStatus();
+    fetchClientConnection();
 
 })();

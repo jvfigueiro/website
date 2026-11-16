@@ -164,7 +164,30 @@
             </div>
         </section>
 
-        <!-- 3. Site Availability Checker (Endpoint 2) -->
+        <!-- 3. Client Connection Diagnostic (IPLeak.net Client-Side) -->
+        <section id="clientConnCard" class="service-category p-4 mb-4" aria-labelledby="sec-client-conn">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+                <div>
+                    <h2 id="sec-client-conn" class="h5 fw-bold mb-1 d-flex align-items-center gap-2 text-body">
+                        <i class="fas fa-network-wired text-accent" aria-hidden="true"></i>
+                        <span data-i18n="status.connTitle">Sua Conexão Atual</span>
+                    </h2>
+                    <p class="text-secondary small mb-0" data-i18n="status.connSub">
+                        Diagnóstico rápido do seu endereço público e provedor de acesso (via IPLeak.net).
+                    </p>
+                </div>
+                <a href="https://ipleak.net/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary">
+                    <i class="fas fa-user-shield me-1" aria-hidden="true"></i> IPLeak.net <i class="fas fa-arrow-up-right-from-square ms-1 small" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div id="clientConnContent">
+                <div class="text-secondary small">
+                    <i class="fas fa-spinner fa-spin me-2" aria-hidden="true"></i> <span data-i18n="status.connLoading">Identificando conexão...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Site Availability Checker (Endpoint 2) -->
         <section class="service-category p-4 mb-5" aria-labelledby="sec-checker">
             <div class="mb-3">
                 <h2 id="sec-checker" class="h5 fw-bold mb-1 d-flex align-items-center gap-2 text-body">
@@ -188,7 +211,26 @@
             <div id="checkResultBox" class="checker-result-card" style="display: none;"></div>
         </section>
 
-        <!-- 4. Quick Tools & Global Threat Maps -->
+        <!-- 5. Kaspersky Cyberthreat Live Map (On-Demand Widget) -->
+        <section class="service-category p-4 mb-5" aria-labelledby="sec-cybermap">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                <div>
+                    <h2 id="sec-cybermap" class="h5 fw-bold mb-1 d-flex align-items-center gap-2 text-body">
+                        <i class="fas fa-globe text-accent" aria-hidden="true"></i>
+                        <span data-i18n="status.cybermapTitle">Kaspersky Cyberthreat Real-Time Map</span>
+                    </h2>
+                    <p class="text-secondary small mb-0" data-i18n="status.cybermapSub">
+                        Visualização interativa em tempo real de incidentes e fluxos globais de ciberameaças (carregado sob demanda para economizar dados e GPU).
+                    </p>
+                </div>
+                <button type="button" id="btnToggleCybermap" class="btn-custom btn-outline-custom text-nowrap py-2 px-3" style="border-radius: 0.65rem; font-size: 0.88rem;">
+                    <i class="fas fa-play me-1" aria-hidden="true"></i> <span id="btnToggleCybermapText" data-i18n="status.cybermapLoadBtn">Carregar mapa ao vivo</span>
+                </button>
+            </div>
+            <div id="cybermapWidgetContainer" class="mt-3" style="display: none;"></div>
+        </section>
+
+        <!-- 6. Quick Tools & Global Threat Maps -->
         <section class="mb-5" aria-labelledby="sec-threat-tools">
             <div class="mb-3">
                 <div class="sec-label mb-1">
