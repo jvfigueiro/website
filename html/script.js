@@ -268,7 +268,7 @@ const initRandomFeaturedProjects = () => {
             },
             desc: {
                 pt: 'Recepção de canais digitais abertos (FTA) transmitidos por satélites geoestacionários de diversos países com uma mini antena parabólica adaptada para operar alimentada pela tomada 12V do carro.',
-                en: 'Reception of free-to-air (FTA) digital satellite channels from geostationary orbital satellites using a portable dish powered by the car's 12V outlet.'
+                en: 'Reception of free-to-air (FTA) digital satellite channels from geostationary orbital satellites using a portable dish powered by the car\'s 12V outlet.'
             },
             visualType: 'img',
             imgSrc: '/images/sat-1.webp',

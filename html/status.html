@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="status.pageTitle">Status de Serviços e Infraestrutura | João Figueiró</title>
+    <link rel="icon" href="/images/favicon.webp" type="image/webp">
+    <meta name="description" content="Status em tempo real dos nós de virtualização, serviços públicos e conectividade de infraestrutura do cluster de João Figueiró.">
+
+    <script>
+        (function() {
+            try {
+                var saved = localStorage.getItem('theme');
+                var sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-bs-theme', saved || sys);
+                var savedLang = localStorage.getItem('site_lang') || 'pt';
+                document.documentElement.setAttribute('lang', savedLang === 'en' ? 'en' : 'pt-br');
+            } catch (e) {}
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Global Navigation Bar -->
+    <nav class="navbar pt-4 pb-2" aria-label="Navegação principal">
+        <div class="container px-3" style="max-width: 1140px;">
+            <div class="nav-pill-container">
+                <a class="navbar-brand m-0" href="/">João Figueiró<span class="text-accent">.</span></a>
+
+                <div id="navMenu" class="nav-menu">
+                    <a class="nav-link" href="/" data-i18n="nav.home">Início</a>
+                    <a class="nav-link" href="/projects" data-i18n="nav.projects">Projetos</a>
+                    <!-- <a class="nav-link" href="/services">Serviços</a> -->
+                    <a class="nav-link" href="/ultimatelab" data-i18n="nav.lab">Laboratório</a>
+                    <a class="nav-link" href="/aboutme" data-i18n="nav.about">Sobre</a>
+                </div>
+
+                <div class="nav-actions">
+                    <!-- Language switcher (PT / EN) -->
+                    <div class="lang-switcher" role="group" aria-label="Seleção de idioma">
+                        <button type="button" class="lang-btn active" data-lang="pt" aria-pressed="true">PT</button>
+                        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+                    </div>
+
+                    <button id="themeToggleBtn" class="theme-toggle m-0 border-0 bg-transparent" aria-label="Alternar Tema">
+                        <i class="fas fa-circle-half-stroke" aria-hidden="true"></i>
+                    </button>
+                    <button id="navToggleBtn" class="mobile-nav-toggle m-0 border-0 bg-transparent" aria-label="Abrir Menu" aria-expanded="false">
+                        <i class="fas fa-bars" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container flex-grow-1 py-4 mt-3" style="max-width: 1140px;">
+
+        <!-- 1. Header Section -->
+        <section class="mb-4">
+            <div class="sec-label mb-2">
+                <i class="fas fa-signal text-accent me-1" aria-hidden="true"></i> <span data-i18n="status.secLabel">Monitoramento em Tempo Real</span>
+            </div>
+            <h1 class="mb-2" style="font-weight: 800; letter-spacing: -1.5px;" data-i18n-html="status.heading">
+                Status de Serviços &amp; Infraestrutura<span class="text-accent">.</span>
+            </h1>
+            <p class="text-secondary fs-6 mb-4" style="max-width: 760px;" data-i18n="status.subtitle">
+                Disponibilidade dos nós do cluster, serviços self-hosted em produção e conectividade de provedores externos da nuvem.
+            </p>
+
+            <!-- Global Status Banner -->
+            <div id="globalStatusBanner" class="status-global-banner mb-4">
+                <div class="d-flex align-items-center gap-3">
+                    <span id="globalStatusDot" class="status-pulse-dot status-dot-unknown"></span>
+                    <div>
+                        <h2 id="globalStatusText" class="h5 fw-bold mb-0 text-body" data-i18n="status.badgeUnavailable">Carregando telemetria...</h2>
+                        <div class="text-secondary small mt-1">
+                            <span data-i18n="status.autoRefreshNote">Atualização automática a cada 45s</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-3 text-secondary small">
+                    <div>
+                        <span data-i18n="status.lastUpdated">Última atualização</span>: <strong id="statusUpdatedAt" class="text-body font-monospace">--:--:--</strong>
+                    </div>
+                    <button id="btnRefreshStatus" type="button" class="btn btn-sm btn-outline-secondary" title="Atualizar agora" aria-label="Atualizar agora">
+                        <i class="fas fa-rotate" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3 KPI Summary Cards -->
+            <div class="status-kpi-grid">
+                <div class="status-kpi-card">
+                    <div class="status-kpi-icon"><i class="fas fa-server" aria-hidden="true"></i></div>
+                    <div>
+                        <div class="status-kpi-label" data-i18n="status.kpiNodesTitle">Nós do Cluster</div>
+                        <div id="kpiNodes" class="status-kpi-val">-- / --</div>
+                        <div class="status-kpi-sub" data-i18n="status.kpiNodesSub">Nós ativos no Proxmox</div>
+                    </div>
+                </div>
+                <div class="status-kpi-card">
+                    <div class="status-kpi-icon"><i class="fas fa-cubes" aria-hidden="true"></i></div>
+                    <div>
+                        <div class="status-kpi-label" data-i18n="status.kpiServicesTitle">Serviços em Execução</div>
+                        <div id="kpiServices" class="status-kpi-val">-- / --</div>
+                        <div class="status-kpi-sub" data-i18n="status.kpiServicesSub">Containers &amp; VMs em produção</div>
+                    </div>
+                </div>
+                <div class="status-kpi-card">
+                    <div class="status-kpi-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+                    <div>
+                        <div class="status-kpi-label" data-i18n="status.kpiAvailabilityTitle">Disponibilidade Global</div>
+                        <div id="kpiAvailability" class="status-kpi-val">--%</div>
+                        <div class="status-kpi-sub" data-i18n="status.kpiAvailabilitySub">Índice médio de disponibilidade</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Two Columns: Infrastructure & External Providers -->
+        <section class="mb-5">
+            <div class="row g-4">
+                <!-- Local Infrastructure -->
+                <div class="col-lg-6">
+                    <div class="service-category h-100 p-4">
+                        <h3 class="h5 fw-bold mb-3 d-flex align-items-center gap-2">
+                            <i class="fas fa-microchip text-accent" aria-hidden="true"></i>
+                            <span data-i18n="status.infraTitle">Infraestrutura Local &amp; Cluster</span>
+                        </h3>
+                        <div id="infraList" class="status-items-list">
+                            <div class="p-3 text-center text-secondary small">
+                                <i class="fas fa-spinner fa-spin me-2"></i> Carregando componentes...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- External Providers -->
+                <div class="col-lg-6">
+                    <div class="service-category h-100 p-4">
+                        <h3 class="h5 fw-bold mb-3 d-flex align-items-center gap-2">
+                            <i class="fas fa-cloud text-accent" aria-hidden="true"></i>
+                            <span data-i18n="status.thirdPartyTitle">Provedores Externos &amp; Cloud</span>
+                        </h3>
+                        <div id="thirdPartyList" class="status-items-list">
+                            <div class="p-3 text-center text-secondary small">
+                                <i class="fas fa-spinner fa-spin me-2"></i> Carregando provedores...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Site Availability Checker (Endpoint 2) -->
+        <section class="service-category p-4 mb-5" aria-labelledby="sec-checker">
+            <div class="mb-3">
+                <h2 id="sec-checker" class="h5 fw-bold mb-1 d-flex align-items-center gap-2 text-body">
+                    <i class="fas fa-magnifying-glass-chart text-accent" aria-hidden="true"></i>
+                    <span data-i18n="status.checkerTitle">Verificador de Disponibilidade de Sites</span>
+                </h2>
+                <p class="text-secondary small mb-0" data-i18n="status.checkerSub">
+                    Verifique em tempo real a resolução DNS, handshake TCP, status HTTP e validade de certificado TLS de qualquer endereço web.
+                </p>
+            </div>
+
+            <form id="checkerForm" class="checker-input-group mb-0" onsubmit="return false;">
+                <input type="text" id="checkUrlInput" class="form-control" placeholder="https://www.exemplo.com.br" data-i18n-placeholder="status.checkerPlaceholder" required aria-label="Endereço do site para testar" style="border-radius: 0.65rem;">
+                <button type="submit" id="checkUrlBtn" class="btn-custom btn-primary-custom text-nowrap py-2 px-4" style="border-radius: 0.65rem; font-size: 0.9rem;">
+                    <i class="fas fa-bolt me-1" aria-hidden="true"></i> <span id="checkBtnText" data-i18n="status.btnCheck">Verificar agora</span>
+                </button>
+            </form>
+
+            <div id="checkErrorBox" class="alert alert-danger mt-3 mb-0 p-3" style="display: none; border-radius: 0.65rem;" role="alert"></div>
+
+            <div id="checkResultBox" class="checker-result-card" style="display: none;"></div>
+        </section>
+
+        <!-- 4. Quick Tools & Global Threat Maps -->
+        <section class="mb-5" aria-labelledby="sec-threat-tools">
+            <div class="mb-3">
+                <div class="sec-label mb-1">
+                    <i class="fas fa-toolbox text-accent me-1" aria-hidden="true"></i> <span data-i18n="status.toolsTitle">Ferramentas Rápidas &amp; Mapas Globais de Ameaças</span>
+                </div>
+                <p class="text-secondary small mb-0" data-i18n="status.toolsSub">
+                    Serviços recomendados para medição de banda, diagnóstico de vazamento de DNS e mapas globais de ciberataques em tempo real.
+                </p>
+            </div>
+
+            <div class="threat-tools-grid">
+                <!-- Speedtest -->
+                <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
+                    <div>
+                        <div class="threat-tool-header">
+                            <span class="threat-tool-title"><i class="fas fa-gauge-high"></i> Speedtest.net</span>
+                            <i class="fas fa-arrow-up-right-from-square text-secondary small"></i>
+                        </div>
+                        <p class="threat-tool-desc" data-i18n="status.toolSpeedtestDesc">Teste de velocidade de conexão, latência e jitter de banda larga.</p>
+                    </div>
+                </a>
+
+                <!-- DownDetector -->
+                <a href="https://downdetector.com.br/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
+                    <div>
+                        <div class="threat-tool-header">
+                            <span class="threat-tool-title"><i class="fas fa-users-viewfinder"></i> DownDetector</span>
+                            <i class="fas fa-arrow-up-right-from-square text-secondary small"></i>
+                        </div>
+                        <p class="threat-tool-desc" data-i18n="status.toolDowndetectorDesc">Relatos de instabilidade e quedas em serviços e operadoras em tempo real.</p>
+                    </div>
+                </a>
+
+                <!-- IPLeak.net -->
+                <a href="https://ipleak.net/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
+                    <div>
+                        <div class="threat-tool-header">
+                            <span class="threat-tool-title"><i class="fas fa-user-shield"></i> IPLeak.net</span>
+                            <i class="fas fa-arrow-up-right-from-square text-secondary small"></i>
+                        </div>
+                        <p class="threat-tool-desc" data-i18n="status.toolIpleakDesc">Detecção de vazamentos de DNS, WebRTC, IPv6 e informações de IP.</p>
+                    </div>
+                </a>
+
+                <!-- urlscan.io -->
+                <a href="https://urlscan.io/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
+                    <div>
+                        <div class="threat-tool-header">
+                            <span class="threat-tool-title"><i class="fas fa-shield-virus"></i> urlscan.io</span>
+                            <i class="fas fa-arrow-up-right-from-square text-secondary small"></i>
+                        </div>
+                        <p class="threat-tool-desc" data-i18n="status.toolUrlscanDesc">Scanner e analisador de segurança para websites e domínios suspeitos.</p>
+                    </div>
+                </a>
+
+                <!-- Check Point ThreatCloud -->
+                <a href="https://threatmap.checkpoint.com/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
+                    <div>
+                        <div class="threat-tool-header">
+                            <span class="threat-tool-title"><i class="fas fa-map-location-dot"></i> Check Point ThreatCloud</span>
+                            <i class="fas fa-arrow-up-right-from-square text-secondary small"></i>
+                        </div>
+                        <p class="threat-tool-desc" data-i18n="status.toolCheckpointDesc">Visualização ao vivo de ataques cibernéticos e vetores de ameaças no globo.</p>
+                    </div>
+                </a>
+
+                <!-- Kaspersky Cybermap -->
+                <a href="https://cybermap.kaspersky.com/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
+                    <div>
+                        <div class="threat-tool-header">
+                            <span class="threat-tool-title"><i class="fas fa-globe"></i> Kaspersky Cybermap</span>
+                            <i class="fas fa-arrow-up-right-from-square text-secondary small"></i>
+                        </div>
+                        <p class="threat-tool-desc" data-i18n="status.toolKasperskyDesc">Mapa 3D interativo de incidentes de malware e ciberataques em tempo real.</p>
+                    </div>
+                </a>
+
+                <!-- IsItDownRightNow -->
+                <a href="https://www.isitdownrightnow.com/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
+                    <div>
+                        <div class="threat-tool-header">
+                            <span class="threat-tool-title"><i class="fas fa-server"></i> IsItDownRightNow</span>
+                            <i class="fas fa-arrow-up-right-from-square text-secondary small"></i>
+                        </div>
+                        <p class="threat-tool-desc" data-i18n="status.toolIsitdownDesc">Verificação independente para saber se um site caiu só para você ou para todos.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-100 border-top py-4 mt-auto">
+        <div class="container d-flex flex-column align-items-center text-center">
+            <div class="d-flex mb-4">
+                <a href="https://instagram.com/jvfigueiro" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://linkedin.com/in/figueiro" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/jvfigueiro" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+                <a href="mailto:contato@jvfigueiro.com" class="social-btn" aria-label="E-mail">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                </a>
+            </div>
+
+            <p class="text-muted mb-0 footer-copyright" style="font-size: 0.85rem;">
+                <span class="footer-powered">Powered by <a href="/ultimatelab" class="text-accent text-decoration-none">UltimateLab</a></span> · &copy; <span id="currentYear"></span> João Figueiró. <span data-i18n="footer.rights">Todos os direitos reservados.</span>
+            </p>
+        </div>
+    </footer>
+
+    <script src="/i18n.js"></script>
+    <script src="/script.js"></script>
+    <script src="/status.js"></script>
+</body>
+</html>

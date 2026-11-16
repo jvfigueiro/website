@@ -1,11 +1,13 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 )
 
 func main() {
@@ -17,6 +19,81 @@ func main() {
 		// Clean and sanitize the requested path
 		cleanedPath := filepath.Clean(r.URL.Path)
 		targetPath := filepath.Join(staticDir, cleanedPath)
+
+		// Development fallback for /api/v1/ endpoints (in production, NPMplus reverse proxy routes /api/ directly to site-status-api)
+		if strings.HasPrefix(cleanedPath, "/api/v1/") {
+			w.Header().Set("Content-Type", "application/json; charset=utf-8")
+			w.Header().Set("Access-Control-Allow-Origin", "*")
+			w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+			w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+			if r.Method == http.MethodOptions {
+				w.WriteHeader(http.StatusNoContent)
+				return
+			}
+
+			if cleanedPath == "/api/v1/status" && r.Method == http.MethodGet {
+				w.WriteHeader(http.StatusOK)
+				w.Write([]byte(`{
+  "global_status": "operational",
+  "updated_at": "` + time.Now().UTC().Format(time.RFC3339) + `",
+  "summary": {
+    "nodes_online": 2,
+    "nodes_total": 2,
+    "services_online": 8,
+    "services_total": 8,
+    "availability_pct": 100
+  },
+  "infrastructure": [
+    { "name": "Proxmox Node 1", "status": "online" },
+    { "name": "Proxmox Node 2", "status": "online" },
+    { "name": "Serviços públicos", "status": "operational" }
+  ],
+  "third_party": [
+    { "name": "Cloudflare", "status": "operational", "url": "https://www.cloudflarestatus.com" },
+    { "name": "GitHub", "status": "operational", "url": "https://www.githubstatus.com" },
+    { "name": "Google Cloud", "status": "operational", "url": "https://status.cloud.google.com" },
+    { "name": "Microsoft 365", "status": "operational", "url": "https://status.cloud.microsoft" },
+    { "name": "AWS Health", "status": "operational", "url": "https://health.aws.amazon.com/health/status" },
+    { "name": "Slack", "status": "operational", "url": "https://slack-status.com" }
+  ]
+}`))
+				return
+			}
+
+			if cleanedPath == "/api/v1/check" && r.Method == http.MethodPost {
+				type checkReq struct {
+					URL string `json:"url"`
+				}
+				var req checkReq
+				if err := json.NewDecoder(r.Body).Decode(&req); err != nil || strings.TrimSpace(req.URL) == "" {
+					w.WriteHeader(http.StatusBadRequest)
+					w.Write([]byte(`{"error": "URL inválida ou vazia"}`))
+					return
+				}
+				cleanTarget := strings.TrimPrefix(req.URL, "https://")
+				cleanTarget = strings.TrimPrefix(cleanTarget, "http://")
+				cleanTarget = strings.TrimRight(cleanTarget, "/")
+
+				w.WriteHeader(http.StatusOK)
+				w.Write([]byte(`{
+  "target": "` + cleanTarget + `",
+  "reachable": true,
+  "classification": "Online",
+  "dns_resolved": true,
+  "tcp_connected": true,
+  "http_status": 200,
+  "tls_valid": true,
+  "tls_expiry": "2027-05-10",
+  "latency_ms": 142,
+  "error": ""
+}`))
+				return
+			}
+
+			http.NotFound(w, r)
+			return
+		}
 
 		// Prevent path traversal outside static directory
 		rel, err := filepath.Rel(staticDir, targetPath)

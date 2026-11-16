@@ -136,7 +136,59 @@ const SITE_TRANSLATIONS = {
         // Services Page (services.html)
         'services.title': 'Serviços | João Figueiró',
         'services.heading': 'Serviços &amp; Consultoria<span class="text-accent">.</span>',
-        'services.subtitle': 'Soluções personalizadas em infraestrutura de TI, redes e suporte corporativo.'
+        'services.subtitle': 'Soluções personalizadas em infraestrutura de TI, redes e suporte corporativo.',
+        // Status Page (/status)
+        'status.pageTitle': 'Status de Serviços e Infraestrutura | João Figueiró',
+        'status.secLabel': 'Monitoramento em Tempo Real',
+        'status.heading': 'Status de Serviços &amp; Infraestrutura<span class="text-accent">.</span>',
+        'status.subtitle': 'Disponibilidade dos nós do cluster, serviços self-hosted em produção e conectividade de provedores externos da nuvem.',
+        'status.badgeOperational': 'Todos os Sistemas Operacionais',
+        'status.badgeDegraded': 'Degradação ou Instabilidade Detectada',
+        'status.badgeOffline': 'Interrupção de Serviços Detectada',
+        'status.badgeUnavailable': 'Telemetria Indisponível',
+        'status.lastUpdated': 'Última atualização',
+        'status.autoRefreshNote': 'Atualização automática a cada 45s',
+        'status.refreshBtnTitle': 'Atualizar agora',
+        'status.kpiNodesTitle': 'Nós do Cluster',
+        'status.kpiNodesSub': 'Nós ativos no Proxmox',
+        'status.kpiServicesTitle': 'Serviços em Execução',
+        'status.kpiServicesSub': 'Containers &amp; VMs em produção',
+        'status.kpiAvailabilityTitle': 'Disponibilidade Global',
+        'status.kpiAvailabilitySub': 'Índice médio de disponibilidade',
+        'status.infraTitle': 'Infraestrutura Local &amp; Cluster',
+        'status.thirdPartyTitle': 'Provedores Externos &amp; Cloud',
+        'status.checkerTitle': 'Verificador de Disponibilidade de Sites',
+        'status.checkerSub': 'Verifique em tempo real a resolução DNS, handshake TCP, status HTTP e validade de certificado TLS de qualquer endereço web.',
+        'status.checkerPlaceholder': 'https://www.exemplo.com.br',
+        'status.btnCheck': 'Verificar agora',
+        'status.btnChecking': 'Verificando...',
+        'status.lblTarget': 'Alvo',
+        'status.lblStatus': 'Classificação',
+        'status.lblDns': 'Resolução DNS',
+        'status.lblTcp': 'Conexão TCP',
+        'status.lblHttp': 'Status HTTP',
+        'status.lblTls': 'Certificado TLS',
+        'status.lblLatency': 'Latência',
+        'status.btnExternalCheck': 'Validar no IsItDownRightNow →',
+        'status.toolsTitle': 'Ferramentas Rápidas &amp; Mapas Globais de Ameaças',
+        'status.toolsSub': 'Serviços recomendados para medição de banda, diagnóstico de vazamento de DNS e mapas globais de ciberataques em tempo real.',
+        'status.toolSpeedtestDesc': 'Teste de velocidade de conexão, latência e jitter de banda larga.',
+        'status.toolDowndetectorDesc': 'Relatos de instabilidade e quedas em serviços e operadoras em tempo real.',
+        'status.toolIpleakDesc': 'Detecção de vazamentos de DNS, WebRTC, IPv6 e informações de IP.',
+        'status.toolUrlscanDesc': 'Scanner e analisador de segurança para websites e domínios suspeitos.',
+        'status.toolCheckpointDesc': 'Visualização ao vivo de ataques cibernéticos e vetores de ameaças no globo.',
+        'status.toolKasperskyDesc': 'Mapa 3D interativo de incidentes de malware e ciberataques em tempo real.',
+        'status.toolIsitdownDesc': 'Verificação independente para saber se um site caiu só para você ou para todos.',
+        'status.errRateLimit': 'Limite de requisições excedido (Rate limit). Por favor, aguarde alguns instantes antes de tentar novamente.',
+        'status.errInvalidUrl': 'URL inválida ou bloqueada para verificação.',
+        'status.errFetchFailed': 'Falha na comunicação com a API de verificação. Tente novamente.',
+        'status.okBadge': 'Operacional',
+        'status.degradedBadge': 'Instável',
+        'status.offlineBadge': 'Inoperante',
+        'status.validTls': 'Válido',
+        'status.invalidTls': 'Inválido / N/A',
+        'status.expiresOn': 'expira em',
+
     },
 
     en: {
@@ -271,7 +323,59 @@ const SITE_TRANSLATIONS = {
         // Services Page (services.html)
         'services.title': 'Services | João Figueiró',
         'services.heading': 'Services &amp; Consulting<span class="text-accent">.</span>',
-        'services.subtitle': 'Custom solutions in IT infrastructure, networking, and enterprise support.'
+        'services.subtitle': 'Custom solutions in IT infrastructure, networking, and enterprise support.',
+        // Status Page (/status)
+        'status.pageTitle': 'Services &amp; Infrastructure Status | João Figueiró',
+        'status.secLabel': 'Real-Time Telemetry &amp; Monitoring',
+        'status.heading': 'Services &amp; Infrastructure Status<span class="text-accent">.</span>',
+        'status.subtitle': 'Availability of cluster nodes, self-hosted production services, and external cloud provider connectivity.',
+        'status.badgeOperational': 'All Systems Operational',
+        'status.badgeDegraded': 'Degraded Performance Detected',
+        'status.badgeOffline': 'Service Outage Detected',
+        'status.badgeUnavailable': 'Telemetry Unavailable',
+        'status.lastUpdated': 'Last updated',
+        'status.autoRefreshNote': 'Auto-refreshes every 45s',
+        'status.refreshBtnTitle': 'Refresh now',
+        'status.kpiNodesTitle': 'Cluster Nodes',
+        'status.kpiNodesSub': 'Active Proxmox nodes',
+        'status.kpiServicesTitle': 'Running Services',
+        'status.kpiServicesSub': 'Production containers &amp; VMs',
+        'status.kpiAvailabilityTitle': 'Overall Availability',
+        'status.kpiAvailabilitySub': 'Average uptime score',
+        'status.infraTitle': 'Local Infrastructure &amp; Cluster',
+        'status.thirdPartyTitle': 'External Providers &amp; Cloud',
+        'status.checkerTitle': 'Live Website Availability Checker',
+        'status.checkerSub': 'Test real-time DNS resolution, TCP handshake, HTTP status code, and TLS certificate validity for any web address.',
+        'status.checkerPlaceholder': 'https://www.example.com',
+        'status.btnCheck': 'Check now',
+        'status.btnChecking': 'Checking...',
+        'status.lblTarget': 'Target',
+        'status.lblStatus': 'Classification',
+        'status.lblDns': 'DNS Resolution',
+        'status.lblTcp': 'TCP Connection',
+        'status.lblHttp': 'HTTP Status',
+        'status.lblTls': 'TLS Certificate',
+        'status.lblLatency': 'Latency',
+        'status.btnExternalCheck': 'Validate on IsItDownRightNow →',
+        'status.toolsTitle': 'Quick Tools &amp; Global Threat Maps',
+        'status.toolsSub': 'Recommended services for speed tests, DNS leak diagnostics, and global real-time cyberattack threat maps.',
+        'status.toolSpeedtestDesc': 'Connection speed test, broadband latency and jitter analysis.',
+        'status.toolDowndetectorDesc': 'Real-time crowdsourced reports on service and provider outages.',
+        'status.toolIpleakDesc': 'Diagnostics for DNS leaks, WebRTC address exposure, and IPv6.',
+        'status.toolUrlscanDesc': 'Automated security scanner and behavioral analyzer for websites.',
+        'status.toolCheckpointDesc': 'Live visualization of global cyberattacks and threat vectors.',
+        'status.toolKasperskyDesc': 'Interactive 3D real-time globe of malware detections and cyber threats.',
+        'status.toolIsitdownDesc': 'Independent check to see if a website is down for everyone or just you.',
+        'status.errRateLimit': 'Rate limit exceeded. Please wait a few moments before trying again.',
+        'status.errInvalidUrl': 'Invalid or restricted URL for verification.',
+        'status.errFetchFailed': 'Failed to communicate with verification API. Please retry.',
+        'status.okBadge': 'Operational',
+        'status.degradedBadge': 'Degraded',
+        'status.offlineBadge': 'Offline',
+        'status.validTls': 'Valid',
+        'status.invalidTls': 'Invalid / N/A',
+        'status.expiresOn': 'expires on',
+
     }
 };
 
@@ -311,6 +415,15 @@ window.SITE_I18N = {
             const html = this.t(key);
             if (html) {
                 el.innerHTML = html;
+            }
+        });
+
+        // Update placeholder elements
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            const placeholder = this.t(key);
+            if (placeholder) {
+                el.setAttribute('placeholder', placeholder);
             }
         });
 
