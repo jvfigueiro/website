@@ -241,6 +241,23 @@ const initRandomFeaturedProjects = () => {
             githubUrl: 'https://github.com/jvfigueiro/ArduinoDHT-HA',
             detailsUrl: '/ultimatelab',
             detailsText: 'Ver no Laboratório'
+        },
+        {
+            id: 'caselds',
+            title: 'Modernização de Rede Cisco',
+            badge: '<i class="fas fa-helmet-safety me-1"></i> Case em campo · 42 edificações',
+            desc: 'Projeto real de infraestrutura com cabeamento estruturado CAT6, montagem física de racks e gestão centralizada em nuvem via Cisco Meraki em 42 edificações no Rio Grande do Sul.',
+            visualType: 'img',
+            imgSrc: '/images/lds-work.webp',
+            imgAlt: 'Substituição de cabeamento CAT6 e organização de rack Cisco Meraki',
+            tags: [
+                { icon: 'fas fa-network-wired', text: 'CAT6' },
+                { icon: 'fas fa-cloud', text: 'Cisco Meraki' },
+                { icon: 'fas fa-server', text: 'Racks & Infra' }
+            ],
+            githubUrl: null,
+            detailsUrl: '/projects/caselds',
+            detailsText: 'Ler a História Completa'
         }
     ];
 
