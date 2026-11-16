@@ -78,6 +78,260 @@ const initLanguageSwitcher = () => {
 
 initLanguageSwitcher();
 
+// Dynamic Random Featured Projects (Selects 3 random projects on each page load)
+const initRandomFeaturedProjects = () => {
+    const container = document.getElementById('featuredProjectsContainer');
+    if (!container) return;
+
+    const allProjects = [
+        {
+            id: 'optiassist',
+            title: 'OptiAssist',
+            badge: '<i class="fas fa-toolbox me-1"></i> Utilitário Portátil USB',
+            desc: 'A ferramenta definitiva que mantém seus sistemas otimizados e atualizados. Diagnóstico de hardware, instalação automatizada de programas, limpeza profunda e ordens de serviço — tudo em um aplicativo leve que roda direto da unidade flash USB.',
+            visualType: 'img',
+            imgSrc: '/images/optiassist-dashboard.webp',
+            imgAlt: 'Interface principal do OptiAssist',
+            tags: [
+                { icon: 'fab fa-windows', text: 'Windows' },
+                { icon: 'fas fa-terminal', text: 'PowerShell & CMD' },
+                { icon: 'fas fa-box-open', text: 'Winget & Offline' }
+            ],
+            githubUrl: 'https://github.com/jvfigueiro/optiassist',
+            detailsUrl: '/projects/optiassist',
+            detailsText: 'Conhecer o Software'
+        },
+        {
+            id: 'optimanager',
+            title: 'OptiManager',
+            badge: '<i class="fas fa-server me-1"></i> Sistema Self-Hosted',
+            desc: 'Sistema self-hosted de gestão de ordens de serviço, clientes e faturamento em Go, SQLite e Vue 3. Leve, rápido e seguro, projetado para pequenas empresas e assistências técnicas com soberania de dados.',
+            visualType: 'typo',
+            typoHeaderLeft: '<i class="fas fa-clipboard-check me-1"></i> FLUXO DE ORDENS DE SERVIÇO',
+            typoHeaderRight: '&lt; 40 MB RAM',
+            typoSteps: ['Orçamento', 'Aberta', 'Em Andamento', 'Concluída', 'Entregue'],
+            typoFooter: 'Backups atômicos via <code>VACUUM INTO</code> · Autenticação JWT & RBAC',
+            tags: [
+                { icon: 'fas fa-code', text: 'Go' },
+                { icon: 'fas fa-database', text: 'SQLite' },
+                { icon: 'fas fa-layer-group', text: 'Vue 3' },
+                { icon: 'fab fa-docker', text: 'Docker & PWA' }
+            ],
+            githubUrl: 'https://github.com/jvfigueiro/optimanager',
+            detailsUrl: '/projects/optimanager',
+            detailsText: 'Conhecer o Software'
+        },
+        {
+            id: 'ultimatelab',
+            title: 'UltimateLab',
+            badge: '<i class="fas fa-network-wired me-1"></i> Cluster de 2 Nós · Proxmox VE',
+            desc: 'Cluster de 2 nós de virtualização baseado no Proxmox VE, distribuído entre mini PCs, para orquestração de serviços de DNS, VPN, automação residencial e inferência de IA local — incluindo este site.',
+            visualType: 'img',
+            imgSrc: '/images/ultimatelab.webp',
+            imgAlt: 'Rack do UltimateLab com mini PCs e roteador',
+            tags: [
+                { icon: 'fas fa-server', text: 'Proxmox VE' },
+                { icon: 'fab fa-docker', text: 'Docker' },
+                { icon: 'fas fa-shield-halved', text: 'Tailscale & AdGuard' },
+                { icon: 'fas fa-house-signal', text: 'Home Assistant' }
+            ],
+            githubUrl: null,
+            detailsUrl: '/ultimatelab',
+            detailsText: 'Ler a História Completa'
+        },
+        {
+            id: 'garagex5',
+            title: 'GarageX5 - O Meu Carro',
+            badge: '<i class="fas fa-car me-1"></i> Retrofit & Embarcados',
+            desc: 'Um projeto onde levo os conhecimentos de informática e eletrônica para dentro do meu carro, seguindo o conceito de retrofit, visando modernizá-lo sem perder suas características originais.',
+            visualType: 'img',
+            imgSrc: '/images/exterior.webp',
+            imgAlt: 'Ford Escort Station Wagon do projeto GarageX5',
+            tags: [
+                { icon: 'fas fa-car', text: 'Escort SW 1998' },
+                { icon: 'fas fa-bolt', text: 'Retrofit OEM+' },
+                { icon: 'fas fa-microchip', text: 'Sistemas Embarcados' }
+            ],
+            githubUrl: null,
+            detailsUrl: '/projects/garagex5',
+            detailsText: 'Ler a História Completa'
+        },
+        {
+            id: 'headunitmod',
+            title: 'Engenharia Reversa em Multimídia',
+            badge: '<i class="fas fa-microchip me-1"></i> Firmware & Linux',
+            desc: 'Estudo e modificação de firmware de uma central multimídia automotiva baseada em Linux, explorando vetores de acesso via interfaces de manutenção do fabricante, customização de branding e mapeamento de interfaces de telemetria.',
+            visualType: 'img',
+            imgSrc: '/images/androidauto.webp',
+            imgAlt: 'Android Auto spoofado para Ford SYNC na central multimídia',
+            tags: [
+                { icon: 'fab fa-linux', text: 'Linux 4.9' },
+                { icon: 'fas fa-terminal', text: 'Reverse Engineering' },
+                { icon: 'fas fa-code-branch', text: 'MTD Partitions' }
+            ],
+            githubUrl: 'https://github.com/jvfigueiro/sphe8368-headunit-modding',
+            detailsUrl: '/projects/headunitmod',
+            detailsText: 'Ler a História Completa'
+        },
+        {
+            id: 'ecuswap',
+            title: 'Upgrade de ECU Ford',
+            badge: '<i class="fas fa-car-battery me-1"></i> Injeção & Telemetria',
+            desc: 'Uma aventura que começou como uma tentativa via Arduino de decodificar o protocolo proprietário DCL presentes em módulos Ford EEC-IV e culminou na troca por uma EEC-V — alimentando telemetria em tempo real no Home Assistant.',
+            visualType: 'img',
+            imgSrc: '/images/eec-v.webp',
+            imgAlt: 'Módulo de injeção eletrônica Ford EEC-V',
+            tags: [
+                { icon: 'fas fa-microchip', text: 'OBD2 / EEC-V' },
+                { icon: 'fas fa-satellite-dish', text: 'Telemetria 5G' },
+                { icon: 'fas fa-house-signal', text: 'Home Assistant' }
+            ],
+            githubUrl: null,
+            detailsUrl: '/projects/ecuswap',
+            detailsText: 'Ler a História Completa'
+        },
+        {
+            id: 'sat',
+            title: 'Exploração de Satélites',
+            badge: '<i class="fas fa-satellite-dish me-1"></i> Estação Portátil FTA',
+            desc: 'Recepção de canais digitais abertos (FTA) transmitidos por satélites geoestacionários de diversos países com uma mini antena parabólica adaptada para operar alimentada pela tomada 12V do carro.',
+            visualType: 'img',
+            imgSrc: '/images/sat-1.webp',
+            imgAlt: 'Estação de recepção via satélite portátil',
+            tags: [
+                { icon: 'fas fa-satellite-dish', text: 'DVB-S2X' },
+                { icon: 'fas fa-car', text: 'Alimentação 12V' },
+                { icon: 'fas fa-globe', text: 'Banda Ku FTA' }
+            ],
+            githubUrl: null,
+            detailsUrl: '/projects/sat',
+            detailsText: 'Ler a História Completa'
+        },
+        {
+            id: 'optios',
+            title: 'OptiOS',
+            badge: '<i class="fas fa-flask me-1"></i> Em desenvolvimento',
+            desc: 'Sistema operacional experimental escrito do zero em Rust (x86-64, UEFI), desenvolvido com auxílio de agentes de IA para estudar os fundamentos de sistemas modernos: kernel com gerenciamento de memória, VFS, leitura de GPT/FAT32 e userland com shell próprio.',
+            visualType: 'typo',
+            typoHeaderLeft: '<i class="fas fa-microchip me-1"></i> ARQUITETURA DO SISTEMA',
+            typoHeaderRight: 'x86-64 · UEFI',
+            typoSteps: ['UEFI Boot', 'Kernel & Memória', 'VFS · GPT/FAT32', 'Userland Shell'],
+            typoFooter: 'Escrito do zero em Rust · Estudo de fundamentos de sistemas operacionais',
+            tags: [
+                { icon: 'fas fa-gears', text: 'Rust' },
+                { icon: 'fas fa-microchip', text: 'x86-64 & UEFI' },
+                { icon: 'fas fa-memory', text: 'Kernel & VFS' }
+            ],
+            githubUrl: null,
+            detailsUrl: null,
+            detailsText: null
+        },
+        {
+            id: 'arduinodht',
+            title: 'Arduino DHT para Home Assistant',
+            badge: '<i class="fas fa-temperature-high me-1"></i> Telemetria de Rack',
+            desc: 'Monitoramento de temperatura e umidade usando sensores DHT11 ligados a um Arduino Mega. Os dados são repassados via interface serial para o Home Assistant virtualizado no Proxmox, alimentando rotinas de automação climática.',
+            visualType: 'icon',
+            iconClass: 'fas fa-temperature-high',
+            tags: [
+                { icon: 'fas fa-microchip', text: 'Arduino Mega' },
+                { icon: 'fas fa-house-signal', text: 'Home Assistant' },
+                { icon: 'fas fa-chart-line', text: 'Serial Telemetry' }
+            ],
+            githubUrl: 'https://github.com/jvfigueiro/ArduinoDHT-HA',
+            detailsUrl: '/ultimatelab',
+            detailsText: 'Ver no Laboratório'
+        }
+    ];
+
+    // Shuffle array using Fisher-Yates
+    const shuffled = [...allProjects];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    // Pick top 3
+    const selected = shuffled.slice(0, 3);
+
+    const renderCard = (p) => {
+        let visualHtml = '';
+        if (p.visualType === 'img') {
+            visualHtml = `
+                <div class="featured-card-visual">
+                    <img src="${p.imgSrc}" loading="lazy" alt="${p.imgAlt}">
+                </div>
+            `;
+        } else if (p.visualType === 'typo') {
+            const stepsHtml = p.typoSteps.map((st, idx) => `
+                <span class="typo-step">${st}</span>
+                ${idx < p.typoSteps.length - 1 ? '<span class="typo-arrow">→</span>' : ''}
+            `).join('');
+            visualHtml = `
+                <div class="featured-card-visual typographic-panel" aria-hidden="true">
+                    <div class="typo-panel-header">
+                        <span>${p.typoHeaderLeft}</span>
+                        <span>${p.typoHeaderRight}</span>
+                    </div>
+                    <div class="typo-flow">
+                        ${stepsHtml}
+                    </div>
+                    <div class="small text-secondary" style="font-size: 0.76rem;">
+                        ${p.typoFooter}
+                    </div>
+                </div>
+            `;
+        } else {
+            visualHtml = `
+                <div class="featured-card-visual">
+                    <div class="featured-icon-display">
+                        <i class="${p.iconClass}" aria-hidden="true"></i>
+                    </div>
+                </div>
+            `;
+        }
+
+        const tagsHtml = p.tags.map(t => `
+            <span class="tech-chip"><i class="${t.icon}" aria-hidden="true"></i> ${t.text}</span>
+        `).join('');
+
+        let actionsHtml = '';
+        if (p.githubUrl || p.detailsUrl) {
+            actionsHtml = `
+                <div class="project-actions">
+                    ${p.githubUrl ? `
+                        <a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary">
+                            <i class="fab fa-github" aria-hidden="true"></i> Repositório
+                        </a>
+                    ` : ''}
+                    ${p.detailsUrl ? `
+                        <a href="${p.detailsUrl}" class="btn btn-sm btn-outline-secondary ms-auto">
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i> ${p.detailsText}
+                        </a>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        return `
+            <article class="featured-card">
+                ${visualHtml}
+                <div class="featured-meta">
+                    <h3 class="project-title m-0">${p.title}</h3>
+                    <span class="node-badge">${p.badge}</span>
+                </div>
+                <p class="project-desc mb-3">${p.desc}</p>
+                <div class="chip-group mb-3">${tagsHtml}</div>
+                ${actionsHtml}
+            </article>
+        `;
+    };
+
+    container.innerHTML = selected.map(renderCard).join('');
+};
+
+initRandomFeaturedProjects();
+
 // Mobile navigation drawer toggle
 const navToggleBtn = document.getElementById('navToggleBtn');
 const navMenu = document.getElementById('navMenu');

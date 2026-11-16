@@ -110,8 +110,8 @@
                         <strong>Analista de TI</strong> com foco em infraestrutura, suporte técnico e operações — atuando em redes, virtualização com Proxmox VE, sistemas Windows e Linux e desenvolvimento de ferramentas de código aberto.
                     </p>
 
-                    <div class="d-flex flex-column gap-4">
-                        <div class="d-flex flex-wrap gap-3">
+                    <div class="d-flex flex-column align-items-center gap-4">
+                        <div class="d-flex flex-wrap justify-content-center gap-3">
                             <a href="/projects" class="btn-custom btn-primary-custom">
                                 <i class="fas fa-folder-open" aria-hidden="true"></i> Ver Projetos
                             </a>
@@ -123,7 +123,7 @@
                             </a>
                         </div>
 
-                        <div class="d-flex align-items-center gap-2">
+                        <div class="d-flex align-items-center justify-content-center gap-2">
                             <a href="https://github.com/jvfigueiro" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
                                 <i class="fab fa-github" aria-hidden="true"></i>
                             </a>
@@ -224,9 +224,8 @@
                     </a>
                 </div>
 
-                <!-- Grid 2x2 -->
-                <div class="featured-projects-grid mb-4">
-
+                <!-- 3 Random Featured Projects (Rendered dynamically & gracefully falling back) -->
+                <div id="featuredProjectsContainer" class="featured-projects-grid mb-4">
                     <!-- 1. OptiAssist -->
                     <article class="featured-card">
                         <div class="featured-card-visual">
@@ -299,42 +298,7 @@
                         </div>
                     </article>
 
-                    <!-- 3. OptiOS (Cartão Tipográfico — Em desenvolvimento, sem link) -->
-                    <article class="featured-card">
-                        <div class="featured-card-visual typographic-panel" aria-hidden="true">
-                            <div class="typo-panel-header">
-                                <span><i class="fas fa-microchip me-1"></i> ARQUITETURA DO SISTEMA</span>
-                                <span>x86-64 · UEFI</span>
-                            </div>
-                            <div class="typo-flow">
-                                <span class="typo-step">UEFI Boot</span>
-                                <span class="typo-arrow">→</span>
-                                <span class="typo-step">Kernel &amp; Memória</span>
-                                <span class="typo-arrow">→</span>
-                                <span class="typo-step">VFS · GPT/FAT32</span>
-                                <span class="typo-arrow">→</span>
-                                <span class="typo-step">Userland Shell</span>
-                            </div>
-                            <div class="small text-secondary" style="font-size: 0.76rem;">
-                                Escrito do zero em Rust · Estudo de fundamentos de sistemas operacionais
-                            </div>
-                        </div>
-                        <div class="featured-meta">
-                            <h3 class="project-title m-0">OptiOS</h3>
-                            <span class="node-badge"><i class="fas fa-flask me-1" aria-hidden="true"></i> Em desenvolvimento · projeto de aprendizado</span>
-                        </div>
-                        <p class="project-desc mb-3">
-                            Sistema operacional experimental escrito do zero em Rust (x86-64, UEFI), desenvolvido com auxílio de agentes de IA para estudar os fundamentos de sistemas modernos: kernel com gerenciamento de memória, VFS, leitura de GPT/FAT32 e userland com shell próprio.
-                        </p>
-                        <div class="chip-group mt-auto">
-                            <span class="tech-chip"><i class="fas fa-gears" aria-hidden="true"></i> Rust</span>
-                            <span class="tech-chip"><i class="fas fa-microchip" aria-hidden="true"></i> x86-64 &amp; UEFI</span>
-                            <span class="tech-chip"><i class="fas fa-memory" aria-hidden="true"></i> Kernel &amp; VFS</span>
-                            <span class="tech-chip"><i class="fas fa-hard-drive" aria-hidden="true"></i> GPT / FAT32</span>
-                        </div>
-                    </article>
-
-                    <!-- 4. UltimateLab -->
+                    <!-- 3. UltimateLab -->
                     <article class="featured-card">
                         <div class="featured-card-visual">
                             <img src="/images/ultimatelab.webp" width="2652" height="1637" loading="lazy" alt="Rack do UltimateLab com roteador TP-Link AX3000, mini PCs do cluster Proxmox e nobreak">
@@ -358,7 +322,6 @@
                             </a>
                         </div>
                     </article>
-
                 </div>
 
                 <!-- Faixa Larga: Case em campo (/projects/caselds) -->
@@ -633,7 +596,7 @@
             </div>
 
             <p class="text-muted mb-0 footer-copyright" style="font-size: 0.85rem;">
-                &copy; <span id="currentYear"></span> João Figueiró. Todos os direitos reservados.
+                &copy; <span id="currentYear"></span> João Figueiró. Todos os direitos reservados. · <span class="footer-powered">Powered by <a href="/ultimatelab" class="text-accent text-decoration-none">UltimateLab</a></span>
             </p>
         </div>
     </footer>
