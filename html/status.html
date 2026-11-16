@@ -72,7 +72,7 @@
             <div class="sec-label mb-2">
                 <i class="fas fa-signal text-accent me-1" aria-hidden="true"></i> <span data-i18n="status.secLabel">Monitoramento em Tempo Real</span>
             </div>
-            <h1 class="mb-2" style="font-weight: 800; letter-spacing: -1.5px;" data-i18n-html="status.heading">
+            <h1 class="h2 mb-2" style="font-weight: 800; letter-spacing: -1px;" data-i18n-html="status.heading">
                 Status de Serviços & Infraestrutura<span class="text-accent">.</span>
             </h1>
             <p class="text-secondary fs-6 mb-4" style="max-width: 760px;" data-i18n="status.subtitle">
@@ -211,18 +211,7 @@
                     </div>
                 </a>
 
-                <!-- 2. Cloudflare Speed Test -->
-                <a href="https://speed.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
-                    <div>
-                        <div class="threat-tool-header">
-                            <span class="threat-tool-title"><i class="fas fa-bolt" aria-hidden="true"></i> Cloudflare Speed</span>
-                            <i class="fas fa-arrow-up-right-from-square text-secondary small" aria-hidden="true"></i>
-                        </div>
-                        <p class="threat-tool-desc" data-i18n="status.toolCloudflareSpeedDesc">Medição detalhada de desempenho de rede, tempo de resposta e consistência.</p>
-                    </div>
-                </a>
-
-                <!-- 3. DownDetector -->
+                <!-- 2. DownDetector -->
                 <a href="https://downdetector.com.br/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
                     <div>
                         <div class="threat-tool-header">
@@ -233,7 +222,7 @@
                     </div>
                 </a>
 
-                <!-- 4. IPLeak.net -->
+                <!-- 3. IPLeak.net -->
                 <a href="https://ipleak.net/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
                     <div>
                         <div class="threat-tool-header">
@@ -244,7 +233,7 @@
                     </div>
                 </a>
 
-                <!-- 5. urlscan.io -->
+                <!-- 4. urlscan.io -->
                 <a href="https://urlscan.io/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
                     <div>
                         <div class="threat-tool-header">
@@ -255,7 +244,7 @@
                     </div>
                 </a>
 
-                <!-- 6. IsItDownRightNow -->
+                <!-- 5. IsItDownRightNow -->
                 <a href="https://www.isitdownrightnow.com/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
                     <div>
                         <div class="threat-tool-header">
@@ -263,39 +252,6 @@
                             <i class="fas fa-arrow-up-right-from-square text-secondary small" aria-hidden="true"></i>
                         </div>
                         <p class="threat-tool-desc" data-i18n="status.toolIsitdownDesc">Verificação independente para saber se um site caiu só para você ou para todos.</p>
-                    </div>
-                </a>
-
-                <!-- 7. DNSChecker -->
-                <a href="https://dnschecker.org/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
-                    <div>
-                        <div class="threat-tool-header">
-                            <span class="threat-tool-title"><i class="fas fa-network-wired" aria-hidden="true"></i> DNSChecker</span>
-                            <i class="fas fa-arrow-up-right-from-square text-secondary small" aria-hidden="true"></i>
-                        </div>
-                        <p class="threat-tool-desc" data-i18n="status.toolDnscheckerDesc">Verificação global de propagação de DNS em múltiplos servidores pelo mundo.</p>
-                    </div>
-                </a>
-
-                <!-- 8. SSL Labs -->
-                <a href="https://www.ssllabs.com/ssltest/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
-                    <div>
-                        <div class="threat-tool-header">
-                            <span class="threat-tool-title"><i class="fas fa-lock" aria-hidden="true"></i> SSL Labs</span>
-                            <i class="fas fa-arrow-up-right-from-square text-secondary small" aria-hidden="true"></i>
-                        </div>
-                        <p class="threat-tool-desc" data-i18n="status.toolSsllabsDesc">Análise profunda de configuração, cifras e validade de certificados SSL/TLS.</p>
-                    </div>
-                </a>
-
-                <!-- 9. MXToolbox -->
-                <a href="https://mxtoolbox.com/" target="_blank" rel="noopener noreferrer" class="threat-tool-card">
-                    <div>
-                        <div class="threat-tool-header">
-                            <span class="threat-tool-title"><i class="fas fa-envelope-circle-check" aria-hidden="true"></i> MXToolbox</span>
-                            <i class="fas fa-arrow-up-right-from-square text-secondary small" aria-hidden="true"></i>
-                        </div>
-                        <p class="threat-tool-desc" data-i18n="status.toolMxtoolboxDesc">Diagnóstico abrangente de registros MX, DNS, SPF, DKIM e blacklist de e-mails.</p>
                     </div>
                 </a>
             </div>
@@ -306,7 +262,7 @@
     <!-- Footer -->
     <footer class="w-100 border-top py-4 mt-auto">
         <div class="container d-flex flex-column align-items-center text-center">
-            <div class="d-flex mb-4">
+            <div class="d-flex mb-3">
                 <a href="https://instagram.com/jvfigueiro" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
                     <i class="fab fa-instagram" aria-hidden="true"></i>
                 </a>
@@ -321,8 +277,15 @@
                 </a>
             </div>
 
+            <div class="mb-4">
+                <a href="/status" class="footer-status-btn">
+                    <span class="footer-status-dot"></span>
+                    <span data-i18n="footer.statusBtn">Status da Infraestrutura</span>
+                </a>
+            </div>
+
             <p class="text-muted mb-0 footer-copyright" style="font-size: 0.85rem;">
-                <span class="footer-powered">Powered by <a href="/ultimatelab" class="text-accent text-decoration-none">UltimateLab</a></span> · &copy; <span id="currentYear"></span> João Figueiró. <span data-i18n="footer.rights">Todos os direitos reservados.</span>
+                <span class="footer-powered">Powered by <a href="/ultimatelab" class="text-accent text-decoration-none">UltimateLab</a></span> · &copy; <span id="currentYear"></span> João Figueiró.
             </p>
         </div>
     </footer>
