@@ -3,6 +3,8 @@ package main
 import (
 	"log"
 	"net/http"
+	"net/http/httputil"
+	"net/url"
 	"os"
 	"path/filepath"
 	"strings"
@@ -10,6 +12,17 @@ import (
 
 func main() {
 	staticDir := "./html"
+
+	statusAPIURL := os.Getenv("STATUS_API_URL")
+	if statusAPIURL == "" {
+		statusAPIURL = "http://10.0.7.26:8085"
+	}
+	parsedAPIURL, err := url.Parse(statusAPIURL)
+	if err != nil {
+		log.Fatalf("Invalid STATUS_API_URL %q: %v", statusAPIURL, err)
+	}
+	apiProxy := httputil.NewSingleHostReverseProxy(parsedAPIURL)
+	http.Handle("/api/", apiProxy)
 
 	fileServer := http.FileServer(http.Dir(staticDir))
 
