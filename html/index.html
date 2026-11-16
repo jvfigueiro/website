@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>João Figueiró | Analista de TI, Infraestrutura &amp; Projetos Técnicos</title>
+    <title data-i18n="home.title">João Figueiró | Analista de TI, Infraestrutura &amp; Projetos Técnicos</title>
     <meta name="description" content="Portfólio profissional de João Figueiró — Analista de TI com foco em infraestrutura, suporte técnico, redes, virtualização em Proxmox VE e desenvolvimento de softwares de código aberto.">
     <link rel="canonical" href="https://jvfigueiro.com/">
 
@@ -32,6 +32,8 @@
             try {
                 var saved = localStorage.getItem('theme');
                 var sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                var savedLang = localStorage.getItem('site_lang') || 'pt';
+                document.documentElement.setAttribute('lang', savedLang === 'en' ? 'en' : 'pt-br');
                 document.documentElement.setAttribute('data-bs-theme', saved || sys);
             } catch (e) {}
         })();
@@ -57,11 +59,11 @@
                 <a class="navbar-brand m-0" href="/">João Figueiró<span class="text-accent">.</span></a>
 
                 <div id="navMenu" class="nav-menu">
-                    <a class="nav-link active" href="/" aria-current="page">Início</a>
-                    <a class="nav-link" href="/projects">Projetos</a>
+                    <a class="nav-link active" href="/" aria-current="page" data-i18n="nav.home">Início</a>
+                    <a class="nav-link" href="/projects" data-i18n="nav.projects">Projetos</a>
                     <!-- <a class="nav-link" href="/services">Serviços</a> -->
-                    <a class="nav-link" href="/ultimatelab">Laboratório</a>
-                    <a class="nav-link" href="/aboutme">Sobre</a>
+                    <a class="nav-link" href="/ultimatelab" data-i18n="nav.lab">Laboratório</a>
+                    <a class="nav-link" href="/aboutme" data-i18n="nav.about">Sobre</a>
                 </div>
 
                 <div class="nav-actions">
@@ -95,31 +97,31 @@
                 <div class="home-hero-content">
 
                     <p class="tagline-box terminal-style mb-3">
-                        &gt; Construtor de engenhocas, gearhead e maluco da informática_<span class="cursor" aria-hidden="true">|</span>
+                        <span id="typewriter" data-text="&gt; Construtor de engenhocas, gearhead e maluco da informática_" data-i18n="home.tagline">&gt; Construtor de engenhocas, gearhead e maluco da informática_</span><span class="cursor" aria-hidden="true">|</span>
                     </p>
 
                     <h1 id="hero-title">João Figueiró<span class="text-accent">.</span></h1>
 
                     <div class="title-divider mb-4"></div>
 
-                    <p class="hero-positioning">
+                    <p class="hero-positioning" data-i18n="home.heroPositioning">
                         Transformando problemas técnicos em infraestrutura confiável, software enxuto e automação prática.
                     </p>
 
-                    <p class="hero-lead">
+                    <p class="hero-lead" data-i18n-html="home.heroLead">
                         <strong>Analista de TI</strong> com foco em infraestrutura, suporte técnico e operações — atuando em redes, virtualização com Proxmox VE, sistemas Windows e Linux e desenvolvimento de ferramentas de código aberto.
                     </p>
 
                     <div class="d-flex flex-column align-items-center gap-4">
                         <div class="d-flex flex-wrap justify-content-center gap-3">
                             <a href="/projects" class="btn-custom btn-primary-custom">
-                                <i class="fas fa-folder-open" aria-hidden="true"></i> Ver Projetos
+                                <i class="fas fa-folder-open" aria-hidden="true"></i> <span data-i18n="home.btnProjects">Ver Projetos</span>
                             </a>
                             <a href="/aboutme" class="btn-custom btn-outline-custom">
-                                <i class="fas fa-user" aria-hidden="true"></i> Sobre Mim
+                                <i class="fas fa-user" aria-hidden="true"></i> <span data-i18n="home.btnAbout">Sobre Mim</span>
                             </a>
                             <a href="/ultimatelab" class="btn-custom btn-outline-custom">
-                                <i class="fas fa-server" aria-hidden="true"></i> Laboratório
+                                <i class="fas fa-server" aria-hidden="true"></i> <span data-i18n="home.btnLab">Laboratório</span>
                             </a>
                         </div>
 
@@ -147,12 +149,12 @@
         <section class="home-section" aria-labelledby="sec-pillars">
             <div class="container" style="max-width: 1140px;">
                 <div class="sec-label">
-                    <i class="fas fa-layer-group text-accent" aria-hidden="true"></i> Áreas de Atuação
+                    <i class="fas fa-layer-group text-accent" aria-hidden="true"></i> <span data-i18n="home.pillarsLabel">Áreas de Atuação</span>
                 </div>
                 <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-4">
                     <div>
-                        <h2 id="sec-pillars" class="sec-heading">Frentes Técnicas<span class="text-accent">.</span></h2>
-                        <p class="text-secondary mb-0">Da infraestrutura física e conectividade de rede ao desenvolvimento de utilitários e automação.</p>
+                        <h2 id="sec-pillars" class="sec-heading" data-i18n-html="home.pillarsHeading">Frentes Técnicas<span class="text-accent">.</span></h2>
+                        <p class="text-secondary mb-0" data-i18n="home.pillarsSub">Da infraestrutura física e conectividade de rede ao desenvolvimento de utilitários e automação.</p>
                     </div>
                 </div>
 
@@ -163,8 +165,8 @@
                             <span class="pillar-icon"><i class="fas fa-network-wired" aria-hidden="true"></i></span>
                             <span class="pillar-index">01</span>
                         </div>
-                        <h3 class="pillar-title">Infraestrutura &amp; Redes</h3>
-                        <p class="pillar-desc">
+                        <h3 class="pillar-title" data-i18n-html="home.pillar1Title">Infraestrutura &amp; Redes</h3>
+                        <p class="pillar-desc" data-i18n="home.pillar1Desc">
                             Cabeamento estruturado CAT6, montagem de racks, switches gerenciáveis, segmentação por VLANs, VPNs (WireGuard e Tailscale) e DNS criptografado com AdGuard Home (DoH/DoT).
                         </p>
                     </article>
@@ -175,8 +177,8 @@
                             <span class="pillar-icon"><i class="fas fa-server" aria-hidden="true"></i></span>
                             <span class="pillar-index">02</span>
                         </div>
-                        <h3 class="pillar-title">Servidores &amp; Virtualização</h3>
-                        <p class="pillar-desc">
+                        <h3 class="pillar-title" data-i18n-html="home.pillar2Title">Servidores &amp; Virtualização</h3>
+                        <p class="pillar-desc" data-i18n="home.pillar2Desc">
                             Cluster de 2 nós em Proxmox VE, consolidação de máquinas virtuais e containers Docker, compartilhamento SMB sobre dataset ZFS e serviços self-hosted com eficiência de energia.
                         </p>
                     </article>
@@ -187,8 +189,8 @@
                             <span class="pillar-icon"><i class="fas fa-stethoscope" aria-hidden="true"></i></span>
                             <span class="pillar-index">03</span>
                         </div>
-                        <h3 class="pillar-title">Diagnóstico &amp; Operações</h3>
-                        <p class="pillar-desc">
+                        <h3 class="pillar-title" data-i18n-html="home.pillar3Title">Diagnóstico &amp; Operações</h3>
+                        <p class="pillar-desc" data-i18n="home.pillar3Desc">
                             Investigação de causa-raiz, diagnóstico de incidentes de hardware e software, manutenção e otimização de ambientes Windows e Linux e administração de Windows Server e Active Directory.
                         </p>
                     </article>
@@ -199,8 +201,8 @@
                             <span class="pillar-icon"><i class="fas fa-microchip" aria-hidden="true"></i></span>
                             <span class="pillar-index">04</span>
                         </div>
-                        <h3 class="pillar-title">Software, IoT &amp; Automação</h3>
-                        <p class="pillar-desc">
+                        <h3 class="pillar-title" data-i18n-html="home.pillar4Title">Software, IoT &amp; Automação</h3>
+                        <p class="pillar-desc" data-i18n="home.pillar4Desc">
                             Ferramentas e aplicações de código aberto, automação e monitoramento com Home Assistant, Prometheus e Grafana, leitura de sensores via Arduino, telemetria OBD2 e engenharia reversa de firmware.
                         </p>
                     </article>
@@ -212,15 +214,15 @@
         <section class="home-section" aria-labelledby="sec-featured-projects">
             <div class="container" style="max-width: 1140px;">
                 <div class="sec-label">
-                    <i class="fas fa-code-branch text-accent" aria-hidden="true"></i> Portfólio Selecionado
+                    <i class="fas fa-code-branch text-accent" aria-hidden="true"></i> <span data-i18n="home.featuredLabel">Portfólio Selecionado</span>
                 </div>
                 <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
                     <div>
-                        <h2 id="sec-featured-projects" class="sec-heading">Projetos &amp; Softwares em Destaque<span class="text-accent">.</span></h2>
-                        <p class="text-secondary mb-0">Aplicações próprias, estudos de sistemas e infraestrutura documentada de ponta a ponta.</p>
+                        <h2 id="sec-featured-projects" class="sec-heading" data-i18n-html="home.featuredHeading">Projetos &amp; Softwares em Destaque<span class="text-accent">.</span></h2>
+                        <p class="text-secondary mb-0" data-i18n="home.featuredSub">Aplicações próprias, estudos de sistemas e infraestrutura documentada de ponta a ponta.</p>
                     </div>
                     <a href="/projects" class="btn-custom btn-outline-custom py-2 px-3" style="font-size: 0.85rem;">
-                        Ver Todos os Projetos <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
+                        <span data-i18n="home.featuredTopBtn">Ver Todos os Projetos</span> <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
                     </a>
                 </div>
 
@@ -326,7 +328,7 @@
 
                 <div class="text-center mt-4">
                     <a href="/projects" class="btn btn-outline-secondary">
-                        <i class="fas fa-folder-open me-1" aria-hidden="true"></i> Explorar Catálogo Completo de Projetos &rarr;
+                        <i class="fas fa-folder-open me-1" aria-hidden="true"></i> <span data-i18n="home.featuredAllBtn">Explorar Catálogo Completo de Projetos &rarr;</span>
                     </a>
                 </div>
 
@@ -337,11 +339,11 @@
         <section class="home-section" aria-labelledby="sec-lab-skills">
             <div class="container" style="max-width: 1140px;">
                 <div class="sec-label">
-                    <i class="fas fa-Sliders text-accent fas fa-sliders" aria-hidden="true"></i> Infraestrutura Viva &amp; Stack Técnica
+                    <i class="fas fa-sliders text-accent" aria-hidden="true"></i> <span data-i18n="home.labSkillsLabel">Infraestrutura Viva &amp; Stack Técnica</span>
                 </div>
                 <div class="mb-4">
-                    <h2 id="sec-lab-skills" class="sec-heading">Laboratório &amp; Competências<span class="text-accent">.</span></h2>
-                    <p class="text-secondary mb-0">As tecnologias aplicadas no dia a dia e o ambiente real onde os serviços e experimentos rodam 24/7.</p>
+                    <h2 id="sec-lab-skills" class="sec-heading" data-i18n-html="home.labSkillsHeading">Laboratório &amp; Competências<span class="text-accent">.</span></h2>
+                    <p class="text-secondary mb-0" data-i18n="home.labSkillsSub">As tecnologias aplicadas no dia a dia e o ambiente real onde os serviços e experimentos rodam 24/7.</p>
                 </div>
 
                 <div class="lab-skills-grid">
@@ -350,10 +352,10 @@
                     <div class="service-category d-flex flex-column justify-content-between">
                         <div>
                             <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
-                                <h3 class="m-0"><i class="fas fa-server" aria-hidden="true"></i> Por Dentro do UltimateLab</h3>
+                                <h3 class="m-0" data-i18n-html="home.labTitle"><i class="fas fa-server" aria-hidden="true"></i> Por Dentro do UltimateLab</h3>
                                 <span class="node-badge">Média 40W / Pico 90W</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.6;">
+                            <p class="text-secondary small mb-3" style="line-height: 1.6;" data-i18n-html="home.labDesc">
                                 Cluster de 2 nós computacionais em mini PCs rodando <strong>Proxmox VE</strong>, projetado para oferecer redundância de funcionamento e baixo consumo de energia — hospedando inclusive este site.
                             </p>
 
@@ -379,7 +381,7 @@
 
                         <div class="pt-2">
                             <a href="/ultimatelab" class="btn-custom btn-outline-custom w-100 justify-content-center py-2" style="font-size: 0.88rem;">
-                                <i class="fas fa-diagram-project" aria-hidden="true"></i> Ver Topologia de Rede e Hardware Completo
+                                <i class="fas fa-diagram-project" aria-hidden="true"></i> <span data-i18n="home.labBtn">Ver Topologia de Rede e Hardware Completo</span>
                             </a>
                         </div>
                     </div>
@@ -387,7 +389,7 @@
                     <!-- Coluna Direita: Resumo Compacto das Competências Técnicas -->
                     <div class="service-category d-flex flex-column justify-content-between">
                         <div>
-                            <h3 class="mb-3"><i class="fas fa-terminal" aria-hidden="true"></i> Competências Técnicas</h3>
+                            <h3 class="mb-3" data-i18n-html="home.skillsTitle"><i class="fas fa-terminal" aria-hidden="true"></i> Competências Técnicas</h3>
 
                             <div class="mb-3">
                                 <div class="skill-group-title">
@@ -448,10 +450,10 @@
 
                         <div class="d-flex flex-wrap gap-2 pt-2">
                             <a href="/aboutme" class="btn-custom btn-outline-custom flex-grow-1 justify-content-center py-2" style="font-size: 0.85rem;">
-                                <i class="fas fa-graduation-cap" aria-hidden="true"></i> Formação &amp; Certificados
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i> <span data-i18n="home.skillsBtnEdu">Formação &amp; Certificados</span>
                             </a>
                             <a href="/services" class="btn-custom btn-outline-custom flex-grow-1 justify-content-center py-2" style="font-size: 0.85rem;">
-                                <i class="fas fa-compass" aria-hidden="true"></i> Áreas de Consultoria
+                                <i class="fas fa-compass" aria-hidden="true"></i> <span data-i18n="home.skillsBtnServices">Áreas de Consultoria</span>
                             </a>
                         </div>
                     </div>
@@ -464,7 +466,7 @@
         <section class="home-section" aria-labelledby="sec-about-preview">
             <div class="container" style="max-width: 1140px;">
                 <div class="sec-label">
-                    <i class="fas fa-user text-accent" aria-hidden="true"></i> Perfil Profissional
+                    <i class="fas fa-user text-accent" aria-hidden="true"></i> <span data-i18n="home.aboutLabel">Perfil Profissional</span>
                 </div>
 
                 <div class="service-category p-4">
@@ -477,17 +479,17 @@
                         </div>
 
                         <div class="col-md-9">
-                            <h2 id="sec-about-preview" class="sec-heading mb-3">Sobre Mim<span class="text-accent">.</span></h2>
-                            <p class="text-secondary mb-3" style="line-height: 1.7;">
+                            <h2 id="sec-about-preview" class="sec-heading mb-3" data-i18n-html="home.aboutHeading">Sobre Mim<span class="text-accent">.</span></h2>
+                            <p class="text-secondary mb-3" style="line-height: 1.7;" data-i18n="home.aboutP1">
                                 Acredito que soluções eficazes não precisam ser excessivamente complexas. Minha trajetória combina atuação prática desde 2019 em suporte técnico, infraestrutura de redes, eletrônica e consultoria de TI com o desenvolvimento de softwares próprios e um laboratório doméstico em operação contínua — sempre buscando identificar a causa-raiz de cada problema e implementar soluções limpas, confiáveis e bem documentadas.
                             </p>
-                            <p class="text-secondary mb-4" style="line-height: 1.7;">
+                            <p class="text-secondary mb-4" style="line-height: 1.7;" data-i18n-html="home.aboutP2">
                                 Graduado em <strong>Análise e Desenvolvimento de Sistemas (UNIASSELVI, 2025)</strong>, gosto de explorar sistemas computacionais, elétricos e automotivos para entender como cada detalhe funciona, por que funciona e como pode ser melhorado.
                             </p>
 
                             <div class="d-flex flex-wrap gap-3">
                                 <a href="/aboutme" class="btn-custom btn-primary-custom py-2 px-3" style="font-size: 0.9rem;">
-                                    <i class="fas fa-arrow-right" aria-hidden="true"></i> Trajetória Completa e Certificações
+                                    <i class="fas fa-arrow-right" aria-hidden="true"></i> <span data-i18n="home.aboutBtn">Trajetória Completa e Certificações</span>
                                 </a>
                             </div>
                         </div>
@@ -505,8 +507,8 @@
                             <i class="fas fa-envelope" aria-hidden="true"></i>
                         </span>
                     </div>
-                    <h2 id="sec-contact" class="sec-heading mb-2">Vamos conversar<span class="text-accent">?</span></h2>
-                    <p class="text-secondary mx-auto mb-4" style="max-width: 620px;">
+                    <h2 id="sec-contact" class="sec-heading mb-2" data-i18n-html="home.contactHeading">Vamos conversar<span class="text-accent">?</span></h2>
+                    <p class="text-secondary mx-auto mb-4" style="max-width: 620px;" data-i18n="home.contactDesc">
                         Precisa de apoio em infraestrutura, diagnóstico técnico, projetos de rede ou quer trocar uma ideia sobre tecnologia e sistemas? Entre em contato diretamente por e-mail ou pelo LinkedIn.
                     </p>
                     <div class="d-flex flex-wrap justify-content-center gap-3">
@@ -514,7 +516,7 @@
                             <i class="fas fa-envelope" aria-hidden="true"></i> contato@jvfigueiro.com
                         </a>
                         <a href="https://linkedin.com/in/figueiro" target="_blank" rel="noopener noreferrer" class="btn-custom btn-outline-custom">
-                            <i class="fab fa-linkedin-in" aria-hidden="true"></i> Conectar no LinkedIn
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i> <span data-i18n="home.contactBtnLinkedin">Conectar no LinkedIn</span>
                         </a>
                         <a href="https://github.com/jvfigueiro" target="_blank" rel="noopener noreferrer" class="btn-custom btn-outline-custom">
                             <i class="fab fa-github" aria-hidden="true"></i> GitHub
@@ -545,11 +547,12 @@
             </div>
 
             <p class="text-muted mb-0 footer-copyright" style="font-size: 0.85rem;">
-                <span class="footer-powered">Powered by <a href="/ultimatelab" class="text-accent text-decoration-none">UltimateLab</a></span> · &copy; <span id="currentYear"></span> João Figueiró. Todos os direitos reservados.
+                <span class="footer-powered">Powered by <a href="/ultimatelab" class="text-accent text-decoration-none">UltimateLab</a></span> · &copy; <span id="currentYear"></span> João Figueiró. <span data-i18n="footer.rights">Todos os direitos reservados.</span>
             </p>
         </div>
     </footer>
 
+    <script src="/i18n.js"></script>
     <script src="/script.js?v=3"></script>
 </body>
 </html>

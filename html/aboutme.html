@@ -226,11 +226,11 @@
                 <a class="navbar-brand m-0" href="/">João Figueiró<span class="text-accent">.</span></a>
 
                 <div id="navMenu" class="nav-menu">
-                    <a class="nav-link " href="/">Início</a>
-                    <a class="nav-link " href="/projects">Projetos</a>
+                    <a class="nav-link " href="/" data-i18n="nav.home">Início</a>
+                    <a class="nav-link " href="/projects" data-i18n="nav.projects">Projetos</a>
                     <!-- <a class="nav-link " href="/services">Serviços</a> -->
-                    <a class="nav-link " href="/ultimatelab">Laboratório</a>
-                    <a class="nav-link active" href="/aboutme">Sobre</a>
+                    <a class="nav-link " href="/ultimatelab" data-i18n="nav.lab">Laboratório</a>
+                    <a class="nav-link active" href="/aboutme" data-i18n="nav.about">Sobre</a>
                 </div>
 
                 <div class="nav-actions">
@@ -489,12 +489,13 @@
             </div>
 
             <p class="text-muted mb-0 footer-copyright" style="font-size: 0.85rem;">
-                <span class="footer-powered">Powered by <a href="/ultimatelab" class="text-accent text-decoration-none">UltimateLab</a></span> · &copy; <span id="currentYear"></span> João Figueiró. Todos os direitos reservados.
+                <span class="footer-powered">Powered by <a href="/ultimatelab" class="text-accent text-decoration-none">UltimateLab</a></span> · &copy; <span id="currentYear"></span> João Figueiró. <span data-i18n="footer.rights">Todos os direitos reservados.</span>
             </p>
             
         </div>
     </footer>
 
+    <script src="/i18n.js"></script>
     <script src="/script.js"></script>
 
 </body>

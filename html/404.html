@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Página Não Encontrada | João Figueiró</title>
+    <title data-i18n="404.title">404 - Página Não Encontrada | João Figueiró</title>
     <link rel="icon" href="/images/favicon.webp" type="image/webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,11 +40,11 @@
                 <a class="navbar-brand m-0" href="/">João Figueiró<span class="text-accent">.</span></a>
 
                 <div id="navMenu" class="nav-menu">
-                    <a class="nav-link " href="/">Início</a>
-                    <a class="nav-link " href="/projects">Projetos</a>
+                    <a class="nav-link " href="/" data-i18n="nav.home">Início</a>
+                    <a class="nav-link " href="/projects" data-i18n="nav.projects">Projetos</a>
                     <!-- <a class="nav-link " href="/services">Serviços</a> -->
-                    <a class="nav-link " href="/ultimatelab">Laboratório</a>
-                    <a class="nav-link " href="/aboutme">Sobre</a>
+                    <a class="nav-link " href="/ultimatelab" data-i18n="nav.lab">Laboratório</a>
+                    <a class="nav-link " href="/aboutme" data-i18n="nav.about">Sobre</a>
                 </div>
 
                 <div class="nav-actions">
@@ -67,19 +67,19 @@
 
     <main class="container flex-grow-1 d-flex flex-column justify-content-center align-items-center text-center py-5">
         <div class="mb-4">
-            <h1 class="error-code">404</h1>
-            <h3 class="fw-bold mb-3">Houston, temos um problema!</h3>
-            <p class="text-secondary fs-5 mx-auto" style="max-width: 550px;">
+            <h1 class="error-code" data-i18n="404.badge">404</h1>
+            <h3 class="fw-bold mb-3" data-i18n="404.heading">Houston, temos um problema!</h3>
+            <p class="text-secondary fs-5 mx-auto" style="max-width: 550px;" data-i18n="404.desc">
                 A página que você está procurando foi sugada por um buraco negro, perdeu a conexão com o servidor DNS ou simplesmente nunca existiu neste universo.
             </p>
         </div>
 
         <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
             <a href="/" class="btn-custom btn-primary-custom">
-                <i class="fas fa-rocket me-2"></i> Ir para a página inicial
+                <i class="fas fa-rocket me-2"></i> <span data-i18n="404.btnHome">Ir para a página inicial</span>
             </a>
             <a href="/projects" class="btn-custom btn-outline-custom">
-                <i class="fas fa-arrow-left me-2"></i> Ver Projetos
+                <i class="fas fa-arrow-left me-2"></i> <span data-i18n="404.btnProjects">Ver Projetos</span>
             </a>
         </div>
     </main>
@@ -103,12 +103,13 @@
             </div>
 
             <p class="text-muted mb-0 footer-copyright" style="font-size: 0.85rem;">
-                <span class="footer-powered">Powered by <a href="/ultimatelab" class="text-accent text-decoration-none">UltimateLab</a></span> · &copy; <span id="currentYear"></span> João Figueiró. Todos os direitos reservados.
+                <span class="footer-powered">Powered by <a href="/ultimatelab" class="text-accent text-decoration-none">UltimateLab</a></span> · &copy; <span id="currentYear"></span> João Figueiró. <span data-i18n="footer.rights">Todos os direitos reservados.</span>
             </p>
             
         </div>
     </footer>
 
+    <script src="/i18n.js"></script>
     <script src="/script.js"></script>
 </body>
 </html>
