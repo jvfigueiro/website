@@ -3,171 +3,633 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>João Figueiró</title>
+    <title>João Figueiró | Analista de TI, Infraestrutura &amp; Projetos Técnicos</title>
+    <meta name="description" content="Portfólio profissional de João Figueiró — Analista de TI com foco em infraestrutura, suporte técnico, redes, virtualização em Proxmox VE e desenvolvimento de softwares de código aberto.">
+    <link rel="canonical" href="https://jvfigueiro.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="https://jvfigueiro.com/">
+    <meta property="og:title" content="João Figueiró | Analista de TI, Infraestrutura &amp; Projetos Técnicos">
+    <meta property="og:description" content="Portfólio profissional de João Figueiró — Analista de TI com foco em infraestrutura, suporte técnico, redes, virtualização em Proxmox VE e desenvolvimento de softwares de código aberto.">
+    <meta property="og:image" content="https://jvfigueiro.com/images/og-home.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="João Figueiró — Infraestrutura de TI, Sistemas e Projetos Técnicos">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="João Figueiró | Analista de TI, Infraestrutura &amp; Projetos Técnicos">
+    <meta name="twitter:description" content="Portfólio profissional de João Figueiró — Analista de TI com foco em infraestrutura, suporte técnico, redes, virtualização em Proxmox VE e desenvolvimento de softwares de código aberto.">
+    <meta name="twitter:image" content="https://jvfigueiro.com/images/og-home.jpg">
+
     <link rel="icon" href="/images/favicon.webp" type="image/webp">
+
+    <!-- Theme initialization prior to first paint -->
+    <script>
+        (function() {
+            try {
+                var saved = localStorage.getItem('theme');
+                var sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-bs-theme', saved || sys);
+            } catch (e) {}
+        })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/style.css">
-
-    <style>
-        .hero-main {
-            min-height: 100vh;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Homepage hero background */
-        .photo-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -2;
-            background-color: #1D0E29;
-            background-image: url('images/hero-2.webp');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .video-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(29, 14, 41, 0.72);
-            z-index: -1;
-        }
-
-        /* The homepage has a dark background overlay: text remains bright regardless of active theme */
-        h1,
-        .navbar-brand,
-        .nav-link,
-        .mobile-nav-toggle {
-            color: #f1f1f1 !important;
-        }
-        .nav-link:hover, .nav-link.active {
-            color: var(--accent-color) !important;
-        }
-
-        .tagline {
-            color: #c9c9c9 !important;
-            min-height: 2.8rem;
-        }
-
-        @media (min-width: 992px) {
-            .tagline {
-                white-space: nowrap;
-                min-height: 1.8rem;
-            }
-        }
-
-        .btn-outline-custom {
-            color: #f1f1f1;
-            border-color: rgba(255, 255, 255, 0.35);
-        }
-        .btn-outline-custom:hover {
-            border-color: var(--accent-color);
-            color: var(--accent-color) !important;
-        }
-
-        .social-btn {
-            color: #f1f1f1;
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Navbar layering */
-        .navbar {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Mobile specific adjustments */
-        @media (max-width: 991.98px) {
-            .nav-menu {
-                background-color: rgba(29, 14, 41, 0.96) !important;
-                border-bottom-color: rgba(255, 255, 255, 0.15) !important;
-            }
-            .mobile-nav-toggle {
-                color: #f1f1f1 !important;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .video-overlay {
-                background-color: rgba(29, 14, 41, 0.78);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="/style.css?v=3">
 </head>
-<body>
+<body class="page-loaded home-page">
 
-    <div class="photo-background" id="photoBackground"></div>
-    <div class="video-overlay"></div>
-
-    <!-- Top navbar hidden on homepage as requested -->
-    <!--
-    <nav class="navbar pt-4 pb-3">
-        <div class="container position-relative d-flex justify-content-between align-items-center">
+    <!-- Global Navigation Bar -->
+    <nav class="navbar pt-4 pb-3" aria-label="Navegação principal">
+        <div class="container position-relative d-flex justify-content-between align-items-center" style="max-width: 1140px;">
             <a class="navbar-brand m-0" href="/">João Figueiró<span class="text-accent">.</span></a>
+
+            <div id="navMenu" class="nav-menu">
+                <a class="nav-link active" href="/" aria-current="page">Início</a>
+                <a class="nav-link" href="/projects">Projetos</a>
+                <!-- <a class="nav-link" href="/services">Serviços</a> -->
+                <a class="nav-link" href="/ultimatelab">Laboratório</a>
+                <a class="nav-link" href="/aboutme">Sobre</a>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <button id="themeToggleBtn" class="theme-toggle m-0 border-0 bg-transparent" aria-label="Alternar Tema">
+                    <i class="fas fa-circle-half-stroke" aria-hidden="true"></i>
+                </button>
+                <button id="navToggleBtn" class="mobile-nav-toggle m-0 border-0 bg-transparent" aria-label="Abrir Menu" aria-expanded="false">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
         </div>
     </nav>
-    -->
 
-    <main class="container flex-grow-1 d-flex align-items-center hero-main">
-        <div class="row w-100 align-items-center">
-            
-            <div class="col-12 text-start">
-                <h1 class="mb-3" style="font-size: 4.5rem;">João<br>Figueiró</h1>
-                
-                <div class="title-divider mb-4"></div>
-                
-                <p class="tagline terminal-style fs-5 text-secondary mb-5">
-                    <span id="typewriter" data-text="> Construtor de engenhocas, gearhead e maluco da informática_"></span>
-                    <span class="cursor">|</span>
-                </p>
+    <main class="flex-grow-1">
 
-                <div class="d-flex flex-column gap-4 mb-5">
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="/projects" class="btn-custom btn-primary-custom">
-                            <i class="fas fa-folder-open me-2"></i> Projetos
-                        </a>
-                        <a href="/ultimatelab" class="btn-custom btn-primary-custom">
-                            <i class="fas fa-server me-2"></i> Laboratório
-                        </a>
-                        <a href="/aboutme" class="btn-custom btn-primary-custom">
-                            <i class="fas fa-user me-2"></i> Sobre Mim
-                        </a>
+        <!-- 1. HERO (First Fold: Monospace line, Title, Positioning, CTAs + Live Constellation Background) -->
+        <section class="home-hero" aria-labelledby="hero-title">
+            <!-- Isolated Background Constellation Animation -->
+            <div id="topologyBg" class="topology-bg" aria-hidden="true" data-topology-enabled="true">
+                <canvas id="topologyCanvas" class="topology-canvas"></canvas>
+            </div>
+
+            <div class="container" style="max-width: 1140px;">
+                <div class="home-hero-content">
+
+                    <p class="tagline-box terminal-style mb-3">
+                        &gt; Construtor de engenhocas, gearhead e maluco da informática_<span class="cursor" aria-hidden="true">|</span>
+                    </p>
+
+                    <h1 id="hero-title">João Figueiró<span class="text-accent">.</span></h1>
+
+                    <div class="title-divider mb-4"></div>
+
+                    <p class="hero-positioning">
+                        Transformando problemas técnicos em infraestrutura confiável, software enxuto e automação prática.
+                    </p>
+
+                    <p class="hero-lead">
+                        <strong>Analista de TI</strong> com foco em infraestrutura, suporte técnico e operações — atuando em redes, virtualização com Proxmox VE, sistemas Windows e Linux e desenvolvimento de ferramentas de código aberto.
+                    </p>
+
+                    <div class="d-flex flex-column gap-4">
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="/projects" class="btn-custom btn-primary-custom">
+                                <i class="fas fa-folder-open" aria-hidden="true"></i> Ver Projetos
+                            </a>
+                            <a href="/files/resume.pdf" download="Curriculo-JoaoFigueiro.pdf" target="_blank" class="btn-custom btn-outline-custom">
+                                <i class="fas fa-file-arrow-down" aria-hidden="true"></i> Currículo em PDF
+                            </a>
+                            <a href="/ultimatelab" class="btn-custom btn-outline-custom">
+                                <i class="fas fa-server" aria-hidden="true"></i> Laboratório
+                            </a>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <a href="https://github.com/jvfigueiro" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
+                                <i class="fab fa-github" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/figueiro" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://instagram.com/jvfigueiro" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
+                            </a>
+                            <a href="mailto:contato@jvfigueiro.com" class="social-btn" aria-label="E-mail">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
 
-                    <div class="d-flex gap-2">
-                        <a href="https://github.com/jvfigueiro" target="_blank" class="social-btn" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://linkedin.com/in/figueiro" target="_blank" class="social-btn" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://instagram.com/jvfigueiro" target="_blank" class="social-btn" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="mailto:contato@jvfigueiro.com" class="social-btn" aria-label="E-mail">
-                            <i class="fas fa-envelope"></i>
-                        </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ÁREAS DE ATUAÇÃO (4 Pilares logo abaixo da primeira dobra) -->
+        <section class="home-section" aria-labelledby="sec-pillars">
+            <div class="container" style="max-width: 1140px;">
+                <div class="sec-label">
+                    <i class="fas fa-layer-group text-accent" aria-hidden="true"></i> Áreas de Atuação
+                </div>
+                <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-4">
+                    <div>
+                        <h2 id="sec-pillars" class="sec-heading">Frentes Técnicas<span class="text-accent">.</span></h2>
+                        <p class="text-secondary mb-0">Da infraestrutura física e conectividade de rede ao desenvolvimento de utilitários e automação.</p>
                     </div>
                 </div>
 
-            </div>
+                <div class="pillars-grid">
+                    <!-- Pilar 01 -->
+                    <article class="pillar-card">
+                        <div class="pillar-top">
+                            <span class="pillar-icon"><i class="fas fa-network-wired" aria-hidden="true"></i></span>
+                            <span class="pillar-index">01</span>
+                        </div>
+                        <h3 class="pillar-title">Infraestrutura &amp; Redes</h3>
+                        <p class="pillar-desc">
+                            Cabeamento estruturado CAT6, montagem de racks, switches gerenciáveis, segmentação por VLANs, VPNs (WireGuard e Tailscale) e DNS criptografado com AdGuard Home (DoH/DoT).
+                        </p>
+                    </article>
 
-        </div>   
+                    <!-- Pilar 02 -->
+                    <article class="pillar-card">
+                        <div class="pillar-top">
+                            <span class="pillar-icon"><i class="fas fa-server" aria-hidden="true"></i></span>
+                            <span class="pillar-index">02</span>
+                        </div>
+                        <h3 class="pillar-title">Servidores &amp; Virtualização</h3>
+                        <p class="pillar-desc">
+                            Cluster de 2 nós em Proxmox VE, consolidação de máquinas virtuais e containers Docker, compartilhamento SMB sobre dataset ZFS e serviços self-hosted com eficiência de energia.
+                        </p>
+                    </article>
+
+                    <!-- Pilar 03 -->
+                    <article class="pillar-card">
+                        <div class="pillar-top">
+                            <span class="pillar-icon"><i class="fas fa-stethoscope" aria-hidden="true"></i></span>
+                            <span class="pillar-index">03</span>
+                        </div>
+                        <h3 class="pillar-title">Diagnóstico &amp; Operações</h3>
+                        <p class="pillar-desc">
+                            Investigação de causa-raiz, diagnóstico de incidentes de hardware e software, manutenção e otimização de ambientes Windows e Linux e administração de Windows Server e Active Directory.
+                        </p>
+                    </article>
+
+                    <!-- Pilar 04 -->
+                    <article class="pillar-card">
+                        <div class="pillar-top">
+                            <span class="pillar-icon"><i class="fas fa-microchip" aria-hidden="true"></i></span>
+                            <span class="pillar-index">04</span>
+                        </div>
+                        <h3 class="pillar-title">Software, IoT &amp; Automação</h3>
+                        <p class="pillar-desc">
+                            Ferramentas e aplicações de código aberto, automação e monitoramento com Home Assistant, Prometheus e Grafana, leitura de sensores via Arduino, telemetria OBD2 e engenharia reversa de firmware.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PROJETOS EM DESTAQUE (Grid 2x2 + Faixa Larga "Case em campo") -->
+        <section class="home-section" aria-labelledby="sec-featured-projects">
+            <div class="container" style="max-width: 1140px;">
+                <div class="sec-label">
+                    <i class="fas fa-code-branch text-accent" aria-hidden="true"></i> Portfólio Selecionado
+                </div>
+                <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+                    <div>
+                        <h2 id="sec-featured-projects" class="sec-heading">Projetos &amp; Softwares em Destaque<span class="text-accent">.</span></h2>
+                        <p class="text-secondary mb-0">Aplicações próprias, estudos de sistemas e infraestrutura documentada de ponta a ponta.</p>
+                    </div>
+                    <a href="/projects" class="btn-custom btn-outline-custom py-2 px-3" style="font-size: 0.85rem;">
+                        Ver Todos os Projetos <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <!-- Grid 2x2 -->
+                <div class="featured-projects-grid mb-4">
+
+                    <!-- 1. OptiAssist -->
+                    <article class="featured-card">
+                        <div class="featured-card-visual">
+                            <img src="/images/optiassist-dashboard.webp" width="989" height="616" loading="lazy" alt="Interface principal do OptiAssist exibindo informações de hardware do sistema">
+                        </div>
+                        <div class="featured-meta">
+                            <h3 class="project-title m-0">OptiAssist</h3>
+                            <span class="node-badge"><i class="fas fa-toolbox me-1" aria-hidden="true"></i> Utilitário Portátil USB</span>
+                        </div>
+                        <p class="project-desc mb-3">
+                            A ferramenta definitiva que mantém seus sistemas otimizados e atualizados. Diagnóstico de hardware, instalação automatizada de programas, limpeza profunda e ordens de serviço — tudo em um aplicativo leve que roda direto da unidade flash USB.
+                        </p>
+                        <div class="chip-group mb-3">
+                            <span class="tech-chip"><i class="fab fa-windows" aria-hidden="true"></i> Windows</span>
+                            <span class="tech-chip"><i class="fas fa-terminal" aria-hidden="true"></i> PowerShell &amp; CMD</span>
+                            <span class="tech-chip"><i class="fas fa-box-open" aria-hidden="true"></i> Winget &amp; Offline</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/jvfigueiro/optiassist" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary">
+                                <i class="fab fa-github" aria-hidden="true"></i> Repositório
+                            </a>
+                            <a href="/projects/optiassist" class="btn btn-sm btn-outline-secondary ms-auto">
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i> Conhecer o Software
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- 2. OptiManager (Cartão Tipográfico) -->
+                    <article class="featured-card">
+                        <div class="featured-card-visual typographic-panel" aria-hidden="true">
+                            <div class="typo-panel-header">
+                                <span><i class="fas fa-clipboard-check me-1"></i> FLUXO DE ORDENS DE SERVIÇO</span>
+                                <span>&lt; 40 MB RAM</span>
+                            </div>
+                            <div class="typo-flow">
+                                <span class="typo-step">Orçamento</span>
+                                <span class="typo-arrow">→</span>
+                                <span class="typo-step">Aberta</span>
+                                <span class="typo-arrow">→</span>
+                                <span class="typo-step">Em Andamento</span>
+                                <span class="typo-arrow">→</span>
+                                <span class="typo-step">Concluída</span>
+                                <span class="typo-arrow">→</span>
+                                <span class="typo-step">Entregue</span>
+                            </div>
+                            <div class="small text-secondary" style="font-size: 0.76rem;">
+                                Backups atômicos via <code>VACUUM INTO</code> · Autenticação JWT &amp; RBAC
+                            </div>
+                        </div>
+                        <div class="featured-meta">
+                            <h3 class="project-title m-0">OptiManager</h3>
+                            <span class="node-badge"><i class="fas fa-server me-1" aria-hidden="true"></i> Sistema Self-Hosted</span>
+                        </div>
+                        <p class="project-desc mb-3">
+                            Sistema self-hosted de gestão de ordens de serviço, clientes e faturamento em Go, SQLite e Vue 3. Leve, rápido e seguro, projetado para pequenas empresas e assistências técnicas com soberania de dados.
+                        </p>
+                        <div class="chip-group mb-3">
+                            <span class="tech-chip"><i class="fas fa-code" aria-hidden="true"></i> Go</span>
+                            <span class="tech-chip"><i class="fas fa-database" aria-hidden="true"></i> SQLite</span>
+                            <span class="tech-chip"><i class="fas fa-layer-group" aria-hidden="true"></i> Vue 3</span>
+                            <span class="tech-chip"><i class="fab fa-docker" aria-hidden="true"></i> Docker &amp; PWA</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/jvfigueiro/optimanager" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary">
+                                <i class="fab fa-github" aria-hidden="true"></i> Repositório
+                            </a>
+                            <a href="/projects/optimanager" class="btn btn-sm btn-outline-secondary ms-auto">
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i> Conhecer o Software
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- 3. OptiOS (Cartão Tipográfico — Em desenvolvimento, sem link) -->
+                    <article class="featured-card">
+                        <div class="featured-card-visual typographic-panel" aria-hidden="true">
+                            <div class="typo-panel-header">
+                                <span><i class="fas fa-microchip me-1"></i> ARQUITETURA DO SISTEMA</span>
+                                <span>x86-64 · UEFI</span>
+                            </div>
+                            <div class="typo-flow">
+                                <span class="typo-step">UEFI Boot</span>
+                                <span class="typo-arrow">→</span>
+                                <span class="typo-step">Kernel &amp; Memória</span>
+                                <span class="typo-arrow">→</span>
+                                <span class="typo-step">VFS · GPT/FAT32</span>
+                                <span class="typo-arrow">→</span>
+                                <span class="typo-step">Userland Shell</span>
+                            </div>
+                            <div class="small text-secondary" style="font-size: 0.76rem;">
+                                Escrito do zero em Rust · Estudo de fundamentos de sistemas operacionais
+                            </div>
+                        </div>
+                        <div class="featured-meta">
+                            <h3 class="project-title m-0">OptiOS</h3>
+                            <span class="node-badge"><i class="fas fa-flask me-1" aria-hidden="true"></i> Em desenvolvimento · projeto de aprendizado</span>
+                        </div>
+                        <p class="project-desc mb-3">
+                            Sistema operacional experimental escrito do zero em Rust (x86-64, UEFI), desenvolvido com auxílio de agentes de IA para estudar os fundamentos de sistemas modernos: kernel com gerenciamento de memória, VFS, leitura de GPT/FAT32 e userland com shell próprio.
+                        </p>
+                        <div class="chip-group mt-auto">
+                            <span class="tech-chip"><i class="fas fa-gears" aria-hidden="true"></i> Rust</span>
+                            <span class="tech-chip"><i class="fas fa-microchip" aria-hidden="true"></i> x86-64 &amp; UEFI</span>
+                            <span class="tech-chip"><i class="fas fa-memory" aria-hidden="true"></i> Kernel &amp; VFS</span>
+                            <span class="tech-chip"><i class="fas fa-hard-drive" aria-hidden="true"></i> GPT / FAT32</span>
+                        </div>
+                    </article>
+
+                    <!-- 4. UltimateLab -->
+                    <article class="featured-card">
+                        <div class="featured-card-visual">
+                            <img src="/images/ultimatelab.webp" width="2652" height="1637" loading="lazy" alt="Rack do UltimateLab com roteador TP-Link AX3000, mini PCs do cluster Proxmox e nobreak">
+                        </div>
+                        <div class="featured-meta">
+                            <h3 class="project-title m-0">UltimateLab</h3>
+                            <span class="node-badge"><i class="fas fa-network-wired me-1" aria-hidden="true"></i> Cluster de 2 Nós · Proxmox VE</span>
+                        </div>
+                        <p class="project-desc mb-3">
+                            Cluster de 2 nós de virtualização baseado no Proxmox VE, distribuído entre mini PCs, para orquestração de serviços de DNS, VPN, automação residencial e inferência de IA local — incluindo este site.
+                        </p>
+                        <div class="chip-group mb-3">
+                            <span class="tech-chip"><i class="fas fa-server" aria-hidden="true"></i> Proxmox VE</span>
+                            <span class="tech-chip"><i class="fab fa-docker" aria-hidden="true"></i> Docker</span>
+                            <span class="tech-chip"><i class="fas fa-shield-halved" aria-hidden="true"></i> Tailscale &amp; AdGuard</span>
+                            <span class="tech-chip"><i class="fas fa-house-signal" aria-hidden="true"></i> Home Assistant</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="/ultimatelab" class="btn btn-sm btn-outline-secondary ms-auto">
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i> Ler a História Completa
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Faixa Larga: Case em campo (/projects/caselds) -->
+                <article class="case-banner">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-4">
+                            <img src="/images/lds-work.webp" width="4032" height="2272" loading="lazy" class="case-banner-img" alt="Substituição de cabeamento estruturado CAT6 e organização de rack em projeto de rede Cisco Meraki">
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="featured-meta mb-2">
+                                <span class="node-badge"><i class="fas fa-helmet-safety me-1" aria-hidden="true"></i> Case em campo · 42 edificações no RS</span>
+                                <span class="terminal-style small text-accent fw-bold">CAT6 + Cisco Meraki</span>
+                            </div>
+                            <h3 class="project-title mb-2" style="font-size: 1.3rem;">
+                                Projeto de Modernização de Infraestrutura de Rede Cisco
+                            </h3>
+                            <p class="project-desc mb-3">
+                                Como uma parceria informal virou um projeto real de infraestrutura Cisco Meraki em escala, levando cabeamento estruturado CAT6, montagem e organização física de racks (separando cabos de rede e energia) e gestão centralizada em nuvem (MX64, MS120-8FP e MR36) para 42 edificações no Rio Grande do Sul.
+                            </p>
+                            <div class="d-flex flex-wrap align-items-center gap-2">
+                                <a href="/projects/caselds" class="btn btn-sm btn-outline-secondary">
+                                    <i class="fas fa-arrow-right me-1" aria-hidden="true"></i> Ler a História Completa
+                                </a>
+                                <a href="/projects" class="btn btn-sm btn-outline-secondary">
+                                    <i class="fas fa-folder-open me-1" aria-hidden="true"></i> Explorar Demais Projetos (GarageX5, ECU Swap, Head Unit Mod, Satélites)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- 4. PRÉVIA DO LABORATÓRIO + COMPETÊNCIAS TÉCNICAS (2 Colunas Lado a Lado) -->
+        <section class="home-section" aria-labelledby="sec-lab-skills">
+            <div class="container" style="max-width: 1140px;">
+                <div class="sec-label">
+                    <i class="fas fa-Sliders text-accent fas fa-sliders" aria-hidden="true"></i> Infraestrutura Viva &amp; Stack Técnica
+                </div>
+                <div class="mb-4">
+                    <h2 id="sec-lab-skills" class="sec-heading">Laboratório &amp; Competências<span class="text-accent">.</span></h2>
+                    <p class="text-secondary mb-0">As tecnologias aplicadas no dia a dia e o ambiente real onde os serviços e experimentos rodam 24/7.</p>
+                </div>
+
+                <div class="lab-skills-grid">
+
+                    <!-- Coluna Esquerda: Prévia do Laboratório (/ultimatelab) -->
+                    <div class="service-category d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+                                <h3 class="m-0"><i class="fas fa-server" aria-hidden="true"></i> Por Dentro do UltimateLab</h3>
+                                <span class="node-badge">Média 40W / Pico 90W</span>
+                            </div>
+                            <p class="text-secondary small mb-3" style="line-height: 1.6;">
+                                Cluster de 2 nós computacionais em mini PCs rodando <strong>Proxmox VE</strong>, projetado para oferecer redundância de funcionamento e baixo consumo de energia — hospedando inclusive este site.
+                            </p>
+
+                            <ul class="spec-list mb-3">
+                                <li>
+                                    <span class="spec-label"><i class="fas fa-microchip text-accent me-1" aria-hidden="true"></i> Node 1:</span>
+                                    <span class="spec-value">Intel Core i5-8500T · 16GB DDR4 · 1TB NVMe + 1TB SSD SATA</span>
+                                </li>
+                                <li>
+                                    <span class="spec-label"><i class="fas fa-microchip text-accent me-1" aria-hidden="true"></i> Node 2:</span>
+                                    <span class="spec-value">Intel Core i5-3320M · 16GB DDR3 · 256GB SSD + 1TB HD</span>
+                                </li>
+                                <li>
+                                    <span class="spec-label"><i class="fas fa-bolt text-accent me-1" aria-hidden="true"></i> Rede &amp; Energia:</span>
+                                    <span class="spec-value">TP-Link AX3000 (Wi-Fi 6) · UPS 600VA / 300W</span>
+                                </li>
+                                <li>
+                                    <span class="spec-label"><i class="fas fa-cubes text-accent me-1" aria-hidden="true"></i> Serviços:</span>
+                                    <span class="spec-value">Tailscale, AdGuard Home (2 instâncias para fallback), OpenWrt, 3 VMs Docker, Jellyfin (ZFS), Immich, Ollama, Home Assistant e Prometheus + Grafana</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="pt-2">
+                            <a href="/ultimatelab" class="btn-custom btn-outline-custom w-100 justify-content-center py-2" style="font-size: 0.88rem;">
+                                <i class="fas fa-diagram-project" aria-hidden="true"></i> Ver Topologia de Rede e Hardware Completo
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Coluna Direita: Resumo Compacto das Competências Técnicas -->
+                    <div class="service-category d-flex flex-column justify-content-between">
+                        <div>
+                            <h3 class="mb-3"><i class="fas fa-terminal" aria-hidden="true"></i> Competências Técnicas</h3>
+
+                            <div class="mb-3">
+                                <div class="skill-group-title">
+                                    <i class="fas fa-cloud" aria-hidden="true"></i> Infraestrutura &amp; Virtualização
+                                </div>
+                                <div class="chip-group">
+                                    <span class="tech-chip"><i class="fas fa-server" aria-hidden="true"></i> Proxmox VE</span>
+                                    <span class="tech-chip"><i class="fab fa-docker" aria-hidden="true"></i> Docker</span>
+                                    <span class="tech-chip"><i class="fab fa-linux" aria-hidden="true"></i> Linux</span>
+                                    <span class="tech-chip"><i class="fab fa-windows" aria-hidden="true"></i> Windows Server</span>
+                                    <span class="tech-chip"><i class="fas fa-sitemap" aria-hidden="true"></i> Active Directory</span>
+                                    <span class="tech-chip"><i class="fas fa-hard-drive" aria-hidden="true"></i> Dataset ZFS &amp; SMB</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="skill-group-title">
+                                    <i class="fas fa-shield-halved" aria-hidden="true"></i> Redes &amp; Segurança
+                                </div>
+                                <div class="chip-group">
+                                    <span class="tech-chip"><i class="fas fa-network-wired" aria-hidden="true"></i> Cisco Meraki</span>
+                                    <span class="tech-chip"><i class="fas fa-route" aria-hidden="true"></i> VLANs &amp; Roteamento</span>
+                                    <span class="tech-chip"><i class="fas fa-lock" aria-hidden="true"></i> WireGuard / Tailscale</span>
+                                    <span class="tech-chip"><i class="fas fa-globe" aria-hidden="true"></i> AdGuard Home (DoH/DoT)</span>
+                                    <span class="tech-chip"><i class="fas fa-ethernet" aria-hidden="true"></i> Cabeamento CAT6</span>
+                                    <span class="tech-chip"><i class="fas fa-video" aria-hidden="true"></i> Redes para CFTV IP</span>
+                                    <span class="tech-chip"><i class="fas fa-user-shield" aria-hidden="true"></i> Cibersegurança &amp; LGPD</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="skill-group-title">
+                                    <i class="fas fa-code" aria-hidden="true"></i> Desenvolvimento &amp; Automação
+                                </div>
+                                <div class="chip-group">
+                                    <span class="tech-chip"><i class="fas fa-cube" aria-hidden="true"></i> Go</span>
+                                    <span class="tech-chip"><i class="fab fa-python" aria-hidden="true"></i> Python</span>
+                                    <span class="tech-chip"><i class="fas fa-window-restore" aria-hidden="true"></i> Vue 3</span>
+                                    <span class="tech-chip"><i class="fas fa-database" aria-hidden="true"></i> SQLite</span>
+                                    <span class="tech-chip"><i class="fas fa-terminal" aria-hidden="true"></i> PowerShell &amp; CMD</span>
+                                    <span class="tech-chip"><i class="fas fa-brain" aria-hidden="true"></i> Ollama &amp; Azure AI (AI-900)</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="skill-group-title">
+                                    <i class="fas fa-gauge-high" aria-hidden="true"></i> Hardware, IoT &amp; Telemetria
+                                </div>
+                                <div class="chip-group">
+                                    <span class="tech-chip"><i class="fas fa-house-signal" aria-hidden="true"></i> Home Assistant</span>
+                                    <span class="tech-chip"><i class="fas fa-chart-line" aria-hidden="true"></i> Prometheus + Grafana</span>
+                                    <span class="tech-chip"><i class="fas fa-temperature-high" aria-hidden="true"></i> Arduino &amp; Sensores DHT11</span>
+                                    <span class="tech-chip"><i class="fas fa-car-battery" aria-hidden="true"></i> Telemetria OBD2 (EEC-V)</span>
+                                    <span class="tech-chip"><i class="fas fa-microchip" aria-hidden="true"></i> Sistemas Embarcados &amp; Firmware</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-2 pt-2">
+                            <a href="/aboutme" class="btn-custom btn-outline-custom flex-grow-1 justify-content-center py-2" style="font-size: 0.85rem;">
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i> Formação &amp; Certificados
+                            </a>
+                            <a href="/services" class="btn-custom btn-outline-custom flex-grow-1 justify-content-center py-2" style="font-size: 0.85rem;">
+                                <i class="fas fa-compass" aria-hidden="true"></i> Áreas de Consultoria
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. APRESENTAÇÃO PESSOAL RESUMIDA (Sobre Mim) -->
+        <section class="home-section" aria-labelledby="sec-about-preview">
+            <div class="container" style="max-width: 1140px;">
+                <div class="sec-label">
+                    <i class="fas fa-user text-accent" aria-hidden="true"></i> Perfil Profissional
+                </div>
+
+                <div class="service-category p-4">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-3 text-center">
+                            <div class="about-home-avatar mb-2">
+                                <img src="/images/sobre.webp" width="3012" height="3023" loading="lazy" alt="João Figueiró">
+                            </div>
+                            <span class="terminal-style small text-accent fw-bold">Santa Maria, RS</span>
+                        </div>
+
+                        <div class="col-md-9">
+                            <h2 id="sec-about-preview" class="sec-heading mb-3">Sobre Mim<span class="text-accent">.</span></h2>
+                            <p class="text-secondary mb-3" style="line-height: 1.7;">
+                                Acredito que soluções eficazes não precisam ser excessivamente complexas. Minha trajetória combina atuação prática desde 2019 em suporte técnico, infraestrutura de redes, eletrônica e consultoria de TI com o desenvolvimento de softwares próprios e um laboratório doméstico em operação contínua — sempre buscando identificar a causa-raiz de cada problema e implementar soluções limpas, confiáveis e bem documentadas.
+                            </p>
+                            <p class="text-secondary mb-4" style="line-height: 1.7;">
+                                Graduado em <strong>Análise e Desenvolvimento de Sistemas (UNIASSELVI, 2025)</strong>, gosto de explorar sistemas computacionais, elétricos e automotivos para entender como cada detalhe funciona, por que funciona e como pode ser melhorado.
+                            </p>
+
+                            <div class="row g-3 mb-4">
+                                <div class="col-sm-6">
+                                    <div class="p-3 rounded-3 border" style="background-color: rgba(128, 128, 128, 0.03);">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <strong class="small"><i class="fas fa-desktop text-accent me-1" aria-hidden="true"></i> MB Informática</strong>
+                                            <span class="terminal-style small text-accent fw-bold">2022 — atual</span>
+                                        </div>
+                                        <div class="text-secondary" style="font-size: 0.82rem;">
+                                            Suporte Técnico &amp; Infraestrutura · Windows, Linux, redes, hardware e diagnóstico de incidentes
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="p-3 rounded-3 border" style="background-color: rgba(128, 128, 128, 0.03);">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <strong class="small"><i class="fas fa-graduation-cap text-accent me-1" aria-hidden="true"></i> UNIASSELVI</strong>
+                                            <span class="terminal-style small text-accent fw-bold">2025</span>
+                                        </div>
+                                        <div class="text-secondary" style="font-size: 0.82rem;">
+                                            Tecnólogo em Análise e Desenvolvimento de Sistemas · Arquitetura de software e engenharia de sistemas
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-wrap gap-3">
+                                <a href="/aboutme" class="btn-custom btn-primary-custom py-2 px-3" style="font-size: 0.9rem;">
+                                    <i class="fas fa-arrow-right" aria-hidden="true"></i> Trajetória Completa e Certificações
+                                </a>
+                                <a href="/files/resume.pdf" download="Curriculo-JoaoFigueiro.pdf" target="_blank" class="btn-custom btn-outline-custom py-2 px-3" style="font-size: 0.9rem;">
+                                    <i class="fas fa-file-arrow-down" aria-hidden="true"></i> Baixar Currículo em PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CHAMADA PARA CONTATO PROFISSIONAL -->
+        <section class="home-section" aria-labelledby="sec-contact">
+            <div class="container" style="max-width: 1140px;">
+                <div class="service-category p-4 p-md-5 text-center">
+                    <div class="mb-3">
+                        <span class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 54px; height: 54px; background-color: rgba(90, 50, 163, 0.12); color: var(--accent-color); font-size: 1.4rem;">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <h2 id="sec-contact" class="sec-heading mb-2">Vamos conversar<span class="text-accent">?</span></h2>
+                    <p class="text-secondary mx-auto mb-4" style="max-width: 620px;">
+                        Precisa de apoio em infraestrutura, diagnóstico técnico, projetos de rede ou quer trocar uma ideia sobre tecnologia e sistemas? Entre em contato diretamente por e-mail ou pelo LinkedIn.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="mailto:contato@jvfigueiro.com" class="btn-custom btn-primary-custom">
+                            <i class="fas fa-envelope" aria-hidden="true"></i> contato@jvfigueiro.com
+                        </a>
+                        <a href="https://linkedin.com/in/figueiro" target="_blank" rel="noopener noreferrer" class="btn-custom btn-outline-custom">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i> Conectar no LinkedIn
+                        </a>
+                        <a href="https://github.com/jvfigueiro" target="_blank" rel="noopener noreferrer" class="btn-custom btn-outline-custom">
+                            <i class="fab fa-github" aria-hidden="true"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <script src="/script.js"></script>
+    <!-- Global Footer -->
+    <footer class="w-100 border-top py-4 mt-auto">
+        <div class="container d-flex flex-column align-items-center text-center">
+            <div class="d-flex mb-4">
+                <a href="https://instagram.com/jvfigueiro" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://linkedin.com/in/figueiro" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/jvfigueiro" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+                <a href="mailto:contato@jvfigueiro.com" class="social-btn" aria-label="E-mail">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                </a>
+            </div>
+
+            <p class="text-muted mb-0 footer-copyright" style="font-size: 0.85rem;">
+                &copy; <span id="currentYear"></span> João Figueiró. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script src="/script.js?v=3"></script>
 </body>
 </html>

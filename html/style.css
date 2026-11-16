@@ -697,3 +697,429 @@ body.page-loaded {
     background-color: rgba(168, 85, 247, 0.12);
     border-color: rgba(168, 85, 247, 0.3);
 }
+
+/* ==========================================================================
+   Homepage Modernization (Etapa 1)
+   ========================================================================== */
+
+/* Prevent icon pop-in CLS on homepage */
+.home-page i[class*="fa-"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.15em;
+    height: 1.15em;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.home-page .theme-toggle,
+.home-page .mobile-nav-toggle {
+    width: 2.25rem;
+    height: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+@media (min-width: 992px) {
+    .home-page .mobile-nav-toggle {
+        display: none;
+    }
+}
+
+.home-page .btn-outline-secondary {
+    color: var(--bs-body-color);
+    border-color: var(--bs-border-color);
+}
+.home-page .btn-outline-secondary:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+}
+
+/* Hero Section (First Fold) */
+.home-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: calc(100svh - 76px);
+    display: flex;
+    align-items: center;
+    padding: 2.25rem 0 2.75rem;
+}
+
+.topology-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.topology-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.home-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+}
+
+/* Zero-CLS Typewriter Container */
+.tagline-box {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+.typewriter-sizer {
+    visibility: hidden;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+.typewriter-live {
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+.home-hero h1 {
+    font-size: clamp(2.85rem, 6.8vw, 4.65rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.06;
+    margin-bottom: 1.1rem;
+    color: var(--bs-body-color);
+}
+
+.hero-positioning {
+    font-size: clamp(1.15rem, 2.1vw, 1.45rem);
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    line-height: 1.38;
+    color: var(--bs-body-color);
+    margin-bottom: 0.85rem;
+    max-width: 720px;
+}
+
+.hero-lead {
+    font-size: clamp(0.94rem, 1.3vw, 1.04rem);
+    line-height: 1.65;
+    color: var(--bs-secondary-color);
+    margin-bottom: 1.85rem;
+    max-width: 680px;
+}
+
+/* Reusable Section Layout & Labels */
+.home-section {
+    padding: 3.5rem 0;
+    border-top: 1px solid var(--bs-border-color);
+}
+
+.sec-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--bs-secondary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+}
+.sec-label::after {
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--bs-border-color);
+}
+
+.sec-heading {
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    font-size: clamp(1.5rem, 2.8vw, 2rem);
+    color: var(--bs-body-color);
+    margin-bottom: 0.35rem;
+}
+
+/* 4 Pillars Grid (Areas of Practice) */
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.15rem;
+}
+
+.pillar-card {
+    background-color: rgba(128, 128, 128, 0.04);
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.85rem;
+    padding: 1.35rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.pillar-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+[data-bs-theme="dark"] .pillar-card:hover {
+    box-shadow: 0 8px 24px rgba(168, 85, 247, 0.1);
+}
+
+.pillar-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.85rem;
+}
+.pillar-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background-color: rgba(90, 50, 163, 0.1);
+    color: var(--accent-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+}
+[data-bs-theme="dark"] .pillar-icon {
+    background-color: rgba(168, 85, 247, 0.12);
+}
+.pillar-index {
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+.pillar-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 0.5rem;
+    color: var(--bs-body-color);
+}
+.pillar-desc {
+    font-size: 0.86rem;
+    color: var(--bs-secondary-color);
+    line-height: 1.55;
+    margin-bottom: 0;
+}
+
+/* Featured Projects 2x2 Grid & Case Banner */
+.featured-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.featured-card {
+    background-color: rgba(128, 128, 128, 0.04);
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.85rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.featured-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+[data-bs-theme="dark"] .featured-card:hover {
+    box-shadow: 0 10px 28px rgba(168, 85, 247, 0.1);
+}
+
+.featured-card-visual {
+    height: 165px;
+    border-radius: 0.65rem;
+    overflow: hidden;
+    border: 1px solid var(--bs-border-color);
+    margin-bottom: 1.2rem;
+    background-color: rgba(128, 128, 128, 0.05);
+    position: relative;
+}
+.featured-card-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.4s ease;
+}
+.featured-card:hover .featured-card-visual img {
+    transform: scale(1.03);
+}
+
+.typographic-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.1rem 1.25rem;
+    background: linear-gradient(135deg, rgba(90, 50, 163, 0.07) 0%, rgba(128, 128, 128, 0.03) 100%);
+}
+[data-bs-theme="dark"] .typographic-panel {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.11) 0%, rgba(29, 14, 41, 0.5) 100%);
+}
+
+.typo-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Courier New', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+.typo-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+}
+.typo-step {
+    font-size: 0.74rem;
+    font-weight: 600;
+    padding: 0.22rem 0.55rem;
+    border-radius: 0.35rem;
+    background-color: var(--bs-body-bg);
+    border: 1px solid var(--bs-border-color);
+    color: var(--bs-body-color);
+}
+.typo-arrow {
+    color: var(--accent-color);
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.featured-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+}
+
+/* Interactive Tag Chips (Shared between About and Home) */
+.chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+.tech-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.76rem;
+    font-weight: 600;
+    padding: 0.26rem 0.65rem;
+    border-radius: 0.45rem;
+    background-color: rgba(128, 128, 128, 0.07);
+    color: var(--bs-body-color);
+    border: 1px solid var(--bs-border-color);
+    text-decoration: none;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+.tech-chip i {
+    color: var(--accent-color);
+    font-size: 0.72rem;
+}
+
+/* Full-width Field Case Banner */
+.case-banner {
+    background-color: rgba(128, 128, 128, 0.04);
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.85rem;
+    padding: 1.5rem;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.case-banner:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+[data-bs-theme="dark"] .case-banner:hover {
+    box-shadow: 0 10px 28px rgba(168, 85, 247, 0.1);
+}
+.case-banner-img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 0.65rem;
+    border: 1px solid var(--bs-border-color);
+    display: block;
+}
+
+/* Lab Preview + Competencies 2-Column Layout */
+.lab-skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 1.5rem;
+}
+
+.skill-group-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--bs-secondary-color);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+.skill-group-title i {
+    color: var(--accent-color);
+}
+
+/* About Preview Compact Card */
+.about-home-avatar {
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--bs-border-color);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+    margin: 0 auto;
+    flex-shrink: 0;
+}
+.about-home-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Responsive Breakpoints for Homepage */
+@media (max-width: 991.98px) {
+    .pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .lab-skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .home-hero {
+        min-height: calc(100svh - 70px);
+        padding: 1.5rem 0 2rem;
+    }
+    .pillars-grid,
+    .featured-projects-grid {
+        grid-template-columns: 1fr;
+    }
+    .home-section {
+        padding: 2.75rem 0;
+    }
+}
