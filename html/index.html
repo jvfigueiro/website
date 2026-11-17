@@ -61,9 +61,9 @@
                 <div id="navMenu" class="nav-menu">
                     <a class="nav-link active" href="/" aria-current="page" data-i18n="nav.home">Início</a>
                     <a class="nav-link" href="/projects" data-i18n="nav.projects">Projetos</a>
-                    <!-- <a class="nav-link" href="/services">Serviços</a> -->
                     <a class="nav-link" href="/ultimatelab" data-i18n="nav.lab">Laboratório</a>
                     <a class="nav-link" href="/aboutme" data-i18n="nav.about">Sobre</a>
+                    <a class="nav-link" href="#contact" data-i18n="nav.contact">Contato</a>
                 </div>
 
                 <div class="nav-actions">
@@ -105,19 +105,19 @@
                     <div class="title-divider mb-4"></div>
 
                     <p class="hero-positioning" data-i18n="home.heroPositioning">
-                        Transformando problemas técnicos em infraestrutura confiável, software enxuto e automação prática.
+                        Transformo problemas técnicos em infraestrutura confiável, software prático e automações uteis.
                     </p>
 
                     <p class="hero-lead" data-i18n-html="home.heroLead">
-                        <strong>Analista de TI</strong> com foco em infraestrutura, suporte técnico e operações — atuando em redes, virtualização com Proxmox VE, sistemas Windows e Linux e desenvolvimento de ferramentas de código aberto.
+                        Infraestrutura, suporte técnico e operações. Atuação em redes, virtualização, sistemas Windows e Linux e desenvolvimento de ferramentas para tornar o dia a dia mais simples.
                     </p>
 
                     <div class="d-flex flex-column align-items-center gap-4">
                         <div class="d-flex flex-wrap justify-content-center gap-3">
-                            <a href="/projects" class="btn-custom btn-primary-custom">
+                            <a href="#featured-projects" class="btn-custom btn-primary-custom">
                                 <i class="fas fa-folder-open" aria-hidden="true"></i> <span data-i18n="home.btnProjects">Ver Projetos</span>
                             </a>
-                            <a href="/aboutme" class="btn-custom btn-outline-custom">
+                            <a href="#about-preview" class="btn-custom btn-outline-custom">
                                 <i class="fas fa-user" aria-hidden="true"></i> <span data-i18n="home.btnAbout">Sobre Mim</span>
                             </a>
                             <a href="/ultimatelab" class="btn-custom btn-outline-custom">
@@ -211,7 +211,7 @@
         </section>
 
         <!-- 3. PROJETOS EM DESTAQUE (Grid 2x2 + Faixa Larga "Case em campo") -->
-        <section class="home-section" aria-labelledby="sec-featured-projects">
+        <section id="featured-projects" class="home-section" aria-labelledby="sec-featured-projects">
             <div class="container" style="max-width: 1140px;">
                 <div class="sec-label">
                     <i class="fas fa-code-branch text-accent" aria-hidden="true"></i> <span data-i18n="home.featuredLabel">Portfólio Selecionado</span>
@@ -233,9 +233,8 @@
                         <div class="featured-card-visual">
                             <img src="/images/optiassist-dashboard.webp" width="989" height="616" loading="lazy" alt="Interface principal do OptiAssist exibindo informações de hardware do sistema">
                         </div>
-                        <div class="featured-meta">
+                        <div class="featured-meta mb-2">
                             <h3 class="project-title m-0">OptiAssist</h3>
-                            <span class="node-badge"><i class="fas fa-toolbox me-1" aria-hidden="true"></i> Utilitário Portátil USB</span>
                         </div>
                         <p class="project-desc mb-3">
                             A ferramenta definitiva que mantém seus sistemas otimizados e atualizados. Diagnóstico de hardware, instalação automatizada de programas, limpeza profunda e ordens de serviço — tudo em um aplicativo leve que roda direto da unidade flash USB.
@@ -277,9 +276,8 @@
                                 Backups atômicos via <code>VACUUM INTO</code> · Autenticação JWT &amp; RBAC
                             </div>
                         </div>
-                        <div class="featured-meta">
+                        <div class="featured-meta mb-2">
                             <h3 class="project-title m-0">OptiManager</h3>
-                            <span class="node-badge"><i class="fas fa-server me-1" aria-hidden="true"></i> Sistema Self-Hosted</span>
                         </div>
                         <p class="project-desc mb-3">
                             Sistema self-hosted de gestão de ordens de serviço, clientes e faturamento em Go, SQLite e Vue 3. Leve, rápido e seguro, projetado para pequenas empresas e assistências técnicas com soberania de dados.
@@ -305,9 +303,8 @@
                         <div class="featured-card-visual">
                             <img src="/images/ultimatelab.webp" width="2652" height="1637" loading="lazy" alt="Rack do UltimateLab com roteador TP-Link AX3000, mini PCs do cluster Proxmox e nobreak">
                         </div>
-                        <div class="featured-meta">
+                        <div class="featured-meta mb-2">
                             <h3 class="project-title m-0">UltimateLab</h3>
-                            <span class="node-badge"><i class="fas fa-network-wired me-1" aria-hidden="true"></i> Cluster de 2 Nós · Proxmox VE</span>
                         </div>
                         <p class="project-desc mb-3">
                             Cluster de 2 nós de virtualização baseado no Proxmox VE, distribuído entre mini PCs, para orquestração de serviços de DNS, VPN, automação residencial e inferência de IA local — incluindo este site.
@@ -335,135 +332,89 @@
             </div>
         </section>
 
-        <!-- 4. PRÉVIA DO LABORATÓRIO + COMPETÊNCIAS TÉCNICAS (2 Colunas Lado a Lado) -->
-        <section class="home-section" aria-labelledby="sec-lab-skills">
+        <!-- 4. COMPETÊNCIAS TÉCNICAS -->
+        <section id="skills" class="home-section" aria-labelledby="sec-skills">
             <div class="container" style="max-width: 1140px;">
                 <div class="sec-label">
-                    <i class="fas fa-sliders text-accent" aria-hidden="true"></i> <span data-i18n="home.labSkillsLabel">Infraestrutura Viva &amp; Stack Técnica</span>
+                    <i class="fas fa-sliders text-accent" aria-hidden="true"></i> <span data-i18n="home.skillsLabel">Competências Técnicas</span>
                 </div>
                 <div class="mb-4">
-                    <h2 id="sec-lab-skills" class="sec-heading" data-i18n-html="home.labSkillsHeading">Laboratório &amp; Competências<span class="text-accent">.</span></h2>
-                    <p class="text-secondary mb-0" data-i18n="home.labSkillsSub">As tecnologias aplicadas no dia a dia e o ambiente real onde os serviços e experimentos rodam 24/7.</p>
+                    <h2 id="sec-skills" class="sec-heading" data-i18n-html="home.skillsHeading">Competências Técnicas<span class="text-accent">.</span></h2>
+                    <p class="text-secondary mb-0" data-i18n="home.skillsSub">Tecnologias, ambientes e ferramentas aplicadas na resolução de problemas e suporte a operações.</p>
                 </div>
 
-                <div class="lab-skills-grid">
-
-                    <!-- Coluna Esquerda: Prévia do Laboratório (/ultimatelab) -->
-                    <div class="service-category d-flex flex-column justify-content-between">
-                        <div>
-                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
-                                <h3 class="m-0" data-i18n-html="home.labTitle"><i class="fas fa-server" aria-hidden="true"></i> Por Dentro do UltimateLab</h3>
-                                <span class="node-badge">Média 40W / Pico 90W</span>
-                            </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.6;" data-i18n-html="home.labDesc">
-                                Cluster de 2 nós computacionais em mini PCs rodando <strong>Proxmox VE</strong>, projetado para oferecer redundância de funcionamento e baixo consumo de energia — hospedando inclusive este site.
-                            </p>
-
-                            <ul class="spec-list mb-3">
-                                <li>
-                                    <span class="spec-label"><i class="fas fa-microchip text-accent me-1" aria-hidden="true"></i> Node 1:</span>
-                                    <span class="spec-value">Intel Core i5-8500T · 16GB DDR4 · 1TB NVMe + 1TB SSD SATA</span>
-                                </li>
-                                <li>
-                                    <span class="spec-label"><i class="fas fa-microchip text-accent me-1" aria-hidden="true"></i> Node 2:</span>
-                                    <span class="spec-value">Intel Core i5-3320M · 16GB DDR3 · 256GB SSD + 1TB HD</span>
-                                </li>
-                                <li>
-                                    <span class="spec-label"><i class="fas fa-bolt text-accent me-1" aria-hidden="true"></i> Rede &amp; Energia:</span>
-                                    <span class="spec-value">TP-Link AX3000 (Wi-Fi 6) · UPS 600VA / 300W</span>
-                                </li>
-                                <li>
-                                    <span class="spec-label"><i class="fas fa-cubes text-accent me-1" aria-hidden="true"></i> Serviços:</span>
-                                    <span class="spec-value">Tailscale, AdGuard Home (2 instâncias para fallback), OpenWrt, 3 VMs Docker, Jellyfin (ZFS), Immich, Ollama, Home Assistant e Prometheus + Grafana</span>
-                                </li>
-                            </ul>
+                <div class="skills-grid">
+                    <!-- 1. Infraestrutura & Virtualização -->
+                    <div class="service-category p-4">
+                        <div class="skill-group-title mb-3">
+                            <i class="fas fa-cloud text-accent" aria-hidden="true"></i> <span data-i18n="home.skillGroup1">Infraestrutura &amp; Virtualização</span>
                         </div>
-
-                        <div class="pt-2">
-                            <a href="/ultimatelab" class="btn-custom btn-outline-custom w-100 justify-content-center py-2" style="font-size: 0.88rem;">
-                                <i class="fas fa-diagram-project" aria-hidden="true"></i> <span data-i18n="home.labBtn">Ver Topologia de Rede e Hardware Completo</span>
-                            </a>
+                        <div class="chip-group">
+                            <span class="tech-chip"><i class="fas fa-server" aria-hidden="true"></i> Proxmox VE</span>
+                            <span class="tech-chip"><i class="fab fa-docker" aria-hidden="true"></i> Docker</span>
+                            <span class="tech-chip"><i class="fab fa-linux" aria-hidden="true"></i> Linux</span>
+                            <span class="tech-chip"><i class="fab fa-windows" aria-hidden="true"></i> Windows Server</span>
+                            <span class="tech-chip"><i class="fas fa-sitemap" aria-hidden="true"></i> Active Directory</span>
+                            <span class="tech-chip"><i class="fas fa-hard-drive" aria-hidden="true"></i> Dataset ZFS &amp; SMB</span>
                         </div>
                     </div>
 
-                    <!-- Coluna Direita: Resumo Compacto das Competências Técnicas -->
-                    <div class="service-category d-flex flex-column justify-content-between">
-                        <div>
-                            <h3 class="mb-3" data-i18n-html="home.skillsTitle"><i class="fas fa-terminal" aria-hidden="true"></i> Competências Técnicas</h3>
-
-                            <div class="mb-3">
-                                <div class="skill-group-title">
-                                    <i class="fas fa-cloud" aria-hidden="true"></i> Infraestrutura &amp; Virtualização
-                                </div>
-                                <div class="chip-group">
-                                    <span class="tech-chip"><i class="fas fa-server" aria-hidden="true"></i> Proxmox VE</span>
-                                    <span class="tech-chip"><i class="fab fa-docker" aria-hidden="true"></i> Docker</span>
-                                    <span class="tech-chip"><i class="fab fa-linux" aria-hidden="true"></i> Linux</span>
-                                    <span class="tech-chip"><i class="fab fa-windows" aria-hidden="true"></i> Windows Server</span>
-                                    <span class="tech-chip"><i class="fas fa-sitemap" aria-hidden="true"></i> Active Directory</span>
-                                    <span class="tech-chip"><i class="fas fa-hard-drive" aria-hidden="true"></i> Dataset ZFS &amp; SMB</span>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <div class="skill-group-title">
-                                    <i class="fas fa-shield-halved" aria-hidden="true"></i> Redes &amp; Segurança
-                                </div>
-                                <div class="chip-group">
-                                    <span class="tech-chip"><i class="fas fa-network-wired" aria-hidden="true"></i> Cisco Meraki</span>
-                                    <span class="tech-chip"><i class="fas fa-route" aria-hidden="true"></i> VLANs &amp; Roteamento</span>
-                                    <span class="tech-chip"><i class="fas fa-lock" aria-hidden="true"></i> WireGuard / Tailscale</span>
-                                    <span class="tech-chip"><i class="fas fa-globe" aria-hidden="true"></i> AdGuard Home (DoH/DoT)</span>
-                                    <span class="tech-chip"><i class="fas fa-ethernet" aria-hidden="true"></i> Cabeamento CAT6</span>
-                                    <span class="tech-chip"><i class="fas fa-video" aria-hidden="true"></i> Redes para CFTV IP</span>
-                                    <span class="tech-chip"><i class="fas fa-user-shield" aria-hidden="true"></i> Cibersegurança &amp; LGPD</span>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <div class="skill-group-title">
-                                    <i class="fas fa-code" aria-hidden="true"></i> Desenvolvimento &amp; Automação
-                                </div>
-                                <div class="chip-group">
-                                    <span class="tech-chip"><i class="fas fa-cube" aria-hidden="true"></i> Go</span>
-                                    <span class="tech-chip"><i class="fab fa-python" aria-hidden="true"></i> Python</span>
-                                    <span class="tech-chip"><i class="fas fa-window-restore" aria-hidden="true"></i> Vue 3</span>
-                                    <span class="tech-chip"><i class="fas fa-database" aria-hidden="true"></i> SQLite</span>
-                                    <span class="tech-chip"><i class="fas fa-terminal" aria-hidden="true"></i> PowerShell &amp; CMD</span>
-                                    <span class="tech-chip"><i class="fas fa-brain" aria-hidden="true"></i> Ollama &amp; Azure AI (AI-900)</span>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <div class="skill-group-title">
-                                    <i class="fas fa-gauge-high" aria-hidden="true"></i> Hardware, IoT &amp; Telemetria
-                                </div>
-                                <div class="chip-group">
-                                    <span class="tech-chip"><i class="fas fa-house-signal" aria-hidden="true"></i> Home Assistant</span>
-                                    <span class="tech-chip"><i class="fas fa-chart-line" aria-hidden="true"></i> Prometheus + Grafana</span>
-                                    <span class="tech-chip"><i class="fas fa-temperature-high" aria-hidden="true"></i> Arduino &amp; Sensores DHT11</span>
-                                    <span class="tech-chip"><i class="fas fa-car-battery" aria-hidden="true"></i> Telemetria OBD2 (EEC-V)</span>
-                                    <span class="tech-chip"><i class="fas fa-microchip" aria-hidden="true"></i> Sistemas Embarcados &amp; Firmware</span>
-                                </div>
-                            </div>
+                    <!-- 2. Redes & Segurança -->
+                    <div class="service-category p-4">
+                        <div class="skill-group-title mb-3">
+                            <i class="fas fa-shield-halved text-accent" aria-hidden="true"></i> <span data-i18n="home.skillGroup2">Redes &amp; Segurança</span>
                         </div>
-
-                        <div class="d-flex flex-wrap gap-2 pt-2">
-                            <a href="/aboutme" class="btn-custom btn-outline-custom flex-grow-1 justify-content-center py-2" style="font-size: 0.85rem;">
-                                <i class="fas fa-graduation-cap" aria-hidden="true"></i> <span data-i18n="home.skillsBtnEdu">Formação &amp; Certificados</span>
-                            </a>
-                            <a href="/services" class="btn-custom btn-outline-custom flex-grow-1 justify-content-center py-2" style="font-size: 0.85rem;">
-                                <i class="fas fa-compass" aria-hidden="true"></i> <span data-i18n="home.skillsBtnServices">Áreas de Consultoria</span>
-                            </a>
+                        <div class="chip-group">
+                            <span class="tech-chip"><i class="fas fa-network-wired" aria-hidden="true"></i> Cisco Meraki</span>
+                            <span class="tech-chip"><i class="fas fa-route" aria-hidden="true"></i> VLANs &amp; Roteamento</span>
+                            <span class="tech-chip"><i class="fas fa-lock" aria-hidden="true"></i> WireGuard / Tailscale</span>
+                            <span class="tech-chip"><i class="fas fa-globe" aria-hidden="true"></i> AdGuard Home (DoH/DoT)</span>
+                            <span class="tech-chip"><i class="fas fa-ethernet" aria-hidden="true"></i> Cabeamento CAT6</span>
+                            <span class="tech-chip"><i class="fas fa-video" aria-hidden="true"></i> Redes para CFTV IP</span>
+                            <span class="tech-chip"><i class="fas fa-user-shield" aria-hidden="true"></i> Cibersegurança &amp; LGPD</span>
                         </div>
                     </div>
 
+                    <!-- 3. Desenvolvimento & Automação -->
+                    <div class="service-category p-4">
+                        <div class="skill-group-title mb-3">
+                            <i class="fas fa-code text-accent" aria-hidden="true"></i> <span data-i18n="home.skillGroup3">Desenvolvimento &amp; Automação</span>
+                        </div>
+                        <div class="chip-group">
+                            <span class="tech-chip"><i class="fas fa-cube" aria-hidden="true"></i> Go</span>
+                            <span class="tech-chip"><i class="fab fa-python" aria-hidden="true"></i> Python</span>
+                            <span class="tech-chip"><i class="fas fa-window-restore" aria-hidden="true"></i> Vue 3</span>
+                            <span class="tech-chip"><i class="fas fa-database" aria-hidden="true"></i> SQLite</span>
+                            <span class="tech-chip"><i class="fas fa-terminal" aria-hidden="true"></i> PowerShell &amp; CMD</span>
+                            <span class="tech-chip"><i class="fas fa-brain" aria-hidden="true"></i> Ollama &amp; Azure AI (AI-900)</span>
+                        </div>
+                    </div>
+
+                    <!-- 4. Hardware, IoT & Telemetria -->
+                    <div class="service-category p-4">
+                        <div class="skill-group-title mb-3">
+                            <i class="fas fa-gauge-high text-accent" aria-hidden="true"></i> <span data-i18n="home.skillGroup4">Hardware, IoT &amp; Telemetria</span>
+                        </div>
+                        <div class="chip-group">
+                            <span class="tech-chip"><i class="fas fa-house-signal" aria-hidden="true"></i> Home Assistant</span>
+                            <span class="tech-chip"><i class="fas fa-chart-line" aria-hidden="true"></i> Prometheus + Grafana</span>
+                            <span class="tech-chip"><i class="fas fa-temperature-high" aria-hidden="true"></i> Arduino &amp; Sensores DHT11</span>
+                            <span class="tech-chip"><i class="fas fa-car-battery" aria-hidden="true"></i> Telemetria OBD2 (EEC-V)</span>
+                            <span class="tech-chip"><i class="fas fa-microchip" aria-hidden="true"></i> Sistemas Embarcados &amp; Firmware</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center mt-4">
+                    <a href="/aboutme" class="btn-custom btn-outline-custom py-2 px-4" style="font-size: 0.9rem;">
+                        <i class="fas fa-graduation-cap" aria-hidden="true"></i> <span data-i18n="home.skillsBtnEdu">Formação &amp; Certificados</span>
+                    </a>
                 </div>
             </div>
         </section>
 
         <!-- 5. APRESENTAÇÃO PESSOAL RESUMIDA (Sobre Mim) -->
-        <section class="home-section" aria-labelledby="sec-about-preview">
+        <section id="about-preview" class="home-section" aria-labelledby="sec-about-preview">
             <div class="container" style="max-width: 1140px;">
                 <div class="sec-label">
                     <i class="fas fa-user text-accent" aria-hidden="true"></i> <span data-i18n="home.aboutLabel">Perfil Profissional</span>
@@ -499,7 +450,7 @@
         </section>
 
         <!-- 6. CHAMADA PARA CONTATO PROFISSIONAL -->
-        <section class="home-section" aria-labelledby="sec-contact">
+        <section id="contact" class="home-section" aria-labelledby="sec-contact">
             <div class="container" style="max-width: 1140px;">
                 <div class="service-category p-4 p-md-5 text-center">
                     <div class="mb-3">

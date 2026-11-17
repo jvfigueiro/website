@@ -3,6 +3,18 @@
    ========================================================================== */
 
 /* Base & Typography */
+html {
+    scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+section[id] {
+    scroll-margin-top: 85px;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -925,7 +937,7 @@ body.page-loaded {
 /* Reusable Section Layout & Labels */
 .home-section {
     padding: 3.5rem 0;
-    border-top: 1px solid var(--bs-border-color);
+    border-top: none;
 }
 
 .sec-label {
@@ -1195,6 +1207,13 @@ body.page-loaded {
     gap: 1.5rem;
 }
 
+/* Full Technical Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
 .skill-group-title {
     font-size: 0.78rem;
     font-weight: 700;
@@ -1236,7 +1255,8 @@ body.page-loaded {
     .featured-projects-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    .lab-skills-grid {
+    .lab-skills-grid,
+    .skills-grid {
         grid-template-columns: 1fr;
     }
 }

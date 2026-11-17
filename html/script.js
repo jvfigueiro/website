@@ -438,9 +438,8 @@ const initRandomFeaturedProjects = () => {
         return `
             <article class="featured-card">
                 ${visualHtml}
-                <div class="featured-meta">
+                <div class="featured-meta mb-2">
                     <h3 class="project-title m-0">${title}</h3>
-                    <span class="node-badge">${badge}</span>
                 </div>
                 <p class="project-desc mb-3">${desc}</p>
                 <div class="chip-group mb-3">${tagsHtml}</div>
