@@ -615,34 +615,34 @@ function initTopologyConstellation(prefersReducedMotion) {
     let freeNodes = [];
     let pulses = [];
 
-    // Theme palette resolver using site tokens (#7c4dff in dark, #6229ff in light)
+    // Theme palette resolver using site tokens (#6366f1 in dark, #4f46e5 in light)
     function getPalette() {
         const theme = document.documentElement.getAttribute('data-bs-theme') || 'dark';
         if (theme === 'light') {
             return {
                 isDark: false,
-                rgb: '98, 41, 255',         // #6229ff
-                brightRgb: '124, 77, 255',  // #7c4dff
-                hubBg: 'rgba(248, 246, 255, 0.94)',
-                hubBorder: 'rgba(98, 41, 255, 0.48)',
-                hubIcon: 'rgba(98, 41, 255, 0.92)',
-                auraAlpha: 0.09,
-                edgeAlpha: 0.24,
-                nodeAlpha: 0.58,
-                pulseAlpha: 0.88
+                rgb: '79, 70, 229',         // #4f46e5
+                brightRgb: '99, 102, 241',  // #6366f1
+                hubBg: 'rgba(248, 247, 255, 0.94)',
+                hubBorder: 'rgba(79, 70, 229, 0.45)',
+                hubIcon: 'rgba(79, 70, 229, 0.9)',
+                auraAlpha: 0.08,
+                edgeAlpha: 0.22,
+                nodeAlpha: 0.55,
+                pulseAlpha: 0.85
             };
         }
         return {
             isDark: true,
-            rgb: '124, 77, 255',            // #7c4dff
-            brightRgb: '213, 196, 255',     // #d5c4ff (luminous neon blue-violet pulse core)
-            hubBg: 'rgba(12, 10, 22, 0.88)',
-            hubBorder: 'rgba(124, 77, 255, 0.6)',
-            hubIcon: 'rgba(229, 220, 255, 0.95)',
-            auraAlpha: 0.22,
-            edgeAlpha: 0.30,
-            nodeAlpha: 0.78,
-            pulseAlpha: 0.96
+            rgb: '99, 102, 241',            // #6366f1
+            brightRgb: '199, 210, 254',     // #c7d2fe (luminous indigo-ice pulse core)
+            hubBg: 'rgba(13, 12, 21, 0.88)',
+            hubBorder: 'rgba(99, 102, 241, 0.55)',
+            hubIcon: 'rgba(224, 231, 255, 0.95)',
+            auraAlpha: 0.20,
+            edgeAlpha: 0.28,
+            nodeAlpha: 0.75,
+            pulseAlpha: 0.95
         };
     }
 
