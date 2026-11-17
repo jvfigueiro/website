@@ -615,17 +615,17 @@ function initTopologyConstellation(prefersReducedMotion) {
     let freeNodes = [];
     let pulses = [];
 
-    // Theme palette resolver using existing site tokens (#a855f7 in dark, #5a32a3 in light)
+    // Theme palette resolver using site tokens (#6366f1 in dark, #4f46e5 in light)
     function getPalette() {
         const theme = document.documentElement.getAttribute('data-bs-theme') || 'dark';
         if (theme === 'light') {
             return {
                 isDark: false,
-                rgb: '90, 50, 163',        // #5a32a3
-                brightRgb: '124, 58, 237', // #7c3aed
-                hubBg: 'rgba(250, 247, 255, 0.94)',
-                hubBorder: 'rgba(90, 50, 163, 0.45)',
-                hubIcon: 'rgba(90, 50, 163, 0.9)',
+                rgb: '79, 70, 229',         // #4f46e5
+                brightRgb: '99, 102, 241',  // #6366f1
+                hubBg: 'rgba(248, 247, 255, 0.94)',
+                hubBorder: 'rgba(79, 70, 229, 0.45)',
+                hubIcon: 'rgba(79, 70, 229, 0.9)',
                 auraAlpha: 0.08,
                 edgeAlpha: 0.22,
                 nodeAlpha: 0.55,
@@ -634,11 +634,11 @@ function initTopologyConstellation(prefersReducedMotion) {
         }
         return {
             isDark: true,
-            rgb: '168, 85, 247',           // #a855f7
-            brightRgb: '233, 213, 255',    // #e9d5ff (luminous lavender-white pulse core)
-            hubBg: 'rgba(22, 10, 34, 0.88)',
-            hubBorder: 'rgba(168, 85, 247, 0.55)',
-            hubIcon: 'rgba(233, 213, 255, 0.92)',
+            rgb: '99, 102, 241',            // #6366f1
+            brightRgb: '199, 210, 254',     // #c7d2fe (luminous indigo-ice pulse core)
+            hubBg: 'rgba(13, 12, 21, 0.88)',
+            hubBorder: 'rgba(99, 102, 241, 0.55)',
+            hubIcon: 'rgba(224, 231, 255, 0.95)',
             auraAlpha: 0.20,
             edgeAlpha: 0.28,
             nodeAlpha: 0.75,

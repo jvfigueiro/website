@@ -135,7 +135,6 @@
                     <div class="status-item-row">
                         <a href="${escapeHtml(item.url || '#')}" target="_blank" rel="noopener noreferrer" class="status-item-name" title="Ver status oficial de ${escapeHtml(displayName)}">
                             <i class="fas fa-cloud text-accent"></i> ${escapeHtml(displayName)}
-                            <i class="fas fa-arrow-up-right-from-square text-secondary" style="font-size: 0.72rem;"></i>
                         </a>
                         ${getStatusBadgeHtml(item.status)}
                     </div>
@@ -405,7 +404,7 @@
 
             <div class="pt-2 text-end">
                 <a href="${externalUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary">
-                    <i class="fas fa-arrow-up-right-from-square me-1"></i> ${t('status.btnExternalCheck')}
+                    ${t('status.btnExternalCheck')}
                 </a>
             </div>
         `;

@@ -40,27 +40,56 @@
         }
 
         [data-bs-theme="dark"] .project-card:hover {
-            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.1);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
         }
 
         .project-icon-box {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 54px;
-            height: 54px;
-            min-width: 54px;
-            background-color: rgba(90, 50, 163, 0.1);
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            background-color: rgba(99, 102, 241, 0.1);
             border-radius: 12px;
             color: var(--accent-color);
-            font-size: 1.4rem;
-            margin-bottom: 1.25rem;
+            font-size: 1.35rem;
             transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
         .project-card:hover .project-icon-box {
             transform: scale(1.08) rotate(-4deg);
-            background-color: rgba(90, 50, 163, 0.2);
+            background-color: rgba(99, 102, 241, 0.18);
+        }
+
+        .project-type-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.28rem 0.65rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            line-height: 1;
+        }
+
+        .badge-project {
+            background-color: rgba(99, 102, 241, 0.1);
+            color: var(--accent-color);
+            border: 1px solid rgba(99, 102, 241, 0.25);
+        }
+
+        .badge-software {
+            background-color: rgba(14, 165, 233, 0.1);
+            color: #0284c7;
+            border: 1px solid rgba(14, 165, 233, 0.25);
+        }
+
+        [data-bs-theme="dark"] .badge-software {
+            background-color: rgba(56, 189, 248, 0.12);
+            color: #38bdf8;
+            border-color: rgba(56, 189, 248, 0.25);
         }
 
         .project-content {
@@ -135,7 +164,7 @@
                 <div class="nav-actions">
                     <!-- Language switcher (PT / EN) -->
                     <div class="lang-switcher" role="group" aria-label="Seleção de idioma">
-                        <button type="button" class="lang-btn active" data-lang="pt" aria-pressed="true">PT</button>
+                        <button type="button" class="lang-btn active" data-lang="pt" aria-pressed="true">BR</button>
                         <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
                     </div>
 
@@ -160,7 +189,10 @@
         <div class="projects-grid mb-5">
 
             <div class="project-card">
-                <div class="project-icon-box"><i class="fas fa-server"></i></div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="project-icon-box"><i class="fas fa-server"></i></div>
+                    <span class="project-type-badge badge-project" data-i18n="projects.badgeProject">Projeto</span>
+                </div>
                 <div class="project-content">
                     <h3 class="project-title" data-i18n="projects.p1Title">UltimateLab</h3>
                     <p class="project-desc" data-i18n="projects.p1Desc">Um pouco sobre o meu home lab e as tecnologias utilizadas. Um pequeno cluster de virtualização baseado no Proxmox VE, distribuído entre mini PCs, para orquestração de serviços de DNS, VPN, automação residencial e inferência de IA local — incluindo este site.</p>
@@ -171,7 +203,10 @@
             </div>
 
             <div class="project-card">
-                <div class="project-icon-box"><i class="fas fa-car"></i></div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="project-icon-box"><i class="fas fa-car"></i></div>
+                    <span class="project-type-badge badge-project" data-i18n="projects.badgeProject">Projeto</span>
+                </div>
                 <div class="project-content">
                     <h3 class="project-title" data-i18n="projects.p2Title">GarageX5 - O Meu Carro</h3>
                     <p class="project-desc" data-i18n="projects.p2Desc">Um projeto onde levo os conhecimentos de informática e eletrônica para dentro do meu carro, seguindo o conceito de retrofit, visando modernizá-lo sem perder suas características originais.</p>
@@ -182,7 +217,10 @@
             </div>
 
             <div class="project-card">
-                <div class="project-icon-box"><i class="fas fa-microchip"></i></div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="project-icon-box"><i class="fas fa-microchip"></i></div>
+                    <span class="project-type-badge badge-project" data-i18n="projects.badgeProject">Projeto</span>
+                </div>
                 <div class="project-content">
                     <h3 class="project-title" data-i18n="projects.p3Title">Personalizando Central Multimídia com Engenharia Reversa</h3>
                     <p class="project-desc" data-i18n="projects.p3Desc">Estudo e modificação de firmware de uma central multimídia automotiva baseada em Linux, explorando vetores de acesso via interfaces de manutenção do fabricante, customização de branding e mapeamento de interfaces de telemetria.</p>
@@ -194,7 +232,10 @@
             </div>
 
             <div class="project-card">
-                <div class="project-icon-box"><i class="fas fa-network-wired"></i></div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="project-icon-box"><i class="fas fa-network-wired"></i></div>
+                    <span class="project-type-badge badge-project" data-i18n="projects.badgeProject">Projeto</span>
+                </div>
                 <div class="project-content">
                     <h3 class="project-title" data-i18n="projects.p4Title">Projeto de Modernização de Infraestrutura de Rede Cisco</h3>
                     <p class="project-desc" data-i18n="projects.p4Desc">Como uma parceria informal virou um projeto real de infraestrutura Cisco Meraki em escala, levando cabeamento estruturado e gestão de rede em nuvem para dezenas de edificações no Rio Grande do Sul.</p>
@@ -205,7 +246,10 @@
             </div>
             
             <div class="project-card">
-                <div class="project-icon-box"><i class="fas fa-car-battery"></i></div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="project-icon-box"><i class="fas fa-car-battery"></i></div>
+                    <span class="project-type-badge badge-project" data-i18n="projects.badgeProject">Projeto</span>
+                </div>
                 <div class="project-content">
                     <h3 class="project-title" data-i18n="projects.p5Title">Upgrade de ECU Ford</h3>
                     <p class="project-desc" data-i18n="projects.p5Desc">Uma aventura que começou como uma tentativa via Arduino de decodificar o protocolo proprietário DCL presentes em módulos de injeção eletrônica Ford EEC-IV. Mas a falta de documentação confiável levou a uma troca completa de módulo por uma EEC-V — e hoje alimenta telemetria de motor em tempo real para automação preditiva no Home Assistant.</p>
@@ -216,7 +260,10 @@
             </div>
 
             <div class="project-card">
-                <div class="project-icon-box"><i class="fas fa-satellite-dish"></i></div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="project-icon-box"><i class="fas fa-satellite-dish"></i></div>
+                    <span class="project-type-badge badge-project" data-i18n="projects.badgeProject">Projeto</span>
+                </div>
                 <div class="project-content">
                     <h3 class="project-title" data-i18n="projects.p6Title">Exploração de Satélites</h3>
                     <p class="project-desc" data-i18n="projects.p6Desc">Esse é um hobby totalmente fora do comum. Através de uma mini antena parabólica portátil, adaptada para operar com LNB circular ou linear de banda Ku, exploramos os limites geográficos ao capturar canais digitais abertos transmitidos por satélites geoestacionários de diversos países.</p>
@@ -227,7 +274,10 @@
             </div>
 
             <div class="project-card">
-                <div class="project-icon-box"><i class="fas fa-temperature-high"></i></div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="project-icon-box"><i class="fas fa-temperature-high"></i></div>
+                    <span class="project-type-badge badge-project" data-i18n="projects.badgeProject">Projeto</span>
+                </div>
                 <div class="project-content">
                     <h3 class="project-title" data-i18n="projects.p7Title">Arduino DHT para Home Assistant</h3>
                     <p class="project-desc" data-i18n="projects.p7Desc">Monitoramento de temperatura e umidade usando sensores DHT11 ligados à um Arduino Mega. Os dados são repassados via interface serial para o Home Assistant virtualizado no Proxmox, alimentando rotinas de automação climática.</p>
@@ -237,17 +287,11 @@
                 </div>
             </div>
 
-        </div>
-
-        <div class="pt-4 mb-4 border-top">
-            <h2 class="mb-1" style="font-weight: 800; letter-spacing: -1px;" data-i18n-html="projects.softHeading">Softwares<span class="text-accent">.</span></h2>
-            <p class="text-secondary" data-i18n="projects.softSub">Aplicações, utilitários e ferramentas de código aberto desenvolvidos para automação de sistemas, produtividade e entretenimento.</p>
-        </div>
-
-        <div class="projects-grid">
-
             <div class="project-card">
-                <div class="project-icon-box"><i class="fas fa-toolbox"></i></div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="project-icon-box"><i class="fas fa-toolbox"></i></div>
+                    <span class="project-type-badge badge-software" data-i18n="projects.badgeSoftware">Software</span>
+                </div>
                 <div class="project-content">
                     <h3 class="project-title" data-i18n="projects.s1Title">OptiAssist</h3>
                     <p class="project-desc" data-i18n="projects.s1Desc">A ferramenta definitiva que mantém seus sistemas otimizados e atualizados. Diagnóstico de hardware, instalação automatizada de programas, limpeza profunda e ordens de serviço — tudo em um aplicativo leve que roda direto da unidade flash USB.</p>
@@ -259,7 +303,10 @@
             </div>
 
             <div class="project-card">
-                <div class="project-icon-box"><i class="fas fa-clipboard-check"></i></div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="project-icon-box"><i class="fas fa-clipboard-check"></i></div>
+                    <span class="project-type-badge badge-software" data-i18n="projects.badgeSoftware">Software</span>
+                </div>
                 <div class="project-content">
                     <h3 class="project-title" data-i18n="projects.s2Title">OptiManager</h3>
                     <p class="project-desc" data-i18n="projects.s2Desc">Sistema self-hosted de gestão de ordens de serviço, clientes e faturamento em Go, SQLite e Vue 3. Leve, rápido e seguro, projetado para pequenas empresas e assistências técnicas com soberania de dados.</p>
@@ -271,7 +318,10 @@
             </div>
 
             <div class="project-card">
-                <div class="project-icon-box"><i class="fab fa-apple"></i></div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="project-icon-box"><i class="fab fa-apple"></i></div>
+                    <span class="project-type-badge badge-software" data-i18n="projects.badgeSoftware">Software</span>
+                </div>
                 <div class="project-content">
                     <h3 class="project-title" data-i18n="projects.s3Title">Legacy Mac Boost</h3>
                     <p class="project-desc" data-i18n="projects.s3Desc">Script desenvolvido para otimizar a performance de Macs antigos rodando as últimas versões do macOS via OCLP (OpenCore Legacy Patcher), voltado para máquinas utilizadas em redes isoladas.</p>

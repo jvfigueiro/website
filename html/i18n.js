@@ -53,7 +53,7 @@ const SITE_TRANSLATIONS = {
 
         // Homepage - Pillars / Areas
         'home.pillarsLabel': 'Áreas de Atuação',
-        'home.pillarsHeading': 'Especialidades Técnicas<span class="text-accent">.</span>',
+        'home.pillarsHeading': 'Áreas de Atuação<span class="text-accent">.</span>',
         'home.pillarsSub': 'Da infraestrutura física e redes ao desenvolvimento de utilitários, virtualização e automação.',
         'home.pillar1Title': 'Infraestrutura & Redes',
         'home.pillar1Desc': 'Cabeamento estruturado, organização de racks, switches gerenciáveis, segmentação por VLANs, roteamento e conectividade segura via VPNs (WireGuard e Tailscale).',
@@ -107,6 +107,8 @@ const SITE_TRANSLATIONS = {
         'projects.heading': 'Projetos<span class="text-accent">.</span>',
         'projects.sub': 'Um repositório contínuo de aventuras em infraestrutura, redes, eletrônica e mods de hardware.',
         'projects.subtitle': 'Aqui você encontra uma seleção de sistemas, utilitários, modificações e experimentos que desenvolvi.',
+        'projects.badgeProject': 'Projeto',
+        'projects.badgeSoftware': 'Software',
         'projects.softHeading': 'Softwares<span class="text-accent">.</span>',
         'projects.softSub': 'Aplicações, utilitários e ferramentas de código aberto desenvolvidos para automação de sistemas, produtividade e entretenimento.',
         'projects.filterAll': 'Todos',
@@ -381,7 +383,7 @@ const SITE_TRANSLATIONS = {
 
         // Homepage - Pillars / Areas
         'home.pillarsLabel': 'Focus Areas',
-        'home.pillarsHeading': 'Technical Specialties<span class="text-accent">.</span>',
+        'home.pillarsHeading': 'Focus Areas<span class="text-accent">.</span>',
         'home.pillarsSub': 'From physical infrastructure and networking to utility development, virtualization, and automation.',
         'home.pillar1Title': 'Infrastructure & Networking',
         'home.pillar1Desc': 'Structured cabling, rack organization, managed switches, VLAN segmentation, routing, and secure VPN connectivity via WireGuard and Tailscale.',
@@ -435,6 +437,8 @@ const SITE_TRANSLATIONS = {
         'projects.heading': 'Projects<span class="text-accent">.</span>',
         'projects.sub': 'An ongoing repository of adventures in infrastructure, networking, electronics, and hardware mods.',
         'projects.subtitle': 'Here you will find a curated selection of systems, utilities, modifications, and experiments I developed.',
+        'projects.badgeProject': 'Project',
+        'projects.badgeSoftware': 'Software',
         'projects.softHeading': 'Software<span class="text-accent">.</span>',
         'projects.softSub': 'Open-source applications, utilities, and tools developed for system automation, productivity, and entertainment.',
         'projects.filterAll': 'All',

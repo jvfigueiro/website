@@ -49,7 +49,7 @@
                 <div class="nav-actions">
                     <!-- Language switcher (PT / EN) -->
                     <div class="lang-switcher" role="group" aria-label="Seleção de idioma">
-                        <button type="button" class="lang-btn active" data-lang="pt" aria-pressed="true">PT</button>
+                        <button type="button" class="lang-btn active" data-lang="pt" aria-pressed="true">BR</button>
                         <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
                     </div>
 
@@ -83,9 +83,6 @@
                         <span id="globalStatusDot" class="status-pulse-dot status-dot-unknown"></span>
                         <div>
                             <h2 id="globalStatusText" class="h5 fw-bold mb-0 text-body" data-i18n="status.badgeUnavailable">Telemetria temporariamente indisponível</h2>
-                            <div class="text-secondary small mt-1">
-                                <span data-i18n="status.autoRefreshNote">Atualização automática a cada 45s</span>
-                            </div>
                         </div>
                     </div>
                     <div class="d-flex align-items-center gap-3 text-secondary small">
@@ -98,23 +95,22 @@
                     </div>
                 </div>
 
-                <!-- Diagnostic tool badges inside the banner -->
-                <div class="w-100 d-flex flex-wrap align-items-center gap-2 pt-3 border-top mt-1" style="border-color: rgba(128, 128, 128, 0.15) !important;">
-                    <span class="text-secondary small fw-semibold me-1" style="font-size: 0.75rem;" data-i18n="status.toolsBadgeLabel">Atalhos de Diagnóstico:</span>
+                <!-- Diagnostic tool badges inside the banner (centered) -->
+                <div class="w-100 d-flex flex-wrap align-items-center justify-content-center gap-2 pt-3 border-top mt-1" style="border-color: rgba(128, 128, 128, 0.15) !important;">
                     <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" class="status-tool-badge">
-                        <i class="fas fa-gauge-high" aria-hidden="true"></i> Speedtest.net <i class="fas fa-arrow-up-right-from-square text-secondary" style="font-size: 0.62rem;" aria-hidden="true"></i>
+                        <i class="fas fa-gauge-high" aria-hidden="true"></i> Speedtest.net
                     </a>
                     <a href="https://downdetector.com.br/" target="_blank" rel="noopener noreferrer" class="status-tool-badge">
-                        <i class="fas fa-users-viewfinder" aria-hidden="true"></i> DownDetector <i class="fas fa-arrow-up-right-from-square text-secondary" style="font-size: 0.62rem;" aria-hidden="true"></i>
+                        <i class="fas fa-users-viewfinder" aria-hidden="true"></i> DownDetector
                     </a>
                     <a href="https://ipleak.net/" target="_blank" rel="noopener noreferrer" class="status-tool-badge">
-                        <i class="fas fa-user-shield" aria-hidden="true"></i> IPLeak.net <i class="fas fa-arrow-up-right-from-square text-secondary" style="font-size: 0.62rem;" aria-hidden="true"></i>
+                        <i class="fas fa-user-shield" aria-hidden="true"></i> IPLeak.net
                     </a>
                     <a href="https://urlscan.io/" target="_blank" rel="noopener noreferrer" class="status-tool-badge">
-                        <i class="fas fa-shield-virus" aria-hidden="true"></i> urlscan.io <i class="fas fa-arrow-up-right-from-square text-secondary" style="font-size: 0.62rem;" aria-hidden="true"></i>
+                        <i class="fas fa-shield-virus" aria-hidden="true"></i> urlscan.io
                     </a>
                     <a href="https://www.isitdownrightnow.com/" target="_blank" rel="noopener noreferrer" class="status-tool-badge">
-                        <i class="fas fa-server" aria-hidden="true"></i> IsItDownRightNow <i class="fas fa-arrow-up-right-from-square text-secondary" style="font-size: 0.62rem;" aria-hidden="true"></i>
+                        <i class="fas fa-server" aria-hidden="true"></i> IsItDownRightNow
                     </a>
                 </div>
             </div>
@@ -147,13 +143,10 @@
             <!-- 2. Client Connection Diagnostic (IPLeak.net Client-Side) - positioned right below stats -->
             <div id="clientConnCard" class="service-category p-4 mb-4" aria-labelledby="sec-client-conn">
                 <div class="mb-3">
-                    <h2 id="sec-client-conn" class="h5 fw-bold mb-1 d-flex align-items-center gap-2 text-body">
+                    <h2 id="sec-client-conn" class="h5 fw-bold mb-0 d-flex align-items-center gap-2 text-body">
                         <i class="fas fa-network-wired text-accent" aria-hidden="true"></i>
                         <span data-i18n="status.connTitle">Sua Conexão Atual</span>
                     </h2>
-                    <p class="text-secondary small mb-0" data-i18n="status.connSub">
-                        Diagnóstico rápido do seu endereço público e provedor de acesso.
-                    </p>
                 </div>
                 <div id="clientConnContent">
                     <div class="text-secondary small">
