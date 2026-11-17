@@ -79,22 +79,30 @@
         currentStatusData = data;
 
         // 1. Global Banner
-        if (globalStatusDot && globalStatusText) {
-            globalStatusDot.className = 'status-pulse-dot';
+        if (globalStatusText) {
             const gStatus = (data.global_status || '').toLowerCase();
 
             if (gStatus === 'operational') {
-                globalStatusDot.classList.add('status-dot-ok');
                 globalStatusText.textContent = t('status.badgeOperational');
             } else if (gStatus === 'degraded') {
-                globalStatusDot.classList.add('status-dot-warn');
                 globalStatusText.textContent = t('status.badgeDegraded');
             } else if (gStatus === 'offline') {
-                globalStatusDot.classList.add('status-dot-err');
                 globalStatusText.textContent = t('status.badgeOffline');
             } else {
-                globalStatusDot.classList.add('status-dot-unknown');
                 globalStatusText.textContent = t('status.badgeUnavailable');
+            }
+        }
+        if (globalStatusDot) {
+            globalStatusDot.className = 'status-pulse-dot';
+            const gStatus = (data.global_status || '').toLowerCase();
+            if (gStatus === 'operational') {
+                globalStatusDot.classList.add('status-dot-ok');
+            } else if (gStatus === 'degraded') {
+                globalStatusDot.classList.add('status-dot-warn');
+            } else if (gStatus === 'offline') {
+                globalStatusDot.classList.add('status-dot-err');
+            } else {
+                globalStatusDot.classList.add('status-dot-unknown');
             }
         }
 
@@ -150,9 +158,11 @@
         }
         currentStatusData = null;
 
-        if (globalStatusDot && globalStatusText) {
-            globalStatusDot.className = 'status-pulse-dot status-dot-warn';
+        if (globalStatusText) {
             globalStatusText.textContent = t('status.badgeUnavailable');
+        }
+        if (globalStatusDot) {
+            globalStatusDot.className = 'status-pulse-dot status-dot-warn';
         }
 
         if (statusUpdatedAt) {
@@ -163,21 +173,9 @@
         if (kpiServices) kpiServices.textContent = '-- / --';
         if (kpiAvailability) kpiAvailability.textContent = '--%';
 
-        if (infraList) {
-            infraList.innerHTML = `
-                <div class="alert alert-warning d-flex align-items-center mb-0 p-3" role="alert" style="border-radius: 0.65rem;">
-                    <i class="fas fa-triangle-exclamation me-2 fs-5"></i>
-                    <div>
-                        <strong class="d-block">${t('status.badgeUnavailable')}</strong>
-                        <span class="small">${t('status.errFetchFailed')}</span>
-                    </div>
-                </div>
-            `;
-        }
-
         if (thirdPartyList) {
             thirdPartyList.innerHTML = `
-                <div class="alert alert-secondary d-flex align-items-center mb-0 p-3" role="alert" style="border-radius: 0.65rem;">
+                <div class="alert alert-secondary d-flex align-items-center mb-0 p-3" role="alert" style="border-radius: 0.65rem; grid-column: 1 / -1;">
                     <i class="fas fa-wifi text-secondary me-2 fs-5"></i>
                     <span class="small">${t('status.errFetchFailed')}</span>
                 </div>

@@ -53,7 +53,7 @@ const SITE_TRANSLATIONS = {
 
         // Homepage - Pillars / Areas
         'home.pillarsLabel': 'Áreas de Atuação',
-        'home.pillarsHeading': 'Áreas de Atuação<span class="text-accent">.</span>',
+        'home.pillarsHeading': 'Áreas de Atuação',
         'home.pillarsSub': 'Da infraestrutura física e redes ao desenvolvimento de utilitários, virtualização e automação.',
         'home.pillar1Title': 'Infraestrutura & Redes',
         'home.pillar1Desc': 'Cabeamento estruturado, organização de racks, switches gerenciáveis, segmentação por VLANs, roteamento e conectividade segura via VPNs (WireGuard e Tailscale).',
@@ -74,14 +74,14 @@ const SITE_TRANSLATIONS = {
 
         // Homepage - Featured Projects
         'home.featuredLabel': 'Portfólio Selecionado',
-        'home.featuredHeading': 'Projetos & Softwares em Destaque<span class="text-accent">.</span>',
+        'home.featuredHeading': 'Projetos & Softwares em Destaque',
         'home.featuredSub': 'Aplicações próprias, estudos de sistemas e infraestrutura documentada de ponta a ponta.',
         'home.featuredDesc': 'Sistemas self-hosted, utilitários de manutenção, projetos embarcados e o cluster do laboratório doméstico — desenvolvidos com foco em eficiência, código limpo e utilidade real.',
         'home.featuredAllBtn': 'Ver todos os projetos',
 
         // Homepage - Technical Skills
         'home.skillsLabel': 'Competências Técnicas',
-        'home.skillsHeading': 'Competências Técnicas<span class="text-accent">.</span>',
+        'home.skillsHeading': 'Competências Técnicas',
         'home.skillsSub': 'Tecnologias, ambientes e ferramentas aplicadas na resolução de problemas e suporte a operações.',
         'home.skillGroup1': 'Infraestrutura & Virtualização',
         'home.skillGroup2': 'Redes & Segurança',
@@ -91,7 +91,7 @@ const SITE_TRANSLATIONS = {
 
         // Homepage - About Section
         'home.aboutLabel': 'Perfil Profissional',
-        'home.aboutHeading': 'Sobre Mim<span class="text-accent">.</span>',
+        'home.aboutHeading': 'Sobre Mim',
         'home.aboutLocation': 'Santa Maria, RS',
         'home.aboutP1': 'Acredito que soluções eficazes não precisam ser excessivamente complexas. Minha trajetória combina atuação prática desde 2019 em suporte técnico, infraestrutura de redes, eletrônica e consultoria de TI com o desenvolvimento de softwares próprios e um laboratório doméstico em operação contínua — sempre buscando identificar a causa-raiz de cada problema e implementar soluções limpas, confiáveis e bem documentadas.',
         'home.aboutP2': 'Graduado em <strong>Análise e Desenvolvimento de Sistemas (UNIASSELVI, 2025)</strong>, gosto de explorar sistemas computacionais, elétricos e automotivos para entender como cada detalhe funciona, por que funciona e como pode ser melhorado.',
@@ -104,12 +104,12 @@ const SITE_TRANSLATIONS = {
 
         // Projects Catalog Page (projects.html)
         'projects.title': 'Projetos | João Figueiró',
-        'projects.heading': 'Projetos<span class="text-accent">.</span>',
+        'projects.heading': 'Projetos',
         'projects.sub': 'Um repositório contínuo de aventuras em infraestrutura, redes, eletrônica e mods de hardware.',
         'projects.subtitle': 'Aqui você encontra uma seleção de sistemas, utilitários, modificações e experimentos que desenvolvi.',
         'projects.badgeProject': 'Projeto',
         'projects.badgeSoftware': 'Software',
-        'projects.softHeading': 'Softwares<span class="text-accent">.</span>',
+        'projects.softHeading': 'Softwares',
         'projects.softSub': 'Aplicações, utilitários e ferramentas de código aberto desenvolvidos para automação de sistemas, produtividade e entretenimento.',
         'projects.filterAll': 'Todos',
         'projects.filterSoftware': 'Software & Sistemas',
@@ -139,7 +139,7 @@ const SITE_TRANSLATIONS = {
 
         // About Page (aboutme.html)
         'about.title': 'Sobre Mim | João Figueiró',
-        'about.heading': 'João Figueiró<span class="text-accent">.</span>',
+        'about.heading': 'João Figueiró',
         'about.subtitle': 'Conheça um pouco mais sobre minha história, formação profissional e visão sobre tecnologia.',
         'about.introTitle': 'Quem sou eu',
         'about.eduTitle': 'Formação Acadêmica',
@@ -176,7 +176,7 @@ const SITE_TRANSLATIONS = {
 
         // UltimateLab Page (ultimatelab.html)
         'lab.title': 'UltimateLab | João Figueiró',
-        'lab.heading': 'UltimateLab<span class="text-accent">.</span>',
+        'lab.heading': 'UltimateLab',
         'lab.subtitle': 'Aqui é onde todas as nossas aventuras tecnológicas acontecem. Conheça um pouco da infraestrutura onde criamos, reiventamos tecnologias, aprendemos, nos divertimos, e por tabela, hospeda também este site!',
         'lab.overviewTitle': 'Visão Geral do Cluster',
         'lab.hardwareTitle': 'Hardware & Infraestrutura Física',
@@ -215,7 +215,7 @@ const SITE_TRANSLATIONS = {
 
         // Services Page (services.html)
         'services.title': 'Serviços | João Figueiró',
-        'services.heading': 'Serviços & Consultoria<span class="text-accent">.</span>',
+        'services.heading': 'Serviços & Consultoria',
         'services.subtitle': 'Soluções personalizadas em infraestrutura de TI, redes e suporte corporativo.',
         'services.desc': 'Atendimento especializado em informática, infraestrutura e tecnologia com foco em diagnóstico de causa-raiz, confiabilidade e soluções sob medida.',
         'services.howTitle': 'Como eu trabalho',
@@ -280,7 +280,7 @@ const SITE_TRANSLATIONS = {
         // Status Page (/status)
         'status.pageTitle': 'Status de Serviços e Infraestrutura | João Figueiró',
         'status.secLabel': 'Monitoramento em Tempo Real',
-        'status.heading': 'Status de Serviços & Infraestrutura<span class="text-accent">.</span>',
+        'status.heading': 'Status de Serviços & Infraestrutura',
         'status.subtitle': 'Disponibilidade dos nós do cluster, serviços self-hosted em produção e conectividade de provedores externos da nuvem.',
         'status.badgeOperational': 'Todos os Sistemas Operacionais',
         'status.badgeDegraded': 'Degradação ou Instabilidade Detectada',
@@ -383,7 +383,7 @@ const SITE_TRANSLATIONS = {
 
         // Homepage - Pillars / Areas
         'home.pillarsLabel': 'Focus Areas',
-        'home.pillarsHeading': 'Focus Areas<span class="text-accent">.</span>',
+        'home.pillarsHeading': 'Focus Areas',
         'home.pillarsSub': 'From physical infrastructure and networking to utility development, virtualization, and automation.',
         'home.pillar1Title': 'Infrastructure & Networking',
         'home.pillar1Desc': 'Structured cabling, rack organization, managed switches, VLAN segmentation, routing, and secure VPN connectivity via WireGuard and Tailscale.',
@@ -404,14 +404,14 @@ const SITE_TRANSLATIONS = {
 
         // Homepage - Featured Projects
         'home.featuredLabel': 'Selected Portfolio',
-        'home.featuredHeading': 'Featured Projects & Software<span class="text-accent">.</span>',
+        'home.featuredHeading': 'Featured Projects & Software',
         'home.featuredSub': 'Proprietary software, system studies, and end-to-end documented infrastructure.',
         'home.featuredDesc': 'Self-hosted systems, maintenance utilities, embedded engineering and the homelab cluster — built with a focus on efficiency, clean code and real-world utility.',
         'home.featuredAllBtn': 'View all projects',
 
         // Homepage - Technical Skills
         'home.skillsLabel': 'Technical Skills',
-        'home.skillsHeading': 'Technical Skills<span class="text-accent">.</span>',
+        'home.skillsHeading': 'Technical Skills',
         'home.skillsSub': 'Technologies, environments, and tools applied in problem solving and operations support.',
         'home.skillGroup1': 'Infrastructure & Virtualization',
         'home.skillGroup2': 'Networking & Security',
@@ -421,7 +421,7 @@ const SITE_TRANSLATIONS = {
 
         // Homepage - About Section
         'home.aboutLabel': 'Professional Profile',
-        'home.aboutHeading': 'About Me<span class="text-accent">.</span>',
+        'home.aboutHeading': 'About Me',
         'home.aboutLocation': 'Santa Maria, RS, Brazil',
         'home.aboutP1': 'I believe effective solutions don\'t need to be needlessly complex. My journey combines hands-on experience since 2019 in technical support, network infrastructure, electronics and IT consulting with custom software development and a homelab operating around the clock — always focused on identifying root causes and delivering clean, reliable, well-documented solutions.',
         'home.aboutP2': 'Graduated in <strong>Systems Analysis and Development (UNIASSELVI, 2025)</strong>, I love exploring computing, electrical and automotive systems to understand how every detail works, why it works, and how to improve it.',
@@ -434,12 +434,12 @@ const SITE_TRANSLATIONS = {
 
         // Projects Catalog Page (projects.html)
         'projects.title': 'Projects | João Figueiró',
-        'projects.heading': 'Projects<span class="text-accent">.</span>',
+        'projects.heading': 'Projects',
         'projects.sub': 'An ongoing repository of adventures in infrastructure, networking, electronics, and hardware mods.',
         'projects.subtitle': 'Here you will find a curated selection of systems, utilities, modifications, and experiments I developed.',
         'projects.badgeProject': 'Project',
         'projects.badgeSoftware': 'Software',
-        'projects.softHeading': 'Software<span class="text-accent">.</span>',
+        'projects.softHeading': 'Software',
         'projects.softSub': 'Open-source applications, utilities, and tools developed for system automation, productivity, and entertainment.',
         'projects.filterAll': 'All',
         'projects.filterSoftware': 'Software & Systems',
@@ -469,7 +469,7 @@ const SITE_TRANSLATIONS = {
 
         // About Page (aboutme.html)
         'about.title': 'About Me | João Figueiró',
-        'about.heading': 'João Figueiró<span class="text-accent">.</span>',
+        'about.heading': 'João Figueiró',
         'about.subtitle': 'Learn more about my background, technical education, and philosophy on technology.',
         'about.introTitle': 'Who I am',
         'about.eduTitle': 'Academic Education',
@@ -506,7 +506,7 @@ const SITE_TRANSLATIONS = {
 
         // UltimateLab Page (ultimatelab.html)
         'lab.title': 'UltimateLab | João Figueiró',
-        'lab.heading': 'UltimateLab<span class="text-accent">.</span>',
+        'lab.heading': 'UltimateLab',
         'lab.subtitle': 'Here is where our technological adventures take place. Explore the infrastructure where we build, reinvent technology, learn, have fun, and host this website!',
         'lab.overviewTitle': 'Cluster Overview',
         'lab.hardwareTitle': 'Hardware & Physical Infrastructure',
@@ -547,7 +547,7 @@ const SITE_TRANSLATIONS = {
 
         // Services Page (services.html)
         'services.title': 'Services | João Figueiró',
-        'services.heading': 'Services & Consulting<span class="text-accent">.</span>',
+        'services.heading': 'Services & Consulting',
         'services.subtitle': 'Custom solutions in IT infrastructure, networking, and enterprise support.',
         'services.desc': 'Specialized IT, infrastructure, and technology consulting focused on root-cause diagnosis, reliability, and tailored solutions.',
         'services.howTitle': 'How I Work',
@@ -612,7 +612,7 @@ const SITE_TRANSLATIONS = {
         // Status Page (/status)
         'status.pageTitle': 'Services & Infrastructure Status | João Figueiró',
         'status.secLabel': 'Real-Time Telemetry & Monitoring',
-        'status.heading': 'Services & Infrastructure Status<span class="text-accent">.</span>',
+        'status.heading': 'Services & Infrastructure Status',
         'status.subtitle': 'Availability of cluster nodes, self-hosted production services, and external cloud provider connectivity.',
         'status.badgeOperational': 'All Systems Operational',
         'status.badgeDegraded': 'Degraded Performance Detected',

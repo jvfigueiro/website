@@ -36,7 +36,7 @@
     <nav class="navbar pt-4 pb-2" aria-label="Navegação principal">
         <div class="container px-3" style="max-width: 1140px;">
             <div class="nav-pill-container">
-                <a class="navbar-brand m-0" href="/">João Figueiró<span class="text-accent">.</span></a>
+                <a class="navbar-brand m-0" href="/">João Figueiró</a>
 
                 <div id="navMenu" class="nav-menu">
                     <a class="nav-link" href="/" data-i18n="nav.home">Início</a>
@@ -70,7 +70,7 @@
         <!-- 1. Header Section -->
         <section class="mb-4">
             <h1 class="h2 mb-2" style="font-weight: 800; letter-spacing: -1px;" data-i18n-html="status.heading">
-                Status de Serviços & Infraestrutura<span class="text-accent">.</span>
+                Status de Serviços & Infraestrutura
             </h1>
             <p class="text-secondary fs-6 mb-4" style="max-width: 760px;" data-i18n="status.subtitle">
                 Disponibilidade dos nós do cluster, serviços self-hosted em produção e conectividade de provedores externos da nuvem.
@@ -78,18 +78,13 @@
 
             <!-- Global Status Banner -->
             <div id="globalStatusBanner" class="status-global-banner mb-4">
-                <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 w-100">
-                    <div class="d-flex align-items-center gap-3">
-                        <span id="globalStatusDot" class="status-pulse-dot status-dot-unknown"></span>
-                        <div>
-                            <h2 id="globalStatusText" class="h5 fw-bold mb-0 text-body" data-i18n="status.badgeUnavailable">Telemetria temporariamente indisponível</h2>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center gap-3 text-secondary small">
+                <div class="d-flex flex-column align-items-center justify-content-center text-center gap-2 w-100">
+                    <h2 id="globalStatusText" class="h5 fw-bold mb-0 text-body" data-i18n="status.badgeUnavailable">Telemetria temporariamente indisponível</h2>
+                    <div class="d-flex align-items-center justify-content-center gap-2 text-secondary small">
                         <div>
                             <span data-i18n="status.lastUpdated">Última atualização</span>: <strong id="statusUpdatedAt" class="text-body font-monospace">--:--:--</strong>
                         </div>
-                        <button id="btnRefreshStatus" type="button" class="btn btn-sm btn-outline-secondary" title="Atualizar agora" aria-label="Atualizar agora">
+                        <button id="btnRefreshStatus" type="button" class="btn btn-sm btn-outline-secondary py-0 px-2" title="Atualizar agora" aria-label="Atualizar agora">
                             <i class="fas fa-rotate" aria-hidden="true"></i>
                         </button>
                     </div>
