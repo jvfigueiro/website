@@ -82,7 +82,7 @@ const initRandomFeaturedProjects = () => {
             },
             tags: [
                 { icon: 'fab fa-windows', text: 'Windows' },
-                { icon: 'fas fa-terminal', text: 'PowerShell & CMD' },
+                { icon: 'fas fa-terminal', text: 'PowerShell & Shell Script' },
                 { icon: 'fas fa-box-open', text: 'Winget & Offline' }
             ],
             githubUrl: 'https://github.com/jvfigueiro/optiassist',
@@ -245,7 +245,7 @@ const initRandomFeaturedProjects = () => {
                 en: 'Ford EEC-V electronic fuel injection module'
             },
             tags: [
-                { icon: 'fas fa-microchip', text: 'OBD2 / EEC-V' },
+                { icon: 'fas fa-car-battery', text: 'Telemetria Automotiva' },
                 { icon: 'fas fa-satellite-dish', text: '5G Telemetry' },
                 { icon: 'fas fa-house-signal', text: 'Home Assistant' }
             ],
@@ -327,17 +327,17 @@ const initRandomFeaturedProjects = () => {
                 en: '<i class="fas fa-helmet-safety me-1"></i> Field Case · 42 Buildings'
             },
             desc: {
-                pt: 'Projeto real de infraestrutura com cabeamento estruturado CAT6, montagem física de racks e gestão centralizada em nuvem via Cisco Meraki em 42 edificações no Rio Grande do Sul.',
-                en: 'Real-world infrastructure project delivering CAT6 structured cabling, rack organization, and centralized cloud networking via Cisco Meraki across 42 facilities in RS, Brazil.'
+                pt: 'Projeto real de infraestrutura com cabeamento estruturado, montagem física de racks e gestão centralizada em nuvem via Cisco Meraki em 42 edificações no Rio Grande do Sul.',
+                en: 'Real-world infrastructure project delivering structured cabling, rack organization, and centralized cloud networking via Cisco Meraki across 42 facilities in RS, Brazil.'
             },
             visualType: 'img',
             imgSrc: '/images/lds-work.webp',
             imgAlt: {
-                pt: 'Substituição de cabeamento CAT6 e organização de rack Cisco Meraki',
-                en: 'CAT6 cabling replacement and Cisco Meraki rack setup'
+                pt: 'Substituição de cabeamento estruturado e organização de rack Cisco Meraki',
+                en: 'Structured cabling replacement and Cisco Meraki rack setup'
             },
             tags: [
-                { icon: 'fas fa-network-wired', text: 'CAT6' },
+                { icon: 'fas fa-network-wired', text: 'Cabeamento Estruturado' },
                 { icon: 'fas fa-cloud', text: 'Cisco Meraki' },
                 { icon: 'fas fa-server', text: 'Racks & Infra' }
             ],
