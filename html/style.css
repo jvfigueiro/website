@@ -924,6 +924,7 @@ body.page-loaded {
     color: var(--bs-body-color);
     margin-bottom: 0.85rem;
     max-width: 720px;
+    min-height: 2.8em;
 }
 
 .hero-lead {

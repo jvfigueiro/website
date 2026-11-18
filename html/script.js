@@ -506,7 +506,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const typewriterElement = document.getElementById('typewriter');
     
     if (typewriterElement) {
-        const textToType = typewriterElement.getAttribute('data-text');
+        const textToType = (window.SITE_I18N ? window.SITE_I18N.t('home.heroPositioning') : '') || typewriterElement.getAttribute('data-text') || typewriterElement.textContent.trim();
+        let typewriterTimeout = null;
+
         if (prefersReducedMotion) {
             typewriterElement.textContent = textToType;
         } else {
@@ -517,7 +519,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (index < textToType.length) {
                     typewriterElement.textContent += textToType.charAt(index);
                     index++;
-                    setTimeout(typeWriter, 32);
+                    typewriterTimeout = setTimeout(typeWriter, 28);
                 }
             }
             
@@ -525,7 +527,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         window.addEventListener('languagechange', (e) => {
-            const newText = window.SITE_I18N ? window.SITE_I18N.t('home.tagline') : (e.detail.lang === 'en' ? '> Gadget builder, gearhead and tech enthusiast_' : '> Construtor de engenhocas, gearhead e maluco da informática_');
+            if (typewriterTimeout) clearTimeout(typewriterTimeout);
+            const newText = window.SITE_I18N ? window.SITE_I18N.t('home.heroPositioning') : (e.detail.lang === 'en' ? 'I turn technical problems into reliable infrastructure, practical software, and useful automations.' : 'Transformo problemas técnicos em infraestrutura confiável, software prático e automações uteis.');
             typewriterElement.setAttribute('data-text', newText);
             typewriterElement.textContent = newText;
         });
