@@ -68,16 +68,10 @@
         if (s === 'degraded' || s === 'warning' || s === 'unstable') {
             return `<span class="status-badge-pill status-badge-warn"><i class="fas fa-triangle-exclamation"></i> ${t('status.degradedBadge')}</span>`;
         }
-        if (s === 'maintenance') {
-            return `<span class="status-badge-pill status-badge-warn"><i class="fas fa-wrench"></i> ${t('status.maintenanceBadge')}</span>`;
-        }
         if (s === 'offline' || s === 'down' || s === 'outage') {
             return `<span class="status-badge-pill status-badge-err"><i class="fas fa-circle-xmark"></i> ${t('status.offlineBadge')}</span>`;
         }
-        if (!s || s === 'unknown' || s === 'unavailable') {
-            return `<span class="status-badge-pill status-badge-unknown"><i class="fas fa-circle-question"></i> ${t('status.unknownBadge')}</span>`;
-        }
-        return `<span class="status-badge-pill status-badge-unknown"><i class="fas fa-circle-question"></i> ${escapeHtml(statusStr)}</span>`;
+        return `<span class="status-badge-pill status-badge-unknown"><i class="fas fa-circle-question"></i> ${t('status.unknownBadge')}</span>`;
     }
 
     // Render Status Data
@@ -87,17 +81,16 @@
         // 1. Global Banner
         if (globalStatusText) {
             const gStatus = (data.global_status || '').toLowerCase();
-            let statusKey = 'status.badgeUnavailable';
 
             if (gStatus === 'operational') {
-                statusKey = 'status.badgeOperational';
+                globalStatusText.textContent = t('status.badgeOperational');
             } else if (gStatus === 'degraded') {
-                statusKey = 'status.badgeDegraded';
+                globalStatusText.textContent = t('status.badgeDegraded');
             } else if (gStatus === 'offline') {
-                statusKey = 'status.badgeOffline';
+                globalStatusText.textContent = t('status.badgeOffline');
+            } else {
+                globalStatusText.textContent = t('status.badgeUnavailable');
             }
-            globalStatusText.setAttribute('data-i18n', statusKey);
-            globalStatusText.textContent = t(statusKey);
         }
         if (globalStatusDot) {
             globalStatusDot.className = 'status-pulse-dot';
@@ -166,7 +159,6 @@
         currentStatusData = null;
 
         if (globalStatusText) {
-            globalStatusText.setAttribute('data-i18n', 'status.badgeUnavailable');
             globalStatusText.textContent = t('status.badgeUnavailable');
         }
         if (globalStatusDot) {
@@ -192,7 +184,7 @@
     }
 
     // fetch with timeout (relative paths for backend API; custom timeout supported)
-    const API_TIMEOUT_MS = 15000;
+    const API_TIMEOUT_MS = 10000;
     async function apiFetch(path, options, timeoutMs) {
         const ctrl = new AbortController();
         const timer = setTimeout(() => ctrl.abort(), timeoutMs || API_TIMEOUT_MS);
@@ -213,24 +205,37 @@
             if (icon) icon.classList.add('fa-spin');
         }
 
+        // Resilient fetch: up to 3 attempts (transient proxy/upstream hiccups must not
+        // wipe the page). If every attempt fails but we already have good data, keep it.
+        let lastErr = null;
+        let ok = false;
+        for (let attempt = 0; attempt < 3 && !ok; attempt++) {
+            try {
+                const res = await apiFetch('/api/v1/status', {
+                    method: 'GET',
+                    headers: { 'Accept': 'application/json' },
+                    cache: 'no-store'
+                });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
+                if (!data || typeof data !== 'object' || !data.global_status || !data.summary) {
+                    throw new Error('Invalid payload');
+                }
+                renderStatus(data);
+                ok = true;
+            } catch (err) {
+                lastErr = err;
+                if (attempt < 2) await new Promise(r => setTimeout(r, 1200 * (attempt + 1)));
+            }
+        }
         try {
-            const res = await apiFetch('/api/v1/status', {
-                method: 'GET',
-                headers: { 'Accept': 'application/json' },
-                cache: 'no-store'
-            });
-
-            if (!res.ok) {
-                throw new Error(`HTTP ${res.status}`);
+            if (!ok) {
+                if (currentStatusData) {
+                    console.warn('Status refresh failed, keeping last known data:', lastErr);
+                } else {
+                    renderStatusError(lastErr);
+                }
             }
-
-            const data = await res.json();
-            if (!data || typeof data !== 'object' || !data.global_status || !data.summary) {
-                throw new Error('Invalid payload');
-            }
-            renderStatus(data);
-        } catch (err) {
-            renderStatusError(err);
         } finally {
             isStatusLoading = false;
             if (btnRefreshStatus) {
@@ -267,11 +272,13 @@
         const location = escapeHtml(locStr || 'N/A');
 
         clientConnContent.innerHTML = `
-            <div class="client-conn-grid my-0">
-                <div class="checker-metric-box client-conn-ip-box">
+            <div class="conn-ip-row mb-3">
+                <div class="checker-metric-box">
                     <div class="checker-metric-label">${t('status.connIp')}</div>
-                    <div class="checker-metric-val text-accent">${ip}</div>
+                    <div class="checker-metric-val text-accent conn-ip-val">${ip}</div>
                 </div>
+            </div>
+            <div class="checker-metrics-grid my-0" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
                 <div class="checker-metric-box">
                     <div class="checker-metric-label">${t('status.connIsp')}</div>
                     <div class="checker-metric-val" style="font-family: inherit; font-size: 0.9rem;">${isp}</div>
