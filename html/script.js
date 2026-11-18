@@ -519,7 +519,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (index < textToType.length) {
                     typewriterElement.textContent += textToType.charAt(index);
                     index++;
-                    typewriterTimeout = setTimeout(typeWriter, 45);
+                    typewriterTimeout = setTimeout(typeWriter, 80);
                 }
             }
             
