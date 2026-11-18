@@ -68,10 +68,16 @@
         if (s === 'degraded' || s === 'warning' || s === 'unstable') {
             return `<span class="status-badge-pill status-badge-warn"><i class="fas fa-triangle-exclamation"></i> ${t('status.degradedBadge')}</span>`;
         }
+        if (s === 'maintenance') {
+            return `<span class="status-badge-pill status-badge-warn"><i class="fas fa-wrench"></i> ${t('status.maintenanceBadge')}</span>`;
+        }
         if (s === 'offline' || s === 'down' || s === 'outage') {
             return `<span class="status-badge-pill status-badge-err"><i class="fas fa-circle-xmark"></i> ${t('status.offlineBadge')}</span>`;
         }
-        return `<span class="status-badge-pill status-badge-unknown"><i class="fas fa-circle-question"></i> ${escapeHtml(statusStr || 'N/A')}</span>`;
+        if (!s || s === 'unknown' || s === 'unavailable') {
+            return `<span class="status-badge-pill status-badge-unknown"><i class="fas fa-circle-question"></i> ${t('status.unknownBadge')}</span>`;
+        }
+        return `<span class="status-badge-pill status-badge-unknown"><i class="fas fa-circle-question"></i> ${escapeHtml(statusStr)}</span>`;
     }
 
     // Render Status Data
@@ -81,16 +87,17 @@
         // 1. Global Banner
         if (globalStatusText) {
             const gStatus = (data.global_status || '').toLowerCase();
+            let statusKey = 'status.badgeUnavailable';
 
             if (gStatus === 'operational') {
-                globalStatusText.textContent = t('status.badgeOperational');
+                statusKey = 'status.badgeOperational';
             } else if (gStatus === 'degraded') {
-                globalStatusText.textContent = t('status.badgeDegraded');
+                statusKey = 'status.badgeDegraded';
             } else if (gStatus === 'offline') {
-                globalStatusText.textContent = t('status.badgeOffline');
-            } else {
-                globalStatusText.textContent = t('status.badgeUnavailable');
+                statusKey = 'status.badgeOffline';
             }
+            globalStatusText.setAttribute('data-i18n', statusKey);
+            globalStatusText.textContent = t(statusKey);
         }
         if (globalStatusDot) {
             globalStatusDot.className = 'status-pulse-dot';
@@ -159,6 +166,7 @@
         currentStatusData = null;
 
         if (globalStatusText) {
+            globalStatusText.setAttribute('data-i18n', 'status.badgeUnavailable');
             globalStatusText.textContent = t('status.badgeUnavailable');
         }
         if (globalStatusDot) {
@@ -184,7 +192,7 @@
     }
 
     // fetch with timeout (relative paths for backend API; custom timeout supported)
-    const API_TIMEOUT_MS = 10000;
+    const API_TIMEOUT_MS = 15000;
     async function apiFetch(path, options, timeoutMs) {
         const ctrl = new AbortController();
         const timer = setTimeout(() => ctrl.abort(), timeoutMs || API_TIMEOUT_MS);
@@ -259,8 +267,8 @@
         const location = escapeHtml(locStr || 'N/A');
 
         clientConnContent.innerHTML = `
-            <div class="checker-metrics-grid my-0">
-                <div class="checker-metric-box">
+            <div class="client-conn-grid my-0">
+                <div class="checker-metric-box client-conn-ip-box">
                     <div class="checker-metric-label">${t('status.connIp')}</div>
                     <div class="checker-metric-val text-accent">${ip}</div>
                 </div>

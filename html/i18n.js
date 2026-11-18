@@ -286,6 +286,7 @@ const SITE_TRANSLATIONS = {
         'status.badgeDegraded': 'Degradação ou Instabilidade Detectada',
         'status.badgeOffline': 'Interrupção de Serviços Detectada',
         'status.badgeUnavailable': 'Telemetria temporariamente indisponível',
+        'status.loading': 'Verificando status...',
         'status.lastUpdated': 'Última atualização',
         'status.autoRefreshNote': 'Atualização automática a cada 45s',
         'status.refreshBtnTitle': 'Atualizar agora',
@@ -329,6 +330,8 @@ const SITE_TRANSLATIONS = {
         'status.okBadge': 'Operacional',
         'status.degradedBadge': 'Instável',
         'status.offlineBadge': 'Inoperante',
+        'status.maintenanceBadge': 'Manutenção',
+        'status.unknownBadge': 'Indisponível',
         'status.validTls': 'Válido',
         'status.invalidTls': 'Inválido / N/A',
         'status.expiresOn': 'expira em'
@@ -618,6 +621,7 @@ const SITE_TRANSLATIONS = {
         'status.badgeDegraded': 'Degraded Performance Detected',
         'status.badgeOffline': 'Service Outage Detected',
         'status.badgeUnavailable': 'Telemetry temporarily unavailable',
+        'status.loading': 'Checking status...',
         'status.lastUpdated': 'Last updated',
         'status.autoRefreshNote': 'Auto-refreshes every 45s',
         'status.refreshBtnTitle': 'Refresh now',
@@ -661,6 +665,8 @@ const SITE_TRANSLATIONS = {
         'status.okBadge': 'Operational',
         'status.degradedBadge': 'Degraded',
         'status.offlineBadge': 'Offline',
+        'status.maintenanceBadge': 'Maintenance',
+        'status.unknownBadge': 'Unavailable',
         'status.validTls': 'Valid',
         'status.invalidTls': 'Invalid / N/A',
         'status.expiresOn': 'expires on'

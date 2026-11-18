@@ -1634,6 +1634,46 @@ body.page-loaded {
     font-weight: 700;
     color: var(--bs-body-color);
     font-family: 'Courier New', monospace;
+    overflow-wrap: anywhere;
+}
+
+/* Client Connection Grid: IP exclusively on first row, ISP + Location below */
+.client-conn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+}
+
+.client-conn-ip-box {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 575.98px) {
+    .client-conn-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Status Section BETA Badge */
+.status-beta-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.22rem 0.55rem;
+    border-radius: 9999px;
+    background-color: rgba(79, 70, 229, 0.12);
+    color: var(--accent-color);
+    border: 1px solid rgba(79, 70, 229, 0.3);
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+}
+
+[data-bs-theme="dark"] .status-beta-badge {
+    background-color: rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.35);
+    color: #a5b4fc;
 }
 
 /* Quick Tools Grid */
