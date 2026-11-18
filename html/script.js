@@ -502,11 +502,11 @@ if (navToggleBtn && navMenu) {
 document.addEventListener("DOMContentLoaded", function() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Typewriter effect on homepage
+    // Typewriter effect on homepage (User name in H1)
     const typewriterElement = document.getElementById('typewriter');
     
     if (typewriterElement) {
-        const textToType = (window.SITE_I18N ? window.SITE_I18N.t('home.heroPositioning') : '') || typewriterElement.getAttribute('data-text') || typewriterElement.textContent.trim();
+        const textToType = typewriterElement.getAttribute('data-text') || typewriterElement.textContent.trim() || 'João Figueiró';
         let typewriterTimeout = null;
 
         if (prefersReducedMotion) {
@@ -519,18 +519,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (index < textToType.length) {
                     typewriterElement.textContent += textToType.charAt(index);
                     index++;
-                    typewriterTimeout = setTimeout(typeWriter, 28);
+                    typewriterTimeout = setTimeout(typeWriter, 45);
                 }
             }
             
             typeWriter();
         }
 
-        window.addEventListener('languagechange', (e) => {
+        window.addEventListener('languagechange', () => {
             if (typewriterTimeout) clearTimeout(typewriterTimeout);
-            const newText = window.SITE_I18N ? window.SITE_I18N.t('home.heroPositioning') : (e.detail.lang === 'en' ? 'I turn technical problems into reliable infrastructure, practical software, and useful automations.' : 'Transformo problemas técnicos em infraestrutura confiável, software prático e automações uteis.');
-            typewriterElement.setAttribute('data-text', newText);
-            typewriterElement.textContent = newText;
+            typewriterElement.textContent = textToType;
         });
     }
 

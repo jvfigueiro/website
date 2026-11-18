@@ -914,6 +914,7 @@ body.page-loaded {
     line-height: 1.06;
     margin-bottom: 1.1rem;
     color: var(--bs-body-color);
+    min-height: 1.15em;
 }
 
 .hero-positioning {
@@ -924,7 +925,6 @@ body.page-loaded {
     color: var(--bs-body-color);
     margin-bottom: 0.85rem;
     max-width: 720px;
-    min-height: 2.8em;
 }
 
 .hero-lead {
