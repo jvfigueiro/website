@@ -190,15 +190,16 @@
         .feature-list li {
             font-size: 0.92rem;
             color: var(--bs-secondary-color);
-            margin-bottom: 0.6rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.6rem;
+            margin-bottom: 0.65rem;
+            position: relative;
+            padding-left: 1.55rem;
+            line-height: 1.6;
         }
         .feature-list li i {
             color: var(--accent-color);
-            margin-top: 0.25rem;
-            flex-shrink: 0;
+            position: absolute;
+            left: 0;
+            top: 0.28rem;
         }
 
         /* Banner CTA */
@@ -285,31 +286,7 @@
             </div>
         </section>
 
-        <!-- 2. Value Props (Por que usar o OptiAssist?) -->
-        <section class="value-grid">
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-plug-circle-bolt"></i></div>
-                <h4>Pronto para Uso</h4>
-                <p>Sem instaladores complicados ou dependências externas. Basta plugar a unidade USB em qualquer computador, e abrir o aplicativo.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-layer-group"></i></div>
-                <h4>Centralização de Recursos</h4>
-                <p>Acabe com dezenas de janelas abertas e scripts avulsos. Todas as ferramentas e diagnósticos agora estão reunidos em uma interface limpa e intuitiva.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-gauge-high"></i></div>
-                <h4>Mais Produtividade</h4>
-                <p>Automatize procedimentos rotineiros de manutenção preventiva e pós-instalação do Windows, economizando tempo valioso a cada atendimento.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-file-invoice"></i></div>
-                <h4>Relatórios Detalhados</h4>
-                <p>Com o módulo Relatório de Manutenção, emita relatórios de serviço profissionais com um clique, com a configuração de hardware e os procedimentos realizados.</p>
-            </div>
-        </section>
-
-        <!-- 3. Recursos em Detalhes (Feature Showcase) -->
+        <!-- 2. Recursos em Detalhes (Feature Showcase) -->
 
         <!-- Feature 1: Dashboard & Diagnósticos -->
         <section class="feature-block">
@@ -321,10 +298,9 @@
                         Identifique instantaneamente todos os componentes da máquina sem precisar abrir o equipamento ou navegar por menus escondidos do sistema operacional.
                     </p>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> Identificação do processador, memória RAM, placa de vídeo e placa-mãe.</li>
+                        <li><i class="fas fa-check-circle"></i> Indicador dinâmico de saúde em 3 níveis com recomendações práticas para espaço em disco, proteção do sistema, reinício pendente e compatibilidade.</li>
+                        <li><i class="fas fa-check-circle"></i> Visão rápida do processador, memória RAM, placa de vídeo, placa-mãe, versão de BIOS, edição do Windows e unidades de armazenamento.</li>
                         <li><i class="fas fa-check-circle"></i> Número de série e Service Tag com cópia rápida para a área de transferência.</li>
-                        <li><i class="fas fa-check-circle"></i> Auditoria rápida de recursos de segurança: status do BitLocker, módulo TPM e Secure Boot.</li>
-                        <li><i class="fas fa-check-circle"></i> Atalhos para os principais consoles administrativos nativos do Windows.</li>
                     </ul>
                 </div>
                 <div class="feature-media">
@@ -333,7 +309,50 @@
             </div>
         </section>
 
-        <!-- Feature 2: App Manager (Pós-instalação) -->
+        <!-- Feature 2: Windows Tools & OptiBoost -->
+        <section class="feature-block">
+            <div class="feature-row reverse">
+                <div class="feature-content">
+                    <span class="feature-badge">Windows Tools &amp; OptiBoost</span>
+                    <h3 class="feature-title">Otimização inteligente por perfil de hardware</h3>
+                    <p class="feature-desc">
+                        Motor de otimização que detecta automaticamente o perfil da máquina para aplicar ajustes seguros, pensado tanto para profissionais de TI quanto para uso doméstico sem riscos.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> <strong>7 perfis detectados automaticamente:</strong> <em>Gaming PC</em>, <em>Workstation</em>, <em>Hybrid</em>, <em>Conventional Desktop</em>, <em>Laptop</em>, <em>Gaming Laptop</em> e <em>Ultraportable</em>.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Prévia e Reversão Segura:</strong> veja exatamente o que será alterado antes de confirmar, com criação automática de Ponto de Restauração do Windows e opção de desfazer um ajuste específico ou restaurar tudo com um clique.</li>
+                        <li><i class="fas fa-check-circle"></i> Proteções inteligentes que evitam alterações inadequadas conforme o hardware e a edição do Windows instalada.</li>
+                        <li><i class="fas fa-check-circle"></i> Acesso rápido a 23 consoles e ferramentas nativas de administração do Windows.</li>
+                    </ul>
+                </div>
+                <div class="feature-media">
+                    <img src="/images/optiassist-optiboost.webp" alt="OptiBoost com detecção automática de perfil e ajustes por categoria" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 3: Compatibility Checker -->
+        <section class="feature-block">
+            <div class="feature-row">
+                <div class="feature-content">
+                    <span class="feature-badge">Compatibility Checker</span>
+                    <h3 class="feature-title">Auditoria de compatibilidade e diagnóstico</h3>
+                    <p class="feature-desc">
+                        Avalie em segundos se o equipamento está apto para versões modernas do Windows e identifique gargalos ou conflitos conhecidos de hardware e drivers.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Avaliação individual de CPU, GPU, RAM, tipo de armazenamento e Firmware com indicadores claros de compatibilidade.</li>
+                        <li><i class="fas fa-check-circle"></i> Verificação automática de requisitos do Windows 11.</li>
+                        <li><i class="fas fa-check-circle"></i> Detecção de 13 cenários documentados de incompatibilidade de hardware e driver com correções rápidas.</li>
+                    </ul>
+                </div>
+                <div class="feature-media">
+                    <img src="/images/optiassist-compatcheck.webp" alt="Compatibility Checker verificando hardware e conflitos conhecidos" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 4: App Manager (Pós-instalação) -->
         <section class="feature-block">
             <div class="feature-row reverse">
                 <div class="feature-content">
@@ -344,20 +363,39 @@
                     </p>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i> Suporte a instaladores offline na unidade USB.</li>
-                        <li><i class="fas fa-check-circle"></i> Integração automática com o Windows Package Manager.</li>
-                        <li><i class="fas fa-check-circle"></i> Escaneamento e atualização de programas já instalados com um só clique.</li>
-                        <li><i class="fas fa-check-circle"></i> Catálogo personalizável para adicionar seus próprios instaladores.</li>
+                        <li><i class="fas fa-check-circle"></i> Integração automática com o Windows Package Manager, com programas essenciais pré-selecionados.</li>
+                        <li><i class="fas fa-check-circle"></i> Editor visual de catálogo para personalizar sua própria lista de instaladores.</li>
                     </ul>
                 </div>
                 <div class="feature-media">
-                    <img src="/images/optiassist-appmanager.webp" alt="Gerenciador de Aplicativos e Instalador em Lote">
+                    <img src="/images/optiassist-appmanager.webp" alt="Gerenciador de Aplicativos e Instalador em Lote" loading="lazy">
                 </div>
             </div>
         </section>
 
-        <!-- Feature 3: System Cleaner -->
+        <!-- Feature 5: App Updates & Manage Apps -->
         <section class="feature-block">
             <div class="feature-row">
+                <div class="feature-content">
+                    <span class="feature-badge">App Updates &amp; Manage Apps</span>
+                    <h3 class="feature-title">Atualização em lote e inventário completo</h3>
+                    <p class="feature-desc">
+                        Mantenha os programas do cliente atualizados e controle tudo o que está instalado no sistema em um único lugar, sem depender de múltiplos assistentes.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> <strong>App Updates:</strong> varredura e atualização em lote de aplicativos desatualizados, com atalho direto para a Microsoft Store.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Manage Apps:</strong> inventário completo exibindo fabricante, data de instalação, diretório e tamanho em disco, com botões diretos para atualizar ou desinstalar programas.</li>
+                    </ul>
+                </div>
+                <div class="feature-media">
+                    <img src="/images/optiassist-appupdates.webp" alt="Tela de atualização em lote de aplicativos" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 6: System Cleaner -->
+        <section class="feature-block">
+            <div class="feature-row reverse">
                 <div class="feature-content">
                     <span class="feature-badge">Limpeza do Sistema</span>
                     <h3 class="feature-title">Mantenha o sistema rápido e em perfeitas condições</h3>
@@ -365,42 +403,43 @@
                         Recupere gigabytes de espaço em disco eliminando arquivos temporários, caches acumulados e resíduos desnecessários do Windows com total segurança e controle.
                     </p>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> <strong>Modo Análise:</strong> veja exatamente quanto espaço será liberado antes de apagar qualquer arquivo.</li>
-                        <li><i class="fas fa-check-circle"></i> Proteção ativa para nunca remover arquivos essenciais do sistema operacional.</li>
-                        <li><i class="fas fa-check-circle"></i> Limpeza inteligente de caches pesados de desenvolvimento.</li>
+                        <li><i class="fas fa-check-circle"></i> Motor próprio alimentado por <strong>37 definições de limpeza</strong> para sistema, navegadores e aplicativos populares.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Modo Análise:</strong> veja exatamente quanto espaço será liberado e inspecione os arquivos antes de apagar qualquer item.</li>
+                        <li><i class="fas fa-check-circle"></i> Proteção ativa de caminhos críticos do sistema, compactação de bancos de dados e limpeza profunda de caches de desenvolvimento.</li>
+                        <li><i class="fas fa-check-circle"></i> Opção de backup prévio antes da limpeza com restauração completa quando necessário.</li>
                     </ul>
                 </div>
                 <div class="feature-media">
-                    <img src="/images/optiassist-cleaner.webp" alt="Limpeza de Sistema com Análise Prévia Dry-Run">
+                    <img src="/images/optiassist-cleaner.webp" alt="Limpeza de Sistema com Análise Prévia" loading="lazy">
                 </div>
             </div>
         </section>
 
-        <!-- Feature 4: Toolbox de Automação -->
-        <section class="feature-block">
-            <div class="feature-row reverse">
-                <div class="feature-content">
-                    <span class="feature-badge">Toolbox</span>
-                    <h3 class="feature-title">Uma verdadeira caixa de ferramentas profissional</h3>
-                    <p class="feature-desc">
-                        Uma biblioteca com 40 pré-definições de rotinas de reparo para resolver os problemas mais comuns do Windows em poucos segundos, sem necessidade de usar ferramentas de terminal.
-                    </p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> Redefinição de adaptadores de rede, limpeza de cache DNS e renovação de IP.</li>
-                        <li><i class="fas fa-check-circle"></i> Verificação de integridade de arquivos do sistema automatizada.</li>
-                        <li><i class="fas fa-check-circle"></i> Exibição dos resultados e logs do terminal em tempo real na própria tela.</li>
-                        <li><i class="fas fa-check-circle"></i> Flexibilidade: possibilidade de adicionar novos scripts PowerShell, CMD ou programas portáteis.</li>
-                    </ul>
-                </div>
-                <div class="feature-media">
-                    <img src="/images/optiassist-toolbox.webp" alt="Toolbox de Scripts e Automações de Manutenção">
-                </div>
-            </div>
-        </section>
-
-        <!-- Feature 5: Startup Manager -->
+        <!-- Feature 7: Toolbox de Automação -->
         <section class="feature-block">
             <div class="feature-row">
+                <div class="feature-content">
+                    <span class="feature-badge">Toolbox &amp; Terminal</span>
+                    <h3 class="feature-title">Uma verdadeira caixa de ferramentas profissional</h3>
+                    <p class="feature-desc">
+                        Uma biblioteca com rotinas prontas de reparo e execução assíncrona para resolver os problemas mais comuns do Windows em poucos segundos, sem necessidade de decorar comandos.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Rotinas prontas para reparo de integridade do sistema, disco, impressão em rede, Windows Update, rede/DNS, sincronização de horário e dual boot.</li>
+                        <li><i class="fas fa-check-circle"></i> Lançador integrado do <strong>Chris Titus WinUtil</strong> e suporte a scripts PowerShell, CMD e executáveis portáteis.</li>
+                        <li><i class="fas fa-check-circle"></i> Botão dedicado de <strong>Terminal</strong> na barra lateral exibindo logs ao vivo de todos os módulos sem tirar o foco da aba atual.</li>
+                        <li><i class="fas fa-check-circle"></i> Flexibilidade para criar, editar e categorizar suas próprias ações e scripts.</li>
+                    </ul>
+                </div>
+                <div class="feature-media">
+                    <img src="/images/optiassist-toolbox.webp" alt="Toolbox de Scripts e Automações de Manutenção" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 8: Startup Manager -->
+        <section class="feature-block">
+            <div class="feature-row reverse">
                 <div class="feature-content">
                     <span class="feature-badge">Gerenciador de Inicialização</span>
                     <h3 class="feature-title">Controle total sobre as rotinas de inicialização do sistema</h3>
@@ -408,18 +447,40 @@
                         Identifique com clareza quais programas e tarefas iniciam junto com o Windows, atrasando a inicialização do computador, e desative-os de forma simples e reversível.
                     </p>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> Visão unificada das chaves de registro do Windows e pastas de inicialização.</li>
-                        <li><i class="fas fa-check-circle"></i> Monitoramento de Tarefas Agendadas em segundo plano.</li>
-                        <li><i class="fas fa-check-circle"></i> Filtro de busca imediato e avisos visuais de proteção para serviços nativos.</li>
+                        <li><i class="fas fa-check-circle"></i> Visão unificada das chaves de registro do Windows e pastas de inicialização, com ativação e desativação não destrutiva.</li>
+                        <li><i class="fas fa-check-circle"></i> Monitoramento e controle de Tarefas Agendadas em segundo plano.</li>
+                        <li><i class="fas fa-check-circle"></i> Filtro de busca imediato, avisos visuais de proteção e suporte a habilitar, desabilitar ou excluir entradas.</li>
                     </ul>
                 </div>
                 <div class="feature-media">
-                    <img src="/images/optiassist-startup.webp" alt="Gerenciador de Itens de Inicialização e Tarefas">
+                    <img src="/images/optiassist-startup.webp" alt="Gerenciador de Itens de Inicialização e Tarefas" loading="lazy">
                 </div>
             </div>
         </section>
 
-        <!-- Feature 6: Maintenance Report -->
+        <!-- Feature 9: Hardware Monitor -->
+        <section class="feature-block">
+            <div class="feature-row">
+                <div class="feature-content">
+                    <span class="feature-badge">Hardware Monitor</span>
+                    <h3 class="feature-title">Telemetria avançada, sensores e benchmark</h3>
+                    <p class="feature-desc">
+                        Inspecione em profundidade a arquitetura da máquina, acompanhe temperaturas em tempo real e execute testes rápidos de estresse e saúde de bateria.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> <strong>Resumo do Sistema:</strong> uso ao vivo de CPU e RAM, conjuntos de instruções, módulos de memória por slot, placa-mãe, GPU, unidades físicas e monitores.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Sensores em Tempo Real:</strong> leitura de valores atuais, mínimos e máximos com busca, reset e exportação de relatório.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Dispositivos e Bateria:</strong> árvore completa de dispositivos com códigos de erro e análise de desgaste e ciclos em notebooks.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Benchmark e Estresse:</strong> testes rápidos de desempenho de CPU, largura de banda de RAM e I/O de disco.</li>
+                    </ul>
+                </div>
+                <div class="feature-media">
+                    <img src="/images/optiassist-hwmonitor.webp" alt="Hardware Monitor com leitura de CPU, memória, placas e displays" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 10: Maintenance Report -->
         <section class="feature-block">
             <div class="feature-row reverse">
                 <div class="feature-content">
@@ -430,13 +491,13 @@
                     </p>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i> Registro dos dados do cliente, modelo da máquina e número da ordem de serviço.</li>
-                        <li><i class="fas fa-check-circle"></i> Checklist de procedimentos executados (limpeza física, troca de pasta térmica, formatação, etc.).</li>
-                        <li><i class="fas fa-check-circle"></i> Inclusão automática das especificações técnicas de hardware detectadas.</li>
-                        <li><i class="fas fa-check-circle"></i> Exportação em um clique para arquivo de texto limpo, pronto para imprimir ou enviar.</li>
+                        <li><i class="fas fa-check-circle"></i> Checklist completo de 8 procedimentos executados durante o atendimento técnico.</li>
+                        <li><i class="fas fa-check-circle"></i> Inclusão automática das especificações técnicas de hardware e número de série detectados.</li>
+                        <li><i class="fas fa-check-circle"></i> Exportação em arquivo de texto limpo, cópia rápida e histórico integrado separando relatórios salvos na unidade USB e no computador do cliente.</li>
                     </ul>
                 </div>
                 <div class="feature-media">
-                    <img src="/images/optiassist-report.webp" alt="Emissor de Ordens de Serviço e Relatórios Técnicos">
+                    <img src="/images/optiassist-report.webp" alt="Emissor de Ordens de Serviço e Relatórios Técnicos" loading="lazy">
                 </div>
             </div>
         </section>
