@@ -100,22 +100,14 @@ const initRandomFeaturedProjects = () => {
                 en: '<i class="fas fa-server me-1"></i> Self-Hosted System'
             },
             desc: {
-                pt: 'Sistema self-hosted de gestão de ordens de serviço, clientes e faturamento em Go, SQLite e Vue 3. Leve, rápido e seguro, projetado para pequenas empresas e assistências técnicas com soberania de dados.',
-                en: 'Self-hosted service order, client and billing management system in Go, SQLite and Vue 3. Lightweight, fast and secure, designed for small businesses and repair shops with data sovereignty.'
+                pt: 'Aplicação web auto-hospedada para gestão de pequenas empresas, assistências técnicas e prestadores de serviço. Leve, rápido e seguro para gerenciar OS, clientes, relatórios e faturamento.',
+                en: 'Self-hosted web application for managing small businesses, repair shops, and service providers. Lightweight, fast, and secure for managing service orders, clients, reports, and billing.'
             },
-            visualType: 'typo',
-            typoHeaderLeft: {
-                pt: '<i class="fas fa-clipboard-check me-1"></i> FLUXO DE ORDENS DE SERVIÇO',
-                en: '<i class="fas fa-clipboard-check me-1"></i> SERVICE ORDER WORKFLOW'
-            },
-            typoHeaderRight: '&lt; 40 MB RAM',
-            typoSteps: {
-                pt: ['Orçamento', 'Aberta', 'Em Andamento', 'Concluída', 'Entregue'],
-                en: ['Estimate', 'Open', 'In Progress', 'Completed', 'Delivered']
-            },
-            typoFooter: {
-                pt: 'Backups atômicos via <code>VACUUM INTO</code> · Autenticação JWT & RBAC',
-                en: 'Atomic backups via <code>VACUUM INTO</code> · JWT & RBAC authentication'
+            visualType: 'img',
+            imgSrc: '/images/optimanager-dashboard.webp',
+            imgAlt: {
+                pt: 'Dashboard do OptiManager com faturamento, serviços em aberto e atalhos rápidos',
+                en: 'OptiManager dashboard showing revenue, open service orders, and quick shortcuts'
             },
             tags: [
                 { icon: 'fas fa-code', text: 'Go' },

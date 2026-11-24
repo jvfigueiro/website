@@ -41,6 +41,21 @@
             justify-content: center;
             margin-bottom: 3.5rem;
         }
+        .main-screenshot-card {
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--bs-border-color);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+            background-color: rgba(128, 128, 128, 0.03);
+            margin-bottom: 4rem;
+        }
+        [data-bs-theme="dark"] .main-screenshot-card {
+            box-shadow: 0 20px 45px rgba(99, 102, 241, 0.15);
+        }
+        .main-screenshot-card img {
+            width: 100%;
+            display: block;
+        }
 
         /* Value Props Grid */
         .value-grid {
@@ -109,6 +124,22 @@
             padding: 2rem;
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
         }
+        .feature-media {
+            flex: 1.2;
+            border-radius: 0.85rem;
+            overflow: hidden;
+            border: 1px solid var(--bs-border-color);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            background-color: rgba(128, 128, 128, 0.03);
+            transition: transform 0.3s ease;
+        }
+        .feature-media:hover {
+            transform: scale(1.02);
+        }
+        .feature-media img {
+            width: 100%;
+            display: block;
+        }
         .feature-badge {
             display: inline-block;
             font-size: 0.78rem;
@@ -139,15 +170,16 @@
         .feature-list li {
             font-size: 0.92rem;
             color: var(--bs-secondary-color);
-            margin-bottom: 0.6rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.6rem;
+            margin-bottom: 0.65rem;
+            position: relative;
+            padding-left: 1.55rem;
+            line-height: 1.6;
         }
         .feature-list li i {
             color: var(--accent-color);
-            margin-top: 0.25rem;
-            flex-shrink: 0;
+            position: absolute;
+            left: 0;
+            top: 0.28rem;
         }
 
         /* Banner CTA */
@@ -165,7 +197,7 @@
                 flex-direction: column;
                 gap: 1.75rem;
             }
-            .feature-card-panel {
+            .feature-card-panel, .feature-media {
                 width: 100%;
             }
         }
@@ -215,71 +247,45 @@
             <h1 class="product-headline mt-2">
                 OptiManager
             </h1>
-            <p class="product-lead">
-                O sistema self-hosted definitivo para gestão de ordens de serviço, clientes e faturamento. Leve, rápido e seguro, projetado para pequenas empresas, oficinas de manutenção e profissionais técnicos com soberania total de dados.
+            <p class="product-lead" data-i18n="om.lead">
+                Plataforma web auto-hospedada para gestão de pequenas empresas, assistências técnicas e prestadores de serviço. Projetado para ser leve, rápido e seguro, tornando a gestão de ordens de serviço, clientes, relatórios e faturamento uma tarefa descomplicada.
             </p>
 
             <div class="product-cta">
                 <a href="https://github.com/jvfigueiro/optimanager" target="_blank" class="btn-custom btn-primary-custom" style="padding: 0.65rem 1.4rem; font-size: 0.95rem;">
-                    <i class="fab fa-github me-2"></i> Confira no GitHub
+                    <i class="fab fa-github me-2"></i> <span data-i18n="om.btnGithub">Confira no GitHub</span>
                 </a>
                 <a href="https://github.com/jvfigueiro/optimanager/blob/master/README.md" target="_blank" class="btn-custom btn-outline-custom" style="padding: 0.65rem 1.4rem; font-size: 0.95rem;">
-                    <i class="fas fa-book me-2"></i> Documentação Técnica (em Inglês)
+                    <i class="fas fa-book me-2"></i> <span data-i18n="om.btnDocs">Documentação Técnica</span>
                 </a>
             </div>
-        </section>
 
-        <!-- 2. Value Props -->
-        <section class="value-grid">
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-server"></i></div>
-                <h4>Soberania Total</h4>
-                <p>Seus dados pertencem a você. Implante em sua própria infraestrutura ou servidor local sem mensalidades recorrentes ou dependência de nuvens de terceiros.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-clipboard-list"></i></div>
-                <h4>Fluxo Completo de O.S.</h4>
-                <p>Do orçamento à entrega final: acompanhe prazos, técnicos responsáveis, itens trocados e valores financeiros com total rastreabilidade.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-bolt"></i></div>
-                <h4>Leve e Extremamente Rápido</h4>
-                <p>Arquitetura moderna em Go e SQLite com consumo inferior a 40 MB de memória RAM, inicialização instantânea e alta eficiência.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-mobile-screen-button"></i></div>
-                <h4>Aplicativo PWA Instalável</h4>
-                <p>Acesse do navegador ou instale no computador e smartphone como um aplicativo nativo, com carregamento rápido e suporte offline shell.</p>
+            <!-- Big Dashboard Showcase -->
+            <div class="main-screenshot-card">
+                <img src="/images/optimanager-dashboard.webp" alt="Dashboard principal do OptiManager com faturamento do dia, serviços em aberto e atalhos rápidos">
             </div>
         </section>
 
-        <!-- 3. Recursos em Detalhes -->
+        <!-- 2. Recursos em Detalhes -->
 
         <!-- Feature 1: Gestão de Ordens de Serviço -->
         <section class="feature-block">
             <div class="feature-row">
                 <div class="feature-content">
-                    <span class="feature-badge">Gestão Operacional</span>
-                    <h3 class="feature-title">Controle Completo de Ordens de Serviço</h3>
-                    <p class="feature-desc">
+                    <span class="feature-badge" data-i18n="om.f1Badge">Gestão Operacional</span>
+                    <h3 class="feature-title" data-i18n="om.f1Title">Controle Completo de Ordens de Serviço</h3>
+                    <p class="feature-desc" data-i18n="om.f1Desc">
                         Organize com clareza o ciclo de vida dos seus atendimentos técnicos. Da entrada do equipamento ao fechamento financeiro, tenha visão precisa sobre o status de cada trabalho em andamento.
                     </p>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> Acompanhamento visual por etapas: Orçamento, Aberta, Em Andamento, Concluída, Entregue e Cancelada.</li>
-                        <li><i class="fas fa-check-circle"></i> Atribuição de técnicos responsáveis, prazos de entrega e prioridades.</li>
-                        <li><i class="fas fa-check-circle"></i> Discriminação detalhada de mão de obra e peças aplicadas com cálculo financeiro automático.</li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="om.f1Li1">Acompanhamento visual por etapas personalizáveis (Aberto, Em Serviço, Avaliação/Orçamento, Concluído e Pagamento Pendente).</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="om.f1Li2">Criação ágil de OS com autocompletar para clientes, fabricantes, modelos e serviços comuns, além de campos de texto configuráveis.</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="om.f1Li3">Ações em lote para dar baixa, mudar estado, duplicar ou excluir várias ordens de uma só vez, e envio rápido ao cliente via WhatsApp.</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="om.f1Li4">Controle de concorrência para evitar sobrescrita quando mais de um operador edita o mesmo atendimento.</span></li>
                     </ul>
                 </div>
-                <div class="feature-card-panel">
-                    <h5 class="fw-bold mb-3"><i class="fas fa-list-check text-accent me-2"></i> Ciclo de Vida da O.S.</h5>
-                    <p class="text-secondary small mb-3">Fluxos estruturados para garantir que nenhum chamado ou equipamento fique esquecido na bancada:</p>
-                    <div class="d-flex flex-wrap gap-2">
-                        <span class="badge bg-secondary-subtle text-body border">Orçamento</span>
-                        <span class="badge bg-secondary-subtle text-body border">Aberta</span>
-                        <span class="badge bg-secondary-subtle text-body border">Em Andamento</span>
-                        <span class="badge bg-secondary-subtle text-body border">Concluída</span>
-                        <span class="badge bg-secondary-subtle text-body border">Entregue</span>
-                    </div>
+                <div class="feature-media">
+                    <img src="/images/optimanager-servicos.webp" alt="Listagem de Ordens de Serviço com filtros por situação e busca" loading="lazy">
                 </div>
             </div>
         </section>
@@ -288,22 +294,19 @@
         <section class="feature-block">
             <div class="feature-row reverse">
                 <div class="feature-content">
-                    <span class="feature-badge">Cadastro & Agilidade</span>
-                    <h3 class="feature-title">Diretório de Clientes com Busca Instantânea</h3>
-                    <p class="feature-desc">
+                    <span class="feature-badge" data-i18n="om.f2Badge">Cadastro &amp; Agilidade</span>
+                    <h3 class="feature-title" data-i18n="om.f2Title">Diretório de Clientes com Busca Instantânea</h3>
+                    <p class="feature-desc" data-i18n="om.f2Desc">
                         Mantenha o cadastro de clientes sempre organizado e acessível. Crie novas ordens de serviço em segundos com autopreenchimento inteligente de dados de contato e histórico de atendimentos.
                     </p>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> Localização imediata por nome, documento ou telefone através de busca inteligente.</li>
-                        <li><i class="fas fa-check-circle"></i> Histórico unificado de ordens de serviço anteriores associadas a cada cliente.</li>
-                        <li><i class="fas fa-check-circle"></i> Preenchimento automático em recibos e relatórios de entrega.</li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="om.f2Li1">Localização imediata por nome, CPF/CNPJ ou telefone através de busca inteligente.</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="om.f2Li2">Criação rápida de cliente diretamente no modal de nova OS, com preenchimento automático em documentos e relatórios.</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="om.f2Li3">Botão direto para iniciar conversa no WhatsApp pela listagem e proteção contra exclusão de clientes com OS vinculadas.</span></li>
                     </ul>
                 </div>
-                <div class="feature-card-panel">
-                    <h5 class="fw-bold mb-3"><i class="fas fa-users text-accent me-2"></i> Base Centralizada</h5>
-                    <p class="text-secondary small mb-0">
-                        Centralize dados cadastrais, informações de contato e preferências de atendimento em um banco de dados local seguro, sem risco de vazamento ou acesso indevido por plataformas externas.
-                    </p>
+                <div class="feature-media">
+                    <img src="/images/optimanager-clientes.webp" alt="Diretório de Clientes com busca, WhatsApp e ações rápidas" loading="lazy">
                 </div>
             </div>
         </section>
@@ -312,22 +315,19 @@
         <section class="feature-block">
             <div class="feature-row">
                 <div class="feature-content">
-                    <span class="feature-badge">Transparência & Apresentação</span>
-                    <h3 class="feature-title">Emissão de Laudos, Orçamentos e Recibos</h3>
-                    <p class="feature-desc">
-                        Apresente um serviço profissional e transparente aos seus clientes. Gere relatórios técnicos bem estruturados com as descrições dos serviços realizados, peças substituídas e termos de garantia.
+                    <span class="feature-badge" data-i18n="om.f3Badge">Transparência &amp; Apresentação</span>
+                    <h3 class="feature-title" data-i18n="om.f3Title">Emissão de Laudos, Orçamentos e Recibos</h3>
+                    <p class="feature-desc" data-i18n="om.f3Desc">
+                        Apresente um serviço profissional e transparente aos seus clientes. Gere relatórios técnicos bem estruturados em duas etapas simples: configure os campos em tempo real e visualize antes de imprimir.
                     </p>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> Impressão de laudos técnicos completos para acompanhamento do cliente.</li>
-                        <li><i class="fas fa-check-circle"></i> Orçamentos claros com discriminação de custos e condições de pagamento.</li>
-                        <li><i class="fas fa-check-circle"></i> Recibos formais de entrega e retirada de equipamentos.</li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n-html="om.f3Li1">Quatro modelos prontos: <strong>Ordem de Serviço</strong> em 2 vias na mesma folha, <strong>Orçamento</strong>, <strong>Relatório de Serviço</strong> e <strong>Recibo de Pagamento</strong>.</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="om.f3Li2">Pré-visualização A4 monocromática otimizada para impressão, geração nativa de PDF e salvamento direto pelo navegador.</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="om.f3Li3">Botão integrado para enviar o resumo do atendimento diretamente pelo WhatsApp ao cliente.</span></li>
                     </ul>
                 </div>
-                <div class="feature-card-panel">
-                    <h5 class="fw-bold mb-3"><i class="fas fa-file-contract text-accent me-2"></i> Documentação Pronta</h5>
-                    <p class="text-secondary small mb-0">
-                        Modelos de relatórios limpos e objetivos, prontos para impressão direta no navegador ou salvamento em PDF para envio via mensagem ou e-mail.
-                    </p>
+                <div class="feature-media">
+                    <img src="/images/optimanager-relatorios.webp" alt="Gerador de Relatórios e Ordem de Serviço em duas vias pronta para impressão" loading="lazy">
                 </div>
             </div>
         </section>
@@ -336,62 +336,56 @@
         <section class="feature-block">
             <div class="feature-row reverse">
                 <div class="feature-content">
-                    <span class="feature-badge">Métricas & Faturamento</span>
-                    <h3 class="feature-title">Painel Financeiro em Tempo Real</h3>
-                    <p class="feature-desc">
+                    <span class="feature-badge" data-i18n="om.f4Badge">Métricas &amp; Faturamento</span>
+                    <h3 class="feature-title" data-i18n="om.f4Title">Painel Financeiro em Tempo Real</h3>
+                    <p class="feature-desc" data-i18n="om.f4Desc">
                         Acompanhe a saúde financeira da sua operação com indicadores atualizados em tempo real: faturamento mensal, receita diária, ticket médio e controle de saldos pendentes a receber.
                     </p>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> Indicadores visuais de faturamento acumulado e movimentação diária.</li>
-                        <li><i class="fas fa-check-circle"></i> Controle dos valores pagos, métodos de pagamento e saldos em aberto.</li>
-                        <li><i class="fas fa-check-circle"></i> Exportação de relatórios financeiros em formato CSV para análise em planilhas.</li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="om.f4Li1">Filtros por período pré-definido (Mês Atual, Mês Anterior, 30/90 dias, Ano Atual ou Personalizado) e por status de pagamento.</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="om.f4Li2">Controle dos valores pagos, distribuição por forma de pagamento, saldos em aberto e destaque para o dia de maior faturamento.</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="om.f4Li3">Exportação em CSV compatível com Excel e impressão A4 dedicada do relatório financeiro.</span></li>
                     </ul>
                 </div>
-                <div class="feature-card-panel">
-                    <h5 class="fw-bold mb-3"><i class="fas fa-chart-pie text-accent me-2"></i> Visibilidade de Negócio</h5>
-                    <p class="text-secondary small mb-0">
-                        Tenha total controle sobre as finanças do seu negócio sem a complexidade de softwares contábeis pesados ou planilhas desorganizadas.
-                    </p>
+                <div class="feature-media">
+                    <img src="/images/optimanager-financeiro.webp" alt="Painel Financeiro do OptiManager com faturamento, demonstrativo diário e formas de pagamento" loading="lazy">
                 </div>
             </div>
         </section>
 
-        <!-- Feature 5: Instalação e Backups -->
+        <!-- Feature 5: Instalação, Personalização e Segurança -->
         <section class="feature-block">
             <div class="feature-row">
                 <div class="feature-content">
-                    <span class="feature-badge">Tranquilidade Técnica</span>
-                    <h3 class="feature-title">Assistente de Configuração & Backups Atômicos</h3>
-                    <p class="feature-desc">
-                        Comece a usar em minutos com o assistente de boas-vindas guiado em 6 passos. O OptiManager conta com um motor de backup atômico nativo do SQLite, garantindo que suas informações estejam sempre protegidas contra falhas.
+                    <span class="feature-badge" data-i18n="om.f5Badge">Tranquilidade Técnica</span>
+                    <h3 class="feature-title" data-i18n="om.f5Title">Configurações, Controle de Acesso &amp; Backups</h3>
+                    <p class="feature-desc" data-i18n="om.f5Desc">
+                        Comece a usar em minutos com o assistente de boas-vindas guiado em 6 passos. Personalize a identidade visual da sua empresa e mantenha seus dados protegidos com backups automáticos e controle de acesso por perfil.
                     </p>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> Wizard de boas-vindas: configuração rápida de dados da empresa e conta de administrador.</li>
-                        <li><i class="fas fa-check-circle"></i> Backups consistentes via <code>VACUUM INTO</code> com verificação automática de integridade.</li>
-                        <li><i class="fas fa-check-circle"></i> Restauração rápida em um clique para migrar de máquina sem complicações.</li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n-html="om.f5Li1"><strong>Personalização completa:</strong> logotipo da empresa, cores primária e secundária dinâmicas, tema Claro/Escuro, numeração da OS, termos de garantia e atalhos rápidos no Dashboard.</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n-html="om.f5Li2"><strong>Usuários:</strong> perfis Administrador, Atendente e Técnico com permissões granulares, auto-logout por inatividade, trilha de auditoria e proteção de dados sensíveis.</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n-html="om.f5Li3"><strong>Backups automáticos:</strong> criação manual ou agendada (diária/semanal) com verificação de integridade, retenção configurável e restauração em um clique.</span></li>
                     </ul>
                 </div>
-                <div class="feature-card-panel">
-                    <h5 class="fw-bold mb-3"><i class="fas fa-shield-halved text-accent me-2"></i> Segurança e Confiabilidade</h5>
-                    <p class="text-secondary small mb-0">
-                        Autenticação robusta baseada em JWT, controle de perfis de acesso (RBAC), logs detalhados de auditoria e compatibilidade pronta para Docker e Docker Compose.
-                    </p>
+                <div class="feature-media">
+                    <img src="/images/optimanager-configuracoes.webp" alt="Configurações do sistema, gestão de usuários, empresa e backup" loading="lazy">
                 </div>
             </div>
         </section>
 
-        <!-- 4. Bottom CTA -->
+        <!-- 3. Bottom CTA -->
         <section class="bottom-banner">
-            <h3 class="fw-bold mb-3" style="font-size: 2rem;">Preparado para ter controle total sobre sua gestão técnica?</h3>
-            <p class="text-secondary mb-4 mx-auto" style="max-width: 650px; font-size: 1.05rem;">
-                O OptiManager é gratuito, moderno e de código aberto sob licença GNU GPLv3. Implante agora em seu ambiente via Docker e gerencie suas ordens de serviço com autonomia total.
+            <h3 class="fw-bold mb-3" style="font-size: 2rem;" data-i18n="om.ctaTitle">Simplifique a gestão do seu negócio agora mesmo!</h3>
+            <p class="text-secondary mb-4 mx-auto" style="max-width: 650px; font-size: 1.05rem;" data-i18n="om.ctaDesc">
+                O OptiManager é gratuito e de código aberto. Facilite agora mesmo a gestão do seu negócio! Versão para Windows disponível em breve.
             </p>
             <div class="d-flex flex-wrap justify-content-center gap-3">
                 <a href="https://github.com/jvfigueiro/optimanager" target="_blank" class="btn-custom btn-primary-custom" style="padding: 0.7rem 1.6rem;">
-                    <i class="fab fa-github me-2"></i> Confira no GitHub
+                    <i class="fab fa-github me-2"></i> <span data-i18n="om.btnGithub">Confira no GitHub</span>
                 </a>
                 <a href="/projects" class="btn-custom btn-outline-custom" style="padding: 0.7rem 1.6rem;">
-                    <i class="fas fa-arrow-left me-2"></i> Ver Todos os Projetos
+                    <i class="fas fa-arrow-left me-2"></i> <span data-i18n="om.btnAllProjects">Ver Todos os Projetos</span>
                 </a>
             </div>
         </section>
