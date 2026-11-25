@@ -155,15 +155,15 @@ const initRandomFeaturedProjects = () => {
         {
             id: 'garagex5',
             title: {
-                pt: 'GarageX5 - O Meu Carro',
-                en: 'GarageX5 - My Car'
+                pt: 'GarageX5 | Ford Escort SW',
+                en: 'GarageX5 | Ford Escort SW'
             },
             badge: {
                 pt: '<i class="fas fa-car me-1"></i> Retrofit & Embarcados',
                 en: '<i class="fas fa-car me-1"></i> Retrofit & Embedded'
             },
             desc: {
-                pt: 'Um projeto onde levo os conhecimentos de informática e eletrônica para dentro do meu carro, seguindo o conceito de retrofit, visando modernizá-lo sem perder suas características originais.',
+                pt: 'Um projeto onde levo para o meu carro os conhecimentos de informática e eletrônica, seguindo o conceito de retrofit, visando modernizá-lo sem perder suas características originais.',
                 en: 'A project bringing computing and electronics expertise into my vehicle, following the OEM+ retrofit philosophy to modernize it while preserving its original character.'
             },
             visualType: 'img',
@@ -189,6 +189,10 @@ const initRandomFeaturedProjects = () => {
             title: {
                 pt: 'Engenharia Reversa em Multimídia',
                 en: 'Head Unit Reverse Engineering'
+            },
+            date: {
+                pt: 'Junho de 2026',
+                en: 'June 2026'
             },
             badge: {
                 pt: '<i class="fas fa-microchip me-1"></i> Firmware & Linux',
@@ -222,6 +226,10 @@ const initRandomFeaturedProjects = () => {
                 pt: 'Upgrade de ECU Ford',
                 en: 'Ford ECU Upgrade'
             },
+            date: {
+                pt: 'Maio de 2026',
+                en: 'May 2026'
+            },
             badge: {
                 pt: '<i class="fas fa-car-battery me-1"></i> Injeção & Telemetria',
                 en: '<i class="fas fa-car-battery me-1"></i> Injection & Telemetry'
@@ -253,6 +261,10 @@ const initRandomFeaturedProjects = () => {
             title: {
                 pt: 'Exploração de Satélites',
                 en: 'Satellite Exploration'
+            },
+            date: {
+                pt: '2013~Presente',
+                en: '2013~Present'
             },
             badge: {
                 pt: '<i class="fas fa-satellite-dish me-1"></i> Estação Portátil FTA',
@@ -314,6 +326,10 @@ const initRandomFeaturedProjects = () => {
                 pt: 'Modernização de Rede Cisco',
                 en: 'Cisco Network Modernization'
             },
+            date: {
+                pt: 'Dezembro de 2020',
+                en: 'December 2020'
+            },
             badge: {
                 pt: '<i class="fas fa-helmet-safety me-1"></i> Case em campo · 42 edificações',
                 en: '<i class="fas fa-helmet-safety me-1"></i> Field Case · 42 Buildings'
@@ -360,6 +376,7 @@ const initRandomFeaturedProjects = () => {
 
     const renderCard = (p, lang) => {
         const title = getStr(p.title, lang);
+        const dateStr = getStr(p.date, lang);
         const badge = getStr(p.badge, lang);
         const desc = getStr(p.desc, lang);
         const imgAlt = getStr(p.imgAlt, lang);
@@ -427,11 +444,16 @@ const initRandomFeaturedProjects = () => {
             `;
         }
 
+        const dateBadgeHtml = dateStr
+            ? `<span class="project-date-badge"><i class="far fa-calendar-alt" aria-hidden="true"></i> ${dateStr}</span>`
+            : '';
+
         return `
             <article class="featured-card">
                 ${visualHtml}
                 <div class="featured-meta mb-2">
                     <h3 class="project-title m-0">${title}</h3>
+                    ${dateBadgeHtml}
                 </div>
                 <p class="project-desc mb-3">${desc}</p>
                 <div class="chip-group mb-3">${tagsHtml}</div>
